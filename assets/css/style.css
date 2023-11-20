@@ -1,15 +1,423 @@
-.table{
+.table {
     vertical-align: baseline;
 }
-td{
+
+td {
     vertical-align: middle;
 }
-.ip_bienthe{
+.bold {
+    font-weight: bold;
+}
+* {
+    margin: 0px auto;
+    padding: 0px;
+    font-family: roboto;
+}
+
+.header {
+    display: flex;
+    /* justify-content: flex-start; */
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 5px #6a6a6a;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header .logo {
+    margin-right: 0px;
+    margin-left: 70px;
+}
+
+.header .logo a img {
+    width: 150px;
+}
+
+.header .menu {
+    display: flex;
+}
+
+.header .menu ul {
+    list-style: none;
+
+}
+
+.header ul li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.header ul li a {
+    color: black;
+    display: block;
+    font-size: 14px;
+    padding: 15px 0px;
+}
+
+.search {
+    position: relative;
+}
+
+.header ul li input {
+    width: 300px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-indent: 15px;
+    background-color: rgb(250, 250, 250);
+}
+
+.header ul li a.icon_search {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+a.icon_search {
+    padding: 0px;
+    margin: 0px;
+}
+
+.icon_tai_khoan {
+    margin-top: 5px;
+}
+
+.icon_tai_khoan a {
+    padding: 0px 5px;
+
+}
+
+.icon_tai_khoan a i {
+    font-size: 18px;
+    color: black;
+}
+
+.menu a:hover {
+    color: red;
+}
+
+.menu li {
+    position: relative;
+    transition: all 0.9s;
+}
+
+.menu li:hover .sub_menu {
+    display: block;
+    transition: all 0.9s;
+}
+
+.menu .sub_menu {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 0 3px black;
+    border-radius: 0 0 5px 5px;
+    display: none;
+}
+
+.menu .sub_menu li {
+    display: block;
+    width: 100px;
+
+}
+
+.menu .sub_menu a.ao {
+    font-weight: bold;
+}
+
+.menu .sub_menu li:hover .sub_menu_ao {
+    display: block;
+}
+
+.menu .sub_menu li a {
+    padding: 5px 5px;
+    border-bottom: 2px solid #333;
+}
+
+.menu .sub_menu_ao {
+    display: none;
+    position: absolute;
+    left: 121px;
+    top: 0px;
+    background-color: white;
+    box-shadow: 0 0 3px black;
+    border-radius: 0 0 5px 5px;
+}
+
+.menu .sub_menu_ao li {
+    width: 300px;
+    display: block;
+
+}
+
+.menu .sub_menu_ao li a {
+    border-bottom: 0px;
+}
+
+.content {
+    margin: 0px auto;
+    padding: 0px;
+    max-width: 1200px;
+}
+
+.content .info_prod {
+    display: flex;
+}
+
+.box_left {
+    flex-basis: 46%;
+}
+
+.box_right {
+    flex-basis: 60%;
+}
+
+.content .url {
+    margin: 50px 0px 30px 0px;
+}
+
+.content .url a {
+    color: #333;
+}
+
+.box_left .anh_to img {
+    width: 500px;
+}
+
+.box_left .anh_nho img {
+    width: 100px;
+    padding-top: 8px;
+    padding-right: 10px;
+}
+
+.box_right .name_prod {
+    margin-bottom: 10px;
+}
+
+.box_right div {
+    padding-bottom: 10px;
+
+}
+
+.box_right .price_prod span.price_niemyet {
+    color: #6a6a6a;
+    text-decoration: line-through;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.box_right .price_prod span.price_sale {
+    color: #ff0000;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.tinh_trang span {
+    color: green;
+    font-weight: 700;
+}
+
+.mau ul li {
+    display: inline-block;
+}
+
+.color_sp span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    border: 2px solid whitesmoke;
+
+}
+
+.color_sp .black {
+    background-color: black;
+    
+}
+
+.color_sp .red {
+    background-color: red;
+}
+
+.color_sp .green {
+    background-color: green;
+}
+
+.color_sp .blue {
+    background-color: blue;
+}
+
+.size_sp ul {
+    list-style: none;
+}
+
+.size_sp ul li {
+    display: inline-block;
+}
+
+.size_sp ul li a {
+    text-align: center;
+    display: block;
+    border: 1px solid #333;
+    width: 26px;
+    /* height: 30px; */
+    margin: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    /* padding-top: 5px; */
+    color: black;
+}
+
+.box_right input[type="number"] {
+    width: 38px;
+    height: 28px;
+    text-indent: 8px;
+}
+
+.add_cart a {
+    text-decoration: none;
+    color: white;
+    background: rgb(203, 200, 17);
+    padding: 7px 5px;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+
+.buy_now a {
+    text-decoration: none;
+    color: white;
+    background: rgb(228, 3, 3);
+    padding: 7px 10px;
+
+    border-radius: 5px;
+}
+
+.title_prod {
+    margin: 30px 0px 10px 0px;
+}
+
+.description_prod p {
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.binhluan .title_binhluan {
+    margin: 30px 0px;
+}
+
+.binhluan table thead {
+    background-color: #6a6a6a;
+    height: 30px;
+
+}
+
+.binhluan table {
+    width: 100%;
+
+}
+
+.binhluan table tbody {
+    background-color: #c4c4c4;
+}
+
+.binhluan table tbody td {
+    padding: 5px;
+}
+
+input {
+    width: 300px;
+    height: 28px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-indent: 15px;
+    background-color: rgb(250, 250, 250);
+}
+
+.binhluan form button {
+    text-decoration: none;
+    cursor: pointer;
+    background: rgb(212, 212, 212);
+    padding: 5px 10px;
+    color: black;
+    border-radius: 5px;
+}
+
+.see_more {
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+.see_more h3 {
+    margin-bottom: 20px;
+}
+
+.see_more ul li {
+    display: inline-block;
+    border: 1px solid #333;
+    text-align: center;
+    border-radius: 3px;
+    margin-right: 20px;
+}
+
+.see_more ul li .name_prod {
+    width: 150px;
+    height: 55px;
+    overflow: hidden;
+}
+
+.see_more ul li .name_prod a {
+    color: black;
+    font-size: 13px;
+}
+
+.see_more ul li .name_prod a:hover {
+    color: red;
+}
+
+.see_more ul li .img_prod img {
+    width: 150px;
+}
+.binhluan .box-content {
+    margin-left: 50px;
+}
+.binhluan .name_bl i {
+    font-size: 28px;
+}
+.binhluan .name_bl .name_kh_bl {
+    font-size: 16px;
+    padding: 0px 0px 5px 5px;
+}
+.binhluan .name_bl  p {
+    color: #6a6a6a;
+    padding-left: 34px ;
+    font-size: 13px;
+}
+.binhluan .noidung_bl {
+   padding: 5px 0px 0px 34px;
+}
+
+.binhluan .form_bl {
+    margin-top: 30px;
+    margin-left: 50px;
+}
+.binhluan .form_bl i {
+    font-size: 28px;
+    margin: 10px 5px 0px 0px;
+}
+
+/* CSS Sản phẩm trong Admin  */
+.ip_bienthe {
     width: 100%;
     display: flex;
     gap: 40px;
 }
-.add_ip{
+
+.add_ip {
     width: 50px;
     height: 50px;
     border: 1px solid #111;
@@ -20,7 +428,7 @@ td{
     /* margin-bottom: 20px; */
     margin-top: 30px;
 
-    & button{
+    & button {
         width: 100%;
         height: 100%;
         border-radius: 50%;
@@ -30,7 +438,39 @@ td{
         outline: none;
     }
 
-    & i{
+    & i {
         font-size: 1.5rem;
     }
+
+}
+
+/* Css dssp  */
+ input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+.dssp h1 {
+    margin-bottom: 0px;
+}
+
+ div#content {
+    margin: 0px;
+}
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    margin: 0px;
+}
+.card-header:first-child {
+    border-radius: calc(0.35rem - 1px) calc(0.35rem - 1px) 0 0;
+    margin: 0px;
+}
+input.timkiem_dssp {
+    height: 38px;
+}
+select {
+    word-wrap: normal;
+    /* border: 1px; */
+    border: 1px solid #c4c4c4;
 }
