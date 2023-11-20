@@ -3,15 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 17, 2023 lúc 03:54 PM
+-- Thời gian đã tạo: Th10 20, 2023 lúc 03:27 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-   
--- 1
+
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -20,6 +20,37 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `duan1_09`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `bien_the`
+--
+
+CREATE TABLE `bien_the` (
+  `id` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `id_mau_sac` int(11) NOT NULL,
+  `id_kich_thuoc` int(11) NOT NULL,
+  `so_luong` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `bien_the`
+--
+
+INSERT INTO `bien_the` (`id`, `id_sp`, `id_mau_sac`, `id_kich_thuoc`, `so_luong`) VALUES
+(6, 27, 1, 3, 1),
+(7, 27, 1, 3, 1),
+(8, 29, 1, 3, 19),
+(9, 29, 2, 3, 22),
+(10, 29, 3, 4, 14),
+(11, 29, 5, 2, 2),
+(13, 30, 1, 3, 20),
+(14, 30, 3, 3, 19),
+(16, 31, 1, 3, 31),
+(17, 31, 2, 4, 9),
+(18, 31, 2, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -40,9 +71,7 @@ CREATE TABLE `binhluan` (
 --
 
 INSERT INTO `binhluan` (`id`, `noidung`, `iduser`, `idpro`, `ngaybinhluan`) VALUES
-(30, 'ewsdfgnhmm', 4, 14, '2023-11-16 14:13:24'),
-(31, 'ewsdfgnhmm', 4, 14, '2023-11-16 14:13:24'),
-(32, 'ewsdfgnhmm', 4, 14, '2023-11-16 14:13:24');
+(30, 'ewsdfgnhmm', 4, 29, '2023-11-16 14:13:24');
 
 -- --------------------------------------------------------
 
@@ -53,10 +82,27 @@ INSERT INTO `binhluan` (`id`, `noidung`, `iduser`, `idpro`, `ngaybinhluan`) VALU
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_sanpham` int(11) NOT NULL,
-  `image` int(11) NOT NULL,
+  `id_bt_sanpham` int(11) NOT NULL,
+  `image` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
   `soluong` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `chitiet_donhang`
+--
+
+CREATE TABLE `chitiet_donhang` (
+  `id` int(11) NOT NULL,
+  `id_donhang` int(11) NOT NULL,
+  `id_bt_sanpham` int(11) NOT NULL,
+  `so_luong` int(11) NOT NULL,
+  `gia` float NOT NULL,
+  `url_img` varchar(225) NOT NULL,
+  `tensp` varchar(225) NOT NULL,
+  `ngay_mua` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -75,9 +121,13 @@ CREATE TABLE `danhmuc` (
 --
 
 INSERT INTO `danhmuc` (`id`, `name`, `id_dm`) VALUES
-(1, 'Laptop', 0),
-(2, 'Điện Thoại', 0),
-(7, 'Đồng hồ', 0);
+(1, 't shirt', 1),
+(2, 'polo', 1),
+(7, 'hoodie', 1),
+(8, 'áo khoác', 1),
+(9, 'short', 2),
+(10, 'pant', 2),
+(11, 'túi', 3);
 
 -- --------------------------------------------------------
 
@@ -88,7 +138,6 @@ INSERT INTO `danhmuc` (`id`, `name`, `id_dm`) VALUES
 CREATE TABLE `donhang` (
   `id` int(11) NOT NULL COMMENT 'Id đơn hàng',
   `id_user` int(11) DEFAULT NULL COMMENT 'Id khách hàng',
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `sdt` int(11) NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -105,8 +154,8 @@ CREATE TABLE `donhang` (
 -- Đang đổ dữ liệu cho bảng `donhang`
 --
 
-INSERT INTO `donhang` (`id`, `id_user`, `name`, `address`, `sdt`, `email`, `phuongthuctt`, `ngay_dat_hang`, `tong`, `status`, `receive_name`, `receive_address`, `receive_tel`) VALUES
-(1, 17, 'huyduc123', 'HN', 987654321, 'hyuduc', 'Trả tiền khi nhận hàng', NULL, 12000000, 'Chờ xác nhận', NULL, NULL, NULL);
+INSERT INTO `donhang` (`id`, `id_user`, `address`, `sdt`, `email`, `phuongthuctt`, `ngay_dat_hang`, `tong`, `status`, `receive_name`, `receive_address`, `receive_tel`) VALUES
+(1, 17, 'HN', 987654321, 'hyuduc', 'Trả tiền khi nhận hàng', NULL, 12000000, 'Chờ xác nhận', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -120,6 +169,70 @@ CREATE TABLE `hinhanh` (
   `id_sp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `hinhanh`
+--
+
+INSERT INTO `hinhanh` (`id`, `url`, `id_sp`) VALUES
+(7, 'ảnh áo polo nhỏ.jpg', 27),
+(8, 'áo bomber ảnh con 2.jpg', 29),
+(9, 'áo bomber ảnh con 3.jpg', 29),
+(10, 'áo bomber ảnh con 4.jpg', 29),
+(11, 'áo bomber ảnh con.jpg', 29),
+(13, 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét 2.jpg', 30),
+(14, 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét 3.jpg', 30),
+(15, 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét 4.jpg', 30),
+(16, 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét.jpg', 30),
+(17, 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie 2.jpg', 31),
+(18, 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie 3.jpg', 31),
+(19, 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie 4.jpg', 31),
+(20, 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie.jpg', 31);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `kich_thuoc`
+--
+
+CREATE TABLE `kich_thuoc` (
+  `id` int(11) NOT NULL,
+  `value` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `kich_thuoc`
+--
+
+INSERT INTO `kich_thuoc` (`id`, `value`) VALUES
+(1, 'S'),
+(2, 'M'),
+(3, 'L'),
+(4, 'XL'),
+(5, 'XXL');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `mau_sac`
+--
+
+CREATE TABLE `mau_sac` (
+  `id` int(11) NOT NULL,
+  `value` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `mau_sac`
+--
+
+INSERT INTO `mau_sac` (`id`, `value`) VALUES
+(1, 'Đen'),
+(2, 'Trắng'),
+(3, 'Xanh lá'),
+(4, 'Xanh biển'),
+(5, 'Đỏ'),
+(6, 'Vàng');
+
 -- --------------------------------------------------------
 
 --
@@ -129,14 +242,12 @@ CREATE TABLE `hinhanh` (
 CREATE TABLE `sanpham` (
   `id` int(11) NOT NULL COMMENT 'Id sản phẩm',
   `name` varchar(255) NOT NULL COMMENT 'Tên sản phẩm',
-  `price-niemyet` double(10,2) NOT NULL DEFAULT 0.00 COMMENT 'Giá sản phẩm',
-  `price-sale` int(100) NOT NULL COMMENT 'Giá sale',
-  `color` enum('Đỏ','Vàng','Đen','Trắng','Xanh') NOT NULL COMMENT 'Màu',
-  `size` enum('M','L','XL','XXL') NOT NULL,
-  `tinh-trang` enum('Còn hàng','Hết hàng') NOT NULL COMMENT 'Tình trạng',
-  `img` varchar(255) NOT NULL COMMENT 'Ảnh',
+  `img` varchar(225) NOT NULL,
+  `price_niemyet` double(10,2) NOT NULL DEFAULT 0.00 COMMENT 'Giá sản phẩm',
+  `price_sale` int(100) NOT NULL COMMENT 'Giá sale',
   `mota` text NOT NULL COMMENT 'Mô tả',
   `luotxem` int(11) NOT NULL DEFAULT 0 COMMENT 'Lượt xem',
+  `trangthai` enum('Còn hàng','Hết hàng') NOT NULL COMMENT 'Trạng thái',
   `iddm` int(11) NOT NULL COMMENT 'Id danh mục'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -144,24 +255,11 @@ CREATE TABLE `sanpham` (
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
-INSERT INTO `sanpham` (`id`, `name`, `price-niemyet`, `price-sale`, `color`, `size`, `tinh-trang`, `img`, `mota`, `luotxem`, `iddm`) VALUES
-(1, 'Apple MacBook Air M1', 30000000.00, 10, 'Đỏ', 'M', 'Còn hàng', '1696863837_Apple MacBook Air M1.jpg', 'Sản phẩm cấu hình cơ bản bao gồm một GPU bảy lõi, bộ nhớ lưu trữ 256GB SSD, cũng như 8GB RAM bộ nhớ. Phiên bản nâng cấp với GPU tám lõi và bộ nhớ 512GB SSD có giá khởi điểm là 1249$. Cấu hình tối đa sẽ bao gồm 16GB RAM và 2TB dung lượng lưu trữ. Máy có ba tuỳ chọn màu sắc giống sản phẩm tiền nhiệm bao gồm vàng (gold), bạc (silver) và xám không gian (Space gray)', 52, 1),
-(2, 'iPhone 14 Pro Max', 14000000.00, 0, '', 'M', 'Còn hàng', '1696863849_iPhone 14 Pro Max.jpg', 'Những dòng iPhone đến từ nhà Apple đều có sức hút đặc biệt ngay từ thời điểm ra mắt và thế hệ iPhone 14 Pro Max cũng không ngoại lệ. Có thể nói, iPhone 14 Pro Max là sự kết hợp hoàn hảo giữa các yếu tố về thiết kế, cấu hình, tính năng, hệ điều hành,... Nếu bạn tò mò về siêu phẩm này, hãy đọc ngay phần đánh giá chi tiết phiên bản cao cấp nhất trong series iPhone 14 bên dưới nhé. ', 55, 2),
-(3, 'Laptop Asus VivoBook Go 14', 18000000.00, 0, '', 'M', 'Còn hàng', '1696863867_Laptop Asus VivoBook Go 14.jpg', 'ASUS Vivobook E1404FA-NK186W thuộc dòng Vivobook Go 14, dòng laptop hiệu năng cao giá rẻ giúp bạn làm việc hiệu quả mọi lúc mọi nơi. Với bộ vi xử lý AMD 7000 series mạnh mẽ, trang bị sẵn tới 16GB RAM, 512GB SSD, Vivobook E1404FA sẽ mang đến trải nghiệm làm việc thoải mái, vô cùng mượt mà.', 59, 1),
-(5, 'Laptop Lenovo Ideapad 5 Pro', 30000000.00, 0, '', 'M', 'Còn hàng', '1696863880_laptop1.webp', 'Lenovo Ideapad 5 Pro 16 là chiếc laptop, máy tính xách tay thời đại mới dành cho các bạn trẻ đa nhiệm, năng động với vẻ ngoài hiện đại, mỏng nhẹ nhưng bên trong lại chứa một hiệu năng cực khủng. Bên cạnh đó, chiếc laptop Lenovo - Lenovo Ideapad này cũng được tích hợp nhiều công nghệ hiện đại, tối ưu tốt cho trải nghiệm sử dụng. Chắc chắn, mẫu laptop mỏng nhẹ này sẽ khiến bạn phải bất ngờ đấy. Hãy cùng Laptop88 đánh giá ngay mẫu laptop văn phòng này dưới đây nhé!', 14, 1),
-(6, 'Xiaomi Redmi Note 12 Pro', 14000000.00, 0, '', 'M', 'Còn hàng', '1696863912_Xiaomi Redmi Note 12 Pro.jpg', 'Samsung S23 Ultra là dòng điện thoại cao cấp của Samsung, sở hữu camera độ phân giải 200MP ấn tượng, chip Snapdragon 8 Gen 2 mạnh mẽ, bộ nhớ RAM 8GB mang lại hiệu suất xử lý vượt trội cùng khung viền vuông vức sang trọng. Sản phẩm được ra mắt từ đầu năm 2023.', 12, 2),
-(7, 'Macbook Air 15 inch M2 2023', 18000000.00, 0, '', 'M', 'Còn hàng', '1696863929_Macbook Air 15 inch M2 2023.jpg', 'Vận hành doanh nghiệp trên MacBook Air M2. Siêu mạnh mẽ với chip M2 thế hệ tiếp theo, MacBook Air được thiết kế mới nay nhỏ gọn hơn bao giờ hết, kết hợp giữa hiệu năng đáng kinh ngạc và thời lượng pin lên đến 18 giờ trong vỏ nhôm mỏng đầy ấn tượng.1 Nhờ đó, tất cả các bộ phận từ kinh doanh đến tài chính đều có thể làm việc năng suất hơn dù ở bất cứ đâu.', 18, 1),
-(11, 'iPhone 15 Pro Max', 39990000.00, 5, '', 'M', 'Còn hàng', '1696994324_iPhone 15 Pro max.jpeg', 'iPhone 15 Pro Max thiết kế mới với chất liệu titan chuẩn hàng không vũ trụ bền bỉ, trọng lượng nhẹ, đồng thời trang bị nút Action và cổng sạc USB-C tiêu chuẩn giúp nâng cao tốc độ sạc. Khả năng chụp ảnh đỉnh cao của iPhone 15 bản Pro Max đến từ camera chính 48MP, camera UltraWide 12MP và camera telephoto có khả năng zoom quang học đến 5x. Bên cạnh đó, iPhone 15 ProMax sử dụng chip A17 Pro mới mạnh mẽ. Xem thêm chi tiết những điểm nổi bật của sản phẩm qua thông tin sau!', 169, 2),
-(12, 'iPhone 13 128GB ', 12690000.00, 5, '', 'M', 'Còn hàng', '1696994556_iphone 13 128GB.webp', 'iPhone 13 128GB thiết kế mới với chất liệu titan chuẩn hàng không vũ trụ bền bỉ, trọng lượng nhẹ, đồng thời trang bị nút Action và cổng sạc USB-C tiêu chuẩn giúp nâng cao tốc độ sạc. Khả năng chụp ảnh đỉnh cao của iPhone 15 bản Pro Max đến từ camera chính 48MP, camera UltraWide 12MP và camera telephoto có khả năng zoom quang học đến 5x. Bên cạnh đó, iPhone 15 ProMax sử dụng chip A17 Pro mới mạnh mẽ. Xem thêm chi tiết những điểm nổi bật của sản phẩm qua thông tin sau!', 26, 2),
-(13, 'iPhone 11 64GB', 11490000.00, 10, '', 'M', 'Còn hàng', '1696994609_iphone 11 64GB.webp', 'iPhone 11 thiết kế mới với chất liệu titan chuẩn hàng không vũ trụ bền bỉ, trọng lượng nhẹ, đồng thời trang bị nút Action và cổng sạc USB-C tiêu chuẩn giúp nâng cao tốc độ sạc. Khả năng chụp ảnh đỉnh cao của iPhone 15 bản Pro Max đến từ camera chính 48MP, camera UltraWide 12MP và camera telephoto có khả năng zoom quang học đến 5x. Bên cạnh đó, iPhone 15 ProMax sử dụng chip A17 Pro mới mạnh mẽ. Xem thêm chi tiết những điểm nổi bật của sản phẩm qua thông tin sau!', 2, 2),
-(14, 'iPhone 14 Plus', 13990000.00, 5, '', 'M', 'Còn hàng', '1696994651_iphone 14 plus.webp', 'iPhone 14 Plus thiết kế mới với chất liệu titan chuẩn hàng không vũ trụ bền bỉ, trọng lượng nhẹ, đồng thời trang bị nút Action và cổng sạc USB-C tiêu chuẩn giúp nâng cao tốc độ sạc. Khả năng chụp ảnh đỉnh cao của iPhone 15 bản Pro Max đến từ camera chính 48MP, camera UltraWide 12MP và camera telephoto có khả năng zoom quang học đến 5x. Bên cạnh đó, iPhone 15 ProMax sử dụng chip A17 Pro mới mạnh mẽ. Xem thêm chi tiết những điểm nổi bật của sản phẩm qua thông tin sau!', 61, 2),
-(19, 'iPhone 14 Pro Max Màu vàng', 30000000.00, 22, '', 'M', 'Còn hàng', '1697849676_iphone 14 promax.webp', 'iPhone 14 Pro Max thiết kế mới với chất liệu titan chuẩn hàng không vũ trụ bền bỉ, trọng lượng nhẹ, đồng thời trang bị nút Action và cổng sạc USB-C tiêu chuẩn giúp nâng cao tốc độ sạc. Khả năng chụp ảnh đỉnh cao của iPhone 15 bản Pro Max đến từ camera chính 48MP, camera UltraWide 12MP và camera telephoto có khả năng zoom quang học đến 5x. Bên cạnh đó, iPhone 15 ProMax sử dụng chip A17 Pro mới mạnh mẽ. Xem thêm chi tiết những điểm nổi bật của sản phẩm qua thông tin sau!', 3, 2),
-(20, 'Xiaomi Redmi Note 2 ', 19000000.00, 20, '', 'M', 'Còn hàng', '1697849740_xiaomi2.webp', 'Với thiết kế mới với chất liệu titan chuẩn hàng không vũ trụ bền bỉ, trọng lượng nhẹ, đồng thời trang bị nút Action và cổng sạc USB-C tiêu chuẩn giúp nâng cao tốc độ sạc. Khả năng chụp ảnh đỉnh cao của iPhone 15 bản Pro Max đến từ camera chính 48MP, camera UltraWide 12MP và camera telephoto có khả năng zoom quang học đến 5x. Bên cạnh đó, iPhone 15 ProMax sử dụng chip A17 Pro mới mạnh mẽ. Xem thêm chi tiết những điểm nổi bật của sản phẩm qua thông tin sau!', 6, 2),
-(21, 'Laptop Asus Gaming 1024', 20000000.00, 31, '', 'M', 'Còn hàng', '1697850465_laptop3.webp', 'Với thiết kế mới với chất liệu titan chuẩn hàng không vũ trụ bền bỉ, trọng lượng nhẹ, đồng thời trang bị nút Action và cổng sạc USB-C tiêu chuẩn giúp nâng cao tốc độ sạc. Khả năng chụp ảnh đỉnh cao của iPhone 15 bản Pro Max đến từ camera chính 48MP, camera UltraWide 12MP và camera telephoto có khả năng zoom quang học đến 5x. Bên cạnh đó, iPhone 15 ProMax sử dụng chip A17 Pro mới mạnh mẽ. Xem thêm chi tiết những điểm nổi bật của sản phẩm qua thông tin sau!', 3, 1),
-(22, 'Orient 41mm Nam RE-AV0005L00B', 24000000.00, 30, '', 'M', 'Còn hàng', '1697851276_Orient 41mm Nam RE-AV0005L00B.webp', 'Đồng hồ Orient là một trong những thương hiệu của Nhật Bản đã quá quen thuộc với người dân Việt Nam. Những chiếc đồng hồ của thương hiệu này không chỉ dẫn đầu về chất lượng mà còn đẹp bởi thiết kế từ thể thao đến cổ điển. Vậy đồng hồ Orient của nước nào? Những sản phẩm của thương hiệu này được đánh giá ra sao? Để tìm câu trả lời cho các câu hỏi trên hãy tham khảo nội dung bài viết sau đây của chúng tôi.', 34, 7),
-(23, 'Tissot 41mm Nam T086.408.22.036.00', 19000000.00, 34, '', 'M', 'Còn hàng', '1697851365_Tissot 41mm Nam T086.408.22.036.00.webp', 'Đồng hồ Tissot là một trong những thương hiệu của Nhật Bản đã quá quen thuộc với người dân Việt Nam. Những chiếc đồng hồ của thương hiệu này không chỉ dẫn đầu về chất lượng mà còn đẹp bởi thiết kế từ thể thao đến cổ điển. Vậy đồng hồ Orient của nước nào? Những sản phẩm của thương hiệu này được đánh giá ra sao? Để tìm câu trả lời cho các câu hỏi trên hãy tham khảo nội dung bài viết sau đây của chúng tôi.', 13, 7),
-(24, 'Tissot 42mm Nam T099.429.36.038.00', 20500000.00, 29, '', 'M', 'Còn hàng', '1697851463_Tissot 42mm Nam T086.408.22.036.00.webp', 'Đồng hồ Tissot là một trong những thương hiệu nổi tiếng và lâu đời. Trải qua bao nhiêu năm phát triển, thương hiệu này đã luôn giữ cho mình một chỗ đứng vững chắc trong lòng người tiêu dùng. Bài viết sau đây sẽ cho bạn biết đồng hồ Tissot của nước nào và có nên mua hay không.', 23, 7),
-(25, 'Tissot 42mm Nam T099.429.11.038.00', 23000000.00, 43, '', 'M', 'Còn hàng', '1697851597_Tissot 42mm Nam T086.408.22.088.00.webp', 'Tissot là một thương hiệu đồng hồ của Thụy Sỹ ra đời vào năm 1853. Được thành lập bởi Charles-Félicien Tissot và con trai là Charles-Émile Tissot tại thị trấn Le Locle của Thụy Sỹ.', 8, 7);
+INSERT INTO `sanpham` (`id`, `name`, `img`, `price_niemyet`, `price_sale`, `mota`, `luotxem`, `trangthai`, `iddm`) VALUES
+(27, 'Áo Polo NEWSEVEN Glitch Polo PL.145', 'Áo Polo NEWSEVEN Glitch Polo PL.145.jpg', 300000.00, 250000, 'Thông tin sản phẩm \nÁo Polo NEWSEVEN Glitch Polo PL.145:  \n– Hàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.  \n– Chất liệu: 100% cotton\n– định lượng 250GSM. \nDày dặn. Đứng form.  Đã xử lý chống co”  \n– Cổ áo: Cổ dệt dày dặn,đã xử lý chống nhăn, bai dão', 140, 'Còn hàng', 2),
+(29, 'Áo Khoác Bomber Phối Cầu Vai Da Dày DặnTeddy Chất Liệu Nỉ', 'áo bomber chất nỉ.png', 149000.00, 99000, 'Chất liệu: nỉ Cotton\r\nMàu sắc: Đen, Trắng . đỏ\r\nKích cỡ: Sản phẩm nam nữ Unisex size từ 40-65kg\r\ntùy chiều cao nha\r\n HƯỚNG DẪN LỰA CHỌN SIZE SỐ\r\nBảng SIZE:\r\n-Size S:36 - 45kg Cao dưới 1m50\r\n-Size M: 46 - 52kg Cao dưới 1m6\r\n-Size L: 52 - 58kg, Cao  1m65\r\n-Size XL: từ 58 - 63kg , Cao 1m65- 1m7\r\nChất liệu dày dặn, mềm, mát.\r\nThiết kế với form dễ mặc, thoải mái.\r\nĐường may tỉ mỉ, tinh tế\r\nDễ dàng kết hợp với các trang phục, phụ kiện khác.\r\nPhong cách: Trẻ trung - Cá tính - Độc\r\nĐáo. Đây chắc chắn là một món đồ thời trang không thể thiếu trong tủ đồ củabạn.\r\nSản phẩm đẹp như hình. \r\nChất liệu dày dặn, mềm mại.', 102, 'Còn hàng', 8),
+(30, 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét 2.jpg', 220000.00, 160000, 'Thông Tin Sản Phẩm : Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023\r\n- Chất liệu: Dạ 100% cao cấp, bề mặt vải mịn, ko xù, ko gião , dày dặn\r\n- Đường may tỉ mỉ, chắc chắn\r\n- Công dụng: mặc ở nhà, mặc đi chơi , mặc đi làm , mặc hàng ngày\r\n- Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n\r\n* Bảng size mẫu \r\n- Đủ size: M - L - XL  \r\nSize M: Nặng 43-51kg  ; Cao 1m52-1m60\r\nSize L: Nặng ; 51-59kg ; Cao 1m60-1m70\r\nSize XL: Nặng 60-72kg ; Cao 1m65-1m73\r\nLưu ý: Đây là bảng thông số chọn size cơ bản, tùy thuộc và vào mỗi người mà có thể +/- 1 Size', 36, 'Còn hàng', 8),
+(31, 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie', 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie.jpg', 240000.00, 165000, 'Thông tin sản phẩm : Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie LV Loang Màu Chất Liệu Nỉ Bông 2 Lớp Dày Dặn Hotrend\r\n- Chất liệu:Nỉ Bông 2 Lớp Dày Dặn Cao Cấp Không Xù\r\n- Đường may tỉ mỉ, chắc chắn\r\n- Công dụng: mặc ở nhà, mặc đi chơi hoặc khi vận động thể thao\r\n- Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n- Đủ size: M - L - XL \r\n* Bảng size mẫu \r\nSize M: Nặng 43-51kg  ; Cao 1m52-1m60\r\nSize L: Nặng ; 51-59kg ; Cao 1m60-1m70\r\nSize XL: Nặng 60-72kg ; Cao 1m65-1m73\r\n\r\nLưu ý: Đây là bảng thông số chọn size cơ bản, tùy thuộc và vào mỗi người mà có thể +/- 1 Size\r\nHướng dẫn sử dụng sản phẩm \r\n- Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n- Không sử dụng thuốc tẩy\r\n- Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời\r\n Shop Thời Trang Unisex 18 CAM KẾT\r\nSản phẩm giống mô tả .\r\nĐảm bảo vải chất lượng \r\nÁo được kiểm tra kĩ càng, cẩn thận và tư vấn nhiệt tình trước khi gói hàng giao cho Quý Khách\r\nHàng có sẵn, giao hàng ngay khi nhận được đơn \r\nChấp nhận đổi hàng khi size không vừa\r\nGiao hàng trên toàn quốc, nhận hàng trả tiền ', 6, 'Còn hàng', 8);
 
 -- --------------------------------------------------------
 
@@ -197,12 +295,37 @@ INSERT INTO `taikhoan` (`id`, `user`, `pass`, `email`, `address`, `tel`, `role`)
 --
 
 --
+-- Chỉ mục cho bảng `bien_the`
+--
+ALTER TABLE `bien_the`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_kich_thuoc` (`id_kich_thuoc`),
+  ADD KEY `id_mau_sac` (`id_mau_sac`),
+  ADD KEY `id_sp` (`id_sp`);
+
+--
 -- Chỉ mục cho bảng `binhluan`
 --
 ALTER TABLE `binhluan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idpro` (`idpro`),
   ADD KEY `iduser` (`iduser`);
+
+--
+-- Chỉ mục cho bảng `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `cart_ibfk_2` (`id_bt_sanpham`);
+
+--
+-- Chỉ mục cho bảng `chitiet_donhang`
+--
+ALTER TABLE `chitiet_donhang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_donhang` (`id_donhang`),
+  ADD KEY `id_bt_sanpham` (`id_bt_sanpham`);
 
 --
 -- Chỉ mục cho bảng `danhmuc`
@@ -221,6 +344,19 @@ ALTER TABLE `donhang`
 -- Chỉ mục cho bảng `hinhanh`
 --
 ALTER TABLE `hinhanh`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_sp` (`id_sp`);
+
+--
+-- Chỉ mục cho bảng `kich_thuoc`
+--
+ALTER TABLE `kich_thuoc`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `mau_sac`
+--
+ALTER TABLE `mau_sac`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -241,16 +377,34 @@ ALTER TABLE `taikhoan`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `bien_the`
+--
+ALTER TABLE `bien_the`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
 -- AUTO_INCREMENT cho bảng `binhluan`
 --
 ALTER TABLE `binhluan`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Id bình luận', AUTO_INCREMENT=37;
 
 --
+-- AUTO_INCREMENT cho bảng `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `chitiet_donhang`
+--
+ALTER TABLE `chitiet_donhang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id danh mục', AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id danh mục', AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `donhang`
@@ -262,13 +416,25 @@ ALTER TABLE `donhang`
 -- AUTO_INCREMENT cho bảng `hinhanh`
 --
 ALTER TABLE `hinhanh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT cho bảng `kich_thuoc`
+--
+ALTER TABLE `kich_thuoc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT cho bảng `mau_sac`
+--
+ALTER TABLE `mau_sac`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id sản phẩm', AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id sản phẩm', AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT cho bảng `taikhoan`
@@ -281,11 +447,33 @@ ALTER TABLE `taikhoan`
 --
 
 --
+-- Các ràng buộc cho bảng `bien_the`
+--
+ALTER TABLE `bien_the`
+  ADD CONSTRAINT `bien_the_ibfk_1` FOREIGN KEY (`id_kich_thuoc`) REFERENCES `kich_thuoc` (`id`),
+  ADD CONSTRAINT `bien_the_ibfk_2` FOREIGN KEY (`id_mau_sac`) REFERENCES `mau_sac` (`id`),
+  ADD CONSTRAINT `bien_the_ibfk_3` FOREIGN KEY (`id_sp`) REFERENCES `sanpham` (`id`);
+
+--
 -- Các ràng buộc cho bảng `binhluan`
 --
 ALTER TABLE `binhluan`
   ADD CONSTRAINT `binhluan_ibfk_1` FOREIGN KEY (`idpro`) REFERENCES `sanpham` (`id`),
   ADD CONSTRAINT `binhluan_ibfk_2` FOREIGN KEY (`iduser`) REFERENCES `taikhoan` (`id`);
+
+--
+-- Các ràng buộc cho bảng `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `taikhoan` (`id`),
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`id_bt_sanpham`) REFERENCES `bien_the` (`id`);
+
+--
+-- Các ràng buộc cho bảng `chitiet_donhang`
+--
+ALTER TABLE `chitiet_donhang`
+  ADD CONSTRAINT `chitiet_donhang_ibfk_1` FOREIGN KEY (`id_donhang`) REFERENCES `donhang` (`id`),
+  ADD CONSTRAINT `chitiet_donhang_ibfk_2` FOREIGN KEY (`id_bt_sanpham`) REFERENCES `bien_the` (`id`);
 
 --
 -- Các ràng buộc cho bảng `donhang`
@@ -294,12 +482,18 @@ ALTER TABLE `donhang`
   ADD CONSTRAINT `donhang_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `taikhoan` (`id`);
 
 --
+-- Các ràng buộc cho bảng `hinhanh`
+--
+ALTER TABLE `hinhanh`
+  ADD CONSTRAINT `hinhanh_ibfk_1` FOREIGN KEY (`id_sp`) REFERENCES `sanpham` (`id`);
+
+--
 -- Các ràng buộc cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
   ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`iddm`) REFERENCES `danhmuc` (`id`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
