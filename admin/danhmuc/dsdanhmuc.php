@@ -1,5 +1,5 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid ">
     <h1 class="h3 mb-2 text-gray-800 mb-5">Danh sách danh mục</h1>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
