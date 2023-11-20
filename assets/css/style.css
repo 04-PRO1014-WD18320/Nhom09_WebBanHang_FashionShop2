@@ -5,7 +5,9 @@
 td {
     vertical-align: middle;
 }
-
+.bold {
+    font-weight: bold;
+}
 * {
     margin: 0px auto;
     padding: 0px;
@@ -222,7 +224,7 @@ a.icon_search {
     display: inline-block;
 }
 
-.color_sp ul li a {
+.color_sp span {
     display: block;
     width: 30px;
     height: 30px;
@@ -233,6 +235,7 @@ a.icon_search {
 
 .color_sp .black {
     background-color: black;
+    
 }
 
 .color_sp .red {
@@ -268,8 +271,8 @@ a.icon_search {
     color: black;
 }
 
-input[type="number"] {
-    width: 34px;
+.box_right input[type="number"] {
+    width: 38px;
     height: 28px;
     text-indent: 8px;
 }
@@ -304,18 +307,22 @@ input[type="number"] {
 .binhluan .title_binhluan {
     margin: 30px 0px;
 }
-.binhluan table thead{
+
+.binhluan table thead {
     background-color: #6a6a6a;
     height: 30px;
-    
+
 }
+
 .binhluan table {
     width: 100%;
-    
+
 }
+
 .binhluan table tbody {
     background-color: #c4c4c4;
 }
+
 .binhluan table tbody td {
     padding: 5px;
 }
@@ -340,13 +347,15 @@ input {
 }
 
 .see_more {
-   margin-top: 50px;
-   margin-bottom: 50px;
-   
+    margin-top: 50px;
+    margin-bottom: 50px;
+
 }
+
 .see_more h3 {
     margin-bottom: 20px;
 }
+
 .see_more ul li {
     display: inline-block;
     border: 1px solid #333;
@@ -354,16 +363,114 @@ input {
     border-radius: 3px;
     margin-right: 20px;
 }
-.see_more ul li .name_prod{
+
+.see_more ul li .name_prod {
     width: 150px;
+    height: 55px;
+    overflow: hidden;
 }
-.see_more ul li .name_prod a{
+
+.see_more ul li .name_prod a {
     color: black;
     font-size: 13px;
 }
-.see_more ul li .name_prod a:hover{
+
+.see_more ul li .name_prod a:hover {
     color: red;
 }
+
 .see_more ul li .img_prod img {
     width: 150px;
+}
+.binhluan .box-content {
+    margin-left: 50px;
+}
+.binhluan .name_bl i {
+    font-size: 28px;
+}
+.binhluan .name_bl .name_kh_bl {
+    font-size: 16px;
+    padding: 0px 0px 5px 5px;
+}
+.binhluan .name_bl  p {
+    color: #6a6a6a;
+    padding-left: 34px ;
+    font-size: 13px;
+}
+.binhluan .noidung_bl {
+   padding: 5px 0px 0px 34px;
+}
+
+.binhluan .form_bl {
+    margin-top: 30px;
+    margin-left: 50px;
+}
+.binhluan .form_bl i {
+    font-size: 28px;
+    margin: 10px 5px 0px 0px;
+}
+
+/* CSS Sản phẩm trong Admin  */
+.ip_bienthe {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+}
+
+.add_ip {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    /* margin-bottom: 20px; */
+    margin-top: 30px;
+
+    & button {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #fff;
+        border: 1px solid #111;
+        /* border: none; */
+        outline: none;
+    }
+
+    & i {
+        font-size: 1.5rem;
+    }
+
+}
+
+/* Css dssp  */
+ input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+.dssp h1 {
+    margin-bottom: 0px;
+}
+
+ div#content {
+    margin: 0px;
+}
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    margin: 0px;
+}
+.card-header:first-child {
+    border-radius: calc(0.35rem - 1px) calc(0.35rem - 1px) 0 0;
+    margin: 0px;
+}
+input.timkiem_dssp {
+    height: 38px;
+}
+select {
+    word-wrap: normal;
+    /* border: 1px; */
+    border: 1px solid #c4c4c4;
 }

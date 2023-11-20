@@ -73,7 +73,7 @@
               <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                   <div class="bg-white py-2 collapse-inner rounded">
                       <a class="collapse-item" href="?act=dssanpham">Danh sách sản phẩm</a>
-                      <a class="collapse-item" href="?act=addsanpham" style="background-color: #48dbfb;">
+                      <a class="collapse-item" href="?act=add_sp" style="background-color: #48dbfb;">
                           <i class="fas fa-fw fa-plus" style="color: #576574;"></i>
                           <span>Thêm mới</span></a>
                   </div>

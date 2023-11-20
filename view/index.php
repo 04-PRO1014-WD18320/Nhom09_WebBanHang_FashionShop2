@@ -15,7 +15,7 @@ include "_header.php";
 ?>
  <?php
     //Các biến dùng chung
-    $dssp = danhsach_sanpham();
+   
     $dsdm = danhsach_danhmuc();
     $top10 = top10_sanpham();
 
@@ -43,7 +43,8 @@ include "_header.php";
                     if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
                         $dsbl = load_binhluan($_GET['idsp']);
                         $sanpham = one_sanpham($_GET['idsp']);
-                        $sanpham_lq = xemthem_sanpham($_GET['idsp']);
+                        $hinhanh = load_anhcon($_GET['idsp']);
+                        $sanpham_tt = sanpham_tuongtu($_GET['idsp']);
                         tangluotxem($_GET['idsp']);
                     }
                     if (isset($_POST['btnSubmit'])) {
