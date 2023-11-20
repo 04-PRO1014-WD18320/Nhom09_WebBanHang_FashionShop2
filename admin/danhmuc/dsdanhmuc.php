@@ -26,19 +26,35 @@
                             <th></th>
                             <th>Mã loại</th>
                             <th>Tên danh mục</th>
+                            <th>Big DM</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                      
-                        <tr>
+                        <?php
+                            foreach($dsdm as $dm){
+                                extract($dm);
+                                echo '
+                                <tr>
+                                    <td class="col-1 text-center"><input type="checkbox" name="select" id=""></td>
+                                    <td class="col-2">'.$id.'</td>
+                                    <td>'.$name.'</td>
+                                    <td>'.$id_dm.'</td>
+                                    <td class="col-2"><a href="?act=editdanhmuc"><button class="btn btn-secondary btn-sm">Sửa</button></a> |
+                                        <a href="#"><button class="btn btn-secondary btn-sm">Xóa</button></a>
+                                    </td>
+                                </tr>
+                                ';
+                            }
+                        ?>
+                        <!-- <tr>
                             <td class="col-1 text-center"><input type="checkbox" name="select" id=""></td>
                             <td class="col-2">1</td>
                             <td>Iphone</td>
                             <td class="col-2"><a href="?act=editdanhmuc"><button class="btn btn-secondary btn-sm">Sửa</button></a> |
                                 <a href="#"><button class="btn btn-secondary btn-sm">Xóa</button></a>
                             </td>
-                        </tr>
+                        </tr> -->
                     
                     </tbody>
                 </table>
