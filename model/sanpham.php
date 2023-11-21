@@ -201,39 +201,7 @@ function one_id_danhmuc()
     $result = pdo_query($sql);
     return $result;
 }
-function add_sanpham($tensp, $photo, $mota, $price, $discount, $luotxem, $iddm)
-{
-    $sql = "INSERT INTO sanpham(`name`, `price`,`discount`, `img`, `mota`, `luotxem`, `iddm`) VALUES ('$tensp', '$price','$discount', '$photo', '$mota', '$luotxem', '$iddm')";
-    pdo_execute($sql);
-}
 
-function get_iddanhmuc()
-{
-    $sql = "SELECT * FROM danhmuc";
-    $result = pdo_query($sql);
-    return $result;
-}
-
-function delete_sanpham($idsp)
-{
-    $data = loadone_sanpham($idsp);
-    unlink("../uploads/{$data['img']}");
-    $sql = "DELETE FROM sanpham WHERE id =" . $idsp;
-    pdo_execute($sql);
-    header("location: ?act=dssp");
-}
-
-function edit_sanpham($idsp, $name, $photo, $price, $discount, $mota, $luotxem, $iddm)
-{
-
-    if ($photo == "") {
-        $sql = "UPDATE `sanpham` SET `name`='$name',`price`='$price',`discount` = '$discount',`mota`='$mota',`luotxem`='$luotxem',`iddm`='$iddm' WHERE id = $idsp";
-    } else {
-        $sql = "UPDATE `sanpham` SET `name`='$name',`price`='$price',`discount` = '$discount',`img` = '$photo' ,`mota`='$mota',`luotxem`='$luotxem',`iddm`='$iddm' WHERE id = $idsp";
-    }
-
-    pdo_execute($sql);
-}
 
 function top10_sanpham()
 {
