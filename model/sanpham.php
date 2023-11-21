@@ -1,12 +1,6 @@
 <?php
 
-function danhsach_sanpham()
-{
-    $sql = "SELECT * FROM sanpham ";
 
-    $result = pdo_query($sql);
-    return $result;
-}
 function loadall_sanpham($keyw = "", $iddm = 0)
 {
     $sql = "SELECT sanpham.id,
@@ -36,7 +30,8 @@ function loadall_sanpham($keyw = "", $iddm = 0)
     $listsanpham = pdo_query($sql);
     return  $listsanpham;
 }
-function load_sp_insert(){
+function load_sp_insert()
+{
     $sql = "SELECT * FROM sanpham ORDER BY id DESC LIMIT 0,1";
     $result = pdo_query($sql);
     return $result;
@@ -55,17 +50,20 @@ function danhsach_kichthuoc()
     $result = pdo_query($sql);
     return $result;
 }
-function insert_sanpham($name, $img_main, $price_niemyet, $price_sale, $mota, $iddm){
+function insert_sanpham($name, $img_main, $price_niemyet, $price_sale, $mota, $iddm)
+{
     $sql = "INSERT INTO sanpham (name,img, price_niemyet, price_sale, mota, iddm)
     VALUES ('$name','$img_main','$price_niemyet', '$price_sale', '$mota', '$iddm');";
     pdo_execute($sql);
 }
-function insert_bien_the($idsp, $idms, $idkt, $soluong){
+function insert_bien_the($idsp, $idms, $idkt, $soluong)
+{
     $sql = "INSERT INTO bien_the (id_sp,id_mau_sac, id_kich_thuoc, so_luong)
     VALUES ('$idsp','$idms','$idkt', '$soluong');";
     pdo_execute($sql);
 }
-function insert_hinhanh($url, $idsp){
+function insert_hinhanh($url, $idsp)
+{
     $sql = "INSERT INTO hinhanh (url, id_sp)
     VALUES ('$url','$idsp');";
     pdo_execute($sql);
@@ -151,6 +149,16 @@ function update_bienthe($id,$id_mau_sac,$id_kich_thuoc,$so_luong){
 //     pdo_execute($sql);
 //     // header('location:index.php?act=dssanpham');
 // }
+ 
+function load_anhcon($idsp) {
+    $sql = "SELECT * FROM hinhanh where id_sp =" . $idsp;
+    $result = pdo_query($sql);
+    return $result;
+}
+
+
+
+
 function one_id_danhmuc()
 {
     $sql = "SELECT * FROM danhmuc";
@@ -205,7 +213,8 @@ function tim_sanpham_theodm($iddm)
     return $result;
 }
 
-function tim_kiem_san_pham($keyword) {
+function tim_kiem_san_pham($keyword)
+{
 
     $sql = "SELECT * FROM sanpham WHERE name LIKE '%" . $keyword . "%' ";
     $result = pdo_query($sql);
@@ -214,15 +223,6 @@ function tim_kiem_san_pham($keyword) {
 
 
 
-function xemthem_sanpham($idsp)
-{
-    $sanpham = loadone_sanpham($idsp);
-    $iddm = $sanpham['iddm'];
-    $sql = "SELECT * FROM sanpham WHERE iddm = $iddm AND id <> $idsp limit 0,5";
-
-    $result = pdo_query($sql);
-    return $result;
-}
 
 function tangluotxem($idsp)
 {
