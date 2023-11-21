@@ -73,6 +73,9 @@
                                                 // print_r($sp);
                                                 $tinh_trang= '';
                                                 $tinh_trang = ($so_luong <= 0)? "hết hàng" : "còn hàng";
+                                                $suasp = "index.php?act=update_sp&idsp=" . $id;
+                                                $hard_delete = "index.php?act=hard_delete&idsp=" . $id;
+                                                $soft_delete = "index.php?act=soft_delete&idsp=" . $id;
                                                 $hinhpath = "../upload/".$img;
 
                                                 if (is_file($hinhpath)) {
@@ -89,14 +92,14 @@
                                                     <td class="col-2 align-middle">' .$hinhpath.'</td>
                                                     <td class="col-2 align-middle">' .$price_niemyet. '</td>
                                                     <td class="col-2 align-middle">' .$price_sale. '</td>
-                                                    <td  class="col-1 align-middle">'.$so_luong.'</td>                 
+                                                    <td class="col-1 align-middle">'.$so_luong.'</td>                 
                                                     <td  class="col-1 align-middle">'.$mau_sac.'</td>
                                                     <td  class="col-1 align-middle">'.$kich_thuoc.'</td>
                                                     <td  class="col-1 align-middle">' .$luotxem. '</td>
                                                     <td  class="col-1 align-middle">' .$iddm. '</td>
                                                     <td class="col-1 align-middle">' .$tinh_trang. '</td>
-                                                    <td class="col-2 align-middle"><a href="?act=editsanpham"><button class="btn btn-secondary btn-sm">Sửa</button></a> | 
-                                                    <a href="#"><button class="btn btn-secondary btn-sm">Xóa</button></a></td>
+                                                    <td class="col-2 align-middle"><a href="'.$suasp.'"><button class="btn btn-secondary btn-sm">Sửa</button></a> | 
+                                                    <a href="'.$hard_delete.'"><button class="btn btn-secondary btn-sm">Xóa</button></a></td>
                                                 </tr>
                                                 ';
                                             }
