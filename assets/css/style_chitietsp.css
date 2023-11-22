@@ -5,9 +5,11 @@
 td {
     vertical-align: middle;
 }
+
 .bold {
     font-weight: bold;
 }
+
 * {
     margin: 0px auto;
     padding: 0px;
@@ -115,6 +117,7 @@ a.icon_search {
     box-shadow: 0 0 3px black;
     border-radius: 0 0 5px 5px;
     display: none;
+    z-index: 3;
 }
 
 .menu .sub_menu li {
@@ -192,6 +195,74 @@ a.icon_search {
     padding-right: 10px;
 }
 
+/* CSS SlideShow ảnh boxleft chi tiết sản phẩm  */
+
+#wrapper img {
+    display: block;
+    max-width: 100%;
+    width: 500px;
+    height: 500px;
+    margin: 0px;
+}
+
+#wrapper .show-picture {
+    height: 500px;
+    position: relative;
+
+}
+
+#wrapper .slider-nav div {
+    position: absolute;
+    top: 50%;
+    width: 26px;
+    height: 28px;
+    background-color: rgba(229, 229, 229, 60%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+#wrapper .slider-nav .next-btn {
+    right: 21px;
+}
+
+#wrapper .slider-nav div:hover {
+    background-color: rgba(207, 207, 207, 0.6);
+    color: aliceblue;
+
+}
+
+#wrapper ul.list-thumb li.thumb-item img {
+    width: 82px;
+    height: 82px;
+}
+
+#wrapper ul.list-thumb {
+    display: flex;
+    /* justify-content: space-between; */
+    list-style: none;
+    padding: 0px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+#wrapper ul.list-thumb .thumb-item {
+    width: 80px;
+    border: 2px solid rgb(240, 224, 218);
+    opacity: 80%;
+    margin: 0px;
+    margin-right: 20px;
+}
+
+#wrapper ul.list-thumb .thumb-item.active {
+    border: 2px solid red;
+    opacity: 100%;
+}
+
+/* Css box_right  */
 .box_right .name_prod {
     margin-bottom: 10px;
 }
@@ -224,31 +295,51 @@ a.icon_search {
     display: inline-block;
 }
 
-.color_sp span {
+.mau_sac ul {
+    list-style: none;
+}
+
+.mau_sac ul li {
+    display: inline-block;
+}
+
+.mau_sac ul li a {
+    text-align: center;
     display: block;
-    width: 30px;
-    height: 30px;
-    padding: 2px;
-    border: 2px solid whitesmoke;
-
+    border: 1px solid #e5e5e5;
+    width: 26px;
+    height: 26px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    /* padding-top: 5px; */
+    color: black;
 }
 
-.color_sp .black {
+.mau_sac .Đen {
     background-color: black;
-    
 }
 
-.color_sp .red {
-    background-color: red;
+.mau_sac .Trắng {
+    background-color: white;
 }
 
-.color_sp .green {
+.mau_sac .Xanhlá {
     background-color: green;
 }
 
-.color_sp .blue {
+.mau_sac .Xanhbiển {
     background-color: blue;
 }
+
+.mau_sac .Đỏ {
+    background-color: red;
+}
+
+.mau_sac .Vàng {
+    background-color: yellow;
+}
+
 
 .size_sp ul {
     list-style: none;
@@ -261,7 +352,7 @@ a.icon_search {
 .size_sp ul li a {
     text-align: center;
     display: block;
-    border: 1px solid #333;
+    border: 1px solid #e5e5e5;
     width: 26px;
     /* height: 30px; */
     margin: 5px;
@@ -271,29 +362,49 @@ a.icon_search {
     color: black;
 }
 
+/* CSS cho viền border khi chọn màu */
+.color_sp .mau_sac ul li a.selected {
+    border: 2px solid #333333;
+    /* Đổi màu và kích thước border theo mong muốn */
+}
+
+/* CSS cho viền border khi chọn size */
+.size_sp ul li a.selected {
+    border: 2px solid #3e3e3e;
+    /* Đổi màu và kích thước border theo mong muốn */
+}
+
+
+
 .box_right input[type="number"] {
     width: 38px;
     height: 28px;
     text-indent: 8px;
 }
 
-.add_cart a {
+.add_cart button {
     text-decoration: none;
     color: white;
     background: rgb(203, 200, 17);
-    padding: 7px 5px;
-    margin-left: 20px;
+    padding: 12px 12px;
+    cursor: pointer;
     border-radius: 5px;
+    border: 0px;
+    margin: 5px 0px;
+   
 }
-
-.buy_now a {
+.buy-now {
+    border: 1px solid whitesmoke;
+    cursor: pointer;
     text-decoration: none;
     color: white;
     background: rgb(228, 3, 3);
-    padding: 7px 10px;
-
+    padding: 10px 15px;
     border-radius: 5px;
+    font-size: 16px;
+ 
 }
+
 
 .title_prod {
     margin: 30px 0px 10px 0px;
@@ -382,95 +493,198 @@ input {
 .see_more ul li .img_prod img {
     width: 150px;
 }
+
 .binhluan .box-content {
     margin-left: 50px;
 }
+
 .binhluan .name_bl i {
     font-size: 28px;
 }
+
 .binhluan .name_bl .name_kh_bl {
     font-size: 16px;
     padding: 0px 0px 5px 5px;
 }
-.binhluan .name_bl  p {
+
+.binhluan .name_bl p {
     color: #6a6a6a;
-    padding-left: 34px ;
+    padding-left: 34px;
     font-size: 13px;
 }
+
 .binhluan .noidung_bl {
-   padding: 5px 0px 0px 34px;
+    padding: 5px 0px 0px 34px;
 }
 
 .binhluan .form_bl {
     margin-top: 30px;
     margin-left: 50px;
 }
+
 .binhluan .form_bl i {
     font-size: 28px;
     margin: 10px 5px 0px 0px;
 }
 
-/* CSS Sản phẩm trong Admin  */
-.ip_bienthe {
-    width: 100%;
-    display: flex;
-    gap: 40px;
-}
 
-.add_ip {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    /* margin-bottom: 20px; */
+/* CSS Cart  */
+.title_cart {
     margin-top: 30px;
-
-    & button {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background-color: #fff;
-        border: 1px solid #111;
-        /* border: none; */
-        outline: none;
-    }
-
-    & i {
-        font-size: 1.5rem;
-    }
-
 }
 
-/* Css dssp  */
- input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-}
-.dssp h1 {
-    margin-bottom: 0px;
+.gio_hang {
+    display: flex;
+    margin-top: 30px;
 }
 
- div#content {
-    margin: 0px;
+.table-cart {
+    /* margin-top: 40px; */
+    flex-basis: 70%;
 }
-.card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 1.25rem;
-    margin: 0px;
+.tienhanh_thanhtoan {
+    flex-basis: 40%;
+    height: 250px;
+    border-left: 2px solid #b6b6b6;
 }
-.card-header:first-child {
-    border-radius: calc(0.35rem - 1px) calc(0.35rem - 1px) 0 0;
-    margin: 0px;
+.table-cart table th {
+    text-align: left;
+    padding-left: 16px;
 }
-input.timkiem_dssp {
-    height: 38px;
+
+.table-cart table {
+    width: 100%;
 }
-select {
-    word-wrap: normal;
-    /* border: 1px; */
-    border: 1px solid #c4c4c4;
+
+.table-cart table a.xoa {
+    text-decoration: none;
+    background: #b1b1b1;
+    font-size: 10px;
+    padding: 5px 10px;
+    color: white;
+    position: absolute;
+    border-radius: 5px;
+    top: 34%;
+}
+.table-cart .ten_sp_cart {
+    width: 450px;
+    position: relative;
+}
+.table-cart .ten_sp_cart img{
+   margin-left: 43px;
+}
+input[name="input_slg_cart"] {
+    width: 48px;
+    margin-top: 0px;
+}
+.table-cart .th_tensp{
+    padding-left: 39px;
+    padding-bottom: 8px;
+}
+
+.table-cart table thead tr th {
+    /* border-bottom: 1px solid #333; */
+    text-transform: uppercase;
+}
+
+.table-cart table .name-prod {
+    text-decoration: none;
+    color: #333;
+}
+
+.table-cart table input {
+    height: 26px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+.table-cart table a.xoa:hover {
+    text-decoration: none;
+    transition: all 0.5s;
+    background: rgb(200, 4, 4);
+    color: white;
+
+    padding: 5px 10px;
+
+    border-radius: 5px;
+
+}
+
+.table-cart table a.pay {
+    text-decoration: none;
+    color: white;
+    background: green;
+    padding: 7px 12px;
+    margin-left: 50px;
+    border-radius: 5px;
+
+
+}
+.table-cart tbody {
+    font-size: 13px;
+}
+.table-cart thead {
+    font-size: 15px;
+}
+
+
+.table-cart span.name-prod {
+    text-decoration: none;
+    position: absolute;
+    top: 23%;
+    left: 135px;
+}
+
+.table-cart table tfoot tr {
+    font-weight: bold;
+}
+
+.text_red {
+    color: red;
+}
+
+.btn {
+    padding: 10px 50px;
+    background: black;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    /* margin-left: 20px; */
+    width: 77%;
+    margin-top: 40px;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+.table_thanhtoan {
+    margin-left: 35px;
+}
+
+.continue_sp {
+    padding: 10px 50px;
+    background: rgb(255, 255, 255);
+    color: #333;
+    border: 1px solid #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 0px;
+    width: 30%;
+    margin-top: 29px;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+.flex {
+    display: flex;
+    justify-content: space-around;
+    padding: 17px 0px;
+    border-bottom: 1px solid #cdcdcd;
+}
+.mr_0 {
+    margin-right: 0px;
+    font-size: 14px;
+}
+.ml_0 {
+    margin-left: 0px;
+    color: #757575;
 }
