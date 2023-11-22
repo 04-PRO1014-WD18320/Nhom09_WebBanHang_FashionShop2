@@ -46,7 +46,6 @@ function danhsach_mausac()
 function danhsach_kichthuoc()
 {
     $sql = "SELECT * FROM kich_thuoc ";
-
     $result = pdo_query($sql);
     return $result;
 }
@@ -71,7 +70,6 @@ function insert_hinhanh($url, $idsp)
 
 function one_sanpham($idsp)
 {
-    // $sql = "SELECT * FROM sanpham where id= $idsp";
     $sql = "SELECT sanpham.id,
                     sanpham.name,
                     sanpham.img,
@@ -83,7 +81,8 @@ function one_sanpham($idsp)
                     kich_thuoc.value AS kich_thuoc,
                     sanpham.luotxem, 
                     danhmuc.name AS ten_dm,
-                    sanpham.iddm 
+                    sanpham.iddm ,
+                    bien_the.id AS id_bt_sanpham
 
                 FROM sanpham
                 JOIN bien_the ON sanpham.id = bien_the.id_sp
@@ -94,6 +93,12 @@ function one_sanpham($idsp)
                 -- ORDER BY sanpham.id 
                 WHERE sanpham.id=" . $idsp;
     $result = pdo_query_one($sql);
+    return $result;
+}
+function load_id_bienthe($idsp)
+{
+    $sql = "SELECT * FROM bien_the WHERE id_sp = $idsp";
+    $result = pdo_query($sql);
     return $result;
 }
 
@@ -120,12 +125,14 @@ function loadone_sanpham($idsp)
     $result = pdo_query_one($sql);
     return $result;
 }
-function load_anh_phu($idsp){
+function load_anh_phu($idsp)
+{
     $sql = "SELECT * FROM hinhanh  WHERE id_sp = $idsp";
     $result = pdo_query($sql);
     return $result;
 }
-function bienThe_update($idsp){
+function bienThe_update($idsp)
+{
     $sql = "SELECT  
     bien_the.id_sp,bien_the.id_mau_sac, mau_sac.value AS mau_sac,
     bien_the.id_kich_thuoc,kich_thuoc.value as kich_thuoc,
@@ -140,46 +147,72 @@ function bienThe_update($idsp){
     $result = pdo_query($sql);
     return $result;
 }
-function update_sanpham($id,$iddm,$name,$price_niemyet,$price_sale,$mota,$img_main){
-    if($img_main!=""){
+function update_sanpham($id, $iddm, $name, $price_niemyet, $price_sale, $mota, $img_main)
+{
+    if ($img_main != "") {
         // $sql="update sanpham set iddm='".$iddm."',name='".$tensp."',price='".$giasp."',mota='".$mota."',img='".$hinh."' where id=".$id;
-        $sql=  "UPDATE `sanpham` SET `name` = '{$name}', `img` = '{$img_main}', `price_niemyet` = '{$price_niemyet}', `price_sale` = '{$price_sale}', `mota` = '{$mota}', `iddm` = '{$iddm}' WHERE `sanpham`.`id` = $id";
-    }else{
+        $sql =  "UPDATE `sanpham` SET `name` = '{$name}', `img` = '{$img_main}', `price_niemyet` = '{$price_niemyet}', `price_sale` = '{$price_sale}', `mota` = '{$mota}', `iddm` = '{$iddm}' WHERE `sanpham`.`id` = $id";
+    } else {
         //  $sql="update sanpham set iddm='".$iddm."',name='".$name."',price='".$giasp."',mota='".$mota."' where id=".$id;
-        $sql=  "UPDATE `sanpham` SET `name` = '{$name}', `price_niemyet` = '{$price_niemyet}', `price_sale` = '{$price_sale}', `mota` = '{$mota}', `iddm` = '{$iddm}' WHERE `sanpham`.`id` = $id";
+        $sql =  "UPDATE `sanpham` SET `name` = '{$name}', `price_niemyet` = '{$price_niemyet}', `price_sale` = '{$price_sale}', `mota` = '{$mota}', `iddm` = '{$iddm}' WHERE `sanpham`.`id` = $id";
     }
     pdo_execute($sql);
     header('location:index.php?act=dssanpham');
 }
 
-function hard_delete_hinhanh($id){
-    $sql = "DELETE FROM hinhanh WHERE id_sp=" .$id;
+function hard_delete_hinhanh($id)
+{
+    $sql = "DELETE FROM hinhanh WHERE id_sp=" . $id;
     pdo_execute($sql);
 }
-function hard_delete_bien_the($id){
-    $sql = "DELETE FROM bien_the WHERE id_sp=" .$id;
+function hard_delete_bien_the($id)
+{
+    $sql = "DELETE FROM bien_the WHERE id_sp=" . $id;
     pdo_execute($sql);
 }
-function hard_delete_sanpham($id){
+function hard_delete_sanpham($id)
+{
     hard_delete_hinhanh($id);
     hard_delete_bien_the($id);
-    $sql = "DELETE FROM sanpham WHERE id=" .$id;
+    $sql = "DELETE FROM sanpham WHERE id=" . $id;
     pdo_execute($sql);
 }
 
-function update_bienthe($id,$id_mau_sac,$id_kich_thuoc,$so_luong){
-    $sql=  "UPDATE `bien_the` SET `id_mau_sac` = '{$id_mau_sac}', `id_kich_thuoc` = '{$id_kich_thuoc}', `so_luong` = '{$so_luong}' WHERE `bien_the`.`id_sp` = $id";
+function update_bienthe($id, $id_mau_sac, $id_kich_thuoc, $so_luong)
+{
+    $sql =  "UPDATE `bien_the` SET `id_mau_sac` = '{$id_mau_sac}', `id_kich_thuoc` = '{$id_kich_thuoc}', `so_luong` = '{$so_luong}' WHERE `bien_the`.`id_sp` = $id";
     pdo_execute($sql);
     // header('location:index.php?act=dssanpham');
 }
 // function update_hinhanh($id,$img_phu){
 //     $sql=  "UPDATE `hinhanh` SET `url` = '{$img_phu}' WHERE `hinhanh`.`id_sp` = $id";
-    
+
 //     pdo_execute($sql);
 //     // header('location:index.php?act=dssanpham');
 // }
- 
-function load_anhcon($idsp) {
+
+function load_mausac($idsp)
+{
+    $sql = "SELECT mau_sac.* 
+            FROM mau_sac
+            JOIN bien_the ON mau_sac.id = bien_the.id_mau_sac
+            WHERE bien_the.id_sp = " . $idsp;
+    $result = pdo_query($sql);
+    return $result;
+}
+function load_kichthuoc($idsp)
+{
+    $sql = "SELECT kich_thuoc.* 
+            FROM kich_thuoc
+            JOIN bien_the ON kich_thuoc.id = bien_the.id_kich_thuoc
+            WHERE bien_the.id_sp = " . $idsp;
+    $result = pdo_query($sql);
+    return $result;
+}
+
+
+function load_anhcon($idsp)
+{
     $sql = "SELECT * FROM hinhanh where id_sp =" . $idsp;
     $result = pdo_query($sql);
     return $result;
