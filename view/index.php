@@ -6,6 +6,7 @@ include "../model/sanpham.php";
 include "../model/khachhang.php";
 include "../model/taikhoan.php";
 include "../model/binhluan.php";
+include "../model/cart.php";
 ?>
 
 <?php
@@ -15,13 +16,11 @@ include "_header.php";
 ?>
  <?php
     //Các biến dùng chung
-   
+
     $dsdm = danhsach_danhmuc();
     $top10 = top10_sanpham();
 
-    if (!isset($_SESSION['myCart'])) {
-        $_SESSION['myCart'] = [];
-    }
+
     //Controller
     if (isset($_GET['act']) && $_GET['act'] != "") {
         $act = $_GET['act'];
@@ -46,6 +45,8 @@ include "_header.php";
                         $hinhanh = load_anhcon($_GET['idsp']);
                         $sanpham_tt = sanpham_tuongtu($_GET['idsp']);
                         tangluotxem($_GET['idsp']);
+                        $colors = load_mausac($_GET['idsp']);
+                        $sizes = load_kichthuoc($_GET['idsp']);
                     }
                     if (isset($_POST['btnSubmit'])) {
                         add_binhluan($_POST['noidung'], $_POST['iduser'], $_POST['idpro'], $_POST['datetime']);
@@ -96,7 +97,6 @@ include "_header.php";
                     if (isset($_POST['btnSubmit'])) {
                         edit_tk($_POST['id'], $_POST['user'], $_POST['pass'], $_POST['email'], $_POST['address'], $_POST['tel']);
                         $_SESSION['user'] = check_user($_POST['user'], $_POST['pass']);
-
                         $thongbao = "Cập nhật tài khoản thành công!";
                     }
 
@@ -120,41 +120,41 @@ include "_header.php";
                             } else {
                                 $thongbaomk = "Email này không tồn tại!";
                             }
-                        }else {
+                        } else {
                             $thongbaomk = "Email không được để trống";
                         }
                     }
                     include "forgot_password.php";
                     break;
                 }
-            case "add_to_cart": {
-                    if (isset($_POST['btnSubmit'])) {
-                        $id = $_POST['id'];
-                        $name = $_POST['name'];
-                        $img = $_POST['img'];
-                        $price = floatval($_POST['price']);
-                        $soluong = intval(1);
-                        $ttien = ($soluong * $price);
 
-                        $add_sp = [$id, $name, $img, $price, $soluong, $ttien];
-                        array_push($_SESSION['myCart'], $add_sp);
+            case "add_to_cart": {
+
+                    if (isset($_POST['btnSubmit'])) {
+                        // $id_user = $_POST['id_user'];
+
+                        $id_user = 1;
+                        $id_bt_sanpham = $_POST['id_bt_sanpham'];
+                        $so_luong = $_POST['so_luong'];
+
+                        add_cart($id_user, $id_bt_sanpham, $so_luong);
                     }
-                    include "cart/cart.php";
+                    $dscart = loadall_cart();
+                    include "cart.php";
                     break;
                 }
-            case "deletespcart": {
-                    if (isset($_GET['idcart'])) {
-                        $idcart = $_GET['idcart'];
-                        array_splice($_SESSION['myCart'], $idcart, 1);
-                    } else {
-                        $_SESSION['myCart'] = [];
+
+            case "delete_sp_cart": {
+                    if (isset($_GET['id_cart'])) {
+                        delete_cart($_GET['id_cart']);
                     }
                 }
                 header("location:?act=cart");
 
                 break;
             case 'cart': {
-                    include "cart/cart.php";
+                    $dscart = loadall_cart();
+                    include "cart.php";
                     break;
                 }
             case "bill": {
