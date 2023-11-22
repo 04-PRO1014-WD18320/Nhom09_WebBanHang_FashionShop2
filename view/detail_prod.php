@@ -83,14 +83,14 @@
                 </div>
                 <div class="add_cart">
 
-                    <input type="text" name="id" value="<?= $sanpham['id']  ?>">
-                    <input type="text" name="name" value="<?= $sanpham['name']  ?>">
-                    <input type="text" name="img" value="<?= $sanpham['img']  ?>">
-                    <input type="text" name="price_sale" value="<?= $sanpham['price_sale'] ?>">
-                    <input type="text" name="id_mau_sac" id="selected_color_id">
-                    <input type="text" name="id_kich_thuoc" id="selected_size_id">
-                    <input type="text" name="so_luong" id="selected_quantity" value="1">
-                    <input type="text" name="id_bt_sanpham" value="<?= $id_bt_sanpham ?>">
+                    <input type="text" hidden name="id" value="<?= $sanpham['id']  ?>">
+                    <input type="text" hidden name="name" value="<?= $sanpham['name']  ?>">
+                    <input type="text" hidden name="img" value="<?= $sanpham['img']  ?>">
+                    <input type="text" hidden name="price_sale" value="<?= $sanpham['price_sale'] ?>">
+                    <input type="text" hidden name="id_mau_sac" id="selected_color_id">
+                    <input type="text" hidden name="id_kich_thuoc" id="selected_size_id">
+                    <input type="text" hidden name="so_luong" id="selected_quantity" value="1">
+                    <input type="text" hidden name="id_bt_sanpham" value="<?= $id_bt_sanpham ?>">
                 
                     <button type='submit' name='btnSubmit'>Thêm vào giỏ hàng</button>
 
