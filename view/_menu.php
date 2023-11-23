@@ -40,6 +40,6 @@
 
 </div>
 <div class="icon_tai_khoan">
-    <a href=""><i class="fa-solid fa-user"></i></a>
+    <a href="?act=dangnhap"><i class="fa-solid fa-user"></i></a>
     <a href="?act=cart"><i class="fa-solid fa-cart-shopping"></i></a>
 </div>

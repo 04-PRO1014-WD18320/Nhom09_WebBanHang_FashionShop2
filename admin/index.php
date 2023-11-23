@@ -66,15 +66,41 @@ include 'menu.php';
                 $dsdm = danhsach_danhmuc();
                 include "danhmuc/dsdanhmuc.php";
                 break;
-            case 'editdanhmuc':
-
+            case 'add_danhmuc':
+                if(isset($_POST['submit'])){
+                    $name = $_POST['name'];
+                    $id_dm = $_POST['id_dm'];
+                    add_danhmuc($name, $id_dm);
+                    // header('location:danhmuc/dsanhmuc.php');
+                }
+                include 'danhmuc/adddanhmuc.php';
+                break; 
+            case 'update_danhmuc':
+                if (isset($_GET['iddm'])) {
+                    $danhmuc_update = load_one_dm($_GET['iddm']);
+                }
+                
                 include "danhmuc/editdanhmuc.php";
                 break;
-            case 'adddanhmuc':
-
-                include "danhmuc/adddanhmuc.php";
+            case 'cf_update_danhmuc':
+                if(isset($_POST['submit'])){
+                    $iddm = $_POST['iddm'];
+                    $name = $_POST['name'];
+                    $id_Big_dm = $_POST['id_b_dm'];
+                    
+                    update_danhmuc($iddm, $name, $id_Big_dm);
+                }
+                $dsdm = danhsach_danhmuc();
+                include "danhmuc/dsdanhmuc.php";
                 break;
-
+            case 'delete_danhmuc':
+                if (isset($_GET['iddm'])) {
+                    hard_delete_danhmuc($_GET['iddm']);
+                }
+                $dsdm  = danhsach_danhmuc();
+                
+                include 'danhmuc/dsdanhmuc.php';
+                break;
             case 'dssanpham':
                 if (isset($_POST['clickOK']) && ($_POST['clickOK'])) {
                     $keyw = $_POST['keyw'];

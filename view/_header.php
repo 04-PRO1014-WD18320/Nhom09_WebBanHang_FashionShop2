@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết đơn hàng</title>
     <link rel="stylesheet" href="../assets/css/style_chitietsp.css">
-   
+   <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="../assets/fontawesome/css/all.css">
     <link rel="shortcut icon" href="../assets/img/favicon-32x32.png" type="image/x-icon">
     <script src="../assets/js/library-jquery.js"></script>

@@ -55,7 +55,7 @@
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                   <div class="bg-white py-2 collapse-inner rounded">
                       <a class="collapse-item" href="?act=dsdanhmuc">Danh sách danh mục</a>
-                      <a class="collapse-item" href="?act=adddanhmuc" style="background-color: #48dbfb;">
+                      <a class="collapse-item" href="?act=add_danhmuc" style="background-color: #48dbfb;">
                           <i class="fas fa-fw fa-plus" style="color: #576574;"></i>
                           <span>Thêm mới</span>
                       </a>
