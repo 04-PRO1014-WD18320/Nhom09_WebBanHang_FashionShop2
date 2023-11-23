@@ -5,28 +5,33 @@
 
     <div class="info_prod">
         <div class="box_left">
-            <div class="anh_to">
-                <img src="../assets/img/<?php echo $sanpham['img'] ?>" alt="">
+            <!-- SlideShow ảnh sản phẩm nè  -->
+            <div id="wrapper">
+                <div id="wp-slider">
+                    <div class="show-picture">
+                        <img src="../assets/img/<?php echo $sanpham['img'] ?>" alt="">
+                        <div class="slider-nav">
+                            <div class="prev-btn">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </div>
+                            <div class="next-btn">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-thumb">
+                        <?php foreach ($hinhanh as $img_con) : extract($img_con); ?>
+                            <li class="thumb-item"><a><img src="../assets/img/<?php echo $url ?> ?>" alt=""></a></li>
+                        <?php endforeach; ?>
+
+                    </ul>
+                </div>
             </div>
-            <!-- <div class="anh_nho">
-                <img src="../assets/img/<?php echo $hinhanh['url'] ?>">
-                <img src="../assets/img/<?php echo $hinhanh['url'] ?>" alt="">
-            </div> -->
-
-            <div class="anh_nho">
-                <?php foreach ($hinhanh as $img_con) :
-                    extract($img_con);
-                ?>
-                    <a href=""> <img src="../assets/img/<?php echo $url ?>"></a>
-
-                <?php endforeach; ?>
-
-            </div>
-
 
         </div>
         <div class="box_right">
             <div class="name_prod">
+
                 <h2><?php echo $sanpham['name'] ?></h2>
             </div>
             <div class="price_prod">
@@ -46,38 +51,58 @@
                 <p>Danh mục: <?php echo $sanpham['ten_dm'] ?></p>
             </div>
 
-            <div class="color_sp">
-                <p class="bold">Màu: <?php echo $sanpham['mau_sac'] ?></p>
-                <!-- <div class="mau">
-                            <ul>
-                                <li> <a class="black" href=""></a></li>
-                                <li> <a class="red" href=""></a></li>
-                                <li> <a class="green" href=""></a></li>
-                                <li><a class="blue" href=""></a></li>
-                            </ul> 
-                </div> -->
-            </div>
-            <div class="size_sp">
-                <p class="bold">Size: <?php echo $sanpham['kich_thuoc'] ?></p>
-                <!-- <ul>
-                    <li> <a href="">S</a></li>
-                    <li> <a href="">M</a></li>
-                    <li> <a href="">L</a></li>
-                    <li><a href="">XL</a></li>
-                </ul> -->
-            </div>
-            <div class="add_cart">
+
+            <form action="?act=add_to_cart" method="post">
+                <!-- <?php echo $id_bt_sanpham = $sanpham['id_bt_sanpham']; ?> -->
+                <div class="color_sp">
+                    <p class="bold">Màu:</p>
+                    <div class="mau_sac">
+                        <ul>
+                            <?php
+                            foreach ($colors as $color) {
+                                echo '<li><a class="' . $color['value'] . '" href="#" ></a></li>';
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="size_sp">
+                    <p class="bold">Size:</p>
+                    <ul>
+                        <?php
+                        foreach ($sizes as $size) {
+                            echo '<li><a href="#" >' . $size['value'] . '</a></li>';
+                        }
+                        ?>
+                    </ul>
+                </div>
+                <!--  -->
                 <div>
                     <label for="">Số lượng: </label>
                     <input type="number" min="1" max="<?php echo $sanpham['so_luong'] ?>" name="so_luong" value="1">
-                    <a href="">Thêm vào giỏ hàng</a>
                 </div>
-                <div>
+                <div class="add_cart">
+
+                    <input type="text" hidden name="id" value="<?= $sanpham['id']  ?>">
+                    <input type="text" hidden name="name" value="<?= $sanpham['name']  ?>">
+                    <input type="text" hidden name="img" value="<?= $sanpham['img']  ?>">
+                    <input type="text" hidden name="price_sale" value="<?= $sanpham['price_sale'] ?>">
+                    <input type="text" hidden name="id_mau_sac" id="selected_color_id">
+                    <input type="text" hidden name="id_kich_thuoc" id="selected_size_id">
+                    <input type="text" hidden name="so_luong" id="selected_quantity" value="1">
+                    <input type="text" hidden name="id_bt_sanpham" value="<?= $id_bt_sanpham ?>">
+                
+                    <button type='submit' name='btnSubmit'>Thêm vào giỏ hàng</button>
 
                 </div>
-            </div>
+            </form>
+
+
             <div class="buy_now">
-                <a href="">Mua ngay</a>
+                <form action="?act=buy_now" method="post">
+                    <button type='submit' class="buy-now" name='btnSubmit'>Mua ngay</button>
+                </form>
+
             </div>
 
         </div>
