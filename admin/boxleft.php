@@ -34,12 +34,11 @@
           <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                   <i class="fas fa-fw fa-users"></i>
-                  <span>Quản lý thành viên</span>
+                  <span>Quản lý tài khoản</span>
               </a>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                   <div class="bg-white py-2 collapse-inner rounded">
-                      <a class="collapse-item" href="?act=qtv">Danh sách quản trị viên</a>
-                      <a class="collapse-item" href="?act=dsnguoidung">Danh sách người dùng</a>
+                      <a class="collapse-item" href="?act=dsnguoidung">Danh sách tài khoản</a>
                       <a class="collapse-item" href="?act=addnguoidung" style="background-color: #48dbfb;">
                           <i class="fas fa-fw fa-plus" style="color: #576574;"></i>
                           <span>Thêm mới</span></a>
