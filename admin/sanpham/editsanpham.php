@@ -21,7 +21,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <form action="index.php?act=sua_sp" method="post" enctype="multipart/form-data" class="form">
-                <input type="number" name="id" value="<?=$id?>">
+                <input type="number" hidden name="id" value="<?=$id?>">
                 <div class="mb-3">
                     <label for="hovaten" class="form-label">Tên sản phẩm</label>
                     <input type="text" class="form-control" id="hovaten" name="name" value="<?=$name?>">

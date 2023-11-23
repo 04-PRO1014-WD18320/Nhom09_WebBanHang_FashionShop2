@@ -64,51 +64,26 @@ include "_header.php";
                     break;
                 }
 
-            case "register": {
-                    if (isset($_POST['btnSubmit'])) {
-                        add_khachhang($_POST['tenkh'], $_POST['pass'], $_POST['email'], $_POST['address'], $_POST['tel'], $_POST['role']);
-                        $thongbao = "Đăng ký thành công.";
-                    }
-                    include "register.php";
-                    break;
+            case "dangky":
+                if(isset($_POST['dangky'])){
+                    $email = $_POST['email'];
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    insert_taikhoan($email, $user, $pass);
+                    $thongbao = "đăng ký thành công";
                 }
-
-            case "login": {
-                    if (isset($_POST['btnSubmit'])) {
-                        if ($_POST['user'] != "" && $_POST['pass'] != "") {
-                            $check_user = check_user($_POST['user'], $_POST['pass']);
-                            if (is_array($check_user)) {
-                                //Tạo ra biến Session để lưu kết quả vừa tìm đc
-                                $_SESSION['user'] = $check_user;
-
-                                header("location:?act=login");
-                            } else {
-                                $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký";
-                            }
-                        } else {
-                            $thongbao = "Tên đăng nhập và mật khẩu không được để trống";
-                        }
-                    }
-                    include "home.php";
-                    break;
+                include "login/login.php";
+                break;
+            case "dangnhap": 
+                if(isset($_POST['dangnhap'])){
+                    dangnhap($_POST['user'], $_POST['pass']);
                 }
-            case "edit_tk": {
-                    if (isset($_POST['btnSubmit'])) {
-                        edit_tk($_POST['id'], $_POST['user'], $_POST['pass'], $_POST['email'], $_POST['address'], $_POST['tel']);
-                        $_SESSION['user'] = check_user($_POST['user'], $_POST['pass']);
-
-                        $thongbao = "Cập nhật tài khoản thành công!";
-                    }
-
-                    include "edit_tk.php";
-                    break;
-                }
-
-            case "logout": {
-                    session_unset(); //Xóa hết tất cả ss
-                    header("Location:?act=index");
-                    break;
-                }
+                include "login/login.php";
+                break;
+            case "dangxuat":
+                dangxuat();
+                include "view/home.php"; 
+                break;
 
 
             case 'fg_password': {
