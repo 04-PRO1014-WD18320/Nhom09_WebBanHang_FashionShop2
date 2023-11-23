@@ -1,0 +1,160 @@
+@import url('http://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.login{
+    font-family: 'Poppsins', sans-serif;
+    /* background: -webkit-linear-gradient(120deg, hsl(318, 94%, 61%), hsl(239, 69%,51%));
+    background-position: center;
+    background-size: contain; */
+    width: 900px;
+    height: 400px;
+    /* padding: 30px; */
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    /* flex-direction: column; */
+    /* border: 2px solid #111; */
+    border-radius: 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    & form{
+        /* border: 1px solid #111; */
+        padding: 0 20px;
+        /* position: relative; */
+    }
+}
+.signup{
+    width: 500px;
+    height: 700px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-direction: column;
+    /* border: 2px solid #111; */
+    border-radius: 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.box1{
+    /* text-align: center; */
+    font-size: 20px;
+    padding: 0 20px;
+    /* position: absolute; */
+    /* top: 0; */
+    /* padding-top: 10px; */
+    /* background: -webkit-linear-gradient(120deg, hsl(318, 94%, 61%), hsl(239, 69%,51%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+form .email{
+    display: flex;
+    width: 350px;
+    height: 50px;
+    padding: 0 25px;
+    /* margin-bottom: 40px; */
+    /* border-radius: 30px; */
+    margin-top: 20px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.email:focus{
+    width: 92%;
+}
+.box5{
+    margin: 20px 10px;
+}
+.box6 button{
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: black;
+    color: azure;
+}
+.box6 button:hover{
+    /* background: -webkit-linear-gradient(120deg, hsl(318, 94%, 61%), hsl(239, 69%,51%)); */
+}
+.box6 button:active{
+    font-size: 30px;
+}
+.box7{
+    padding-left: 10px;
+    margin-top: 30px;
+}
+.box7 a{
+    text-decoration: none;
+    margin-left: 5px;
+    background: -webkit-linear-gradient(120deg, #9708cc, #43cbff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+
+    &:hover {
+        margin-left: 5px;
+        background: -webkit-linear-gradient(120deg, hsl(318, 94%, 61%), hsl(239, 69%,51%));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+.box7 a:hover{
+    text-decoration: underline;
+}
+.box2, .box3, .box4{
+    /* border: 1px solid #111; */
+    position: relative;
+}
+.box2 i{
+    position: absolute;
+    right: 20px;
+    top: 49%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+.box3 i{
+    position: absolute;
+    right: 20px;
+    top: 49%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+.box4 i{
+    position: absolute;
+    right: 20px;
+    top: 49%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+/* i{
+    background: -webkit-linear-gradient(120deg, hsl(318, 94%, 61%), hsl(239, 69%,51%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
+.signup .box3 i{
+    position: absolute;
+    right: 20px;
+    top: 47%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #555;
+}
+.signup .box4 i{
+    position: absolute;
+    right: 20px;
+    top: 47%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #555;
+}
+.thongbao{
+    text-align: center;
+    color: green;
+    padding: 10 0;
+}

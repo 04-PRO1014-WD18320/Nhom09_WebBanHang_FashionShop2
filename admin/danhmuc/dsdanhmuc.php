@@ -40,8 +40,8 @@
                                     <td class="col-2">'.$id.'</td>
                                     <td>'.$name.'</td>
                                     <td>'.$id_dm.'</td>
-                                    <td class="col-2"><a href="?act=editdanhmuc"><button class="btn btn-secondary btn-sm">Sửa</button></a> |
-                                        <a href="#"><button class="btn btn-secondary btn-sm">Xóa</button></a>
+                                    <td class="col-2"><a href="index.php?act=update_danhmuc&iddm='.$id.'"><button class="btn btn-secondary btn-sm">Sửa</button></a> |
+                                        <a href="index.php?act=delete_danhmuc&iddm='.$id.'"><button class="btn btn-secondary btn-sm">Xóa</button></a>
                                     </td>
                                 </tr>
                                 ';
