@@ -3,7 +3,6 @@ session_start();
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
-include "../model/khachhang.php";
 include "../model/taikhoan.php";
 include "../model/binhluan.php";
 include "../model/cart.php";
@@ -16,9 +15,10 @@ include "_header.php";
 ?>
  <?php
     //Các biến dùng chung
-
+    $dssp = danhsach_sanpham();
     $dsdm = danhsach_danhmuc();
-    $top10 = top10_sanpham();
+
+    $top5 = top5_sanpham();
 
 
     //Controller
@@ -29,6 +29,27 @@ include "_header.php";
                     include "home.php";
                     break;
                 }
+
+            case "dangky":
+                if (isset($_POST['dangky'])) {
+                    $email = $_POST['email'];
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    insert_taikhoan($email, $user, $pass);
+                    $thongbao = "đăng ký thành công";
+                }
+                include "login/login.php";
+                break;
+            case "dangnhap":
+                if (isset($_POST['dangnhap'])) {
+                    $loginMess = dangnhap($_POST['user'], $_POST['pass']);
+                }
+                include "login/login.php";
+                break;
+            case "dangxuat":
+                dangxuat();
+                include "home.php";
+                break;
 
             case 'timdm': {
                     if (isset($_GET['iddm']) && $_GET['iddm'] > 0) {
@@ -65,26 +86,7 @@ include "_header.php";
                     break;
                 }
 
-            case "dangky":
-                if(isset($_POST['dangky'])){
-                    $email = $_POST['email'];
-                    $user = $_POST['user'];
-                    $pass = $_POST['pass'];
-                    insert_taikhoan($email, $user, $pass);
-                    $thongbao = "đăng ký thành công";
-                }
-                include "login/login.php";
-                break;
-            case "dangnhap": 
-                if(isset($_POST['dangnhap'])){
-                    dangnhap($_POST['user'], $_POST['pass']);
-                }
-                include "login/login.php";
-                break;
-            case "dangxuat":
-                dangxuat();
-                include "view/home.php"; 
-                break;
+
 
 
             case 'fg_password': {
