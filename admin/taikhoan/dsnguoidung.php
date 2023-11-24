@@ -57,7 +57,7 @@
                                         echo "Khách hàng";
                                     }
                                 ?></td>
-                                <td class="col-2 align-middle text-center"><a href="?act=editnguoidung"><button class="btn btn-secondary btn-sm">Sửa</button></a> |
+                                <td class="col-2 align-middle text-center"><a href="?act=editnguoidung&idkh=<?php echo $id ?>"><button class="btn btn-secondary btn-sm">Sửa</button></a> |
                                     <a  onclick="confirmDelete('<?php echo $id ?>')"><button class="btn btn-secondary btn-sm">Xóa</button></a>
                                 </td>
                             </tr>

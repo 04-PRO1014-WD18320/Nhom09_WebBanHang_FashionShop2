@@ -12,6 +12,7 @@ function loadall_cart()
             bienthe.id_sp,
             bienthe.id_mau_sac,
             bienthe.id_kich_thuoc,
+            sanpham.id AS id_sp,
             sanpham.name AS ten_sp,
             sanpham.img AS img_sp,
             sanpham.price_sale,
@@ -29,5 +30,5 @@ function loadall_cart()
 function delete_cart($id_cart){
     $sql = "DELETE FROM cart WHERE id =" . $id_cart;
     pdo_execute($sql);
-    header("location: ?act=cart");
+    // header("location: ?act=cart");
 }

@@ -50,32 +50,43 @@
             <div class="danh_muc">
                 <p>Danh mục: <?php echo $sanpham['ten_dm'] ?></p>
             </div>
-
-
-            <form action="?act=add_to_cart" method="post">
-                <!-- <?php echo $id_bt_sanpham = $sanpham['id_bt_sanpham']; ?> -->
-                <div class="color_sp">
-                    <p class="bold">Màu:</p>
-                    <div class="mau_sac">
-                        <ul>
-                            <?php
-                            foreach ($colors as $color) {
-                                echo '<li><a class="' . $color['value'] . '" href="#" ></a></li>';
-                            }
-                            ?>
-                        </ul>
+            <!--                  
+                    <div>
+                        <label class='chonsize' for="size">Chọn Size:</label>
+                        <button class="size-button" type="button" onclick="chonSize('S')" data-size="S">S</button>
+                        <button class="size-button" type="button" onclick="chonSize('M')" data-size="M">M</button>
+                        <button class="size-button" type="button" onclick="chonSize('L')" data-size="L">L</button>
+                        <button class="size-button" type="button" onclick="chonSize('XL')" data-size="XL">XL</button>
                     </div>
+                    <div class="color-bar">
+                        <label class='chonmau' for="mau">Chọn màu:</label>
+                        <button class="color-button black" type="button" onclick="chonMau('black')"></button>
+                        <button class="color-button white" type="button" onclick="chonMau('white')"></button>
+                        <button class="color-button green" type="button" onclick="chonMau('green')"></button>
+                        <button class="color-button yellow" type="button" onclick="chonMau('yellow')"></button>
+                        <button class="color-button red" type="button" onclick="chonMau('red')"></button>
+                    </div>    -->
+
+            <form action="?act=add_to_cart" method="post" onsubmit="return datMua()">
+                <div>
+                    <label class='chonsize' for="size">Chọn Size:</label>
+                    <?php
+                    foreach ($bien_the as $key => $value) {
+                        $buttonClass = ($value['ten_size'] !== null) ? 'size-button' : 'size-button disabled';
+                        echo '<button class="' . $buttonClass . '" type="button" onclick="chonSize(\'' . $value['ten_size'] . '\')" data-size="' . $value['ten_size'] . '">' . $value['ten_size'] . '</button>';
+                    }
+                    ?>
                 </div>
-                <div class="size_sp">
-                    <p class="bold">Size:</p>
-                    <ul>
-                        <?php
-                        foreach ($sizes as $size) {
-                            echo '<li><a href="#" >' . $size['value'] . '</a></li>';
-                        }
-                        ?>
-                    </ul>
+                <div class="color-bar">
+                    <label class='chonmau' for="mau">Chọn màu:</label>
+                    <?php
+                    foreach ($bien_the as $key => $value) {
+                        $buttonClass = ($value['ten_mau'] !== null) ? 'color-button ' . $value['ten_mau'] : 'color-button disabled';
+                        echo '<button class="' . $buttonClass . '" type="button" onclick="chonMau(\'' . $value['ten_mau'] . '\')"> </button>';
+                    }
+                    ?>
                 </div>
+
                 <!--  -->
                 <div>
                     <label for="">Số lượng: </label>
@@ -90,13 +101,12 @@
                     <input type="text" hidden name="id_mau_sac" id="selected_color_id">
                     <input type="text" hidden name="id_kich_thuoc" id="selected_size_id">
                     <input type="text" hidden name="so_luong" id="selected_quantity" value="1">
-                    <input type="text" hidden name="id_bt_sanpham" value="<?= $id_bt_sanpham ?>">
-                
-                    <button type='submit' name='btnSubmit'>Thêm vào giỏ hàng</button>
+                    <input type="text" hidden name="id_bt_sanpham" value="" id="id_bt_sanpham">
 
+
+                    <button type='submit' onclick="datMua()" name='btnSubmit'>Thêm vào giỏ hàng</button>
                 </div>
             </form>
-
 
             <div class="buy_now">
                 <form action="?act=buy_now" method="post">
@@ -107,8 +117,6 @@
 
         </div>
     </div>
-
-
 
     <div class="row">
         <div class="title_prod">
@@ -152,44 +160,112 @@
     <div class='see_more' class="row mt">
         <h3>Xem thêm sản phẩm tương tự:</h3>
         <!-- //Xuất các sanpham cùng loại lên , cùng iddm  -->
-        <ul>
-            <?php foreach ($sanpham_tt as $value) : ?>
-                <li>
-                    <div class="img_prod">
-                        <a href="?act=chitietsp&idsp=<?php echo $value['id']; ?>">
-                            <img width="100px" src="../assets/img/<?php echo $value['img']; ?>" alt="">
-                        </a>
-                    </div>
-                    <div class="name_prod">
-                        <a href="?act=chitietsp&idsp=<?php echo $value['id']; ?>"><?php echo $value['name']; ?></a>
-                    </div>
-                </li>
-            <?php endforeach;  ?>
-
-            <!-- <li>
-                <div class="img_prod">
-                    <a href="">
-                        <img width="100px" src="../assets/img/Áo Polo NEWSEVEN Glitch Polo PL.145.jpg" alt="">
+        <div class="post-item">
+            <?php foreach ($sanpham_tt as $product) : ?>
+                <div class="prod">
+                    <a class="img-prod" href="?act=chitietsp&idsp=<?php echo $product['id'] ?>">
+                        <img src="../assets/img/<?php echo $product['img'] ?>" alt="">
                     </a>
+                    <br>
+                    <a href="?act=chitietsp&idsp=<?php echo $product['id'] ?>" class="name-prod"><?php echo $product['name'] ?></a> <br>
+                    <a class="price">
+                        <span><?php echo number_format($product['price_niemyet'])  ?>đ</span>
+                        <?php echo number_format($product['price_sale'])  ?>đ</a> <br>
+                    <span class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </span> <br>
+                    <span class="favourite">Yêu thích <i class="fa-regular fa-heart"></i> </span>
                 </div>
-                <div class="name_prod">
-                    <a href=""> Áo Polo NEWSEVEN Glitch Polo</a>
-                </div>
-            </li>
-            <li>
-                <div class="img_prod">
-                    <a href="">
-                        <img width="100px" src="../assets/img/Áo Polo NEWSEVEN Glitch Polo PL.145.jpg" alt="">
-                    </a>
-                </div>
-                <div class="name_prod">
-                    <a href=""> Áo Polo NEWSEVEN Glitch Polo</a>
-                </div>
-            </li> -->
+            <?php endforeach; ?>
 
-        </ul>
+        </div>
 
     </div>
 </div>
 </div>
 </body>
+
+<script>
+    var selectedSize = '';
+    var selectedColor = '';
+
+    function chonSize(size) {
+        if (selectedSize) {
+            document.querySelector('.size-button.selected').classList.remove('selected');
+        }
+        selectedSize = size;
+        document.querySelector('.size-button[data-size="' + size + '"]').classList.add('selected');
+    }
+
+    function chonMau(color) {
+        if (selectedColor) {
+            document.querySelector('.color-button.selected').classList.remove('selected');
+        }
+        selectedColor = color;
+        document.querySelector('.color-button.' + color).classList.add('selected');
+    }
+
+    function datMua() {
+        var inputIdBtSanpham = document.querySelector('input[name="id_bt_sanpham"]');
+
+        if (selectedSize && selectedColor) {
+            // alert('Đã thêm vào giỏ hàng');
+        } else {
+            // alert('Vui lòng chọn size và màu trước khi đặt mua!');
+            return false;
+        }
+        if (inputIdBtSanpham.value == "") {
+            alert("Sản phẩm này đang hết hàng !!");
+            return false;
+        }
+
+    }
+</script>
+<script>
+    function kiemTraSanPham() {
+        var selectedSize = document.querySelector('.size-button.selected').getAttribute('data-size');
+        var selectedColor = document.querySelector('.color-button.selected').classList[1];
+
+        var bien_the = <?php echo json_encode($bien_the); ?>; // Chuyển dữ liệu PHP thành mảng JavaScript
+
+        for (var i = 0; i < bien_the.length; i++) {
+            if (bien_the[i]['ten_size'] === selectedSize && bien_the[i]['ten_mau'] === selectedColor) {
+                var id_bt_sanpham = bien_the[i]['id_bt_sanpham'];
+                // alert(id_bt_sanpham);
+                // console.log(id_bt_sanpham);
+                updateIdBtSanpham(id_bt_sanpham);
+                return id_bt_sanpham;
+            }
+        }
+        return null;
+    }
+
+    document.querySelectorAll('.size-button').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var id_bt_sanpham = kiemTraSanPham();
+            // alert("id_bt_sanpham: ", id_bt_sanpham);
+        });
+    });
+
+    document.querySelectorAll('.color-button').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var id_bt_sanpham = kiemTraSanPham();
+            // alert("id_bt_sanpham: ", id_bt_sanpham);
+        });
+    });
+
+
+    // Hàm cập nhật giá trị cho input id_bt_sanpham
+    function updateIdBtSanpham(id_bt_sanpham) {
+        var inputIdBtSanpham = document.querySelector('input[name="id_bt_sanpham"]');
+        if (id_bt_sanpham) {
+            inputIdBtSanpham.value = id_bt_sanpham;
+        } else {
+            inputIdBtSanpham.value = '';
+        }
+    }
+</script>
