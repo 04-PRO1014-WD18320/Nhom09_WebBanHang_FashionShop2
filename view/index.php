@@ -15,9 +15,10 @@ include "_header.php";
 ?>
  <?php
     //Các biến dùng chung
-
+    $dssp = danhsach_sanpham();
     $dsdm = danhsach_danhmuc();
-    $top10 = top10_sanpham();
+
+    $top5 = top5_sanpham();
 
 
     //Controller
@@ -65,7 +66,7 @@ include "_header.php";
                 }
 
             case "dangky":
-                if(isset($_POST['dangky'])){
+                if (isset($_POST['dangky'])) {
                     $email = $_POST['email'];
                     $user = $_POST['user'];
                     $pass = $_POST['pass'];
@@ -74,15 +75,15 @@ include "_header.php";
                 }
                 include "login/login.php";
                 break;
-            case "dangnhap": 
-                if(isset($_POST['dangnhap'])){
+            case "dangnhap":
+                if (isset($_POST['dangnhap'])) {
                     dangnhap($_POST['user'], $_POST['pass']);
                 }
                 include "login/login.php";
                 break;
             case "dangxuat":
                 dangxuat();
-                include "view/home.php"; 
+                include "view/home.php";
                 break;
 
 
