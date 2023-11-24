@@ -1,5 +1,16 @@
 <?php
+function danhsach_sanpham()
+{
+    $sql = "SELECT * FROM sanpham ";
 
+    $result = pdo_query($sql);
+    return $result;
+}
+function danhsach_sanphamdm($iddm) {
+    $sql = "SELECT * FROM sanpham WHERE iddm = " . $iddm;
+    $result = pdo_query($sql);
+    return $result;
+}
 
 function loadall_sanpham($keyw = "", $iddm = 0)
 {
@@ -236,9 +247,9 @@ function one_id_danhmuc()
 }
 
 
-function top10_sanpham()
+function top5_sanpham()
 {
-    $sql = "select * from sanpham order by luotxem desc limit 0,10";
+    $sql = "select * from sanpham order by luotxem desc limit 0,5";
     $result = pdo_query($sql);
     return $result;
 }

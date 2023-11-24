@@ -16,147 +16,9 @@ td {
     font-family: roboto;
 }
 
-.header {
-    display: flex;
-    /* justify-content: flex-start; */
-    align-items: center;
-    background-color: white;
-    box-shadow: 0 0 5px #6a6a6a;
-}
 
 a {
     text-decoration: none;
-}
-
-.header .logo {
-    margin-right: 0px;
-    margin-left: 70px;
-}
-
-.header .logo a img {
-    width: 150px;
-}
-
-.header .menu {
-    display: flex;
-}
-
-.header .menu ul {
-    list-style: none;
-
-}
-
-.header ul li {
-    display: inline-block;
-    padding: 10px;
-}
-
-.header ul li a {
-    color: black;
-    display: block;
-    font-size: 14px;
-    padding: 15px 0px;
-}
-
-.search {
-    position: relative;
-}
-
-.header ul li input {
-    width: 300px;
-    height: 25px;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin-top: 20px;
-    text-indent: 15px;
-    background-color: rgb(250, 250, 250);
-}
-
-.header ul li a.icon_search {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-a.icon_search {
-    padding: 0px;
-    margin: 0px;
-}
-
-.icon_tai_khoan {
-    margin-top: 5px;
-}
-
-.icon_tai_khoan a {
-    padding: 0px 5px;
-
-}
-
-.icon_tai_khoan a i {
-    font-size: 18px;
-    color: black;
-}
-
-.menu a:hover {
-    color: red;
-}
-
-.menu li {
-    position: relative;
-    transition: all 0.9s;
-}
-
-.menu li:hover .sub_menu {
-    display: block;
-    transition: all 0.9s;
-}
-
-.menu .sub_menu {
-    position: absolute;
-    background-color: white;
-    box-shadow: 0 0 3px black;
-    border-radius: 0 0 5px 5px;
-    display: none;
-    z-index: 3;
-}
-
-.menu .sub_menu li {
-    display: block;
-    width: 100px;
-
-}
-
-.menu .sub_menu a.ao {
-    font-weight: bold;
-}
-
-.menu .sub_menu li:hover .sub_menu_ao {
-    display: block;
-}
-
-.menu .sub_menu li a {
-    padding: 5px 5px;
-    border-bottom: 2px solid #333;
-}
-
-.menu .sub_menu_ao {
-    display: none;
-    position: absolute;
-    left: 121px;
-    top: 0px;
-    background-color: white;
-    box-shadow: 0 0 3px black;
-    border-radius: 0 0 5px 5px;
-}
-
-.menu .sub_menu_ao li {
-    width: 300px;
-    display: block;
-
-}
-
-.menu .sub_menu_ao li a {
-    border-bottom: 0px;
 }
 
 .content {
@@ -544,7 +406,7 @@ a.icon_search {
 }
 .tienhanh_thanhtoan {
     flex-basis: 40%;
-    height: 250px;
+    height: 330px;
     border-left: 2px solid #b6b6b6;
 }
 .table-cart table th {
@@ -650,7 +512,7 @@ input[name="input_slg_cart"] {
     font-weight: bold;
     text-transform: uppercase;
     /* margin-left: 20px; */
-    width: 77%;
+    width: 100%;
     margin-top: 40px;
     display: block;
     align-items: center;
@@ -668,7 +530,7 @@ input[name="input_slg_cart"] {
     font-weight: bold;
     text-transform: uppercase;
     margin-left: 0px;
-    width: 30%;
+    width: 45%;
     margin-top: 29px;
     display: block;
     align-items: center;
@@ -676,7 +538,7 @@ input[name="input_slg_cart"] {
 }
 .flex {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 17px 0px;
     border-bottom: 1px solid #cdcdcd;
 }
