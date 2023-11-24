@@ -4,7 +4,7 @@ var Index = 0;
 
 for (var i = 0; i < 3; i++) {
     anhAr[i] = new Image();
-    anhAr[i].src = "../assets/img/banner" + i + ".webp";
+    anhAr[i].src = "../assets/img/anh" + i + ".jpg";
 }
 
 function next() {

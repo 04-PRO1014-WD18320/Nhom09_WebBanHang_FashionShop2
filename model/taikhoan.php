@@ -1,18 +1,4 @@
 <?php
-
-function danhsach_khachhang()
-{
-    $sql = "SELECT * FROM taikhoan ORDER BY CASE WHEN role = 'admin' THEN 0 ELSE 1 END, role ASC";
-    $result = pdo_query($sql);
-    return $result;
-}
-
-function insert_taikhoan($email, $user, $pass)
-{
-    $sql = "INSERT INTO `taikhoan` ( `user`, `pass`, `email` ) 
-        VALUES ( '$user', '$pass', '$email'); ";
-    pdo_execute($sql);
-}
 function dangnhap($user, $pass)
 {
     $sql = "SELECT * FROM taikhoan WHERE user = '$user' AND pass = '$pass' ";
@@ -27,6 +13,7 @@ function dangnhap($user, $pass)
         return "thông tin tài khoản sai";
     }
 }
+
 function dangxuat()
 {
     if (isset($_SESSION['user'])) {
@@ -36,6 +23,35 @@ function dangxuat()
         header('location:index.php');
     }
 }
+// function dangnhap($user, $pass)
+// {
+//     $sql = "SELECT * FROM taikhoan WHERE user = '$user' AND pass = '$pass' ";
+    
+//     $taikhoan = pdo_query_one($sql);
+//     if ($taikhoan != false) {
+//         $_SESSION['user'] = $taikhoan['user'];
+//         $_SESSION['iduser'] = $taikhoan['id'];
+//         $_SESSION['role'] = $taikhoan['role'];
+//         header('location:view/index.php');
+//     } else {
+//         return "thông tin tài khoản sai";
+//     }
+// }
+function danhsach_khachhang()
+{
+    $sql = "SELECT * FROM taikhoan ORDER BY CASE WHEN role = 'admin' THEN 0 ELSE 1 END, role ASC";
+    $result = pdo_query($sql);
+    return $result;
+}
+
+function insert_taikhoan($email, $user, $pass)
+{
+    $sql = "INSERT INTO `taikhoan` ( `email`, `user`, `pass`) 
+        VALUES ( '$email', '$user','$pass'); ";
+    pdo_execute($sql);
+}
+
+
 //Hàm xử lý đăng ký tài khoản ở dao khachhang.php
 
 function check_user($user, $pass)
