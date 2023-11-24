@@ -30,6 +30,27 @@ include "_header.php";
                     break;
                 }
 
+            case "dangky":
+                if (isset($_POST['dangky'])) {
+                    $email = $_POST['email'];
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    insert_taikhoan($email, $user, $pass);
+                    $thongbao = "đăng ký thành công";
+                }
+                include "login/login.php";
+                break;
+            case "dangnhap":
+                if (isset($_POST['dangnhap'])) {
+                    $loginMess = dangnhap($_POST['user'], $_POST['pass']);
+                }
+                include "login/login.php";
+                break;
+            case "dangxuat":
+                dangxuat();
+                include "home.php";
+                break;
+
             case 'timdm': {
                     if (isset($_GET['iddm']) && $_GET['iddm'] > 0) {
                         $dssp = tim_sanpham_theodm($_GET['iddm']);
@@ -65,26 +86,7 @@ include "_header.php";
                     break;
                 }
 
-            case "dangky":
-                if (isset($_POST['dangky'])) {
-                    $email = $_POST['email'];
-                    $user = $_POST['user'];
-                    $pass = $_POST['pass'];
-                    insert_taikhoan($email, $user, $pass);
-                    $thongbao = "đăng ký thành công";
-                }
-                include "login/login.php";
-                break;
-            case "dangnhap":
-                if (isset($_POST['dangnhap'])) {
-                    dangnhap($_POST['user'], $_POST['pass']);
-                }
-                include "login/login.php";
-                break;
-            case "dangxuat":
-                dangxuat();
-                include "view/home.php";
-                break;
+
 
 
             case 'fg_password': {
@@ -150,6 +152,9 @@ include "_header.php";
                     include "cart/bill_confirm.php";
                     break;
                 }
+            case "thanhtoan":
+                include "thanhtoan.php";
+                break;
             default: {
                     include "home.php";
                     break;

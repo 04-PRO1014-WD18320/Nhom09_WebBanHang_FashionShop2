@@ -1,9 +1,9 @@
 /* Css thanh header  */
 nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 120px;
+    /* gap: 100px; */
     width: 100%;
     height: 100px;
     padding: 0 20px;
@@ -24,7 +24,7 @@ nav {
     /* background: -webkit-linear-gradient(120deg, hsl(318, 94%, 61%), hsl(239, 69%,51%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; */
-    
+    /* padding: 0 20px; */
 
 }
 
