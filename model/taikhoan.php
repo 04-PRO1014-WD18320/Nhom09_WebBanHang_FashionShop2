@@ -78,13 +78,13 @@ function delete_khachhang($idkh)
 {
     $sql = "DELETE FROM taikhoan WHERE id =" . $idkh;
     pdo_execute($sql);
-    // header("location: ?act=dskh");
+    
 }
 
 
-function edit_khachhang($idkh, $tenkh, $pass, $email, $address, $tel, $role)
+function edit_khachhang($idkh, $role)
 {
-    $sql = "UPDATE `taikhoan` SET `user`='$tenkh',`pass` = '$pass' ,`email`='$email',`address`='$address',`tel`='$tel',`role`='$role' WHERE id = $idkh";
+    $sql = "UPDATE `taikhoan` SET `role`='$role' WHERE id = $idkh";
     pdo_execute($sql);
 }
 
@@ -97,9 +97,4 @@ function edit_tk($id, $user, $pass, $email, $address, $tel)
     pdo_execute($sql);
 }
 
-function check_email($email)
-{
-    $sql = "SELECT * FROM taikhoan WHERE email = '" . $email . "' ";
-    $result = pdo_query_one($sql);
-    return $result;
-}
+

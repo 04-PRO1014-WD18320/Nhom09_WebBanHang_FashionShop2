@@ -66,8 +66,9 @@ include "_header.php";
                         $hinhanh = load_anhcon($_GET['idsp']);
                         $sanpham_tt = sanpham_tuongtu($_GET['idsp']);
                         tangluotxem($_GET['idsp']);
-                        $colors = load_mausac($_GET['idsp']);
-                        $sizes = load_kichthuoc($_GET['idsp']);
+                        // $colors = load_mausac($_GET['idsp']);
+                        // $sizes = load_kichthuoc($_GET['idsp']);
+                        $bien_the = load_id_bienthe($_GET['idsp']);
                     }
                     if (isset($_POST['btnSubmit'])) {
                         add_binhluan($_POST['noidung'], $_POST['iduser'], $_POST['idpro'], $_POST['datetime']);
@@ -89,30 +90,15 @@ include "_header.php";
 
 
 
-            case 'fg_password': {
-                    if (isset($_POST['btnSubmit'])) {
-                        if ($_POST['email'] != "") {
-                            $check_email = check_email($_POST['email']);
-                            if (is_array($check_email)) {
-                                $thongbaomk = "Mật khẩu của bạn là:" . $check_email['pass'];
-                            } else {
-                                $thongbaomk = "Email này không tồn tại!";
-                            }
-                        } else {
-                            $thongbaomk = "Email không được để trống";
-                        }
-                    }
-                    include "forgot_password.php";
-                    break;
-                }
+
 
             case "add_to_cart": {
-
                     if (isset($_POST['btnSubmit'])) {
                         // $id_user = $_POST['id_user'];
 
                         $id_user = 1;
                         $id_bt_sanpham = $_POST['id_bt_sanpham'];
+                        // $id_bt_sanpham = 14;
                         $so_luong = $_POST['so_luong'];
 
                         add_cart($id_user, $id_bt_sanpham, $so_luong);
@@ -126,8 +112,10 @@ include "_header.php";
                     if (isset($_GET['id_cart'])) {
                         delete_cart($_GET['id_cart']);
                     }
+                    $dscart = loadall_cart();
+                    include "cart.php";
                 }
-                header("location:?act=cart");
+
 
                 break;
             case 'cart': {

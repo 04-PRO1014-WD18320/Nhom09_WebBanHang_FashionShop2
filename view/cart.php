@@ -14,34 +14,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <?php 
+                    <?php
                     $tong = 0;
-                  ?>
-                    <?php foreach ($dscart as $key => $value) :
-                       extract($value);
-                       $tamtinh = $price_sale * $so_luong;
+                    foreach ($dscart as $key => $value) :
+                        extract($value);
+                        $tamtinh = $price_sale * $so_luong;
                     ?>
                         <tr>
                             <td class='ten_sp_cart'>
                                 <a href="?act=delete_sp_cart&id_cart=<?php echo $id_cart ?>" class="xoa">X</a>
                                 <?php echo "<img width='80' src='../assets/img/$img_sp'>"; ?>
-                                <span class='name-prod' ><?= $ten_sp ?> - Màu:<?= $mau_sac ?> - Size:<?= $kich_thuoc ?></span>
+                                <span class='name-prod'><?= $ten_sp ?>- Size: <?= $kich_thuoc ?> - Màu: <?= $mau_sac ?> </span>
                             </td>
                             <td align='center'><span><?= number_format($price_sale) ?> đ</span></td>
                             <td align='center'><input type="number" min='1' name="input_slg_cart" id="" value="<?= $so_luong ?>"></td>
                             <td align='center'><span class="text_red"><?php echo number_format($tamtinh); ?> đ</span></td>
-                            
+
                         </tr>
-                       <?php $tong += $tamtinh ?>
+                        <?php $tong += $tamtinh ?>
                     <?php
-                       
+
                     endforeach; ?>
-                    
+
                 </tbody>
 
 
             </table>
-            <a href="?act=chitietsp&idsp=31" class="continue_sp">Tiếp tục xem sản phẩm</a>
+            <a href="?act=chitietsp&idsp=<?php echo $id_sp ?>" class="continue_sp">Tiếp tục xem sản phẩm</a>
         </div>
 
         <!--  -->
@@ -53,18 +52,29 @@
                 </div>
                 <div class="flex">
                     <span class=" ml_0">Tạm tính:</span>
-                    <span class="text_red mr_0 bold"><?php echo number_format($tong)  ?></span>
+                    <span class="text_red mr_0 bold"><?php echo number_format($tong)  ?>đ</span>
                 </div>
                 <div class="flex">
                     <span class=" ml_0">Giao hàng:</span>
-                    <span class="text_red mr_0 bold">Phí ship: 25.000đ</span>
+                    <span class="text_red mr_0 bold">Phí ship: <?php if ($tong != 0) {
+                                                                    echo "25.000đ";
+                                                                } else {
+                                                                    echo "0đ";
+                                                                }
+                                                                ?></span>
                 </div>
                 <div class="flex">
                     <span class=" ml_0">Tổng:</span>
-                    <span class="text_red mr_0 bold"><?php echo $tong_thanhtoan = number_format($tong + 25000) ?></span>
+                    <span class="text_red mr_0 bold"><?php
+                                                        if ($tong != 0) {
+                                                            echo $tong_thanhtoan = number_format($tong + 25000);
+                                                        } else {
+                                                            echo "0";
+                                                        }
+                                                        ?>đ</span>
                 </div>
                 <div>
-                    <a href="" class='pay btn'>Thanh toán</a>
+                    <a href="#" class='pay btn'>Thanh toán</a>
                 </div>
 
             </div>
