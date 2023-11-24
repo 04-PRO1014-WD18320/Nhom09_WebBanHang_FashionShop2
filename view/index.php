@@ -150,6 +150,9 @@ include "_header.php";
                     include "cart/bill_confirm.php";
                     break;
                 }
+            case "thanhtoan":
+                include "thanhtoan.php";
+                break;
             default: {
                     include "home.php";
                     break;

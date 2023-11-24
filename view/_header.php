@@ -26,12 +26,8 @@
             <?php
             include "_menu.php";
             ?>
-<<<<<<< HEAD
             <div class="icon_tai_khoan">
                 <a href="index.php?act=dangnhap"><i class="fa-solid fa-user"></i></a>
                 <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
-=======
-           
->>>>>>> 32a4821d5011b307db47648b56644fe0af081c83
         </div>
