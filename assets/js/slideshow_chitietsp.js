@@ -52,25 +52,27 @@ $(document).ready(function () {
 
 
 // Jquery thêm sp vào cart 
+
+
 // Sử dụng jQuery
-$(document).ready(function () {
-    $('.mau_sac ul li a').on('click', function (event) {
-        event.preventDefault();
-        var selectedColor = $(this).attr('class').split(' ')[0]; // Lấy class đầu tiên
-        $('#selected_color_id').val(selectedColor);
-    });
+// $(document).ready(function () {
+//     $('.mau_sac ul li a').on('click', function (event) {
+//         event.preventDefault();
+//         var selectedColor = $(this).attr('class').split(' ')[0]; // Lấy class đầu tiên
+//         $('#selected_color_id').val(selectedColor);
+//     });
 
-    $('.size_sp ul li a').on('click', function (event) {
-        event.preventDefault();
-        var selectedSize = $(this).text();
-        $('#selected_size_id').val(selectedSize);
-    });
+//     $('.size_sp ul li a').on('click', function (event) {
+//         event.preventDefault();
+//         var selectedSize = $(this).text();
+//         $('#selected_size_id').val(selectedSize);
+//     });
 
-    $('input[name="so_luong"]').on('change', function () {
-        var selectedQuantity = $(this).val();
-        $('#selected_quantity').val(selectedQuantity);
-    });
-});
+//     $('input[name="so_luong"]').on('change', function () {
+//         var selectedQuantity = $(this).val();
+//         $('#selected_quantity').val(selectedQuantity);
+//     });
+// });
 ////////////////////////////////////////////////////////////////
 // $(document).ready(function () {
 //     $('.mau_sac ul li a').on('click', function (event) {

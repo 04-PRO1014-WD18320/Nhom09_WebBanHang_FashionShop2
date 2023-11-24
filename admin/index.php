@@ -50,7 +50,19 @@ include 'menu.php';
                 include "taikhoan/addnguoidung.php";
                 break;
             case 'editnguoidung':
+                $thongbao = "";
+               
+                if (isset($_GET['idkh'])) {
+                    $olddata = one_khachhang($_GET['idkh']);
+                }
 
+                if (isset($_POST['btnSubmit'])) {
+                    edit_khachhang($_POST['idkh'], $_POST['role']);
+                    $olddata = one_khachhang($_GET['idkh']);
+                    $thongbao = "Cập nhật tài khoản thành công !";
+                
+                    // header("location: ?act=dsnguoidung");
+                }
                 include "taikhoan/editnguoidung.php";
                 break;
             case "deletekh": {
@@ -67,27 +79,27 @@ include 'menu.php';
                 include "danhmuc/dsdanhmuc.php";
                 break;
             case 'add_danhmuc':
-                if(isset($_POST['submit'])){
+                if (isset($_POST['submit'])) {
                     $name = $_POST['name'];
                     $id_dm = $_POST['id_dm'];
                     add_danhmuc($name, $id_dm);
                     // header('location:danhmuc/dsanhmuc.php');
                 }
                 include 'danhmuc/adddanhmuc.php';
-                break; 
+                break;
             case 'update_danhmuc':
                 if (isset($_GET['iddm'])) {
                     $danhmuc_update = load_one_dm($_GET['iddm']);
                 }
-                
+
                 include "danhmuc/editdanhmuc.php";
                 break;
             case 'cf_update_danhmuc':
-                if(isset($_POST['submit'])){
+                if (isset($_POST['submit'])) {
                     $iddm = $_POST['iddm'];
                     $name = $_POST['name'];
                     $id_Big_dm = $_POST['id_b_dm'];
-                    
+
                     update_danhmuc($iddm, $name, $id_Big_dm);
                 }
                 $dsdm = danhsach_danhmuc();
@@ -98,7 +110,7 @@ include 'menu.php';
                     hard_delete_danhmuc($_GET['iddm']);
                 }
                 $dsdm  = danhsach_danhmuc();
-                
+
                 include 'danhmuc/dsdanhmuc.php';
                 break;
             case 'dssanpham':
