@@ -6,7 +6,8 @@ function danhsach_sanpham()
     $result = pdo_query($sql);
     return $result;
 }
-function danhsach_sanphamdm($iddm) {
+function danhsach_sanphamdm($iddm)
+{
     $sql = "SELECT * FROM sanpham WHERE iddm = " . $iddm;
     $result = pdo_query($sql);
     return $result;
@@ -106,12 +107,6 @@ function one_sanpham($idsp)
     $result = pdo_query_one($sql);
     return $result;
 }
-function load_id_bienthe($idsp)
-{
-    $sql = "SELECT * FROM bien_the WHERE id_sp = $idsp";
-    $result = pdo_query($sql);
-    return $result;
-}
 
 function loadone_sanpham($idsp)
 {
@@ -202,25 +197,44 @@ function update_bienthe($id, $id_mau_sac, $id_kich_thuoc, $so_luong)
 //     // header('location:index.php?act=dssanpham');
 // }
 
-function load_mausac($idsp)
-{
-    $sql = "SELECT mau_sac.* 
-            FROM mau_sac
-            JOIN bien_the ON mau_sac.id = bien_the.id_mau_sac
-            WHERE bien_the.id_sp = " . $idsp;
-    $result = pdo_query($sql);
-    return $result;
-}
-function load_kichthuoc($idsp)
-{
-    $sql = "SELECT kich_thuoc.* 
-            FROM kich_thuoc
-            JOIN bien_the ON kich_thuoc.id = bien_the.id_kich_thuoc
-            WHERE bien_the.id_sp = " . $idsp;
-    $result = pdo_query($sql);
-    return $result;
-}
+//Sơn
+// function load_mausac($idsp)
+// {
+//     $sql = "SELECT mau_sac.* 
+//             FROM mau_sac
+//             JOIN bien_the ON mau_sac.id = bien_the.id_mau_sac
+//             WHERE bien_the.id_sp = " . $idsp;
+//     $result = pdo_query($sql);
+//     return $result;
+// }
+// function load_kichthuoc($idsp)
+// {
+//     $sql = "SELECT kich_thuoc.* 
+//             FROM kich_thuoc
+//             JOIN bien_the ON kich_thuoc.id = bien_the.id_kich_thuoc
+//             WHERE bien_the.id_sp = " . $idsp;
+//     $result = pdo_query($sql);
+//     return $result;
+// }
 
+function load_id_bienthe($idsp)
+{
+    $sql = "SELECT 
+        sanpham.id AS id_sp,
+        bien_the.id AS id_bt_sanpham,
+        bien_the.id_mau_sac AS id_mau_sac,
+        bien_the.id_kich_thuoc AS id_kich_thuoc,
+        bien_the.so_luong AS so_luong,
+        kich_thuoc.value AS ten_size,
+        mau_sac.value AS ten_mau 
+    FROM `sanpham`
+    JOIN bien_the ON bien_the.id_sp = sanpham.id
+    JOIN kich_thuoc ON kich_thuoc.id = bien_the.id_kich_thuoc
+    JOIN mau_sac ON mau_sac.id = bien_the.id_mau_sac
+    WHERE sanpham.id = " . $idsp;
+    $result = pdo_query($sql);
+    return $result;
+}
 
 function load_anhcon($idsp)
 {
