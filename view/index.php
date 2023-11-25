@@ -140,8 +140,15 @@ include "_header.php";
                 }
             case "thanhtoan":
                 $ds_sp_thanhtoan = loadall_cart($_SESSION['iduser']);
+                if(isset($_POST['dat_hang'])){
+                    $id_user= $_SESSION['iduser'];
+                    $diachi = $_POST['tp'].$_POST['qh'].$_POST['xp'];
+
+                    echo $id_user .'|'.$diachi;
+                }
                 include "thanhtoan.php";
                 break;
+            
             default: {
                     include "home.php";
                     break;

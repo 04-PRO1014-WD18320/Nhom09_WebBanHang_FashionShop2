@@ -11,7 +11,7 @@ function loadall_cart($iduser)
             cart.id AS id_cart,
             cart.id_user,
             cart.soluong AS so_luong,
-            bienthe.id_sp,
+            bienthe.id_sp AS id_bienthe,
             bienthe.id_mau_sac,
             bienthe.id_kich_thuoc,
             sanpham.id AS id_sp,
