@@ -12,50 +12,50 @@
         </div>
     </div>
     <div class="tt_thanhtoan">
-        <form action="">
+        <form action="index.php?act=thanhtoan">
             <div class="tt_user">
                 <h2>THÔNG TIN THANH TOÁN</h2>
-
+                <input type="text" hidden name="iduser" value="<?=$_SESSION['iduser']?>">
                 <label for="">Họ và tên*</label>
                 <input type="text" name="name" placeholder="Họ tên của bạn...">
 
                 <div class="ip_bottom">
                     <div class="ip_in_bottom">
                         <label for="">Số điện thoại*</label>
-                        <input type="number" placeholder="Số điện thoại của bạn">
+                        <input type="number" name="phone" placeholder="Số điện thoại của bạn">
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Địa chỉ email (không bắt buộc)*</label>
-                        <input type="text" placeholder="Email của bạn">
+                        <input type="text" name="email" placeholder="Email của bạn">
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Tỉnh/Thành phố *</label>
-                        <select name="" id="">
-                            <option value="">hà nội</option>
-                            <option value="">sài gòn</option>
+                        <select name="tp" id="">
+                            <option value="Hà nội">hà nội</option>
+                            <option value="Sài gòn">sài gòn</option>
                         </select>
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Quận/Huyện *</label>
-                        <select name="" id="">
-                            <option value="">hà nội</option>
-                            <option value="">sài gòn</option>
+                        <select name="qh" id="">
+                            <option value="Hà nội">hà nội</option>
+                            <option value="Sài gòn">sài gòn</option>
                         </select>
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Xã/Phường *</label>
-                        <select name="" id="">
-                            <option value="">hà nội</option>
-                            <option value="">sài gòn</option>
+                        <select name="xp" id="">
+                            <option value="Hà nội">hà nội</option>
+                            <option value="Sài gòn">sài gòn</option>
                         </select>
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Địa chỉ*</label>
-                        <input type="text">
+                        <input type="text" name="dchi">
                     </div>
                 </div>
                 <label for="">Ghi chú đơn hàng (không bắt buộc)</label>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea name="note" id="" cols="30" rows="10"></textarea>
             </div>
             <div class="tt_donhang">
                 <h2>ĐƠN HÀNG CỦA BẠN</h2>
@@ -79,8 +79,7 @@
                             <p>Tạm tính</p>
                             <span>'.number_format($tamtinh).'đ</span>
                         </div>
-
-                        
+                        '.$id_bienthe.'
                         ';
                     }   $tong+= $tamtinh;
                 ?>
@@ -101,7 +100,8 @@
                     <option value="">Thanh toán khi nhận hàng</option>
                     <option value="">Thanh toán online</option>
                 </select><BR>
-                <input type="submit" name="dat_hang" value="ĐẶT HÀNG">
+                
+                <input type="submit"  name="dat_hang" value="ĐẶT HÀNG">
             </div>
         </form>
     </div>
