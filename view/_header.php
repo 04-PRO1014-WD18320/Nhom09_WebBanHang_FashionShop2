@@ -70,14 +70,14 @@
                   ?>
                </a>
                
-               <div class="dropdown">
-                  <div class="draw">
-                     <div class="diamond"></div>
-                     <div class="shirt">
+               <div class="dropdown_user">
+                  <div class="draw_user">
+                     <div class="diamond_user"></div>
+                     <div class="shirt_user">
                         <a href="index.php?act=profile">Profile</a>
                         <a href="index.php?act=update_tk">Sửa thông tin</a>
                         <?php
-                        echo (empty($_SESSION["role"])) ? "" : 
+                        echo (($_SESSION["role"])==0) ? "" : 
                            '<a href="../admin/index.php">
                               Chuyển trang quản trị
                            </a>'
@@ -93,7 +93,7 @@
             <li><a href='index.php?act=dangnhap'><i class='fa-solid fa-user'></i></a></li>
             " : ""
             ?>
-            <li><a href="index.php?act=cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li><a href="index.php?act=cart&iduser=<?=$_SESSION['iduser']?>"><i class="fa-solid fa-cart-shopping"></i></a></li>
          </ul>
       </div>
    </nav>
