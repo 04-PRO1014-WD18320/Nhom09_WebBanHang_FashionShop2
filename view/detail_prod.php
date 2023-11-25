@@ -93,7 +93,7 @@
                     <input type="number" min="1" max="<?php echo $sanpham['so_luong'] ?>" name="so_luong" value="1">
                 </div>
                 <div class="add_cart">
-
+                    <input type="text" hidden name="iduser" value="<?php echo (empty($_SESSION['iduser']))? "" : $_SESSION['iduser']?>">
                     <input type="text" hidden name="id" value="<?= $sanpham['id']  ?>">
                     <input type="text" hidden name="name" value="<?= $sanpham['name']  ?>">
                     <input type="text" hidden name="img" value="<?= $sanpham['img']  ?>">
@@ -103,7 +103,7 @@
                     <input type="text" hidden name="so_luong" id="selected_quantity" value="1">
                     <input type="text" hidden name="id_bt_sanpham" value="" id="id_bt_sanpham">
 
-
+                    <?php echo (empty($_SESSION['iduser']))? "Bạn cần đăng nhập để mua hàng" : $_SESSION['iduser']?>
                     <button type='submit' onclick="datMua()" name='btnSubmit'>Thêm vào giỏ hàng</button>
                 </div>
             </form>

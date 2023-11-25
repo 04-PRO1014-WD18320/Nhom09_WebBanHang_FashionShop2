@@ -86,24 +86,20 @@ include "_header.php";
                     include "home.php";
                     break;
                 }
-
-
-
-
-
-
             case "add_to_cart": {
                     if (isset($_POST['btnSubmit'])) {
                         // $id_user = $_POST['id_user'];
 
-                        $id_user = 1;
+                        $id_user = $_POST['iduser'];
                         $id_bt_sanpham = $_POST['id_bt_sanpham'];
                         // $id_bt_sanpham = 14;
                         $so_luong = $_POST['so_luong'];
 
+                        $dscart = loadall_cart($_POST['iduser']);
+
                         add_cart($id_user, $id_bt_sanpham, $so_luong);
                     }
-                    $dscart = loadall_cart();
+                    
                     include "cart.php";
                     break;
                 }
@@ -112,16 +108,18 @@ include "_header.php";
                     if (isset($_GET['id_cart'])) {
                         delete_cart($_GET['id_cart']);
                     }
-                    $dscart = loadall_cart();
+                    // $dscart = loadall_cart('');
                     include "cart.php";
                 }
 
-
                 break;
             case 'cart': {
-                    $dscart = loadall_cart();
-                    include "cart.php";
-                    break;
+                if (isset($_GET['iduser']) && $_GET['iduser'] > 0) {
+                    $dscart = loadall_cart($_GET['iduser']);
+                }
+                    
+                include "cart.php";
+                break;
                 }
             case "bill": {
                     include "cart/bill.php";
@@ -141,6 +139,7 @@ include "_header.php";
                     break;
                 }
             case "thanhtoan":
+                $ds_sp_thanhtoan = loadall_cart($_SESSION['iduser']);
                 include "thanhtoan.php";
                 break;
             default: {
