@@ -21,8 +21,11 @@
                         $tamtinh = $price_sale * $so_luong;
                     ?>
                         <tr>
+                            <?php
+                                $id_user = (empty($_SESSION['iduser']))? "": $_SESSION['iduser'];
+                            ?>
                             <td class='ten_sp_cart'>
-                                <a href="?act=delete_sp_cart&id_cart=<?php echo $id_cart ?>" class="xoa">X</a>
+                                <a href="?act=delete_sp_cart&id_cart=<?php echo $id_cart ?>&iduser=<?=$id_user?>" class="xoa">X</a>
                                 <?php echo "<img width='80' src='../assets/img/$img_sp'>"; ?>
                                 <span class='name-prod'><?= $ten_sp ?>- Size: <?= $kich_thuoc ?> - Màu: <?= $mau_sac ?> </span>
                             </td>
@@ -74,7 +77,7 @@
                                                         ?>đ</span>
                 </div>
                 <div>
-                    <a href="#" class='pay btn'>Thanh toán</a>
+                    <a href="index.php?act=thanhtoan" class='pay btn'>Thanh toán</a>
                 </div>
 
             </div>

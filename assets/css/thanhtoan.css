@@ -1,0 +1,157 @@
+.thanhtoan{
+    width: 1200px;
+    /* border: 1px solid #111; */
+    margin: auto;
+    margin-top: 20px;
+
+    & .link{
+        text-align: center;
+    }
+    & .add_voucher{
+        width: 100%;
+        height: 150px;
+
+        & .ip_add_voucher{
+            width: 100%;
+            height: 100px;
+            border: 1px solid #111;
+            padding: 10px 20px;
+            margin-top: 10px;
+            /* align-items: center; */
+            /* padding: auto; */
+
+            & form{
+                display: flex;
+                width: 100%;
+                margin-top: 10px;
+                
+                /* border: 1px solid #111; */
+
+                & input[type='text']{
+                    width: 90%;
+                    height: 40px;
+                    font-size: 20px;
+                    padding: 0 15px;
+                    border: none;
+                    outline: none;
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                }
+                & input[type='submit']{
+                    width: 10%;
+                    height: 40px;
+                    font-size: 15px;
+                    background-color: #111;
+                    color: #fff;
+                    border: none;
+                    outline: none;
+                    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
+                }
+            }
+            
+        }
+        /* border: 1px solid #111; */
+    }
+    & .tt_thanhtoan{
+        width: 100%;
+       
+
+        & form{
+            width: 100%;
+            display: flex;
+            gap: 30px;
+
+            & .tt_user{
+                padding: 20px 0;
+                border-top: 1px solid #111;
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                & .ip_bottom{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 20px;
+
+                    & .ip_in_bottom{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        & input{
+                            height: 40px;
+                            padding: 0 15px;
+                            /* margin-bottom: 40px; */
+                            /* border-radius: 30px; */
+                            /* margin-top: 20px; */
+                            font-size: 20px;
+                            border: none;
+                            outline: none;
+                            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                        }
+                        & select{
+                            height: 40px;
+                            font-size: 20px;
+                            border: none;
+                            outline: none;
+                            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                        }
+                    }
+                }
+                & h2{
+                    font-size: 20px;
+                }
+                & input{
+                    margin: 10px 0;
+                    height: 40px;
+                    font-size: 20px;
+                    padding: 0 15px;
+                    border: none;
+                    outline: none;
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                }
+                & textarea{
+                    height: 100px;
+                    font-size: 20px;
+                    padding: 0 15px;
+                    /* border: none; */
+                    margin-top: 10px;
+                    outline: none;
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                }
+            }
+            & .tt_donhang{
+                padding: 20px;
+                width: 40%;
+                border: 1px solid #111;
+                & h2{
+                    font-size: 20px;
+                }
+                & .space{
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid gray;
+                    margin: 20px 0;
+                    & span{
+                        color: red;
+                    }
+                }
+                & select{
+                    width: 100%;
+                    height: 40px;
+                    font-size: 20px;
+                    border: none;
+                    outline: none;
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                }
+                & input{
+                    margin-top: 20px;
+                    height: 40px;
+                    font-size: 15px;
+                    background-color: #111;
+                    padding: 0 20px;
+                    color: #fff;
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+    }
+}
