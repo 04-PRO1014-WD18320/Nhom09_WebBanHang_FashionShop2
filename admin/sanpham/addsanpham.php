@@ -92,9 +92,6 @@
                         <label for="gia" class="form-label">Số lượng</label>
                         <input type="number" class="form-control" id="gia" name="soluong_0" placeholder="Số lượng">
                     </div>
-
-
-
                     <div class="add_ip">
                         <button name="add_input"><i class="fa-solid fa-plus"></i></button>
                     </div>

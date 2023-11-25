@@ -3,8 +3,8 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* gap: 40px; */
-    /* width: 100%; */
+    gap: 120px;
+    /* max-width: 1200px; */
     height: 100px;
     padding: 0 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -171,6 +171,76 @@ nav, .info, .dropdown a{
         }
     }
 }
+.dropdown_user{
+    min-width: 50px;
+    /* float: left; */
+    /* background-color: none; */
+    /* padding: 15px 10px; */
+    box-sizing: border-box;
+    display: flex;
+    /* flex-direction: column; */
+    gap: 12px;
+    position: absolute;
+    top: 40px;
+    /* left: 10px; */
+    border-radius: 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.4) 0px 25px 50px -12px; */
+    border: 1px solid #111;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2 ease-in;
+    z-index: 3;
+
+    & .draw_user{
+        width: 200px;
+        border: 2px solid #F0F0F4;
+        background-color: #fff;
+        display: flex;
+        padding: 15px 10px;
+        margin-top: 30px;
+        position: relative;
+
+        & .diamond_user{
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            /* border: 1px solid #111; */
+            border-style: solid;
+            border-width: 2px;
+            border-color: #F0F0F4 white white #F0F0F4;
+            transform: rotate(45deg);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            /* z-index: -1; */
+        }
+
+        & .shirt_user{
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            padding: 0 20px;
+    
+            & .no-bold{
+                color: gray;
+            }
+        }
+    }
+}
+li:hover .dropdown_user{
+    opacity: 1;
+    visibility: visible;
+    top: 60px
+}
+.dropdown_user a{
+    font-size: 10px;
+    /* border-bottom: 1px solid #000; */
+    padding-bottom: 10px;
+}
+.dropdown_user a:hover{
+    /* border-bottom: 1px solid blue; */
+    color: #000;
+}
 li:hover .dropdown{
     opacity: 1;
     visibility: visible;
@@ -200,6 +270,7 @@ h2 {
 /* CSS slideShow */
 
 .banner {
+    /* width: 1220px; */
     position: relative;
 }
 img#anh {
