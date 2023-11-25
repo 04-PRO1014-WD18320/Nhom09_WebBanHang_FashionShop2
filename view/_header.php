@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/css/style_home.css">
     <link rel="stylesheet" href="../assets/css/css.css">
     <link rel="stylesheet" href="../assets/fontawesome/css/all.css">
+    <link rel="stylesheet" href="../assets/css/thanhtoan.css">
     <link rel="shortcut icon" href="../assets/img/favicon-32x32.png" type="image/x-icon">
     <script src="../assets/js/library-jquery.js"></script>
     <script src="../assets/js/slideshow_chitietsp.js"></script>
@@ -92,7 +93,7 @@
             <li><a href='index.php?act=dangnhap'><i class='fa-solid fa-user'></i></a></li>
             " : ""
             ?>
-            <li><a href="index.php?act=giohang"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li><a href="index.php?act=cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
          </ul>
       </div>
    </nav>
