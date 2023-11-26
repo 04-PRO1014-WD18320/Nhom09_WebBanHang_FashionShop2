@@ -93,7 +93,8 @@
             <li><a href='index.php?act=dangnhap'><i class='fa-solid fa-user'></i></a></li>
             " : ""
             ?>
-            <li><a href="index.php?act=cart&iduser=<?=$_SESSION['iduser']?>"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li><a href="<?php echo(isset($_SESSION['iduser']))?
+            'index.php?act=cart&iduser='.$_SESSION['iduser'].'':''?>"><i class="fa-solid fa-cart-shopping"></i></a></li>
          </ul>
       </div>
    </nav>
