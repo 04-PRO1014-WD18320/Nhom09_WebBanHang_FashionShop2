@@ -43,38 +43,38 @@
                                 </select>
                                 <input type="submit" name="clickOK" value="GO">
                             </form> -->
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" width="100%" cellspacing="0">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th></th>
-                                            <th>Mã loại</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Hình ảnh</th>
-                                            <th>Giá niêm yết</th>
-                                            <th>Giá bán</th>
-                                            <th>Số lượng</th>
-                                            <th>Màu sắc</th>
-                                            <th>Kích thước</th>
-                                            <th>Lượt xem</th>
-                                            <th>Danh mục</th>
-                                            <th>Trạng thái</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                            foreach($list_sp as $sp){
-                                                extract($sp);
-                                                // print_r($sp);
-                                                $tinh_trang= '';
-                                                $tinh_trang = ($so_luong <= 0)? "hết hàng" : "còn hàng";
-                                                $suasp = "index.php?act=update_sp&idsp=" . $id;
-                                                $hard_delete = "index.php?act=hard_delete&idsp=" . $id;
-                                                $soft_delete = "index.php?act=soft_delete&idsp=" . $id;
-                                                $hinhpath = "../upload/".$img;
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th></th>
+                            <th>Mã loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Hình ảnh</th>
+                            <th>Giá niêm yết</th>
+                            <th>Giá bán</th>
+                            <th>Số lượng</th>
+                            <th>Màu sắc</th>
+                            <th>Kích thước</th>
+                            <th>Lượt xem</th>
+                            <th>Danh mục</th>
+                            <th>Trạng thái</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($list_sp as $sp) {
+                            extract($sp);
+                            // print_r($sp);
+                            $tinh_trang = '';
+                            $tinh_trang = ($so_luong <= 0) ? "hết hàng" : "còn hàng";
+                            $suasp = "index.php?act=update_sp&idsp=" . $id;
+                            $hard_delete = "index.php?act=hard_delete&idsp=" . $id;
+                            $soft_delete = "index.php?act=soft_delete&idsp=" . $id;
+                            $hinhpath = "../upload/" . $img;
 
                             if (is_file($hinhpath)) {
                                 $hinhpath = "<img src= '" . $hinhpath . "' width='100px' height='100px'>";
@@ -85,19 +85,19 @@
                             echo '
                                                 <tr>
                                                     <td class="align-middle text-center"><input type="checkbox" name="select" id=""></td>
-                                                    <td class=" align-middle text-center">' .$id. '</td>
-                                                    <td class="col-3 align-middle">' .$name. '</td>
-                                                    <td class="col-2 align-middle">' .$hinhpath.'</td>
-                                                    <td class="col-2 align-middle">' .$price_niemyet. '</td>
-                                                    <td class="col-2 align-middle">' .$price_sale. '</td>
-                                                    <td class="col-1 align-middle">'.$so_luong.'</td>                 
-                                                    <td  class="col-1 align-middle">'.$mau_sac.'</td>
-                                                    <td  class="col-1 align-middle">'.$kich_thuoc.'</td>
-                                                    <td  class="col-1 align-middle">' .$luotxem. '</td>
-                                                    <td  class="col-1 align-middle">' .$iddm. '</td>
-                                                    <td class="col-1 align-middle">' .$tinh_trang. '</td>
-                                                    <td class="col-2 align-middle"><a href="'.$suasp.'"><button class="btn btn-secondary btn-sm">Sửa</button></a> | 
-                                                    <a href="'.$hard_delete.'"><button class="btn btn-secondary btn-sm">Xóa</button></a></td>
+                                                    <td class=" align-middle text-center">' . $id . '</td>
+                                                    <td class="col-3 align-middle">' . $name . '</td>
+                                                    <td class="col-2 align-middle">' . $hinhpath . '</td>
+                                                    <td class="col-2 align-middle">' . $price_niemyet . '</td>
+                                                    <td class="col-2 align-middle">' . $price_sale . '</td>
+                                                    <td class="col-1 align-middle">' . $so_luong . '</td>                 
+                                                    <td  class="col-1 align-middle">' . $mau_sac . '</td>
+                                                    <td  class="col-1 align-middle">' . $kich_thuoc . '</td>
+                                                    <td  class="col-1 align-middle">' . $luotxem . '</td>
+                                                    <td  class="col-1 align-middle">' . $iddm . '</td>
+                                                    <td class="col-1 align-middle">' . $tinh_trang . '</td>
+                                                    <td class="col-2 align-middle"><a href="' . $suasp . '"><button class="btn btn-secondary btn-sm">Sửa</button></a> | 
+                                                    <a href="' . $hard_delete . '"><button class="btn btn-secondary btn-sm">Xóa</button></a></td>
                                                 </tr>
                                                 ';
                         }
