@@ -73,7 +73,10 @@
                 foreach($count_sp_add as $count_sp){
                     
                     $i+=$count_sp['so_sp'];
+                   
                 }
+                // $_SESSION['so_sp_giohang'] = $so_sp = $i;
+                // echo $so_sp;
                 // echo $i.'<br>';
                 for($j=0; $j<$i; $j++){
                     // echo $ds_sp_thanhtoan[$j]['id_bienthe'];
@@ -88,7 +91,7 @@
                         <span>'.number_format($ds_sp_thanhtoan[$j]['price_sale']*$ds_sp_thanhtoan[$j]['so_luong']).'đ</span>
                     </div>
                     ';
-                    $tong+= $ds_sp_thanhtoan[$j]['price_sale'];
+                    $tong+= $ds_sp_thanhtoan[$j]['price_sale']*$ds_sp_thanhtoan[$j]['so_luong'];
                     // $tong+= 25000; 
                 }
                 
