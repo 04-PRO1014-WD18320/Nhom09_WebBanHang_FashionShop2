@@ -102,7 +102,7 @@
                     <input type="text" hidden name="id_mau_sac" id="selected_color_id">
                     <input type="text" hidden name="id_kich_thuoc" id="selected_size_id">
                     <input type="text" hidden name="id_bt_sanpham" value="" id="id_bt_sanpham">
-
+                    
                     <?php echo (empty($_SESSION['iduser'])) ? "Bạn cần đăng nhập để mua hàng" : '' ?>
                     <button type='submit' onclick="datMua()" name='btnSubmit'>Thêm vào giỏ hàng</button>
                 </div>
