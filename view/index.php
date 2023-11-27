@@ -80,11 +80,9 @@ include "_header.php";
                         $hinhanh = load_anhcon($_GET['idsp']);
                         $sanpham_tt = sanpham_tuongtu($_GET['idsp']);
                         tangluotxem($_GET['idsp']);
-                        // $colors = load_mausac($_GET['idsp']);
-                        // $sizes = load_kichthuoc($_GET['idsp']);
                         $bien_the = load_id_bienthe($_GET['idsp']);
                     }
-                    if (isset($_POST['btnSubmit'])) {
+                    if (isset($_POST['btnBinhluan'])) {
                         add_binhluan($_POST['noidung'], $_POST['iduser'], $_POST['idpro'], $_POST['datetime']);
                         header("Location: ?act=chitietsp&idsp=" . $_GET['idsp']);
                     }
@@ -94,11 +92,9 @@ include "_header.php";
 
             case "add_to_cart": {
                     if (isset($_POST['btnSubmit'])) {
-                        // $id_user = $_POST['id_user'];
 
                         $id_user = $_POST['iduser'];
                         $id_bt_sanpham = $_POST['id_bt_sanpham'];
-                        // $id_bt_sanpham = 14;
                         $so_luong = $_POST['so_luong'];
 
                         $dscart = loadall_cart($_POST['iduser']);
