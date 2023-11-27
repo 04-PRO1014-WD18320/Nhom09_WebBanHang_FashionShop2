@@ -3,9 +3,9 @@
 function pdo_get_connection(){
     $servername = "localhost";
     $username = "root";   //tk root là tk có quyền quản lý cao nhất
-    $password = "Hadaiduong2209#";
+    $password = "";
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=duan1_09_3", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=duan1_09", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // echo "Connected successfully";
