@@ -19,6 +19,7 @@ function dangxuat()
         unset($_SESSION['user']);
         unset($_SESSION['iduser']);
         unset($_SESSION['role']);
+        unset($_SESSION['so_sp_giohang']);
         header('location:index.php');
     }
 }

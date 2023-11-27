@@ -11,6 +11,30 @@ function tim_sanpham_theodm($iddm)
     $result = pdo_query($sql);
     return $result;
 }
+function tim_sanpham_theo_big_dm($id_b_dm)
+{
+    $sql = "SELECT sanpham.id,
+                    sanpham.name,
+                    sanpham.img,
+                    sanpham.price_niemyet,
+                    sanpham.price_sale,
+                    bien_the.so_luong,
+                    mau_sac.value AS mau_sac,
+                    kich_thuoc.value AS kich_thuoc,
+                    sanpham.luotxem, 
+                    sanpham.iddm,
+                    danhmuc.id_dm as id_b_dm
+                FROM sanpham
+                JOIN bien_the ON sanpham.id = bien_the.id_sp
+                JOIN mau_sac ON bien_the.id_mau_sac = mau_sac.id
+                JOIN kich_thuoc ON bien_the.id_kich_thuoc = kich_thuoc.id 
+                JOIN danhmuc ON danhmuc.id = sanpham.iddm
+
+                where danhmuc.id_dm = '".$id_b_dm."'GROUP BY sanpham.name";
+                 
+    $result = pdo_query($sql);
+    return $result;
+}
 function danhsach_danhmuc_ao($id_dm)
 {
     $sql = "SELECT * FROM danhmuc WHERE id_dm = $id_dm";
