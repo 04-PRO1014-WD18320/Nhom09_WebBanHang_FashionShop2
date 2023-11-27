@@ -102,7 +102,7 @@
                     <input type="text" hidden name="id_mau_sac" id="selected_color_id">
                     <input type="text" hidden name="id_kich_thuoc" id="selected_size_id">
                     <input type="text" hidden name="id_bt_sanpham" value="" id="id_bt_sanpham">
-
+                    
                     <?php echo (empty($_SESSION['iduser'])) ? "Bạn cần đăng nhập để mua hàng" : '' ?>
                     <button type='submit' onclick="datMua()" name='btnSubmit'>Thêm vào giỏ hàng</button>
                 </div>
@@ -142,28 +142,35 @@
         </div>
 
         <div class="box-content">
-            <div class="name_bl">
-                <i class="fa-solid fa-user"></i> <span class='name_kh_bl'>Hà Đại Dương</span>
-                <p>2023-20-10 15:00:00| <span>Phân loại hàng: Áo bomber màu đen size L </span></p>
-            </div>
-            <div class="noidung_bl">
-                <p>Sản phẩm rất tốt, dùng 3 ngày là rách </p>
-            </div>
+            <?php foreach ($dsbl as $key => $value) : ?>
+                <div class="name_bl">
+                    <i class="fa-solid fa-user"></i> <span class='name_kh_bl'><?= $value['user'] ?></span>
+                    <p><?= $value['ngaybinhluan'] ?>| <span>Phân loại hàng: <?= $value['ten_sp'] ?> </span></p>
+                </div>
+                <div class="noidung_bl">
+                    <p><?= $value['noidung'] ?></p>
+                </div>
+            <?php endforeach; ?>
 
 
         </div>
         <div class="form_bl">
-            <form action="">
+        
+            <form action="?act=chitietsp&idsp=<?= $_GET['idsp'] ?>" method='post'>
                 <i class="fa-solid fa-user"></i>
-                <input type="text" name="content_bl" placeholder="Nhập bình luận của bạn...">
-                <button type='submit' name='btnSubmit'>Gửi bình luận</button>
+                <input type="text" name="noidung" placeholder="Nhập bình luận của bạn...">
+                <input type="text" hidden  name="iduser" value="<?php echo $_SESSION['iduser']; ?>">
+                <input type="text" hidden name='idpro' value="<?php echo $_GET['idsp'] ?>">
+                <input type="datetime" hidden name='datetime' value="<?php 
+                $currentDateTime = date('d-m-y H:i:s', strtotime('+6 hours'));
+                echo $currentDateTime;
+                            ?>">
+                <button type='submit' name='btnBinhluan'>Gửi bình luận</button>
             </form>
-
+          
         </div>
-
-
-
     </div>
+
     <div class='see_more' class="row mt">
         <h3>Xem thêm sản phẩm tương tự:</h3>
         <!-- //Xuất các sanpham cùng loại lên , cùng iddm  -->
@@ -193,7 +200,7 @@
 
     </div>
 </div>
-</div>
+
 </body>
 
 <script>

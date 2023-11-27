@@ -18,7 +18,6 @@ function delete_binhluan($idbl)
 {
     $sql = "DELETE FROM binhluan WHERE id =" . $idbl;
     pdo_execute($sql);
-    
 }
 
 function edit_binhluan($id, $noidung, $user, $name, $ngaybinhluan)
@@ -42,7 +41,13 @@ function add_binhluan($noidung, $iduser, $idpro, $datetime)
 
 function load_binhluan($idpro)
 {
-    $sql = "SELECT * FROM binhluan JOIN sanpham on sanpham.id = binhluan.idpro join taikhoan on taikhoan.id = binhluan.iduser where binhluan.idpro = '" . $idpro . "' order by binhluan.id desc";
+    $sql = "SELECT binhluan.*,
+    sanpham.name AS ten_sp ,
+    taikhoan.user AS user
+       FROM binhluan 
+         JOIN sanpham on sanpham.id = binhluan.idpro 
+         join taikhoan on taikhoan.id = binhluan.iduser 
+         where binhluan.idpro = '" . $idpro . "' order by binhluan.id desc";
 
     $result = pdo_query($sql);
     return $result;
