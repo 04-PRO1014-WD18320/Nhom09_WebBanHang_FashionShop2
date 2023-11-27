@@ -7,7 +7,7 @@
     </div>
 </section>
 
-<section class="hotSale">
+<section class="hotSale hotSale1">
     <div align="center" class="box-title">
         <h2>TOP 5 SẢN PHẨM YÊU THÍCH</h2>
         <!-- <hr> -->
@@ -39,7 +39,7 @@
 
 
 <?php foreach ($dsdm as $i => $dm) : ?>
-    <section class="product">
+    <section class="product product_dm">
         <div class="box-title">
             <h2><?php echo $dm['name'] ?></h2>
             <hr>
@@ -73,3 +73,49 @@
     </section>
 <?php endforeach; ?>
 
+
+<?php if (isset($keyword) || isset($_GET['iddm'])) :  ?>
+    <style>
+        ._banner,
+        .hotSale1,
+        .product_dm {
+            display: none;
+        }
+    </style>
+
+    <div class="hotSale hotSale2">
+        <div class="url">
+           
+            <!-- <a href="?act=home"><?php echo "Trang chủ" . " / Kết quả tìm kiếm cho '$keyword' " ?></a> -->
+           
+        </div>
+        <div class="post-item">
+
+            <?php
+            foreach ($dssp as $k => $sp_timkiem) : ?>
+                <div class="prod">
+                    <a class="img-prod" href="?act=chitietsp&idsp=<?php echo $sp_timkiem['id'] ?>">
+                        <img src="../assets/img/<?php echo $sp_timkiem['img'] ?>" alt="">
+                    </a>
+                    <br>
+                    <a href="?act=chitietsp&idsp=<?php echo $sp_timkiem['id'] ?>" class="name-prod"><?php echo $sp_timkiem['name'] ?></a> <br>
+                    <a class="price">
+                        <span><?php echo number_format($sp_timkiem['price_niemyet'])  ?>đ</span>
+                        <?php echo number_format($sp_timkiem['price_sale'])  ?>đ</a> <br>
+                    <span class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </span> <br>
+                    <span class="favourite">Yêu thích <i class="fa-regular fa-heart"></i> </span>
+                </div>
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+
+<?php endif; ?>
