@@ -9,7 +9,7 @@
             <div id="wrapper">
                 <div id="wp-slider">
                     <div class="show-picture">
-                        <img src="../upload/<?php echo $sanpham['img'] ?>" alt="">
+                        <img src="../assets/img/<?php echo $sanpham['img'] ?>" alt="">
                         <div class="slider-nav">
                             <div class="prev-btn">
                                 <i class="fa-solid fa-angle-left"></i>
@@ -21,7 +21,7 @@
                     </div>
                     <ul class="list-thumb">
                         <?php foreach ($hinhanh as $img_con) : extract($img_con); ?>
-                            <li class="thumb-item"><a><img src="../upload/<?php echo $url ?> ?>" alt=""></a></li>
+                            <li class="thumb-item"><a><img src="../assets/img/<?php echo $url ?> ?>" alt=""></a></li>
                         <?php endforeach; ?>
 
                     </ul>
@@ -109,17 +109,8 @@
             </form>
 
             <div class="buy_now">
-                <form action="?act=mua_ngay" method="post"> 
-
-                    <input type="text" hidden name="iduser" value="<?php echo (empty($_SESSION['iduser'])) ? "" : $_SESSION['iduser'] ?>">
-                    <input type="text" hidden name="id" value="<?= $sanpham['id']  ?>">
-                    <input type="text" hidden name="name" value="<?= $sanpham['name']  ?>">
-                    <input type="text" hidden name="img" value="<?= $sanpham['img']  ?>">
-                    <input type="text" hidden name="price_sale" value="<?= $sanpham['price_sale'] ?>">
-                    <input type="text" hidden name="id_mau_sac" id="selected_color_id">
-                    <input type="text" hidden name="id_kich_thuoc" id="selected_size_id">
-                    <input type="text" hidden name="id_bt_sanpham" value="" id="id_bt_sanpham">
-                    <button type='submit' class="buy-now" name='submit'>Mua ngay</button>
+                <form action="?act=buy_now" method="post">
+                    <button type='submit' class="buy-now" name='btnSubmit'>Mua ngay</button>
                 </form>
             </div>
 
@@ -142,35 +133,28 @@
         </div>
 
         <div class="box-content">
-            <?php foreach ($dsbl as $key => $value) : ?>
-                <div class="name_bl">
-                    <i class="fa-solid fa-user"></i> <span class='name_kh_bl'><?= $value['user'] ?></span>
-                    <p><?= $value['ngaybinhluan'] ?>| <span>Phân loại hàng: <?= $value['ten_sp'] ?> </span></p>
-                </div>
-                <div class="noidung_bl">
-                    <p><?= $value['noidung'] ?></p>
-                </div>
-            <?php endforeach; ?>
+            <div class="name_bl">
+                <i class="fa-solid fa-user"></i> <span class='name_kh_bl'>Hà Đại Dương</span>
+                <p>2023-20-10 15:00:00| <span>Phân loại hàng: Áo bomber màu đen size L </span></p>
+            </div>
+            <div class="noidung_bl">
+                <p>Sản phẩm rất tốt, dùng 3 ngày là rách </p>
+            </div>
 
 
         </div>
         <div class="form_bl">
-        
-            <form action="?act=chitietsp&idsp=<?= $_GET['idsp'] ?>" method='post'>
+            <form action="">
                 <i class="fa-solid fa-user"></i>
-                <input type="text" name="noidung" placeholder="Nhập bình luận của bạn...">
-                <input type="text" hidden  name="iduser" value="<?php echo $_SESSION['iduser']; ?>">
-                <input type="text" hidden name='idpro' value="<?php echo $_GET['idsp'] ?>">
-                <input type="datetime" hidden name='datetime' value="<?php 
-                $currentDateTime = date('d-m-y H:i:s', strtotime('+6 hours'));
-                echo $currentDateTime;
-                            ?>">
-                <button type='submit' name='btnBinhluan'>Gửi bình luận</button>
+                <input type="text" name="content_bl" placeholder="Nhập bình luận của bạn...">
+                <button type='submit' name='btnSubmit'>Gửi bình luận</button>
             </form>
-          
-        </div>
-    </div>
 
+        </div>
+
+
+
+    </div>
     <div class='see_more' class="row mt">
         <h3>Xem thêm sản phẩm tương tự:</h3>
         <!-- //Xuất các sanpham cùng loại lên , cùng iddm  -->
@@ -200,7 +184,7 @@
 
     </div>
 </div>
-
+</div>
 </body>
 
 <script>

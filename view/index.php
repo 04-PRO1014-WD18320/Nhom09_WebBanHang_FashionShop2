@@ -43,6 +43,7 @@ include "_header.php";
             case "dangnhap":
                 if (isset($_POST['dangnhap'])) {
                     $loginMess = dangnhap($_POST['user'], $_POST['pass']);
+                    // header('location:index.php');
                 }
                 include "login/login.php";
                 break;
@@ -72,6 +73,13 @@ include "_header.php";
                     include "home.php";
                     break;
                 }
+            case 'tim_b_dm': {
+                if (isset($_GET['id_b_dm']) && $_GET['id_b_dm'] > 0) {
+                    $dssp = tim_sanpham_theo_big_dm($_GET['id_b_dm']);
+                }
+                include "home.php";
+                break;
+            }
 
             case "chitietsp": {
                     if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
@@ -180,6 +188,21 @@ include "_header.php";
                     echo $id_user . '|' . $diachi;
                 }
                 include "thanhtoan.php";
+                break;
+            case 'mua_ngay':
+                if(isset($_POST['submit'])){
+                    echo $_POST['id_bt_sanpham'];
+                    $id_user = $_SESSION['iduser'];
+                    // $diachi = $_POST['tp'] . ', ' . $_POST['qh'] . ', ' . $_POST['xp'] . ', ' . $_POST['dchi'];
+                    // $name = $_POST['name'];
+                    // $sdt = $_POST['phone'];
+                    // $email = $_POST['email'];
+                    // $note = $_POST['note'];
+                    // $tong_thanhtoan = $_POST['tong'];
+                }
+                
+
+                include 'thanhtoan.php';
                 break;
             case 'hoanthanh_tt':
                 include "thanhtoan_tc.php";

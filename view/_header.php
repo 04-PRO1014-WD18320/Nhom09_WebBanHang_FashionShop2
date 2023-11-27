@@ -34,34 +34,36 @@
             <div class="dropdown">
                <div class="draw">
                   <div class="diamond"></div>
-                  <div class="shirt">
-                     <a href="#" class="bold">Áo</a>
-                     <?php
-                     $dsdm_ao = danhsach_danhmuc_ao('1');
-                     foreach ($dsdm_ao as $key => $value) : ?>
-                        <a href="?act=timdm&iddm=<?= $value['id'] ?>" class="no-bold"><?= $value['name'] ?></a>
-                     <?php endforeach; ?>
-                  </div>
-                  <div class="shirt">
-                     <a href="" class="bold">Quần</a>
-                     <?php
-                     $dsdm_ao = danhsach_danhmuc_ao('2');
-                     foreach ($dsdm_ao as $key => $value) : ?>
-                        <a href="?act=timdm&iddm=<?= $value['id'] ?>" class="no-bold"><?= $value['name'] ?></a>
-                     <?php endforeach; ?>
-                  
-                  </div>
-                  <div class="shirt">
-                     <a href="" class="bold">Phụ kiện</a>
-                     <a href="" class="no-bold">Túi</a>
-                  </div>
+                  <?php
+                      $dsdm_ao = danhsach_danhmuc_ao('1');
+                      $dsdm_quan = danhsach_danhmuc_ao('2');
+                      $dsdm_phukien = danhsach_danhmuc_ao('3');
+                      echo '
+                      <div class="shirt">
+                        <a href="?act=tim_b_dm&id_b_dm=1" class="bold">Áo</a>';
+                        foreach($dsdm_ao as $dm_a){
+                           extract($dm_a);
+                           echo '<a href="?act=timdm&iddm='.$id.'" class="no-bold">'.$name.'</a>';
+                        }
+                        echo '</div>';
+                     echo '<div class="shirt">
+                              <a href="?act=tim_b_dm&id_b_dm=2" class="bold">Quần</a>';
+                              foreach($dsdm_quan as $dm_q){
+                                 extract($dm_q);
+                                 echo '<a href="?act=timdm&iddm='.$id.'" class="no-bold">'.$name.'</a>';
+                              }
+                           echo '</div>';
+                     echo '<div class="shirt">
+                              <a href="?act=tim_b_dm&id_b_dm=3" class="bold">Phụ kiện</a>';
+                              foreach($dsdm_phukien as $dm_pk){
+                                 extract($dm_pk);
+                                 echo '<a href="?act=timdm&iddm='.$id.'" class="no-bold">'.$name.'</a>';
+                              }
+                           echo '</div>';
+                  ?>
                </div>
 
-               <!-- <ul>
-                  <?php foreach ($dsdm as $key => $value) : ?>
-                     <li><a href="?act=timdm&iddm=<?php echo $value['id'] ?>"> <?php echo $value['name'] ?></a></li>
-                  <?php endforeach; ?>
-               </ul> -->
+               
             </div>
          </li>
          <li><a href="index.php?act=sanpham">CONTACT</a></li>
@@ -99,15 +101,13 @@
                      </div>
                   </div>
                </div>
-
             </li>
             <?php
             echo (empty($_SESSION['user'])) ? "
             <li><a href='index.php?act=dangnhap'><i class='fa-solid fa-user'></i></a></li>
             " : ""
             ?>
-            <li><a href="<?php echo (isset($_SESSION['iduser'])) ?
-                              'index.php?act=cart&iduser=' . $_SESSION['iduser'] . '' : '' ?>"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li><a href="<?php echo (isset($_SESSION['iduser'])) ?'index.php?act=cart&iduser=' . $_SESSION['iduser'] : '' ?>"><i class="fa-solid fa-cart-shopping"></i></a></li>
          </ul>
       </div>
    </nav>
