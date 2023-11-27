@@ -415,7 +415,7 @@ include 'menu.php';
                 include "dapan/edit-dapan.php";
                 break;
             case 'back-to-website':
-
+                header("location:../view/index.php");
                 break;
 
             case 'test_loadall_sp':
