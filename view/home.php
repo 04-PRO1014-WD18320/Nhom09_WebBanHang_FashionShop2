@@ -51,7 +51,7 @@
             foreach ($dssp_dm as $j => $product) : ?>
                 <div class="prod">
                     <a class="img-prod" href="?act=chitietsp&idsp=<?php echo $product['id'] ?>">
-                        <img src="../assets/img/<?php echo $product['img'] ?>" alt="">
+                        <img src="../upload/<?php echo $product['img'] ?>" alt="">
                     </a>
                     <br>
                     <a href="?act=chitietsp&idsp=<?php echo $product['id'] ?>" class="name-prod"><?php echo $product['name'] ?></a> <br>
@@ -74,7 +74,7 @@
 <?php endforeach; ?>
 
 
-<?php if (isset($keyword) || isset($_GET['iddm'])) :  ?>
+<?php if (isset($keyword) || isset($_GET['iddm']) || isset($_GET['id_b_dm'])) :  ?>
     <style>
         ._banner,
         .hotSale1,
@@ -95,7 +95,7 @@
             foreach ($dssp as $k => $sp_timkiem) : ?>
                 <div class="prod">
                     <a class="img-prod" href="?act=chitietsp&idsp=<?php echo $sp_timkiem['id'] ?>">
-                        <img src="../assets/img/<?php echo $sp_timkiem['img'] ?>" alt="">
+                        <img src="../upload/<?php echo $sp_timkiem['img'] ?>" alt="">
                     </a>
                     <br>
                     <a href="?act=chitietsp&idsp=<?php echo $sp_timkiem['id'] ?>" class="name-prod"><?php echo $sp_timkiem['name'] ?></a> <br>

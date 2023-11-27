@@ -16,6 +16,7 @@
                 <tbody>
                     <?php
                     $tong = 0;
+                    
                     foreach ($dscart as $key => $value) :
                         extract($value);
                         $tamtinh = $price_sale * $so_luong;

@@ -9,7 +9,7 @@
             <div id="wrapper">
                 <div id="wp-slider">
                     <div class="show-picture">
-                        <img src="../upload/<?php echo $sanpham['img'] ?>" alt="">
+                        <img src="../assets/img/<?php echo $sanpham['img'] ?>" alt="">
                         <div class="slider-nav">
                             <div class="prev-btn">
                                 <i class="fa-solid fa-angle-left"></i>
@@ -21,7 +21,7 @@
                     </div>
                     <ul class="list-thumb">
                         <?php foreach ($hinhanh as $img_con) : extract($img_con); ?>
-                            <li class="thumb-item"><a><img src="../upload/<?php echo $url ?> ?>" alt=""></a></li>
+                            <li class="thumb-item"><a><img src="../assets/img/<?php echo $url ?> ?>" alt=""></a></li>
                         <?php endforeach; ?>
 
                     </ul>
@@ -109,17 +109,8 @@
             </form>
 
             <div class="buy_now">
-                <form action="?act=mua_ngay" method="post"> 
-
-                    <input type="text" hidden name="iduser" value="<?php echo (empty($_SESSION['iduser'])) ? "" : $_SESSION['iduser'] ?>">
-                    <input type="text" hidden name="id" value="<?= $sanpham['id']  ?>">
-                    <input type="text" hidden name="name" value="<?= $sanpham['name']  ?>">
-                    <input type="text" hidden name="img" value="<?= $sanpham['img']  ?>">
-                    <input type="text" hidden name="price_sale" value="<?= $sanpham['price_sale'] ?>">
-                    <input type="text" hidden name="id_mau_sac" id="selected_color_id">
-                    <input type="text" hidden name="id_kich_thuoc" id="selected_size_id">
-                    <input type="text" hidden name="id_bt_sanpham" value="" id="id_bt_sanpham">
-                    <button type='submit' class="buy-now" name='submit'>Mua ngay</button>
+                <form action="?act=buy_now" method="post">
+                    <button type='submit' class="buy-now" name='btnSubmit'>Mua ngay</button>
                 </form>
             </div>
 
