@@ -1,8 +1,7 @@
 <?php
 function dangnhap($user, $pass)
 {
-    $sql = "SELECT * FROM taikhoan WHERE user = '$user' AND pass = '$pass' ";
-    
+    $sql = "SELECT * FROM taikhoan WHERE user = '$user' AND pass = '$pass' ";    
     $taikhoan = pdo_query_one($sql);
     if ($taikhoan != false) {
         $_SESSION['user'] = $taikhoan['user'];
