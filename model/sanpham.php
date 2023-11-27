@@ -268,12 +268,6 @@ function top5_sanpham()
     return $result;
 }
 
-function tim_sanpham_theodm($iddm)
-{
-    $sql = 'SELECT * FROM sanpham where iddm = ' . $iddm;
-    $result = pdo_query($sql);
-    return $result;
-}
 
 function tim_kiem_san_pham($keyword)
 {
