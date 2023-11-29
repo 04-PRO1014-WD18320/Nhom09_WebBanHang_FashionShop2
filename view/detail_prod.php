@@ -71,18 +71,30 @@
                 <div>
                     <label class='chonsize' for="size">Chọn Size:</label>
                     <?php
+                    $arrSize = [];
                     foreach ($bien_the as $key => $value) {
-                        $buttonClass = ($value['ten_size'] !== null) ? 'size-button' : 'size-button disabled';
-                        echo '<button class="' . $buttonClass . '" type="button" onclick="chonSize(\'' . $value['ten_size'] . '\')" data-size="' . $value['ten_size'] . '">' . $value['ten_size'] . '</button>';
+                        if(!in_array($value['ten_size'], $arrSize)){
+                            array_push($arrSize, $value['ten_size']);
+                        }
+                    }
+                    foreach ($arrSize as $key => $value) {
+                        $buttonClass = ($value !== null) ? 'size-button' : 'size-button disabled';
+                        echo '<button class="' . $buttonClass . '" type="button" onclick="chonSize(\'' . $value . '\')" data-size="' . $value . '">' . $value . '</button>';
                     }
                     ?>
                 </div>
                 <div class="color-bar">
                     <label class='chonmau' for="mau">Chọn màu:</label>
                     <?php
+                    $arrColor = [];
                     foreach ($bien_the as $key => $value) {
-                        $buttonClass = ($value['ten_mau'] !== null) ? 'color-button ' . $value['ten_mau'] : 'color-button disabled';
-                        echo '<button class="' . $buttonClass . '" type="button" onclick="chonMau(\'' . $value['ten_mau'] . '\')"> </button>';
+                        if(!in_array($value['ten_mau'], $arrColor)){
+                            array_push($arrColor, $value['ten_mau']);
+                        }
+                    }
+                    foreach ($arrColor as $key => $value) {
+                        $buttonClass = ($value !== null) ? 'color-button ' . $value : 'color-button disabled';
+                        echo '<button class="' . $buttonClass . '" type="button" onclick="chonMau(\'' . $value . '\')"> </button>';
                     }
                     ?>
                 </div>
@@ -102,14 +114,14 @@
                     <input type="text" hidden name="id_mau_sac" id="selected_color_id">
                     <input type="text" hidden name="id_kich_thuoc" id="selected_size_id">
                     <input type="text" hidden name="id_bt_sanpham" value="" id="id_bt_sanpham">
-                    
+
                     <?php echo (empty($_SESSION['iduser'])) ? "Bạn cần đăng nhập để mua hàng" : '' ?>
-                    <button type='submit' onclick="datMua()" name='btnSubmit'>Thêm vào giỏ hàng</button>
+                    <button type='submit'  name='btnSubmit'>Thêm vào giỏ hàng</button>
                 </div>
             </form>
 
             <div class="buy_now">
-                <form action="?act=mua_ngay" method="post"> 
+                <form action="?act=mua_ngay" method="post">
 
                     <input type="text" hidden name="iduser" value="<?php echo (empty($_SESSION['iduser'])) ? "" : $_SESSION['iduser'] ?>">
                     <input type="text" hidden name="id" value="<?= $sanpham['id']  ?>">
@@ -155,19 +167,21 @@
 
         </div>
         <div class="form_bl">
-        
-            <form action="?act=chitietsp&idsp=<?= $_GET['idsp'] ?>" method='post'>
-                <i class="fa-solid fa-user"></i>
-                <input type="text" name="noidung" placeholder="Nhập bình luận của bạn...">
-                <input type="text" hidden  name="iduser" value="<?php echo $_SESSION['iduser']; ?>">
-                <input type="text" hidden name='idpro' value="<?php echo $_GET['idsp'] ?>">
-                <input type="datetime" hidden name='datetime' value="<?php 
-                $currentDateTime = date('d-m-y H:i:s', strtotime('+6 hours'));
-                echo $currentDateTime;
-                            ?>">
-                <button type='submit' name='btnBinhluan'>Gửi bình luận</button>
-            </form>
-          
+            <?php if (isset($_SESSION['iduser'])) : ?>
+                <form action="?act=chitietsp&idsp=<?= $_GET['idsp'] ?>" method='post'>
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" name="noidung" placeholder="Nhập bình luận của bạn...">
+                    <input type="text" hidden name="iduser" value="<?php echo $_SESSION['iduser']; ?>">
+                    <input type="text" hidden name='idpro' value="<?php echo $_GET['idsp'] ?>">
+                    <input type="datetime" hidden name='datetime' value="<?php
+                                                                            $currentDateTime = date('d-m-y H:i:s', strtotime('+6 hours'));
+                                                                            echo $currentDateTime;
+                                                                            ?>">
+                    <button type='submit' name='btnBinhluan'>Gửi bình luận</button>
+                </form>
+            <?php else : ?>
+                <p class='text_red'>Bạn cần đăng nhập để bình luận</p>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -246,22 +260,28 @@
     }
 </script>
 <script>
+    var bien_the = <?php echo json_encode($bien_the); ?>; // Chuyển dữ liệu PHP thành mảng JavaScript
+
     function kiemTraSanPham() {
         var selectedSize = document.querySelector('.size-button.selected').getAttribute('data-size');
         var selectedColor = document.querySelector('.color-button.selected').classList[1];
-
-        var bien_the = <?php echo json_encode($bien_the); ?>; // Chuyển dữ liệu PHP thành mảng JavaScript
-
+        var id_bt_sanpham = null
+        var check = false
         for (var i = 0; i < bien_the.length; i++) {
             if (bien_the[i]['ten_size'] === selectedSize && bien_the[i]['ten_mau'] === selectedColor) {
-                var id_bt_sanpham = bien_the[i]['id_bt_sanpham'];
-                // alert(id_bt_sanpham);
-                // console.log(id_bt_sanpham);
-                updateIdBtSanpham(id_bt_sanpham);
-                return id_bt_sanpham;
+                id_bt_sanpham = bien_the[i]['id_bt_sanpham'];
+                //return id_bt_sanpham;
+                check = true
+                break;
             }
         }
-        return null;
+        
+        if(!check) {
+            id_bt_sanpham = null
+        }
+        //return null;
+        updateIdBtSanpham(id_bt_sanpham);
+        return id_bt_sanpham
     }
 
     document.querySelectorAll('.size-button').forEach(function(button) {
