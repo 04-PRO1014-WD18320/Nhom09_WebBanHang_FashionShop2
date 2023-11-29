@@ -301,7 +301,7 @@ a {
     padding: 5px;
 }
 
-/* Input ở ngoài  */ 
+/* Input ở ngoài  */
 .form_bl input {
     width: 300px;
     height: 28px;
@@ -659,4 +659,95 @@ input[name="input_slg_cart"] {
 .box_right form .button:hover {
     background-color: #9C9C9C;
     color: #fff;
+}
+
+/* CSS cho đơn mua  */
+.nav_donmua ul {
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+    background: aliceblue;
+    margin-top: 30px;
+}
+
+.nav_donmua ul li a {
+    text-transform: initial;
+    color: black;
+    font-size: 15px;
+}
+
+.nav_donmua ul li a:hover {
+    /* text-transform: initial; */
+    color: orange;
+}
+
+.product_donmua .trang_thai ul {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    align-items: center;
+
+}
+.product_donmua {
+    margin-bottom: 20px;
+}
+.product_donmua hr {
+    color: #9C9C9C;
+}
+
+.product_donmua .trang_thai ul li a {
+    color: black;
+    font-weight: 600;
+}
+
+.product_donmua .trang_thai ul li a span {
+    color: #10ca10;
+}
+
+.product_mua {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product_mua ._prod img {
+    width: 70px;
+    border: 1px solid rgb(197, 197, 197);
+
+}
+
+
+._prod {
+    display: flex;
+    margin-top: 10px;
+}
+
+._prod .name_prod {
+    margin-left: 15px;
+}
+
+._prod .phan_loai {
+    color: #7e7e7e;
+    font-size: 14px;
+}
+.product_mua .price_prod .price {
+    font-size: 14px;
+    margin-top: 28px;
+}
+.product_mua .price_prod .price span:first-child {
+    text-decoration: line-through;
+    color: #7e7e7e;
+}
+.product_mua .price_prod .price span:last-child {
+    /* text-decoration: line-through; */
+    color: red;
+}
+
+.product_donmua .thanh_tien {
+    display: flex;
+    justify-content: end;
+}
+.product_donmua .thanh_tien span{
+   color: red;
+   font-size: 19px;
 }

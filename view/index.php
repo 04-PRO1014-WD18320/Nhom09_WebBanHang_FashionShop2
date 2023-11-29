@@ -74,12 +74,12 @@ include "_header.php";
                     break;
                 }
             case 'tim_b_dm': {
-                if (isset($_GET['id_b_dm']) && $_GET['id_b_dm'] > 0) {
-                    $dssp = tim_sanpham_theo_big_dm($_GET['id_b_dm']);
+                    if (isset($_GET['id_b_dm']) && $_GET['id_b_dm'] > 0) {
+                        $dssp = tim_sanpham_theo_big_dm($_GET['id_b_dm']);
+                    }
+                    include "home.php";
+                    break;
                 }
-                include "home.php";
-                break;
-            }
 
             case "chitietsp": {
                     if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
@@ -89,6 +89,7 @@ include "_header.php";
                         $sanpham_tt = sanpham_tuongtu($_GET['idsp']);
                         tangluotxem($_GET['idsp']);
                         $bien_the = load_id_bienthe($_GET['idsp']);
+                    
                     }
                     if (isset($_POST['btnBinhluan'])) {
                         add_binhluan($_POST['noidung'], $_POST['iduser'], $_POST['idpro'], $_POST['datetime']);
@@ -190,7 +191,7 @@ include "_header.php";
                 include "thanhtoan.php";
                 break;
             case 'mua_ngay':
-                if(isset($_POST['submit'])){
+                if (isset($_POST['submit'])) {
                     echo $_POST['id_bt_sanpham'];
                     $id_user = $_SESSION['iduser'];
                     // $diachi = $_POST['tp'] . ', ' . $_POST['qh'] . ', ' . $_POST['xp'] . ', ' . $_POST['dchi'];
@@ -200,13 +201,18 @@ include "_header.php";
                     // $note = $_POST['note'];
                     // $tong_thanhtoan = $_POST['tong'];
                 }
-                
+
 
                 include 'thanhtoan.php';
                 break;
             case 'hoanthanh_tt':
                 include "thanhtoan_tc.php";
                 break;
+
+            case 'donmua': {
+                    include 'don_mua.php';
+                    break;
+                }
             default: {
                     include "home.php";
                     break;
