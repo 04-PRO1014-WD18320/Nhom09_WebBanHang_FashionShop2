@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 24, 2023 lúc 06:13 AM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.0.28
+-- Thời gian đã tạo: Th10 29, 2023 lúc 01:19 PM
+-- Phiên bản máy phục vụ: 10.4.24-MariaDB
+-- Phiên bản PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `bien_the` (
   `id_mau_sac` int(11) NOT NULL,
   `id_kich_thuoc` int(11) NOT NULL,
   `so_luong` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `bien_the`
@@ -42,9 +42,8 @@ CREATE TABLE `bien_the` (
 INSERT INTO `bien_the` (`id`, `id_sp`, `id_mau_sac`, `id_kich_thuoc`, `so_luong`) VALUES
 (6, 27, 1, 3, 1),
 (7, 27, 1, 3, 1),
-(8, 29, 1, 3, 19),
 (13, 30, 1, 3, 20),
-(14, 30, 3, 3, 19),
+(14, 30, 3, 1, 19),
 (16, 31, 1, 3, 31),
 (17, 31, 2, 4, 9),
 (18, 31, 2, 3, 3),
@@ -70,15 +69,24 @@ CREATE TABLE `binhluan` (
   `noidung` varchar(255) NOT NULL COMMENT 'Nội dung bình luận',
   `iduser` int(10) NOT NULL COMMENT 'Id tài khoản',
   `idpro` int(10) NOT NULL COMMENT 'Id sản phẩm',
-  `ngaybinhluan` datetime DEFAULT NULL COMMENT 'Ngày bình luận'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `ngaybinhluan` varchar(50) DEFAULT NULL COMMENT 'Ngày bình luận'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `binhluan`
 --
 
 INSERT INTO `binhluan` (`id`, `noidung`, `iduser`, `idpro`, `ngaybinhluan`) VALUES
-(30, 'ewsdfgnhmm', 4, 29, '2023-11-16 14:13:24');
+(44, 'Đẹp KENG', 1, 31, '27-11-23 16:27:27'),
+(46, 'ib shop ơi', 1, 33, '27-11-23 16:28:08'),
+(50, 'áo đẹp voãi ò', 42, 30, '27-11-23 20:21:53'),
+(52, 'áo đẹp quá', 42, 33, '27-11-23 20:22:26'),
+(54, 'Shop ko còn size XXL à, mình định mua cho thằng bạn', 42, 40, '27-11-23 20:22:51'),
+(55, 'ib shop', 41, 30, '27-11-23 21:41:15'),
+(56, 'Mn đừng mua, áo này giặt máy 2 lần là hỏng =((', 42, 30, '27-11-23 21:44:18'),
+(57, 'áo đẹp cá ', 43, 27, '28-11-23 10:29:21'),
+(58, 'Sản phẩm tốt, rất đáng mua ', 41, 34, '28-11-23 15:04:57'),
+(59, 'Xịn xò luôn <3 <3', 1, 34, '29-11-23 19:12:57');
 
 -- --------------------------------------------------------
 
@@ -98,7 +106,12 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `id_user`, `id_bt_sanpham`, `soluong`) VALUES
-(21, 1, 8, 5);
+(153, 42, 32, 4),
+(156, 42, 32, 4),
+(158, 43, 28, 2),
+(161, 41, 25, 2),
+(164, 41, 17, 3),
+(188, 1, 26, 2);
 
 -- --------------------------------------------------------
 
@@ -115,7 +128,27 @@ CREATE TABLE `chitiet_donhang` (
   `url_img` varchar(225) NOT NULL,
   `tensp` varchar(225) NOT NULL,
   `ngay_mua` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `chitiet_donhang`
+--
+
+INSERT INTO `chitiet_donhang` (`id`, `id_donhang`, `id_bt_sanpham`, `so_luong`, `gia`, `url_img`, `tensp`, `ngay_mua`) VALUES
+(1, 2, 30, 1, 160000, '', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', '2023-11-26'),
+(2, 2, 30, 1, 160000, '', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', '2023-11-26'),
+(5, 5, 31, 5, 165000, '', 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie', '2023-11-28'),
+(6, 5, 30, 3, 160000, '', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', '2023-11-28'),
+(7, 6, 30, 3, 160000, '', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', '2023-11-28'),
+(10, 9, 30, 3, 160000, '', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', '2023-11-28'),
+(11, 9, 31, 1, 165000, '', 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie', '2023-11-28'),
+(12, 10, 30, 3, 160000, '', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', '2023-11-28'),
+(13, 11, 31, 3, 165000, '', 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie', '2023-11-28'),
+(14, 12, 31, 3, 165000, '', 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie', '2023-11-28'),
+(15, 14, 30, 1, 160000, '', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', '2023-11-29'),
+(16, 15, 30, 3, 160000, '', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', '2023-11-29'),
+(17, 16, 31, 3, 165000, '', 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie', '2023-11-29'),
+(18, 16, 30, 2, 160000, '', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', '2023-11-29');
 
 -- --------------------------------------------------------
 
@@ -127,7 +160,7 @@ CREATE TABLE `danhmuc` (
   `id` int(11) NOT NULL COMMENT 'Id danh mục',
   `name` varchar(255) NOT NULL COMMENT 'Tên danh mục',
   `id_dm` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `danhmuc`
@@ -138,9 +171,7 @@ INSERT INTO `danhmuc` (`id`, `name`, `id_dm`) VALUES
 (2, 'polo', 1),
 (7, 'hoodie', 1),
 (8, 'áo khoác', 1),
-(9, 'short', 2),
-(10, 'pant', 2),
-(12, 'túi', 3);
+(9, 'short', 2);
 
 -- --------------------------------------------------------
 
@@ -151,16 +182,16 @@ INSERT INTO `danhmuc` (`id`, `name`, `id_dm`) VALUES
 CREATE TABLE `donhang` (
   `id` int(11) NOT NULL COMMENT 'Id đơn hàng',
   `id_user` int(11) DEFAULT NULL COMMENT 'Id khách hàng',
-  `address` varchar(255) NOT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `sdt` int(11) NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `phuongthuctt` enum('Trả tiền khi nhận hàng','Thanh toán online') NOT NULL COMMENT '1.Thanh toán khi nhận hàng 2.Thanh toán online',
+  `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phuongthuctt` enum('Trả tiền khi nhận hàng','Thanh toán online') COLLATE utf8_unicode_ci NOT NULL COMMENT '1.Thanh toán khi nhận hàng 2.Thanh toán online',
   `ngay_dat_hang` datetime DEFAULT NULL,
   `tong` float NOT NULL,
-  `status` enum('Chờ xác nhận','Đã xác nhận','Đang giao hàng','Đã giao hàng') DEFAULT NULL COMMENT 'Trạng thái đơn hàng',
-  `receive_name` varchar(255) DEFAULT NULL COMMENT 'Tên người nhận ',
-  `receive_address` varchar(255) DEFAULT NULL COMMENT 'Địa chỉ nhận',
-  `receive_tel` varchar(50) DEFAULT NULL COMMENT 'SĐT nhận'
+  `status` enum('Chờ xác nhận','Đã xác nhận','Đang giao hàng','Hoàn thành') COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Trạng thái đơn hàng',
+  `receive_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Tên người nhận ',
+  `receive_address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Địa chỉ nhận',
+  `receive_tel` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'SĐT nhận'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -168,7 +199,21 @@ CREATE TABLE `donhang` (
 --
 
 INSERT INTO `donhang` (`id`, `id_user`, `address`, `sdt`, `email`, `phuongthuctt`, `ngay_dat_hang`, `tong`, `status`, `receive_name`, `receive_address`, `receive_tel`) VALUES
-(1, 17, 'HN', 987654321, 'hyuduc', 'Trả tiền khi nhận hàng', NULL, 12000000, 'Chờ xác nhận', NULL, NULL, NULL);
+(2, 1, 'Hà nội, Hà nội, Hà nội, Chương Mỹ, Hà Nội City', 973657594, 'sonnvph33874@fpt.edu.vn', 'Trả tiền khi nhận hàng', '2023-11-26 00:00:00', 345000, 'Chờ xác nhận', NULL, NULL, NULL),
+(3, 43, 'Hà nội, Hà nội, Hà nội, Chương Mỹ, Hà Nội City', 98765432, 'anhsongoku123@gmail.com', 'Trả tiền khi nhận hàng', '2023-11-28 00:00:00', 485000, 'Chờ xác nhận', NULL, NULL, NULL),
+(4, 43, 'Hà nội, Hà nội, Hà nội, Chương Mỹ, Hà Nội City', 98765432, 'anhsongoku123@gmail.com', 'Trả tiền khi nhận hàng', '2023-11-28 00:00:00', 485000, 'Chờ xác nhận', NULL, NULL, NULL),
+(5, 41, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-11-28 00:00:00', 1330000, 'Chờ xác nhận', NULL, NULL, NULL),
+(6, 41, 'Hà nội, Hà nội, Hà nội, Chương Mỹ, Hà Nội City', 973657594, 'sonnvph33874@fpt.edu.vn', 'Trả tiền khi nhận hàng', '2023-11-28 00:00:00', 505000, 'Chờ xác nhận', NULL, NULL, NULL),
+(7, 41, 'Hà nội, Hà nội, Hà nội, Chương Mỹ, Hà Nội City', 973657594, 'anhsongoku123@gmail.com', 'Trả tiền khi nhận hàng', '2023-11-28 00:00:00', 622000, 'Chờ xác nhận', NULL, NULL, NULL),
+(8, 41, 'Hà nội, Hà nội, Hà nội, Chương Mỹ, Hà Nội City', 2147483647, 'banhsontv@gmail.com', 'Trả tiền khi nhận hàng', '2023-11-28 00:00:00', 465000, 'Chờ xác nhận', NULL, NULL, NULL),
+(9, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-11-28 00:00:00', 670000, 'Chờ xác nhận', NULL, NULL, NULL),
+(10, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-11-28 00:00:00', 505000, 'Chờ xác nhận', NULL, NULL, NULL),
+(11, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-11-28 00:00:00', 520000, 'Chờ xác nhận', NULL, NULL, NULL),
+(12, 1, 'Hà nội, Hà nội, Hà nội, Chương Mỹ, Hà Nội City', 973657594, 'anhsongoku123@gmail.com', 'Trả tiền khi nhận hàng', '2023-11-28 00:00:00', 520000, 'Chờ xác nhận', NULL, NULL, NULL),
+(13, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-11-29 00:00:00', 25000, 'Chờ xác nhận', NULL, NULL, NULL),
+(14, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-11-29 00:00:00', 185000, 'Chờ xác nhận', NULL, NULL, NULL),
+(15, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-11-29 00:00:00', 505000, 'Chờ xác nhận', NULL, NULL, NULL),
+(16, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-11-29 00:00:00', 840000, 'Chờ xác nhận', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -178,7 +223,7 @@ INSERT INTO `donhang` (`id`, `id_user`, `address`, `sdt`, `email`, `phuongthuctt
 
 CREATE TABLE `hinhanh` (
   `id` int(11) NOT NULL,
-  `url` varchar(255) NOT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `id_sp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -228,7 +273,7 @@ INSERT INTO `hinhanh` (`id`, `url`, `id_sp`) VALUES
 CREATE TABLE `kich_thuoc` (
   `id` int(11) NOT NULL,
   `value` varchar(225) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `kich_thuoc`
@@ -250,7 +295,7 @@ INSERT INTO `kich_thuoc` (`id`, `value`) VALUES
 CREATE TABLE `mau_sac` (
   `id` int(11) NOT NULL,
   `value` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `mau_sac`
@@ -279,22 +324,21 @@ CREATE TABLE `sanpham` (
   `mota` text NOT NULL COMMENT 'Mô tả',
   `luotxem` int(11) NOT NULL DEFAULT 0 COMMENT 'Lượt xem',
   `iddm` int(11) NOT NULL COMMENT 'Id danh mục'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
 INSERT INTO `sanpham` (`id`, `name`, `img`, `price_niemyet`, `price_sale`, `mota`, `luotxem`, `iddm`) VALUES
-(27, 'Áo Polo NEWSEVEN Glitch Polo PL.145', 'Áo Polo NEWSEVEN Glitch Polo PL.145.jpg', 300000.00, 250000, 'Thông tin sản phẩm \nÁo Polo NEWSEVEN Glitch Polo PL.145:  \n– Hàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.  \n– Chất liệu: 100% cotton\n– định lượng 250GSM. \nDày dặn. Đứng form.  Đã xử lý chống co”  \n– Cổ áo: Cổ dệt dày dặn,đã xử lý chống nhăn, bai dão', 163, 2),
-(29, 'Áo Khoác Bomber Phối Cầu Vai Da Dày DặnTeddy Chất Liệu Nỉ', 'áo bomber chất nỉ.png', 149000.00, 99000, 'Chất liệu: nỉ Cotton\r\nMàu sắc: Đen, Trắng . đỏ\r\nKích cỡ: Sản phẩm nam nữ Unisex size từ 40-65kg\r\ntùy chiều cao nha\r\n HƯỚNG DẪN LỰA CHỌN SIZE SỐ\r\nBảng SIZE:\r\n-Size S:36 - 45kg Cao dưới 1m50\r\n-Size M: 46 - 52kg Cao dưới 1m6\r\n-Size L: 52 - 58kg, Cao  1m65\r\n-Size XL: từ 58 - 63kg , Cao 1m65- 1m7\r\nChất liệu dày dặn, mềm, mát.\r\nThiết kế với form dễ mặc, thoải mái.\r\nĐường may tỉ mỉ, tinh tế\r\nDễ dàng kết hợp với các trang phục, phụ kiện khác.\r\nPhong cách: Trẻ trung - Cá tính - Độc\r\nĐáo. Đây chắc chắn là một món đồ thời trang không thể thiếu trong tủ đồ củabạn.\r\nSản phẩm đẹp như hình. \r\nChất liệu dày dặn, mềm mại.', 201, 8),
-(30, 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét 2.jpg', 220000.00, 160000, 'Thông Tin Sản Phẩm : Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023\r\n- Chất liệu: Dạ 100% cao cấp, bề mặt vải mịn, ko xù, ko gião , dày dặn\r\n- Đường may tỉ mỉ, chắc chắn\r\n- Công dụng: mặc ở nhà, mặc đi chơi , mặc đi làm , mặc hàng ngày\r\n- Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n\r\n* Bảng size mẫu \r\n- Đủ size: M - L - XL  \r\nSize M: Nặng 43-51kg  ; Cao 1m52-1m60\r\nSize L: Nặng ; 51-59kg ; Cao 1m60-1m70\r\nSize XL: Nặng 60-72kg ; Cao 1m65-1m73\r\nLưu ý: Đây là bảng thông số chọn size cơ bản, tùy thuộc và vào mỗi người mà có thể +/- 1 Size', 214, 8),
-(31, 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie', 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie.jpg', 240000.00, 165000, 'Thông tin sản phẩm : Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie LV Loang Màu Chất Liệu Nỉ Bông 2 Lớp Dày Dặn Hotrend\r\n- Chất liệu:Nỉ Bông 2 Lớp Dày Dặn Cao Cấp Không Xù\r\n- Đường may tỉ mỉ, chắc chắn\r\n- Công dụng: mặc ở nhà, mặc đi chơi hoặc khi vận động thể thao\r\n- Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n- Đủ size: M - L - XL \r\n* Bảng size mẫu \r\nSize M: Nặng 43-51kg  ; Cao 1m52-1m60\r\nSize L: Nặng ; 51-59kg ; Cao 1m60-1m70\r\nSize XL: Nặng 60-72kg ; Cao 1m65-1m73\r\n\r\nLưu ý: Đây là bảng thông số chọn size cơ bản, tùy thuộc và vào mỗi người mà có thể +/- 1 Size\r\nHướng dẫn sử dụng sản phẩm \r\n- Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n- Không sử dụng thuốc tẩy\r\n- Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời\r\n Shop Thời Trang Unisex 18 CAM KẾT\r\nSản phẩm giống mô tả .\r\nĐảm bảo vải chất lượng \r\nÁo được kiểm tra kĩ càng, cẩn thận và tư vấn nhiệt tình trước khi gói hàng giao cho Quý Khách\r\nHàng có sẵn, giao hàng ngay khi nhận được đơn \r\nChấp nhận đổi hàng khi size không vừa\r\nGiao hàng trên toàn quốc, nhận hàng trả tiền ', 175, 8),
-(33, 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165', 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165.jpg', 590000.00, 490000, 'Thông tin sản phẩm Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165:\r\n\r\n– Hàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\n– Chất liệu: Vải gió mặt lì, dày dặn cản gió tốt, lót lưới thoáng mát cực kì phù hợp với thời tiết mùa hè.\r\n\r\n– Cổ áo: Ép 2 lớp dày dặn, đứng dáng cổ\r\n\r\n– Khóa nhựa răng cá sấu, củ khóa kim loại kahwsc logo NEWSEVEN chìm.\r\n\r\n– Hình in: in lưới, mực in plasticol giúp hình in bám vải tốt và lên màu đẹp.\r\n\r\n– Thiết kế: Sản phẩm nằm trong BST Racing “Over the limit”, thiết kế và logo mang tinh thần và đậm nét của chủ đề Racing với bộ nhận diện được làm xuyên suốt các sản phẩm. Có phần cá tay ở cổ tay áo giúp cho người mặc có thể điều chỉnh độ rộng. Gấu áo có dây chun bún và chốt nhựa để linh hoạt về độ rộng chật và tùy vào cách ăn mặc của mỗi khách hàng.\r\n\r\nCác đường phối trên áo với các lớp màu tạo tổng thể hài hòa về màu sắc của bộ sưu tập, 3 màu đen – trắng – đỏ cực nổi bật.\r\n\r\nThông số chọn size:\r\n\r\nSize M: 1m50-1m60 (50-55kg)\r\n\r\nSize L : 1m60-1m70( 55-65kg)\r\n\r\nSize XL: 1m70-1m80(65-75kg)\r\n\r\n(Bảng trên chỉ mang tính chất tham khảo, chọn mặc form vừa vặn thoải mái, lên xuống size tuỳ theo sở thích ăn mặc của bạn)\r\n\r\nHướng dẫn sử dụng sản phẩm Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165:\r\n\r\n– Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n\r\n– Không giặt máy trong 10 ngày đầu\r\n\r\n– Không sử dụng thuốc tẩy\r\n\r\n– Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời', 4, 8),
-(34, 'Áo Thun Newseven Curve Baby Tee BB.222', 'Áo Thun Newseven Curve Baby Tee BB.222.png', 280000.00, 220000, '-Chất liệu: Vải Cotton  định lượng 250GSM.\r\n\r\n-Kiểu dáng: Form Baby Tee\r\n\r\n-Màu sắc: Đen, Trắng\r\n\r\n-Thiết kế: In lưới\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size\r\nChính sách đổi trả\r\n\r\n1. Điều kiện áp dụng đổi sản phẩm (trong vòng 07 ngày kể từ khi nhận sản phẩm)\r\n\r\n– Hàng hoá vẫn còn mới nguyên tem mác, chưa qua sử dụng.\r\n\r\n– Hàng hoá bị lỗi hoặc hư hỏng do vận chuyển hoặc do nhà sản xuất\r\n\r\n2. Trường hợp không đủ điều kiện áp dụng chính sách:\r\n\r\n– Quá 07 ngày kể từ khi Quý khách nhận hàng\r\n\r\n– Gửi lại hàng không đúng mẫu mã, không phải sản phẩm của Newseven\r\n\r\n– Không thích, không hợp, đặt nhầm mã, nhầm màu, yêu cầu kiểm tra hàng trước khi thanh toán.\r\n\r\nDo màn hình và điều kiện ánh sáng khác nhau, màu sắc thực tế của sản phẩm có thể chênh lệch khoảng 5-10%\r\n\r\nHướng dẫn sử dụng sản phẩm Newseven:', 3, 1),
-(35, 'Áo Thun NEWSEVEN Lining Racer AT.219', 'Áo Thun NEWSEVEN Lining Racer AT.219.jpg', 350000.00, 230000, '-Chất liệu: Vải cotton 2 chiều sử dụng công nghệ chống co rút và cầm màu tối đa\r\n\r\n– Định lượng 250GSM với độ dày vừa phải mang lại sự thoải mái cho người mặc và khả năng hút ẩm, thấm mồ hôi, giảm nhiệt tốt.\r\n\r\n-Kiểu dáng: Form rộng\r\n\r\n-Màu sắc: Đen, Nâu, Xanh Navy.\r\n\r\n– Thiết kế độc lạ trên thị trường, tạo cảm giác mới lạ, với các điểm phối vải ở vai áo thân áo tạo hiệu ứng ” Hack ” dánh tối đa, và các hình in lấy cảm hứng từ BST Raccing.\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size', 3, 1),
-(38, 'Áo Thun NEWSEVEN Racing AT.148', 'Áo Thun NEWSEVEN Racing AT.148.jpg', 350000.00, 290000, '-Chất liệu: Vải cotton 2 chiều sử dụng công nghệ chống co rút và cầm màu tối đa\r\n\r\n– Định lượng 250GSM với độ dày vừa phải mang lại sự thoải mái cho người mặc và khả năng hút ẩm, thấm mồ hôi, giảm nhiệt tốt.\r\n\r\n-Kiểu dáng: Form rộng\r\n\r\n-Màu sắc: Đen, Nâu, Xanh Navy.\r\n\r\n– Thiết kế độc lạ trên thị trường, tạo cảm giác mới lạ, với các điểm phối vải ở vai áo thân áo tạo hiệu ứng ” Hack ” dánh tối đa, và các hình in lấy cảm hứng từ BST Raccing.\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size', 2, 1),
-(40, 'Quần Short Basic NEWSEVEN', 'Quần Short Basic NEWSEVEN.jpeg', 250000.00, 199000, 'Thông tin sản phẩm Quần Short Đùi Unisex N7 NEWSEVEN Basic nam nữ form rộng Local Brand:\r\n– Hàng chuẩn N7 sản xuất, tem mác chuẩn chính hãng.\r\n– Chất liệu: Nỉ chân cua.\r\n– Đường may chuẩn chỉnh, tỉ mỉ, chắc chắn.\r\n– Mặc ở nhà, mặc đi chơi hoặc khi vận động thể thao. Phù hợp khi mix đồ với nhiều loại trang phục.\r\n– Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n\r\nThông số chọn size:\r\nSize S: 1m50-1m55( 45-60kg)\r\nSize M: 1m55-1m60 (55-70kg)\r\nSize L: 1m60-1m70 (65-80kg)\r\n(Bảng trên chỉ mang tính chất tham khảo, chọn mặc fom vừa vặn thoải mái, lên xuống size tuỳ theo sở thích ăn mặc của bạn)', 2, 9);
+(27, 'Áo Polo NEWSEVEN Glitch Polo PL.145', 'Áo Polo NEWSEVEN Glitch Polo PL.145.jpg', 300000.00, 250000, 'Thông tin sản phẩm \nÁo Polo NEWSEVEN Glitch Polo PL.145:  \n– Hàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.  \n– Chất liệu: 100% cotton\n– định lượng 250GSM. \nDày dặn. Đứng form.  Đã xử lý chống co”  \n– Cổ áo: Cổ dệt dày dặn,đã xử lý chống nhăn, bai dão', 180, 2),
+(30, 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét 2.jpg', 220000.00, 160000, 'Thông Tin Sản Phẩm : Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023\r\n- Chất liệu: Dạ 100% cao cấp, bề mặt vải mịn, ko xù, ko gião , dày dặn\r\n- Đường may tỉ mỉ, chắc chắn\r\n- Công dụng: mặc ở nhà, mặc đi chơi , mặc đi làm , mặc hàng ngày\r\n- Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n\r\n* Bảng size mẫu \r\n- Đủ size: M - L - XL  \r\nSize M: Nặng 43-51kg  ; Cao 1m52-1m60\r\nSize L: Nặng ; 51-59kg ; Cao 1m60-1m70\r\nSize XL: Nặng 60-72kg ; Cao 1m65-1m73\r\nLưu ý: Đây là bảng thông số chọn size cơ bản, tùy thuộc và vào mỗi người mà có thể +/- 1 Size', 514, 8),
+(31, 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie', 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie.jpg', 240000.00, 165000, 'Thông tin sản phẩm : Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie LV Loang Màu Chất Liệu Nỉ Bông 2 Lớp Dày Dặn Hotrend\r\n- Chất liệu:Nỉ Bông 2 Lớp Dày Dặn Cao Cấp Không Xù\r\n- Đường may tỉ mỉ, chắc chắn\r\n- Công dụng: mặc ở nhà, mặc đi chơi hoặc khi vận động thể thao\r\n- Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n- Đủ size: M - L - XL \r\n* Bảng size mẫu \r\nSize M: Nặng 43-51kg  ; Cao 1m52-1m60\r\nSize L: Nặng ; 51-59kg ; Cao 1m60-1m70\r\nSize XL: Nặng 60-72kg ; Cao 1m65-1m73\r\n\r\nLưu ý: Đây là bảng thông số chọn size cơ bản, tùy thuộc và vào mỗi người mà có thể +/- 1 Size\r\nHướng dẫn sử dụng sản phẩm \r\n- Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n- Không sử dụng thuốc tẩy\r\n- Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời\r\n Shop Thời Trang Unisex 18 CAM KẾT\r\nSản phẩm giống mô tả .\r\nĐảm bảo vải chất lượng \r\nÁo được kiểm tra kĩ càng, cẩn thận và tư vấn nhiệt tình trước khi gói hàng giao cho Quý Khách\r\nHàng có sẵn, giao hàng ngay khi nhận được đơn \r\nChấp nhận đổi hàng khi size không vừa\r\nGiao hàng trên toàn quốc, nhận hàng trả tiền ', 305, 8),
+(33, 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165', 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165.jpg', 590000.00, 490000, 'Thông tin sản phẩm Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165:\r\n\r\n– Hàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\n– Chất liệu: Vải gió mặt lì, dày dặn cản gió tốt, lót lưới thoáng mát cực kì phù hợp với thời tiết mùa hè.\r\n\r\n– Cổ áo: Ép 2 lớp dày dặn, đứng dáng cổ\r\n\r\n– Khóa nhựa răng cá sấu, củ khóa kim loại kahwsc logo NEWSEVEN chìm.\r\n\r\n– Hình in: in lưới, mực in plasticol giúp hình in bám vải tốt và lên màu đẹp.\r\n\r\n– Thiết kế: Sản phẩm nằm trong BST Racing “Over the limit”, thiết kế và logo mang tinh thần và đậm nét của chủ đề Racing với bộ nhận diện được làm xuyên suốt các sản phẩm. Có phần cá tay ở cổ tay áo giúp cho người mặc có thể điều chỉnh độ rộng. Gấu áo có dây chun bún và chốt nhựa để linh hoạt về độ rộng chật và tùy vào cách ăn mặc của mỗi khách hàng.\r\n\r\nCác đường phối trên áo với các lớp màu tạo tổng thể hài hòa về màu sắc của bộ sưu tập, 3 màu đen – trắng – đỏ cực nổi bật.\r\n\r\nThông số chọn size:\r\n\r\nSize M: 1m50-1m60 (50-55kg)\r\n\r\nSize L : 1m60-1m70( 55-65kg)\r\n\r\nSize XL: 1m70-1m80(65-75kg)\r\n\r\n(Bảng trên chỉ mang tính chất tham khảo, chọn mặc form vừa vặn thoải mái, lên xuống size tuỳ theo sở thích ăn mặc của bạn)\r\n\r\nHướng dẫn sử dụng sản phẩm Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165:\r\n\r\n– Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n\r\n– Không giặt máy trong 10 ngày đầu\r\n\r\n– Không sử dụng thuốc tẩy\r\n\r\n– Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời', 43, 8),
+(34, 'Áo Thun Newseven Curve Baby Tee BB.222', 'Áo Thun Newseven Curve Baby Tee BB.222.png', 280000.00, 220000, '-Chất liệu: Vải Cotton  định lượng 250GSM.\r\n\r\n-Kiểu dáng: Form Baby Tee\r\n\r\n-Màu sắc: Đen, Trắng\r\n\r\n-Thiết kế: In lưới\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size\r\nChính sách đổi trả\r\n\r\n1. Điều kiện áp dụng đổi sản phẩm (trong vòng 07 ngày kể từ khi nhận sản phẩm)\r\n\r\n– Hàng hoá vẫn còn mới nguyên tem mác, chưa qua sử dụng.\r\n\r\n– Hàng hoá bị lỗi hoặc hư hỏng do vận chuyển hoặc do nhà sản xuất\r\n\r\n2. Trường hợp không đủ điều kiện áp dụng chính sách:\r\n\r\n– Quá 07 ngày kể từ khi Quý khách nhận hàng\r\n\r\n– Gửi lại hàng không đúng mẫu mã, không phải sản phẩm của Newseven\r\n\r\n– Không thích, không hợp, đặt nhầm mã, nhầm màu, yêu cầu kiểm tra hàng trước khi thanh toán.\r\n\r\nDo màn hình và điều kiện ánh sáng khác nhau, màu sắc thực tế của sản phẩm có thể chênh lệch khoảng 5-10%\r\n\r\nHướng dẫn sử dụng sản phẩm Newseven:', 18, 1),
+(35, 'Áo Thun NEWSEVEN Lining Racer AT.219', 'Áo Thun NEWSEVEN Lining Racer AT.219.jpg', 350000.00, 230000, '-Chất liệu: Vải cotton 2 chiều sử dụng công nghệ chống co rút và cầm màu tối đa\r\n\r\n– Định lượng 250GSM với độ dày vừa phải mang lại sự thoải mái cho người mặc và khả năng hút ẩm, thấm mồ hôi, giảm nhiệt tốt.\r\n\r\n-Kiểu dáng: Form rộng\r\n\r\n-Màu sắc: Đen, Nâu, Xanh Navy.\r\n\r\n– Thiết kế độc lạ trên thị trường, tạo cảm giác mới lạ, với các điểm phối vải ở vai áo thân áo tạo hiệu ứng ” Hack ” dánh tối đa, và các hình in lấy cảm hứng từ BST Raccing.\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size', 5, 1),
+(38, 'Áo Thun NEWSEVEN Racing AT.148', 'Áo Thun NEWSEVEN Racing AT.148.jpg', 350000.00, 290000, '-Chất liệu: Vải cotton 2 chiều sử dụng công nghệ chống co rút và cầm màu tối đa\r\n\r\n– Định lượng 250GSM với độ dày vừa phải mang lại sự thoải mái cho người mặc và khả năng hút ẩm, thấm mồ hôi, giảm nhiệt tốt.\r\n\r\n-Kiểu dáng: Form rộng\r\n\r\n-Màu sắc: Đen, Nâu, Xanh Navy.\r\n\r\n– Thiết kế độc lạ trên thị trường, tạo cảm giác mới lạ, với các điểm phối vải ở vai áo thân áo tạo hiệu ứng ” Hack ” dánh tối đa, và các hình in lấy cảm hứng từ BST Raccing.\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size', 3, 1),
+(40, 'Quần Short Basic NEWSEVEN', 'Quần Short Basic NEWSEVEN.jpeg', 250000.00, 199000, 'Thông tin sản phẩm Quần Short Đùi Unisex N7 NEWSEVEN Basic nam nữ form rộng Local Brand:\r\n– Hàng chuẩn N7 sản xuất, tem mác chuẩn chính hãng.\r\n– Chất liệu: Nỉ chân cua.\r\n– Đường may chuẩn chỉnh, tỉ mỉ, chắc chắn.\r\n– Mặc ở nhà, mặc đi chơi hoặc khi vận động thể thao. Phù hợp khi mix đồ với nhiều loại trang phục.\r\n– Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n\r\nThông số chọn size:\r\nSize S: 1m50-1m55( 45-60kg)\r\nSize M: 1m55-1m60 (55-70kg)\r\nSize L: 1m60-1m70 (65-80kg)\r\n(Bảng trên chỉ mang tính chất tham khảo, chọn mặc fom vừa vặn thoải mái, lên xuống size tuỳ theo sở thích ăn mặc của bạn)', 14, 9);
 
 -- --------------------------------------------------------
 
@@ -311,7 +355,7 @@ CREATE TABLE `taikhoan` (
   `address` varchar(255) DEFAULT NULL COMMENT 'Địa chỉ',
   `tel` varchar(20) DEFAULT NULL COMMENT 'Số điện thoại',
   `role` int(11) NOT NULL DEFAULT 0 COMMENT 'Quyền hạn: \r\n1 Admin \r\n2 Khách hàng\r\n'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `taikhoan`
@@ -319,15 +363,9 @@ CREATE TABLE `taikhoan` (
 
 INSERT INTO `taikhoan` (`id`, `user`, `fullname`, `pass`, `email`, `address`, `tel`, `role`) VALUES
 (1, 'admin', 'Admin', '123', 'admin@fpt.edu.vn', 'Hà Nội ', '0987654321', 1),
-(2, 'Hoàng Long', 'Hoàng Hải Long 98', '123456', 'longhh7@fpt.edu.vn', 'Hải Dương', '09876543', 2),
-(4, 'Huy đức 123', '', '123456', 'anhsongoku123@gmail.com', 'Hải Dương', '09876543', 2),
-(5, 'sonnv', '', '123456', 'banhsontv@gmail.com', 'Hải Dương', '09876543', 2),
-(17, 'huyduc', '', '123', 'anhsongoku123@gmail.com', 'Hải Dương 2', '0987654321', 2),
-(19, 'khachhangao1', '', '123', 'sonnvph33874@fpt.edu.vn', 'hà nọii', '0987654321', 2),
-(21, 'Huy đức123', '', '12377', 'anhsongoku123@gmail.com', 'hà nọii', '09876543', 2),
-(22, 'son', '', '123', 'son@fpt.edu.vn', 'HN', '0987654321', 2),
-(23, 'sonnv', 'Nguyễn Sơn', '123456', 'sonnvph33874@fpt.edu.vn', 'Hà Nội City', '0987654321', 2),
-(39, 'son2son', '', '123', 'sonnvph@fpt.edu.vn', NULL, NULL, 0);
+(41, 'son', '', '123', 'son@123', NULL, NULL, 0),
+(42, 'huyduc', '', '123', 'huyduc123@fpt.edu.vn', NULL, NULL, 0),
+(43, 'hoangnv', '', '123', 'hoangnvph@fpt.edu.vn', NULL, NULL, 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -419,25 +457,25 @@ ALTER TABLE `taikhoan`
 -- AUTO_INCREMENT cho bảng `bien_the`
 --
 ALTER TABLE `bien_the`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT cho bảng `binhluan`
 --
 ALTER TABLE `binhluan`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Id bình luận', AUTO_INCREMENT=37;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Id bình luận', AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
 
 --
 -- AUTO_INCREMENT cho bảng `chitiet_donhang`
 --
 ALTER TABLE `chitiet_donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmuc`
@@ -449,13 +487,13 @@ ALTER TABLE `danhmuc`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id đơn hàng', AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id đơn hàng', AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `hinhanh`
 --
 ALTER TABLE `hinhanh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT cho bảng `kich_thuoc`
@@ -473,13 +511,13 @@ ALTER TABLE `mau_sac`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id sản phẩm', AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id sản phẩm', AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id khách hàng', AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id khách hàng', AUTO_INCREMENT=44;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
