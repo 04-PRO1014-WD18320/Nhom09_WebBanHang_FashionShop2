@@ -198,6 +198,7 @@ function update_bienthe($id, $id_mau_sac, $id_kich_thuoc, $so_luong)
 // }
 
 //Sơn
+
 // function load_mausac($idsp)
 // {
 //     $sql = "SELECT mau_sac.* 
