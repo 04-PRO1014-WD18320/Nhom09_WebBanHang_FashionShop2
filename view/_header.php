@@ -87,7 +87,7 @@
 
                <div class="dropdown_user">
                   <div class="draw_user">
-                     <div class="diamond_user"></div>
+                     <!-- <div class="diamond_user"></div> -->
                      <div class="shirt_user">
                         <a href="index.php?act=profile">Tài khoản của tôi</a>
                         <a href="index.php?act=update_tk">Sửa thông tin</a>

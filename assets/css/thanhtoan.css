@@ -30,7 +30,7 @@
                 & input[type='text']{
                     width: 90%;
                     height: 40px;
-                    font-size: 20px;
+                    font-size: 14px;
                     padding: 0 15px;
                     border: none;
                     outline: none;
@@ -81,14 +81,14 @@
                             /* margin-bottom: 40px; */
                             /* border-radius: 30px; */
                             /* margin-top: 20px; */
-                            font-size: 20px;
+                            font-size: 14px;
                             border: none;
                             outline: none;
                             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
                         }
                         & select{
                             height: 40px;
-                            font-size: 20px;
+                            font-size: 14px;
                             border: none;
                             outline: none;
                             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -101,7 +101,7 @@
                 & input{
                     margin: 10px 0;
                     height: 40px;
-                    font-size: 20px;
+                    font-size: 14px;
                     padding: 0 15px;
                     border: none;
                     outline: none;
@@ -109,7 +109,7 @@
                 }
                 & textarea{
                     height: 100px;
-                    font-size: 20px;
+                    font-size: 14px;
                     padding: 0 15px;
                     /* border: none; */
                     margin-top: 10px;
@@ -131,12 +131,13 @@
                     margin: 20px 0;
                     & span{
                         color: red;
+                        font-size: 14px;
                     }
                 }
                 & select{
                     width: 100%;
                     height: 40px;
-                    font-size: 20px;
+                    font-size: 14px;
                     border: none;
                     outline: none;
                     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -154,4 +155,8 @@
             }
         }
     }
+}
+
+.thanhtoan .space p {
+    font-size: 14px;
 }
