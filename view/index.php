@@ -51,6 +51,19 @@ include "_header.php";
                 dangxuat();
                 include "home.php";
                 break;
+                case "quenmk":
+                    if(isset($_POST['guiemail'])&&($_POST['guiemail'])){
+                     $email=$_POST['email'];
+                     $checkemail=check_email($email);
+                     if(is_array($checkemail)){
+                         $thongbao="mat khau cua ban la:".$checkemail['pass'];
+                     }
+                     else{
+                         $thongbao="email nay khong ton tai";
+                     }
+                    }
+                  include "login/quenmk.php";
+                 break; 
             case 'timkiem': {
                     if (isset($_POST['timkiem'])) {
                         $keyword = $_POST['keyword'];

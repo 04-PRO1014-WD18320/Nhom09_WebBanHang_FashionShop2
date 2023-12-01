@@ -1,38 +1,43 @@
-<main class="container">
-  <div class="box_title">Quên mật khẩu</div>
-  <div class="login">
-
-    <div class="box_content form_account">
-      <form action="index.php?act=quenmk" method="post">
-        <div class="box1">
-          <h3>Quên mật khẩu</h3>
-        </div>
-        <div class="box3">
-          <input type="email" name="email" class="email" placeholder="Email" required>
-        </div>
-        <div class="box3">
-          <input type="text" name="user" class="email" placeholder="User name" required>
-        </div>
-        <div class="box6">
-          <button name="guiemail">Gửi</button>
-        </div>
-        <div class="box7">
-          <p>Bạn chưa có tài khoản</p>
-          <a href="index.php?act=dangky">Đăng ký</a>
-        </div>
-        <div class="box7">
-          <a href="index.php?act=dangnhap">Đăng nhập</a>
-        </div>
-        <br>
-
-        <?php
-        if (isset($sendMailMess) && $sendMailMess != "") {
-          echo $sendMailMess;
-        }
-        ?>
-      </form>
+<div class="container">
+    <div class="login">
+        <form action="index.php?act=quenmk" method="post">
+            <div class="box1">
+                <h3>Quên Mật Khẩu</h3>
+            </div>
+            <div class="box2">
+                <input type="text" name="email" class="email" placeholder="Email" autocomplete="off" required>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="gui">
+                <input type="submit" value="gui" name="guiemail" style=" width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    margin:30px 0;
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: black;
+    color: azure;">
+                <a href="?act=dangnhap" style=" text-decoration: none;
+    margin-left: 5px;
+    background: -webkit-linear-gradient(120deg, #9708cc, #43cbff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    &:hover {
+        margin-left: 5px;
+        background: -webkit-linear-gradient(120deg, hsl(318, 94%, 61%), hsl(239, 69%,51%));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }">nhập lại</a>
+            </div>
+            <?php
+            if (isset($thongbao) && $thongbao != "") {
+                echo '
+                <p class="thongbao">' . $thongbao . '</p>';
+            }
+            ?>
+        </form>
     </div>
-
-  </div>
-
-</main>
+</div>

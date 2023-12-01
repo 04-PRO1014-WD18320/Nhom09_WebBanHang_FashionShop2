@@ -7,8 +7,9 @@ function danhsach_sanpham()
     return $result;
 }
 function danhsach_sanphamdm($iddm)
+
 {
-    $sql = "SELECT * FROM sanpham WHERE iddm = " . $iddm;
+    $sql = "SELECT * FROM sanpham  WHERE iddm = $iddm LIMIT 0,5";
     $result = pdo_query($sql);
     return $result;
 }

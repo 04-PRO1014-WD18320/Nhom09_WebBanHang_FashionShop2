@@ -104,6 +104,23 @@ form .email{
         -webkit-text-fill-color: transparent;
     }
 }
+.box9 button{
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: black;
+    color: azure;
+}
+.box9 button:hover{
+    /* background: -webkit-linear-gradient(120deg, hsl(318, 94%, 61%), hsl(239, 69%,51%)); */
+}
+.box9 button:active{
+    font-size: 30px;
+}
 .box7 a:hover{
     text-decoration: underline;
 }
@@ -157,4 +174,5 @@ form .email{
     text-align: center;
     color: green;
     padding: 10 0;
+    font-size: 50px;
 }

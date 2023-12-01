@@ -53,6 +53,12 @@ function insert_taikhoan($email, $user, $pass)
 
 
 //Hàm xử lý đăng ký tài khoản ở dao khachhang.php
+function check_email($email)
+{
+    $sql = "SELECT * FROM taikhoan where email='".$email."'";
+    $result = pdo_query_one($sql);
+    return $result;
+}
 
 function check_user($user, $pass)
 {
