@@ -1,12 +1,12 @@
 <!-- Begin Page Content -->
 <div class="container-fluid dssp">
-    <h1 class="h3 mb-2 text-gray-800 mb-5">Danh sách sản phấm</h1>
+    <h1 class="h3 mb-2 text-gray-800 mb-5">Danh sách sản phấm </h1>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <button class="btn btn-secondary btn-sm">Chọn tất cả</button>
             <button class="btn btn-secondary btn-sm">Bỏ chọn tất cả</button>
             <button class="btn btn-secondary btn-sm">Xóa các mục đã chọn</button>
-            <a href="#"><button class="btn btn-secondary btn-sm">Nhập thêm</button></a>
+            <a href="index.php?act=add_sp"><button class="btn btn-secondary btn-sm">Nhập thêm</button></a>
 
             <form action="index.php?act=dssanpham" method="post" class="float-right">
                 <div class="input-group">
@@ -72,7 +72,7 @@
                             $tinh_trang = '';
                             $tinh_trang = ($so_luong <= 0) ? "hết hàng" : "còn hàng";
                             $suasp = "index.php?act=update_sp&idsp=" . $id;
-                            $hard_delete = "index.php?act=hard_delete&idsp=" . $id;
+                            $hard_delete = "index.php?act=hard_delete&idbt=" . $id_bienthe;
                             $soft_delete = "index.php?act=soft_delete&idsp=" . $id;
                             $hinhpath = "../upload/" . $img;
 
