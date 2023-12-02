@@ -3,15 +3,15 @@ function add_cart($id_user, $id_bt_sanpham, $so_luong)
 {
     $sql = "INSERT INTO cart (id_user, id_bt_sanpham, soluong) VALUES ('$id_user', '$id_bt_sanpham', '$so_luong')";
     pdo_execute($sql);
-    header('location:?act=cart&iduser='.$id_user.'');
+    header('location:?act=cart&iduser=' . $id_user . '');
 }
 function loadall_cart($iduser)
 {
-            $sql = "SELECT 
+    $sql = "SELECT 
             cart.id AS id_cart,
             cart.id_user,
             cart.soluong AS so_luong,
-            bienthe.id_sp AS id_bienthe,
+            bienthe.id AS id_bienthe,
             bienthe.id_mau_sac,
             bienthe.id_kich_thuoc,
             sanpham.id AS id_sp,
@@ -31,7 +31,8 @@ function loadall_cart($iduser)
     $result = pdo_query($sql);
     return $result;
 }
-function delete_cart($id_cart){
+function delete_cart($id_cart)
+{
     $sql = "DELETE FROM cart WHERE id =" . $id_cart;
     pdo_execute($sql);
     // header("location: ?act=cart");

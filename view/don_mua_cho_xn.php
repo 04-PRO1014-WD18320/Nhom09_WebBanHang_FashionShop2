@@ -6,8 +6,8 @@
         <ul>
             <li><a href="index.php?act=ct_donhang&iduser=<?=$_SESSION['iduser']?>">Tất cả</a></li>
             <li><a href="index.php?act=ct_donhang_cho_xn&iduser=<?=$_SESSION['iduser']?>">Chờ xác nhận</a></li>
-            <li><a href="index.php?act=ct_donhang_da_xn&iduser=<?=$_SESSION['iduser']?>">Đã xác nhận</a></li>
-            <li><a href="index.php?act=ct_donhang_dang_giao&iduser=<?=$_SESSION['iduser']?>">Đang giao hàng</a></li>
+            <li><a href="">Đã xác nhận</a></li>
+            <li><a href="">Đang giao hàng</a></li>
             <li><a href="">Hoàn thành</a></li>
             <li><a href="">Đã hủy</a></li>
             <li><a href="">Trả hàng/Hoàn tiền</a></li>

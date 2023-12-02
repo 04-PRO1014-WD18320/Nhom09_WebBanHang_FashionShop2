@@ -1,17 +1,18 @@
-.thanhtoan{
+.thanhtoan {
     width: 1200px;
     /* border: 1px solid #111; */
     margin: auto;
     margin-top: 20px;
 
-    & .link{
+    & .link {
         text-align: center;
     }
-    & .add_voucher{
+
+    & .add_voucher {
         width: 100%;
         height: 150px;
 
-        & .ip_add_voucher{
+        & .ip_add_voucher {
             width: 100%;
             height: 100px;
             border: 1px solid #111;
@@ -20,14 +21,14 @@
             /* align-items: center; */
             /* padding: auto; */
 
-            & form{
+            & form {
                 display: flex;
                 width: 100%;
                 margin-top: 10px;
-                
+
                 /* border: 1px solid #111; */
 
-                & input[type='text']{
+                & input[type='text'] {
                     width: 90%;
                     height: 40px;
                     font-size: 14px;
@@ -36,7 +37,8 @@
                     outline: none;
                     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
                 }
-                & input[type='submit']{
+
+                & input[type='submit'] {
                     width: 10%;
                     height: 40px;
                     font-size: 15px;
@@ -47,35 +49,39 @@
                     /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
                 }
             }
-            
+
         }
+
         /* border: 1px solid #111; */
     }
-    & .tt_thanhtoan{
-        width: 100%;
-       
 
-        & form{
+    & .tt_thanhtoan {
+        width: 100%;
+
+
+        & form {
             width: 100%;
             display: flex;
             gap: 30px;
 
-            & .tt_user{
+            & .tt_user {
                 padding: 20px 0;
                 border-top: 1px solid #111;
                 width: 60%;
                 display: flex;
                 flex-direction: column;
-                & .ip_bottom{
+
+                & .ip_bottom {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     gap: 20px;
 
-                    & .ip_in_bottom{
+                    & .ip_in_bottom {
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
-                        & input{
+
+                        & input {
                             height: 40px;
                             padding: 0 15px;
                             /* margin-bottom: 40px; */
@@ -86,7 +92,8 @@
                             outline: none;
                             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
                         }
-                        & select{
+
+                        & select {
                             height: 40px;
                             font-size: 14px;
                             border: none;
@@ -95,10 +102,12 @@
                         }
                     }
                 }
-                & h2{
+
+                & h2 {
                     font-size: 20px;
                 }
-                & input{
+
+                & input {
                     margin: 10px 0;
                     height: 40px;
                     font-size: 14px;
@@ -107,7 +116,8 @@
                     outline: none;
                     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
                 }
-                & textarea{
+
+                & textarea {
                     height: 100px;
                     font-size: 14px;
                     padding: 0 15px;
@@ -117,24 +127,29 @@
                     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
                 }
             }
-            & .tt_donhang{
+
+            & .tt_donhang {
                 padding: 20px;
                 width: 40%;
                 border: 1px solid #111;
-                & h2{
+
+                & h2 {
                     font-size: 20px;
                 }
-                & .space{
+
+                & .space {
                     display: flex;
                     justify-content: space-between;
                     border-bottom: 1px solid gray;
                     margin: 20px 0;
-                    & span{
+
+                    & span {
                         color: red;
                         font-size: 14px;
                     }
                 }
-                & select{
+
+                & select {
                     width: 100%;
                     height: 40px;
                     font-size: 14px;
@@ -142,7 +157,8 @@
                     outline: none;
                     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
                 }
-                & input{
+
+                & input {
                     margin-top: 20px;
                     height: 40px;
                     font-size: 15px;
@@ -159,4 +175,47 @@
 
 .thanhtoan .space p {
     font-size: 14px;
+}
+
+.thanhtoan_tc {
+    margin: auto;
+    width: 1200px;
+
+    /* border: 1px solid #111; */
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    & h3 {
+        font-size: 20px;
+        margin-top: 40px;
+    }
+
+    & i {
+        font-size: 70px;
+    }
+
+    & .button_tc {
+        /* width: ; */
+        display: flex;
+        gap: 30px;
+        /* border: 1px solid #111; */
+
+        & li {
+            width: 150px;
+            height: 50px;
+            /* border: 1px solid #111; */
+            text-align: center;
+            padding: 15px 0;
+            background-color: #111;
+            color: #fff;
+
+            & a {
+                color: #fff;
+                font-size: 15px;
+            }
+        }
+    }
 }

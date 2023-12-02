@@ -18,6 +18,7 @@ function loadall_sanpham($keyw = "", $iddm = 0)
 {
     $sql = "SELECT sanpham.id,
                    sanpham.name,
+                   bien_the.id AS id_bienthe,
                    sanpham.img,
                    sanpham.price_niemyet,
                    sanpham.price_sale,
@@ -39,7 +40,7 @@ function loadall_sanpham($keyw = "", $iddm = 0)
     if ($iddm > 0) {
         $sql .= " AND sanpham.iddm ='" . $iddm . "'";
     }
-    $sql .= " ORDER BY sanpham.id";
+    $sql .= " ORDER BY sanpham.id DESC";
     $listsanpham = pdo_query($sql);
     return  $listsanpham;
 }
@@ -73,6 +74,7 @@ function insert_bien_the($idsp, $idms, $idkt, $soluong)
     $sql = "INSERT INTO bien_the (id_sp,id_mau_sac, id_kich_thuoc, so_luong)
     VALUES ('$idsp','$idms','$idkt', '$soluong');";
     pdo_execute($sql);
+    // header('location:index.php');
 }
 function insert_hinhanh($url, $idsp)
 {
@@ -154,6 +156,21 @@ function bienThe_update($idsp)
     $result = pdo_query($sql);
     return $result;
 }
+function so_bt_theo_idsp($idsp){
+    $sql = "SELECT  
+    bien_the.id_sp,bien_the.id_mau_sac, mau_sac.value AS mau_sac,
+    COUNT(bien_the.id_sp) AS so_bt,
+    bien_the.id_kich_thuoc,kich_thuoc.value as kich_thuoc,
+    bien_the.so_luong
+    
+    FROM bien_the 
+    JOIN mau_sac ON bien_the.id_mau_sac = mau_sac.id
+    JOIN kich_thuoc ON bien_the.id_kich_thuoc = kich_thuoc.id
+    
+    WHERE bien_the.id_sp = $idsp;";
+    $result = pdo_query($sql);
+    return $result;
+}
 function update_sanpham($id, $iddm, $name, $price_niemyet, $price_sale, $mota, $img_main)
 {
     if ($img_main != "") {
@@ -164,7 +181,7 @@ function update_sanpham($id, $iddm, $name, $price_niemyet, $price_sale, $mota, $
         $sql =  "UPDATE `sanpham` SET `name` = '{$name}', `price_niemyet` = '{$price_niemyet}', `price_sale` = '{$price_sale}', `mota` = '{$mota}', `iddm` = '{$iddm}' WHERE `sanpham`.`id` = $id";
     }
     pdo_execute($sql);
-    header('location:index.php?act=dssanpham');
+    // header('location:index.php?act=dssanpham');
 }
 
 function hard_delete_hinhanh($id)
@@ -177,6 +194,11 @@ function hard_delete_bien_the($id)
     $sql = "DELETE FROM bien_the WHERE id_sp=" . $id;
     pdo_execute($sql);
 }
+function hard_delete_bthe($id)
+{
+    $sql = "DELETE FROM bien_the WHERE id=" . $id;
+    pdo_execute($sql);
+}
 function hard_delete_sanpham($id)
 {
     hard_delete_hinhanh($id);
@@ -184,11 +206,13 @@ function hard_delete_sanpham($id)
     $sql = "DELETE FROM sanpham WHERE id=" . $id;
     pdo_execute($sql);
 }
-
+function delete_bienthe($idsp){
+    $sql = "DELETE FROM bien_the WHERE id_sp=" . $idsp;
+    pdo_execute($sql);
+}
 function update_bienthe($id, $id_mau_sac, $id_kich_thuoc, $so_luong)
 {
-    $sql =  "UPDATE `bien_the` SET `id_mau_sac` = '{$id_mau_sac}', `id_kich_thuoc` = '{$id_kich_thuoc}', `so_luong` = '{$so_luong}' WHERE `bien_the`.`id_sp` = $id";
-    pdo_execute($sql);
+    insert_bien_the($id, $id_mau_sac, $id_kich_thuoc, $so_luong);
     // header('location:index.php?act=dssanpham');
 }
 // function update_hinhanh($id,$img_phu){

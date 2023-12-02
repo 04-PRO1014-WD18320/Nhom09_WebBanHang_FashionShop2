@@ -176,7 +176,7 @@ include "_header.php";
                     $note = $_POST['note'];
                     $tong_thanhtoan = $_POST['tong'];
 
-                    insetr_donhang($id_user, $diachi, $sdt, $email, $tong_thanhtoan);
+                    insetr_donhang($id_user, $diachi, $sdt, $email, $tong_thanhtoan, $name);
 
                     $donhang_new = loadone_donhang_new();
                     extract($donhang_new);
@@ -220,14 +220,43 @@ include "_header.php";
 
                 include 'thanhtoan.php';
                 break;
+            case 'ct_donhang':
+                if (isset($_GET['iduser'])) {
+                    $ct_donhang = loadall_ct_donhang($_GET['iduser']);
+                    // echo "<pre>";
+                    // print_r($ct_donhang);
+                }
+                include 'don_mua.php';
+                break;
+            case 'ct_donhang_cho_xn':
+                if (isset($_GET['iduser'])) {
+                    $ct_donhang = loadall_ct_donhang_cho_xn($_GET['iduser']);
+                    // echo "<pre>";
+                    // print_r($ct_donhang);
+                }
+                include 'don_mua.php';
+                break;
+            case 'ct_donhang_da_xn':
+                if (isset($_GET['iduser'])) {
+                    $ct_donhang = loadall_ct_donhang_da_xn($_GET['iduser']);
+                    // echo "<pre>";
+                    // print_r($ct_donhang);
+                }
+                include 'don_mua.php';
+                break;
+            case 'ct_donhang_dang_giao':
+                if (isset($_GET['iduser'])) {
+                    $ct_donhang = loadall_ct_donhang_dang_giao($_GET['iduser']);
+                    // echo "<pre>";
+                    // print_r($ct_donhang);
+                }
+                include 'don_mua.php';
+                break;
             case 'hoanthanh_tt':
                 include "thanhtoan_tc.php";
                 break;
 
-            case 'donmua': {
-                    include 'don_mua.php';
-                    break;
-                }
+            
             default: {
                     include "home.php";
                     break;

@@ -91,7 +91,12 @@
                      <div class="shirt_user">
                         <a href="index.php?act=profile">Tài khoản của tôi</a>
                         <a href="index.php?act=update_tk">Sửa thông tin</a>
-                        <a href="?act=donmua">Đơn mua</a>
+                        <?php
+                        echo (empty($_SESSION["iduser"])) ? "" :
+                           '<a href="?act=ct_donhang&iduser='.$_SESSION['iduser'].'">
+                              Đơn hàng
+                           </a>'
+                        ?>
                         <?php
                         echo (($_SESSION["role"]) == 0) ? "" :
                            '<a href="../admin/index.php">

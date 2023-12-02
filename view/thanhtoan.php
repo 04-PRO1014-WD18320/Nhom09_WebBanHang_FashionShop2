@@ -84,7 +84,7 @@
                 // echo $so_sp;
                 // echo $i.'<br>';
                 for($j=0; $j<$i; $j++){
-                    // echo $ds_sp_thanhtoan[$j]['id_bienthe'];
+                    echo $ds_sp_thanhtoan[$j]['id_bienthe'];
                     echo '<input type="text" hidden name="id_bienthe'.$j.'" value="'.$ds_sp_thanhtoan[$j]['id_bienthe'].'">';
                     echo '<input type="text" hidden name="so_luong'.$j.'" value="'.$ds_sp_thanhtoan[$j]['so_luong'].'">';
                     echo '<input type="text" hidden name="price_sale'.$j.'" value="'.$ds_sp_thanhtoan[$j]['price_sale'].'">';
