@@ -102,33 +102,7 @@
                                                 ';
                         }
                         ?>
-                        <!-- <tr>
-                                            <td class="align-middle text-center"><input type="checkbox" name="select" id=""></td>
-                                            <td class=" align-middle text-center">1</td>
-                                            <td class="col-3 align-middle">OPPO Reno10 5G 8GB 256GB</td>
-                                            <td class="col-2 align-middle">10.000.000 VND</td>
-                                            <td  class="col-1 align-middle"><img src="" alt="err" height="60px"></td>
-                                            <td  class="col-1 align-middle">10</td>
-                                            <td  class="col-1 align-middle">Iphone</td>
-                                            <td class="col-1 align-middle">Còn hàng</td>
-                                            <td class="col-2 align-middle"><a href="?act=editsanpham"><button class="btn btn-secondary btn-sm">Sửa</button></a> | 
-                                                <a href="#"><button class="btn btn-secondary btn-sm">Xóa</button></a></td>
-                                                <select name="" id="">
-                                                    <option  selected=""></option>
-                                                </select>
-                                        </tr>
-                                        <tr>
-                                            <td class="align-middle text-center"><input type="checkbox" name="select" id=""></td>
-                                            <td class=" align-middle text-center">1</td>
-                                            <td class="col-3 align-middle">OPPO Reno10 5G 8GB 256GB</td>
-                                            <td class="col-2 align-middle">10.000.000 VND</td>
-                                            <td  class="col-1 align-middle"><img src="" alt="err" height="60px"></td>
-                                            <td  class="col-1 align-middle">10</td>
-                                            <td  class="col-1 align-middle">Iphone</td>
-                                            <td class="col-1 align-middle">Còn hàng</td>
-                                            <td class="col-2 align-middle"><a href="?act=editsanpham"><button class="btn btn-secondary btn-sm">Sửa</button></a> | 
-                                                <a href="#"><button class="btn btn-secondary btn-sm">Xóa</button></a></td>
-                                        </tr> -->
+
                     </tbody>
                 </table>
             </div>
