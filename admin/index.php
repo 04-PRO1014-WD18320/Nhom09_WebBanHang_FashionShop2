@@ -7,6 +7,7 @@ include "../model/sanpham.php";
 include "../model/taikhoan.php";
 include "../model/binhluan.php";
 include "../model/thongke.php";
+include "../model/thanhtoan.php";
 include 'header.php';
 include 'boxleft.php';
 include 'menu.php';
@@ -127,10 +128,11 @@ include 'menu.php';
                 break;
             case 'add_sp':
                 $ses = (isset($_SESSION['inputCounter'])) ? $_SESSION['inputCounter'] : 1;
-                echo 'ses trong file index: ' . $ses;
+                // echo 'ses trong file index: ' . $ses;
                 $list_dm = danhsach_danhmuc();
                 $list_ms = danhsach_mausac();
                 $list_kt = danhsach_kichthuoc();
+                $thanhCong = '';
                 if (isset($_POST['submit'])) {
                     $name = $_POST['name'];
                     $price_niemyet = $_POST['price_niemyet'];
@@ -146,14 +148,14 @@ include 'menu.php';
 
 
                     $img_main = $_FILES['image_main']['name'];
-                    echo $img_main;
+                    // echo $img_main;
                     $target_dir = "../upload/";
                     $target_file = $target_dir . basename($_FILES['image_main']['name']);
                     //                    echo $target_file;
                     if (move_uploaded_file($_FILES['image_main']['tmp_name'], $target_file)) {
-                        echo "Bạn đã upload ảnh thành công";
+                        // echo "Bạn đã upload ảnh thành công";
                     } else {
-                        echo "Upload ảnh không thành công";
+                        // echo "Upload ảnh không thành công";
                     }
                     // thêm bảng sp
                     insert_sanpham($name, $img_main, $price_niemyet, $price_sale, $mota, $iddm);
@@ -162,14 +164,14 @@ include 'menu.php';
                         extract($sp);
                         $idsp = $id;
                     }
-                    echo 'id -san pham vua nhap la: ' . $idsp;
+                    // echo 'id -san pham vua nhap la: ' . $idsp;
                     //them bang hinhanh
                     $img = $_FILES['image'];
                     $imgCount = count($img['name']);
 
                     $target_dir_arr = "../upload/";
                     for ($i = 0; $i < $imgCount; $i++) {
-                        echo '<br>' . $img['name'][$i] . '<br>';
+                        // echo '<br>' . $img['name'][$i] . '<br>';
                         $img_phu = $img['name'][$i];
 
                         insert_hinhanh($img_phu, $idsp);
@@ -177,9 +179,9 @@ include 'menu.php';
                         $target_file_arr = $target_dir_arr . basename($img['name'][$i]);
                         // echo $target_file_arr.'<br>';
                         if (move_uploaded_file($img['tmp_name'][$i], $target_file_arr)) {
-                            echo "Bạn đã upload ảnh thành công";
+                            // echo "Bạn đã upload ảnh thành công";
                         } else {
-                            echo "Upload ảnh không thành công";
+                            // echo "Upload ảnh không thành công";
                         }
                     }
                     //thêm bảng biến thể
@@ -187,7 +189,7 @@ include 'menu.php';
                         $idms_[$j] = $_POST['idms_' . $j];
                         $idkt_[$j] = $_POST['idkt_' . $j];
                         $soluong_[$j] = $_POST['soluong_' . $j];
-                        var_dump($soluong_[$j]);
+                        // var_dump($soluong_[$j]);
                         // echo $soluong_[$j];
                         // echo '<br>id_mau: '.$idms_[$j];
                         // echo '<br>id_kich thuoc: '.$idkt_[$j];
@@ -195,16 +197,9 @@ include 'menu.php';
                         insert_bien_the($idsp, $idms_[$j], $idkt_[$j], $soluong_[$j]);
                     }
 
+                    $thanhCong = '<a href="index.php?act=dssanpham">Thêm thành công</a>';
 
-
-                    // insert_sanpham($name, $img_main, $price_niemyet, $price_sale, $mota, $iddm);
-                    // $sp_insert = load_sp_insert();
-                    // foreach($sp_insert as $sp ){
-                    //     extract($sp);
-                    //     $idsp = $id;
-                    // }
-                    // echo 'id -san pham vua nhap la: '.$idsp;
-                    // insert_hinhanh($img_phu, $idsp);
+                    
                 }
 
                 // $list_sp = loadall_sanpham($keyw, $iddm);
@@ -215,6 +210,7 @@ include 'menu.php';
                     $sanpham = loadone_sanpham($_GET['idsp']);
                     $anh_phu = load_anh_phu($_GET['idsp']);
                     $bienThe_update = bienThe_update($_GET['idsp']);
+                    $so_bt = so_bt_theo_idsp($_GET['idsp']);
                 }
 
                 $list_dm = danhsach_danhmuc();
@@ -224,6 +220,7 @@ include 'menu.php';
                 include "sanpham/editsanpham.php";
                 break;
             case 'sua_sp':
+                
                 $list_dm = danhsach_danhmuc();
                 $list_ms = danhsach_mausac();
                 $list_kt = danhsach_kichthuoc();
@@ -238,18 +235,21 @@ include 'menu.php';
                     $img_phu = '';
                     // $bienThe_update = bienThe_update($idsp);
                     //     extract($bienThe_update);
+                    // $so_bt = so_bt_theo_idsp($idsp);
+                    // extract($so_bt);
+                    // print_r($so_bt);
 
 
 
                     $img_main = $_FILES['image_main']['name'];
-                    echo $img_main;
+                    // echo $img_main;
                     $target_dir = "../upload/";
                     $target_file = $target_dir . basename($_FILES['image_main']['name']);
                     //                    echo $target_file;
                     if (move_uploaded_file($_FILES['image_main']['tmp_name'], $target_file)) {
-                        echo "Bạn đã update img main thành công";
+                        // echo "Bạn đã update img main thành công";
                     } else {
-                        echo "Upload img main không thành công";
+                        // echo "Upload img main không thành công";
                     }
                     // sửa bảng sp
                     update_sanpham($idsp, $iddm, $name, $price_niemyet, $price_sale, $mota, $img_main);
@@ -257,14 +257,14 @@ include 'menu.php';
 
                     $img = $_FILES['image'];
                     $imgCount = count($img['name']);
-                    echo "img count: ";
-                    var_dump($imgCount);
+                    // echo "img count: ";
+                    // var_dump($imgCount);
 
                     $target_dir_arr = "../upload/";
                     if ($imgCount > 1) {
                         hard_delete_hinhanh($idsp);
                         for ($i = 0; $i < $imgCount; $i++) {
-                            echo '<br>' . $img['name'][$i] . '<br>';
+                            // echo '<br>' . $img['name'][$i] . '<br>';
                             $img_phu = $img['name'][$i];
 
                             insert_hinhanh($img_phu, $idsp);
@@ -272,32 +272,42 @@ include 'menu.php';
                             $target_file_arr = $target_dir_arr . basename($img['name'][$i]);
                             // echo $target_file_arr.'<br>';
                             if (move_uploaded_file($img['tmp_name'][$i], $target_file_arr)) {
-                                echo "Bạn đã upload ảnh thành công";
+                                // echo "Bạn đã upload ảnh thành công";
                             } else {
-                                echo "Upload ảnh không thành công";
+                                // echo "Upload ảnh không thành công";
                             }
                         }
                     }
 
                     //sửa bảng biến thể
                     $bienThe_update = bienThe_update($idsp);
-
-                    foreach ($bienThe_update as $bt) {
-                        extract($bt);
-
-                        $idms_value = $_POST['idms' . $id_mau_sac];
-                        $idkt_value = $_POST['idkt' . $id_kich_thuoc];
-                        $soluong_value = $_POST['soluong' . $so_luong];
-
-                        echo 'id màu:' . $id_mau_sac;
-
-                        update_bienthe($idsp, $idms_value, $idkt_value, $soluong_value);
-
-                        $bt['idms'] = $idms_value;
-                        $bt['idkt'] = $idkt_value;
-                        $bt['soluong'] = $soluong_value;
-                        echo $idms_value;
+                    $so_bt = so_bt_theo_idsp($idsp);
+                    if(isset($so_bt)){
+                        extract($so_bt);
+                        // echo "<pre>";
+                        // print_r($so_bt);
+                        // echo $so_bt['so_bt'];
                     }
+                    $i = 0;
+
+                    foreach($so_bt as $bt){
+                        $i+= $bt['so_bt'];
+                    }
+                    echo $i;
+                    delete_bienthe($idsp);
+                    for($j = 0; $j<$i ; $j++){
+                        $idms[$j] = $_POST['idms'.$j];
+                        $idkt[$j] = $_POST['idkt'.$j];
+                        $soluong[$j] = $_POST['soluong'.$j];
+                        // echo '<br>'.$idms[$j];
+                        // echo '<br>'.$idkt[$j];
+                        // echo '<br>'.$soluong[$j];
+                        insert_bien_the($idsp, $idms[$j], $idkt[$j], $soluong[$j]);
+                    }
+
+                    // update_bienthe($idsp, $idms_value, $idkt_value, $soluong_value);
+
+                    
 
 
                     // $img = $_FILES['image'];
@@ -333,24 +343,60 @@ include 'menu.php';
 
                     // }
                 }
+                if (isset($_POST['clickOK']) && ($_POST['clickOK'])) {
+                    $keyw = $_POST['keyw'];
+                    $iddm = $_POST['iddm'];
+                } else {
+                    $keyw = "";
+                    $iddm = 0;
+                }
+                $list_dm = danhsach_danhmuc();
+                $list_sp = loadall_sanpham($keyw, $iddm);
                 include "sanpham/dssanpham.php";
                 break;
 
             case "hard_delete":
-                if (isset($_GET['idsp'])) {
-                    hard_delete_sanpham($_GET['idsp']);
+                if (isset($_GET['idbt'])) {
+                hard_delete_bthe($_GET['idbt']);
                 }
                 $list_sp = loadall_sanpham("", 0);
                 include "sanpham/dssanpham.php";
                 break;
 
             case 'dsdonhang':
-
+                $list_donhang = loadall_donhang();
+                // print_r($list_donhang);
                 include "donhang/dsdonhang.php";
+                break;
+            case 'ct_donhang':
+                if(isset($_GET['iddh'])){
+                    $list_ct_dh = load_ct_donhang($_GET['iddh']);
+                }
+                include "donhang/ct_donhang.php";
+                break;
+            case 'update_donhang':
+                if(isset($_GET['iddh'])){
+                    $one_donhang = loadone_donhang($_GET['iddh']);
+                }
+                include "donhang/update_donhang.php";
                 break;
             case 'dsbinhluan':
                 $dsbl = danhsach_binhluan();
                 include "binhluan/dsbinhluan.php";
+                break;
+            case 'sua_donhang':
+                
+                if(isset($_POST['iddh'])){
+                    $status = $_POST['status'];
+                    if($status == 0){
+                        echo "bạn cần cập nhật trạng thái đơn hàng";
+                    }else{
+                        update_donhang($_POST['iddh'],$status);
+                    }
+                    // echo $status;
+                }
+                $list_donhang = loadall_donhang();
+                include "donhang/dsdonhang.php";
                 break;
             case "deletebl":
                 if (isset($_GET['idbl'])) {

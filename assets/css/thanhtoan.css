@@ -155,3 +155,41 @@
         }
     }
 }
+.thanhtoan_tc{
+    margin: auto;
+    width: 1200px;
+    
+    /* border: 1px solid #111; */
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    & h3{
+        font-size: 20px;
+        margin-top: 40px;
+    }
+    & i{
+        font-size: 70px;
+    }
+    & .button_tc{
+        /* width: ; */
+        display: flex;
+        gap: 30px;
+        /* border: 1px solid #111; */
+
+        & li{
+            width: 150px;
+            height: 50px;
+            /* border: 1px solid #111; */
+            text-align: center;
+            padding: 15px 0;
+            background-color: #111;
+            color: #fff;
+            & a{
+                color: #fff;
+                font-size: 15px;
+            }
+        }
+    }
+}
