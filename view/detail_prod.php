@@ -39,8 +39,11 @@
                 <span class="price_sale"><?php echo number_format($sanpham['price_sale'], 0, ",", ".") ?>đ</span>
             </div>
             <div class="tinh_trang">
-                <p>Hàng trong kho: <span><?php echo $sanpham['so_luong'] ?></span></p>
+                <p>Hàng trong kho:
+                    <span><?php echo $sanpham['so_luong'] ?></span>
+                </p>
             </div>
+
             <div class="luot_xem">
                 <p>Lượt xem: <span><?php echo $sanpham['luotxem'] ?></span></p>
             </div>
@@ -68,12 +71,13 @@
                     </div>    -->
 
             <form action="?act=add_to_cart" method="post" onsubmit="return datMua()">
+
                 <div>
                     <label class='chonsize' for="size">Chọn Size:</label>
                     <?php
                     $arrSize = [];
                     foreach ($bien_the as $key => $value) {
-                        if(!in_array($value['ten_size'], $arrSize)){
+                        if (!in_array($value['ten_size'], $arrSize)) {
                             array_push($arrSize, $value['ten_size']);
                         }
                     }
@@ -88,7 +92,7 @@
                     <?php
                     $arrColor = [];
                     foreach ($bien_the as $key => $value) {
-                        if(!in_array($value['ten_mau'], $arrColor)){
+                        if (!in_array($value['ten_mau'], $arrColor)) {
                             array_push($arrColor, $value['ten_mau']);
                         }
                     }
@@ -116,7 +120,7 @@
                     <input type="text" hidden name="id_bt_sanpham" value="" id="id_bt_sanpham">
 
                     <?php echo (empty($_SESSION['iduser'])) ? "Bạn cần đăng nhập để mua hàng" : '' ?>
-                    <button type='submit'  name='btnSubmit'>Thêm vào giỏ hàng</button>
+                    <button type='submit' name='btnSubmit'>Thêm vào giỏ hàng</button>
                 </div>
             </form>
 
@@ -249,7 +253,7 @@
         if (selectedSize && selectedColor) {
             // alert('Đã thêm vào giỏ hàng');
         } else {
-            // alert('Vui lòng chọn size và màu trước khi đặt mua!');
+            alert('Vui lòng chọn size và màu trước khi đặt mua!');
             return false;
         }
         if (inputIdBtSanpham.value == "") {
@@ -275,8 +279,7 @@
                 break;
             }
         }
-        
-        if(!check) {
+        if (!check) {
             id_bt_sanpham = null
         }
         //return null;

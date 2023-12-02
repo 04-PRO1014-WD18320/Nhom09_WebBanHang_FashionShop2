@@ -57,7 +57,7 @@ form .email{
     /* margin-bottom: 40px; */
     /* border-radius: 30px; */
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 15px;
     border: none;
     outline: none;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -174,5 +174,5 @@ form .email{
     text-align: center;
     color: green;
     padding: 10 0;
-    font-size: 50px;
+    font-size: 17px;
 }
