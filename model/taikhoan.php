@@ -9,7 +9,7 @@ function dangnhap($user, $pass)
         $_SESSION['role'] = $taikhoan['role'];
         header('location:index.php');
     } else {
-        return "thông tin tài khoản sai";
+        return "Thông tin tài khoản sai !";
     }
 }
 
