@@ -261,7 +261,11 @@ function load_id_bienthe($idsp)
     $result = pdo_query($sql);
     return $result;
 }
-
+function load_sl_bienthe($id_bt_sanpham){
+    $sql = "SELECT * FROM bien_the where id =" . $id_bt_sanpham;
+    $result = pdo_query($sql);
+    return $result;
+}
 function load_anhcon($idsp)
 {
     $sql = "SELECT * FROM hinhanh where id_sp =" . $idsp;

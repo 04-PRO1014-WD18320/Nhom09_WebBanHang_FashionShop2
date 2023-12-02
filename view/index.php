@@ -102,6 +102,8 @@ include "_header.php";
                         $sanpham_tt = sanpham_tuongtu($_GET['idsp']);
                         tangluotxem($_GET['idsp']);
                         $bien_the = load_id_bienthe($_GET['idsp']);
+                       
+                       
                     
                     }
                     if (isset($_POST['btnBinhluan'])) {

@@ -52,7 +52,7 @@ include 'menu.php';
                 break;
             case 'editnguoidung':
                 $thongbao = "";
-               
+
                 if (isset($_GET['idkh'])) {
                     $olddata = one_khachhang($_GET['idkh']);
                 }
@@ -61,7 +61,7 @@ include 'menu.php';
                     edit_khachhang($_POST['idkh'], $_POST['role']);
                     $olddata = one_khachhang($_GET['idkh']);
                     $thongbao = "Cập nhật tài khoản thành công !";
-                
+
                     // header("location: ?act=dsnguoidung");
                 }
                 include "taikhoan/editnguoidung.php";
@@ -409,57 +409,20 @@ include 'menu.php';
                 include "binhluan/dsbinhluan.php";
                 break;
 
-            case 'dsthongke':
 
+            case 'dsthongke':
+                if (isset($_POST['clickOK']) && ($_POST['clickOK'])) {
+                    $keyw = $_POST['keyw'];
+                    $iddm = $_POST['iddm'];
+                } else {
+                    $keyw = "";
+                    $iddm = 0;
+                }
+                $list_dm = danhsach_danhmuc();
+                $list_sp = loadall_sanpham($keyw, $iddm);
                 include "thongke/dsthongke.php";
                 break;
-
-                // case 'login':
-
-                //     header("location:../login.php");
-                //     break;
-
-            case 'dscd':
-
-                include "chuyende/list-chuyende.php";
-                break;
-            case 'add-chuyende':
-
-                include "chuyende/add-chuyende.php";
-                break;
-
-            case 'dstk':
-
-                include "taikhoan/list-taikhoan.php";
-                break;
-            case 'addtk':
-
-                include "taikhoan/add-taikhoan.php";
-                break;
-            case 'edittk':
-
-                include "taikhoan/edit-taikhoan.php";
-                break;
-            case 'dsch':
-
-                include "cauhoi/list-cauhoi.php";
-                break;
-            case 'addch':
-
-                include "cauhoi/add-cauhoi.php";
-                break;
-            case 'editch':
-
-                include "cauhoi/edit-cauhoi.php";
-                break;
-            case 'dsda':
-
-                include "dapan/list-dapan.php";
-                break;
-            case 'editda':
-
-                include "dapan/edit-dapan.php";
-                break;
+          
             case 'back-to-website':
                 header("location:../view/index.php");
                 break;

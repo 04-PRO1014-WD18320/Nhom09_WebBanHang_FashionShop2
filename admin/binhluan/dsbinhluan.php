@@ -22,7 +22,7 @@
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead class="thead-light">
                         <tr>
-                            <th></th>
+               
                             <th>ID</th>
                             <th>Nội dung</th>
                             <th>Tên khách hàng</th>
@@ -37,7 +37,7 @@
                         
                         foreach ($dsbl as $key => $value) : ?>
                             <tr>
-                                <td class="text-center align-middle"><input type="checkbox" name="select" id=""></td>
+                              
                                 <td class="col-1 align-middle"><?php echo $value['id'] ?></td>
                                 <td class="col-2 align-middle"><?php echo $value['noidung'] ?></td>
                                 <td class="col-3 align-middle"><?php echo $value['user'] ?></td>
