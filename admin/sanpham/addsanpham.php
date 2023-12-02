@@ -4,7 +4,7 @@
         // echo (isset($_SESSION['inputCounter']))? '<br>'. $_SESSION['inputCounter'] : "";
         // var_dump($_SESSION['inputCounter']);
         $ses= (isset($_SESSION['inputCounter'])) ? $_SESSION['inputCounter'] : 1;
-        echo 'ses trong file add: '.$ses;
+        // echo 'ses trong file add: '.$ses;
         // var_dump($ses);
         function checkInput($data){
             $data = trim($data);
@@ -14,9 +14,10 @@
         }
         
     ?>
+    <?php echo ($thanhCong != '')? $thanhCong : ''?>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Thêm mới sản phẩm</h1>
+        <h1 class="h3 mb-0 text-gray-800">Thêm mới sản phẩm </h1>
     </div>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -101,6 +102,7 @@
                 </div>
                 <?php
                 if (isset($_POST['add_input'])) {
+                    $name = $_POST['name'];
                     // Tăng giá trị biến session để theo dõi số lượng thẻ input
                     $_SESSION['inputCounter'] = isset($_SESSION['inputCounter']) ? $_SESSION['inputCounter'] + 1 : 1;
                 }
