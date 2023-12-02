@@ -25,36 +25,37 @@
                                     <thead class="thead-light">
                                         <tr>
                                             <th></th>
-                                            <th>Mã đơn hàng</th>
-                                            <th>Khách hàng</th>
-                                            <th>Địa chỉ</th>
-                                            <th>Số điện thoại</th>
-                                            <th>Số lượng hàng</th>
-                                            <th>Giá trị đơn hàng</th>
-                                            <th>Tình trạng đơn hàng</th>
+                                            <th>Mã ct_đơn hàng</th>
+                                            <th>img</th>
+                                            <th>tên sp</th>
+                                            <th>màu sắc</th>
+                                            <th>kích thước</th>
+                                            <th>số lượng</th>
+                                            <th>Giá</th>
                                             <th>Ngày đặt hàng</th>
                                             <th>Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        
                                         <?php
                                         // $list_donhang = loadall_donhang();
-                                            foreach($list_donhang as $hd){
+                                            foreach($list_ct_dh as $hd){
                                                 extract($hd);
                                                 echo '
                                                 <tr>
                                                     <td class=" col-1 text-center align-middle"><input type="checkbox" name="select" id=""></td>
                                                     <td class="col-1 align-middle">'.$id.'</td>
-                                                    <td class="col-2 align-middle">'.$receive_name.'</td>
-                                                    <td class="col-2 align-middle">'.$address.'</td>
-                                                    <td class="col-2 align-middle">0'.$sdt.'</td>
-                                                    <td class="col-1 align-middle">'.$so_sp.'</td>
-                                                    <td  class="col-2 align-middle">'.number_format($tong).'VND</td>
-                                                    <td  class="col-2 align-middle">'.$status.'</td>
-                                                    <td class="col-1 align-middle">'.$ngay_dat_hang.'</td>
-                                                    <td class="col-2 align-middle"><a href="index.php?act=update_donhang&iddh='.$id.'"><button class="btn btn-secondary btn-sm">Sửa</button></a> | 
-                                                        <a href="#"><button class="btn btn-secondary btn-sm">Hủy</button></a>
-                                                        |<a href="index.php?act=ct_donhang&iddh='.$id.'"><button class="btn btn-secondary btn-sm">Chi tiết</button></a></td>
+                                                    <td class="col-2 align-middle"><img src="../upload/'.$img.'" alt="" width="100px"></td>
+                                                    <td class="col-2 align-middle">'.$tensp.'</td>
+                                                    <td class="col-2 align-middle">'.$mau_sac.'</td>
+                                                    <td class="col-1 align-middle">'.$kich_thuoc.'</td>
+                                                    <td class="col-1 align-middle">'.$so_luong.'</td>
+                                                    <td  class="col-2 align-middle">'.number_format($gia).'VND</td>
+                                                    <td class="col-1 align-middle">'.$ngay_mua.'</td>
+                                                    <td class="col-2 align-middle">
+                                                        
+                                                        <a href="index.php?act=ct_donhang&iddh='.$id.'"><button class="btn btn-secondary btn-sm">hủy</button></a></td>
                                                 </tr>
                                                 ';
 
