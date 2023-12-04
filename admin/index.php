@@ -19,6 +19,7 @@ include 'menu.php';
 <div>
     <?php
     // $bieudo = load_thongke_sp_dm();
+    $tk_binhluan = load_thongke_binhluan();
     //Controller
     if (isset($_GET['act']) && $_GET['act'] != "") {
         $act = $_GET['act'];
@@ -52,7 +53,7 @@ include 'menu.php';
                 break;
             case 'editnguoidung':
                 $thongbao = "";
-               
+
                 if (isset($_GET['idkh'])) {
                     $olddata = one_khachhang($_GET['idkh']);
                 }
@@ -61,7 +62,7 @@ include 'menu.php';
                     edit_khachhang($_POST['idkh'], $_POST['role']);
                     $olddata = one_khachhang($_GET['idkh']);
                     $thongbao = "Cập nhật tài khoản thành công !";
-                
+
                     // header("location: ?act=dsnguoidung");
                 }
                 include "taikhoan/editnguoidung.php";
@@ -198,8 +199,6 @@ include 'menu.php';
                     }
 
                     $thanhCong = '<a href="index.php?act=dssanpham">Thêm thành công</a>';
-
-                    
                 }
 
                 // $list_sp = loadall_sanpham($keyw, $iddm);
@@ -220,7 +219,7 @@ include 'menu.php';
                 include "sanpham/editsanpham.php";
                 break;
             case 'sua_sp':
-                
+
                 $list_dm = danhsach_danhmuc();
                 $list_ms = danhsach_mausac();
                 $list_kt = danhsach_kichthuoc();
@@ -282,7 +281,7 @@ include 'menu.php';
                     //sửa bảng biến thể
                     $bienThe_update = bienThe_update($idsp);
                     $so_bt = so_bt_theo_idsp($idsp);
-                    if(isset($so_bt)){
+                    if (isset($so_bt)) {
                         extract($so_bt);
                         // echo "<pre>";
                         // print_r($so_bt);
@@ -290,15 +289,15 @@ include 'menu.php';
                     }
                     $i = 0;
 
-                    foreach($so_bt as $bt){
-                        $i+= $bt['so_bt'];
+                    foreach ($so_bt as $bt) {
+                        $i += $bt['so_bt'];
                     }
                     echo $i;
                     delete_bienthe($idsp);
-                    for($j = 0; $j<$i ; $j++){
-                        $idms[$j] = $_POST['idms'.$j];
-                        $idkt[$j] = $_POST['idkt'.$j];
-                        $soluong[$j] = $_POST['soluong'.$j];
+                    for ($j = 0; $j < $i; $j++) {
+                        $idms[$j] = $_POST['idms' . $j];
+                        $idkt[$j] = $_POST['idkt' . $j];
+                        $soluong[$j] = $_POST['soluong' . $j];
                         // echo '<br>'.$idms[$j];
                         // echo '<br>'.$idkt[$j];
                         // echo '<br>'.$soluong[$j];
@@ -307,7 +306,7 @@ include 'menu.php';
 
                     // update_bienthe($idsp, $idms_value, $idkt_value, $soluong_value);
 
-                    
+
 
 
                     // $img = $_FILES['image'];
@@ -357,7 +356,7 @@ include 'menu.php';
 
             case "hard_delete":
                 if (isset($_GET['idbt'])) {
-                hard_delete_bthe($_GET['idbt']);
+                    hard_delete_bthe($_GET['idbt']);
                 }
                 $list_sp = loadall_sanpham("", 0);
                 include "sanpham/dssanpham.php";
@@ -369,13 +368,13 @@ include 'menu.php';
                 include "donhang/dsdonhang.php";
                 break;
             case 'ct_donhang':
-                if(isset($_GET['iddh'])){
+                if (isset($_GET['iddh'])) {
                     $list_ct_dh = load_ct_donhang($_GET['iddh']);
                 }
                 include "donhang/ct_donhang.php";
                 break;
             case 'update_donhang':
-                if(isset($_GET['iddh'])){
+                if (isset($_GET['iddh'])) {
                     $one_donhang = loadone_donhang($_GET['iddh']);
                 }
                 include "donhang/update_donhang.php";
@@ -385,13 +384,13 @@ include 'menu.php';
                 include "binhluan/dsbinhluan.php";
                 break;
             case 'sua_donhang':
-                
-                if(isset($_POST['iddh'])){
+
+                if (isset($_POST['iddh'])) {
                     $status = $_POST['status'];
-                    if($status == 0){
+                    if ($status == 0) {
                         echo "bạn cần cập nhật trạng thái đơn hàng";
-                    }else{
-                        update_donhang($_POST['iddh'],$status);
+                    } else {
+                        update_donhang($_POST['iddh'], $status);
                     }
                     // echo $status;
                 }
@@ -409,57 +408,16 @@ include 'menu.php';
                 include "binhluan/dsbinhluan.php";
                 break;
 
-            case 'dsthongke':
 
+            case 'dsthongke':
+                $tk_binhluan = load_thongke_binhluan();
                 include "thongke/dsthongke.php";
                 break;
-
-                // case 'login':
-
-                //     header("location:../login.php");
-                //     break;
-
-            case 'dscd':
-
-                include "chuyende/list-chuyende.php";
-                break;
-            case 'add-chuyende':
-
-                include "chuyende/add-chuyende.php";
+            case 'bieudo_binhluan':
+                $tk_binhluan = load_thongke_binhluan();
+                include "thongke/bieudo_binhluan.php";
                 break;
 
-            case 'dstk':
-
-                include "taikhoan/list-taikhoan.php";
-                break;
-            case 'addtk':
-
-                include "taikhoan/add-taikhoan.php";
-                break;
-            case 'edittk':
-
-                include "taikhoan/edit-taikhoan.php";
-                break;
-            case 'dsch':
-
-                include "cauhoi/list-cauhoi.php";
-                break;
-            case 'addch':
-
-                include "cauhoi/add-cauhoi.php";
-                break;
-            case 'editch':
-
-                include "cauhoi/edit-cauhoi.php";
-                break;
-            case 'dsda':
-
-                include "dapan/list-dapan.php";
-                break;
-            case 'editda':
-
-                include "dapan/edit-dapan.php";
-                break;
             case 'back-to-website':
                 header("location:../view/index.php");
                 break;

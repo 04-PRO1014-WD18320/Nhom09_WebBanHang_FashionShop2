@@ -24,7 +24,7 @@
                                 <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th></th>
+                                       
                                             <th>Mã đơn hàng</th>
                                             <th>Khách hàng</th>
                                             <th>Địa chỉ</th>
@@ -43,7 +43,7 @@
                                                 extract($hd);
                                                 echo '
                                                 <tr>
-                                                    <td class=" col-1 text-center align-middle"><input type="checkbox" name="select" id=""></td>
+                                                  
                                                     <td class="col-1 align-middle">'.$id.'</td>
                                                     <td class="col-2 align-middle">'.$receive_name.'</td>
                                                     <td class="col-2 align-middle">'.$address.'</td>

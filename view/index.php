@@ -102,6 +102,8 @@ include "_header.php";
                         $sanpham_tt = sanpham_tuongtu($_GET['idsp']);
                         tangluotxem($_GET['idsp']);
                         $bien_the = load_id_bienthe($_GET['idsp']);
+                       
+                       
                     
                     }
                     if (isset($_POST['btnBinhluan'])) {
@@ -179,7 +181,7 @@ include "_header.php";
                     $donhang_new = loadone_donhang_new();
                     extract($donhang_new);
                     // print_r($donhang_new);
-                    echo '<br>id don hàng vừa nhập là: ' . $id . '<br>';
+                    // echo '<br>id don hàng vừa nhập là: ' . $id . '<br>';
 
                     $id_donhang = $id;
 
@@ -187,14 +189,14 @@ include "_header.php";
                     foreach ($count_sp_add as $count_sp) {
                         $i += $count_sp['so_sp'];
                     }
-                    echo $i;
+                    // echo $i;
                     // $id_bienthe = '';
                     for ($j = 0; $j < $i; $j++) {
                         $id_bienthe[$j] = $_POST['id_bienthe' . $j];
                         $so_luong[$j] = $_POST['so_luong' . $j];
                         $price[$j] = $_POST['price_sale' . $j];
                         $ten_sp[$j] = $_POST['ten_sp' . $j];
-                        echo '<br>id biến thể:' . $id_bienthe[$j] . '<br>';
+                        // echo '<br>id biến thể:' . $id_bienthe[$j] . '<br>';
                         insert_ct_donhang($id_donhang, $id_bienthe[$j], $so_luong[$j], $price[$j], $ten_sp[$j]);
                     }
                     // echo $count_sp_add['so_sp'];

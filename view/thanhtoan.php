@@ -31,22 +31,27 @@
                     <div class="ip_in_bottom">
                         <label for="">Tỉnh/Thành phố *</label>
                         <select name="tp" id="">
-                            <option value="Hà nội">hà nội</option>
-                            <option value="Sài gòn">sài gòn</option>
+                            <option value="Hà nội">Hà nội</option>
+                            <option value="Sài gòn">Sài gòn</option>
                         </select>
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Quận/Huyện *</label>
                         <select name="qh" id="">
-                            <option value="Hà nội">hà nội</option>
-                            <option value="Sài gòn">sài gòn</option>
+                            <option value="Hà nội">Chương Mỹ</option>
+                            <option value="Sài gòn">Hoài Đức</option>
+                            <option value="Sài gòn">Hà Đông</option>
+
+                            <option value="Sài gòn">Mỹ Đình</option>
                         </select>
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Xã/Phường *</label>
                         <select name="xp" id="">
-                            <option value="Hà nội">hà nội</option>
-                            <option value="Sài gòn">sài gòn</option>
+                            <option value="Hà nội">Phú Nghĩa</option>
+                            <option value="Sài gòn">Chúc Sơn</option>
+                            <option value="Sài gòn">Hữu Văn</option>
+
                         </select>
                     </div>
                     <div class="ip_in_bottom">

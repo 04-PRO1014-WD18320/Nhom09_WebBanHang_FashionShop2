@@ -1,15 +1,17 @@
 <div class="container">
     <div class="login">
         <form action="index.php?act=quenmk" method="post">
-            <div class="box1">
+            <div class="box1" align='center'>
                 <h3>Quên Mật Khẩu</h3>
             </div>
             <div class="box2">
-                <input type="text" name="email" class="email" placeholder="Email" autocomplete="off" required>
+                <input type="text" name="email" class="email" placeholder="Nhập email của bạn ..." autocomplete="off" required>
                 <i class="fa-solid fa-envelope"></i>
             </div>
+
             <div class="gui">
-                <input type="submit" value="gui" name="guiemail" style=" width: 100%;
+                <input type="submit" value="Gửi" name="guiemail" style=" width: 100%;
+                cursor: pointer;
     height: 50px;
     border-radius: 30px;
     border: none;
@@ -30,7 +32,7 @@
         background: -webkit-linear-gradient(120deg, hsl(318, 94%, 61%), hsl(239, 69%,51%));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-    }">nhập lại</a>
+    }">Đăng nhập</a>
             </div>
             <?php
             if (isset($thongbao) && $thongbao != "") {

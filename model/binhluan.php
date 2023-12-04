@@ -2,7 +2,7 @@
 
 function danhsach_binhluan()
 {
-    $sql = "SELECT binhluan.id, binhluan.noidung, sanpham.name, taikhoan.user, binhluan.ngaybinhluan FROM binhluan JOIN sanpham on sanpham.id = binhluan.idpro join taikhoan on taikhoan.id = binhluan.iduser";
+    $sql = "SELECT binhluan.id, binhluan.noidung, sanpham.name, taikhoan.user, binhluan.ngaybinhluan FROM binhluan JOIN sanpham on sanpham.id = binhluan.idpro join taikhoan on taikhoan.id = binhluan.iduser order by binhluan.ngaybinhluan desc";
     $result = pdo_query($sql);
     return $result;
 }

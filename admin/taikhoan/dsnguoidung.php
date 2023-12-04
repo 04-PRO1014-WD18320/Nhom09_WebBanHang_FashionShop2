@@ -23,7 +23,7 @@
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead class="thead-light">
                         <tr>
-                            <th></th>
+                    
                             <th>STT</th>
                             <th>Tên đăng nhập</th>
                             <th>Họ và tên</th>
@@ -42,7 +42,7 @@
                         ?>
                     
                             <tr>
-                                <td class="align-middle text-center td_checkbox"><input type="checkbox" name="select" id=""></td>
+                       
                                 <td class="align-middle text-center td_id"><?= $key + 1; ?> </td>
                                
                                 <td class="col-1 align-middle"><?= $user ?></td>
