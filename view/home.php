@@ -74,7 +74,7 @@
 <?php endforeach; ?>
 
 
-<?php if (isset($keyword) || isset($_GET['iddm']) || isset($_GET['id_b_dm'])) :  ?>
+<?php if (isset($keyword)) :  ?>
     <style>
         ._banner,
         .hotSale1,
@@ -85,9 +85,51 @@
 
     <div class="hotSale hotSale2">
         <div class="url">
-           
+            <a href="?act=home"><?php echo "Trang chủ" . " / Kết quả tìm kiếm cho '$keyword' " ?></a>
+
+        </div>
+        <div class="post-item">
+
+            <?php
+            foreach ($dssp as $k => $sp_timkiem) : ?>
+                <div class="prod">
+                    <a class="img-prod" href="?act=chitietsp&idsp=<?php echo $sp_timkiem['id'] ?>">
+                        <img src="../upload/<?php echo $sp_timkiem['img'] ?>" alt="">
+                    </a>
+                    <br>
+                    <a href="?act=chitietsp&idsp=<?php echo $sp_timkiem['id'] ?>" class="name-prod"><?php echo $sp_timkiem['name'] ?></a> <br>
+                    <a class="price">
+                        <span><?php echo number_format($sp_timkiem['price_niemyet'])  ?>đ</span>
+                        <?php echo number_format($sp_timkiem['price_sale'])  ?>đ</a> <br>
+                    <span class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </span> <br>
+                    <span class="favourite">Yêu thích <i class="fa-regular fa-heart"></i> </span>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>
+
+
+
+<?php if (isset($_GET['iddm']) || isset($_GET['id_b_dm'])) :  ?>
+    <style>
+        ._banner,
+        .hotSale1,
+        .product_dm {
+            display: none;
+        }
+    </style>
+
+    <div class="hotSale hotSale2">
+        <div class="url">
             <!-- <a href="?act=home"><?php echo "Trang chủ" . " / Kết quả tìm kiếm cho '$keyword' " ?></a> -->
-           
+
         </div>
         <div class="post-item">
 
