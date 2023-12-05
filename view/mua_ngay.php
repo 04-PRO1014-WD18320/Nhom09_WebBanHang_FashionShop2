@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="tt_thanhtoan">
-        <form action="index.php?act=thanhtoan" method="post">
+        <form action="index.php?act=mua_ngay" method="post">
             <div class="tt_user">
                 <h2>THÔNG TIN THANH TOÁN</h2>
                 <input type="text" hidden name="iduser" value="<?=$_SESSION['iduser']?>">
@@ -62,48 +62,24 @@
                 <label for="">Ghi chú đơn hàng (không bắt buộc)</label>
                 <textarea name="note" id="" cols="30" rows="10"></textarea>
             </div>
+            <?php
+                if(is_array($sp_mua_ngay)){
+                    extract($sp_mua_ngay);
+                    // echo "<pre>";
+                    // print_r($sp_mua_ngay);
+                    $tong = $price_sale * $so_luong;
+                }
+            ?>
             <div class="tt_donhang">
                 <h2>ĐƠN HÀNG CỦA BẠN</h2>
                 <div class="space">
                     <h3>Sản phẩm</h3>
                     <h3>Tạm tính</h3>
                 </div>
-                <?php
-                if(is_array($ds_sp_thanhtoan)){
-                    extract($ds_sp_thanhtoan);
-                    
-                }
-                $i =0;
-                $tong = 0;
-                foreach($count_sp_add as $count_sp){
-                    // echo "<pre>";
-                    // print_r($count_sp);
-                    $i+=$count_sp['so_sp'];
-                   
-                }
-                // $_SESSION['so_sp_giohang'] = $so_sp = $i;
-                // echo $so_sp;
-                // echo $i.'<br>';
-                for($j=0; $j<$i; $j++){
-                    // echo $ds_sp_thanhtoan[$j]['id_bienthe'];
-                    echo '<input type="text" hidden name="id_bienthe'.$j.'" value="'.$ds_sp_thanhtoan[$j]['id_bienthe'].'">';
-                    echo '<input type="text" hidden name="so_luong'.$j.'" value="'.$ds_sp_thanhtoan[$j]['so_luong'].'">';
-                    echo '<input type="text" hidden name="price_sale'.$j.'" value="'.$ds_sp_thanhtoan[$j]['price_sale'].'">';
-                    echo '<input type="text" hidden name="ten_sp'.$j.'" value="'.$ds_sp_thanhtoan[$j]['ten_sp'].'">';
-                    
-                    echo '
-                    <div class="space">
-                        <p>'.$ds_sp_thanhtoan[$j]['ten_sp'].', '.$ds_sp_thanhtoan[$j]['mau_sac'].', '.$ds_sp_thanhtoan[$j]['kich_thuoc'].' x '.$ds_sp_thanhtoan[$j]['so_luong'].'</p>
-                        <span>'.number_format($ds_sp_thanhtoan[$j]['price_sale']*$ds_sp_thanhtoan[$j]['so_luong']).'đ</span>
-                    </div>
-                    ';
-                    $tong+= $ds_sp_thanhtoan[$j]['price_sale']*$ds_sp_thanhtoan[$j]['so_luong'];
-                    // $tong+= 25000; 
-                }
-                
-                    // echo $id_bienthe;
-                ?>
-                <input type="text" hidden name="tong" value="<?=$tong+25000?>">
+                <div class="space">
+                    <p><?=$name.' : '.$mau_sac.' , '.$kich_thuoc.' x '.$so_luong?></p>
+                    <span><?=number_format($price_sale)?>đ</span>
+                </div>
                 <div class="space">
                     <p>Giao hàng</p>
                     <span><?php echo ($tong>0)? '25,000':'0'?>đ</span>
@@ -117,6 +93,11 @@
                     <option value="">Thanh toán khi nhận hàng</option>
                     <option value="">Thanh toán online</option>
                 </select><BR>
+                <input type="text" hidden name="tong" value="<?=$tong+25000?>">
+                <input type="text" hidden name="price" value="<?=$price_sale?>">
+                <input type="text" hidden name="ten_sp" value="<?=$name?>">
+                <input type="text" hidden name="id_bt_sanpham" value="<?=$id_bt_sanpham?>">
+                <input type="text" hidden name="so_luong" value="<?=$so_luong?>">
                 
                 <input type="submit"  name="dat_hang" value="ĐẶT HÀNG">
             </div>

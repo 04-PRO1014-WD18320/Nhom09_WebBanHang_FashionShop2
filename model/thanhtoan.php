@@ -55,6 +55,23 @@ function delete_sp_buy($iduser)
     pdo_execute($sql);
     header('location:?act=hoanthanh_tt');
 }
+function load_sanpham_mua_ngay($idbt)
+{
+    $sql = "SELECT sanpham.id AS id,
+                    sanpham.name,
+                    sanpham.img,
+                    sanpham.price_sale,
+                    mau_sac.value AS mau_sac,
+                    kich_thuoc.value AS kich_thuoc
+            FROM sanpham
+            JOIN bien_the ON sanpham.id = bien_the.id_sp
+            JOIN mau_sac ON bien_the.id_mau_sac = mau_sac.id
+            JOIN kich_thuoc ON bien_the.id_kich_thuoc = kich_thuoc.id
+            -- ORDER BY sanpham.id 
+            WHERE bien_the.id =$idbt;";
+    $result = pdo_query_one($sql);
+    return $result;
+}
 function loadall_ct_donhang($iduser)
 {
     $sql = "SELECT 
