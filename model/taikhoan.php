@@ -96,7 +96,7 @@ function edit_khachhang($idkh, $role)
 
 //Hàm xử lý đăng ký tài khoản ở dao khachhang.php
 
-
+//Hàm cập nhật tài khoản
 function edit_tk($id, $user, $pass, $email, $address, $tel)
 {
     $sql = "UPDATE `taikhoan` SET `user`='$user',`pass` = '$pass' ,`email`='$email',`address`='$address',`tel`='$tel' WHERE id = $id";
