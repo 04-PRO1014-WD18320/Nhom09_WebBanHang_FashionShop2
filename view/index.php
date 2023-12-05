@@ -207,18 +207,50 @@ include "_header.php";
                 break;
             case 'mua_ngay':
                 if (isset($_POST['submit'])) {
-                    echo $_POST['id_bt_sanpham'];
+                    // echo $_POST['id_bt_sanpham_mua_ngay'];
+                    $id_bt_sanpham = $_POST['id_bt_sanpham_mua_ngay'];
                     $id_user = $_SESSION['iduser'];
+                    $so_luong = $_POST['so_luong_mua_ngay'];
+                    $sp_mua_ngay = load_sanpham_mua_ngay($id_bt_sanpham);
+                    include 'mua_ngay.php';
+                }
+                if (isset($_POST['dat_hang'])){
+                    $id_user = $_SESSION['iduser'];
+                    $diachi = $_POST['tp'] . ', ' . $_POST['qh'] . ', ' . $_POST['xp'] . ', ' . $_POST['dchi'];
+                    $name = $_POST['name'];
+                    $sdt = $_POST['phone'];
+                    $email = $_POST['email'];
+                    $note = $_POST['note'];
+                    $tong_thanhtoan = $_POST['tong'];
+
+                    $price = $_POST['price'];
+                    $ten_sp = $_POST['ten_sp'];
+                    $id_bt_sanpham = $_POST['id_bt_sanpham'];
+                    $so_luong = $_POST['so_luong'];
+                    
+                    // echo $diachi;
+                    // echo $name;
+                    insetr_donhang($id_user, $diachi, $sdt, $email, $tong_thanhtoan, $name);
+
+                    $donhang_new = loadone_donhang_new();
+                    extract($donhang_new);
+                    // print_r($donhang_new);
+                    // echo '<br>id don hàng vừa nhập là: ' . $id . '<br>';
+
+                    $id_donhang = $id;
+                    insert_ct_donhang($id_donhang, $id_bt_sanpham, $so_luong, $price, $ten_sp);
+                    // echo $so_luong;
                     // $diachi = $_POST['tp'] . ', ' . $_POST['qh'] . ', ' . $_POST['xp'] . ', ' . $_POST['dchi'];
                     // $name = $_POST['name'];
                     // $sdt = $_POST['phone'];
                     // $email = $_POST['email'];
                     // $note = $_POST['note'];
                     // $tong_thanhtoan = $_POST['tong'];
+                    
                 }
 
-
-                include 'thanhtoan.php';
+                include "thanhtoan_tc.php";
+                
                 break;
             case 'ct_donhang':
                 if (isset($_GET['iduser'])) {
