@@ -106,11 +106,11 @@
                 <!--  -->
                 <div>
                     <label for="">Số lượng: </label>
-                    <input type="number" min="1" max="<?php echo $sanpham['so_luong'] ?>" name="so_luong" value="1" onchange="updateSelectedQuantity()">
+                    <input type="number" min="1" max="<?php echo $sanpham['so_luong'] ?>" name="so_luong" id="so_luong" value="1" onchange="updateSelectedQuantity()">
 
                 </div>
                 <div class="add_cart">
-                    <input type="text" hidden name="iduser" value="<?php echo (empty($_SESSION['iduser'])) ? "" : $_SESSION['iduser'] ?>">
+                <input type="text" hidden name="iduser" value="<?php echo (empty($_SESSION['iduser'])) ? "" : $_SESSION['iduser'] ?>">
                     <input type="text" hidden name="id" value="<?= $sanpham['id']  ?>">
                     <input type="text" hidden name="name" value="<?= $sanpham['name']  ?>">
                     <input type="text" hidden name="img" value="<?= $sanpham['img']  ?>">
@@ -125,16 +125,17 @@
             </form>
 
             <div class="buy_now">
-                <form action="?act=mua_ngay" method="post">
-
+                <form action="?act=mua_ngay" method="post" onsubmit="return datMua()">
+                    
                     <input type="text" hidden name="iduser" value="<?php echo (empty($_SESSION['iduser'])) ? "" : $_SESSION['iduser'] ?>">
                     <input type="text" hidden name="id" value="<?= $sanpham['id']  ?>">
                     <input type="text" hidden name="name" value="<?= $sanpham['name']  ?>">
                     <input type="text" hidden name="img" value="<?= $sanpham['img']  ?>">
                     <input type="text" hidden name="price_sale" value="<?= $sanpham['price_sale'] ?>">
-                    <input type="text" hidden name="id_mau_sac" id="selected_color_id">
-                    <input type="text" hidden name="id_kich_thuoc" id="selected_size_id">
-                    <input type="text" hidden name="id_bt_sanpham" value="" id="id_bt_sanpham">
+                    <input type="text" hidden name="id_mau_sac_mua_ngay" id="selected_color_id">
+                    <input type="text" hidden name="id_kich_thuoc_mua_ngay" id="selected_size_id">
+                    <input type="text" hidden name="id_bt_sanpham_mua_ngay" value="" id="id_bt_sanpham_mua_ngay">
+                    <input type="number" hidden min="1" max="<?php echo $sanpham['so_luong'] ?>" name="so_luong_mua_ngay" id="so_luong_mua_ngay" value="1" onchange="updateSelectedQuantity()">
                     <button type='submit' class="buy-now" name='submit'>Mua ngay</button>
                 </form>
             </div>
@@ -244,12 +245,17 @@
     function updateSelectedQuantity() {
         var selectedQuantity = document.getElementsByName('so_luong')[0].value;
         document.getElementById('selected_quantity').value = selectedQuantity;
+        // updateSoLuong(so_luong);
+    }
+    function updateSelectedQuantity() {
+        var selectedQuantity = document.getElementById('so_luong').value;
+        document.getElementById('so_luong_mua_ngay').value = selectedQuantity;
     }
 
 
     function datMua() {
         var inputIdBtSanpham = document.querySelector('input[name="id_bt_sanpham"]');
-
+        var inputIdBtSanphamMuaNgay = document.querySelector('input[name="id_bt_sanpham_mua_ngay"]');
         if (selectedSize && selectedColor) {
             // alert('Đã thêm vào giỏ hàng');
         } else {
@@ -284,6 +290,7 @@
         }
         //return null;
         updateIdBtSanpham(id_bt_sanpham);
+        updateIdBtSanphamMuaNgay(id_bt_sanpham);
         return id_bt_sanpham
     }
 
@@ -300,7 +307,7 @@
             // alert("id_bt_sanpham: ", id_bt_sanpham);
         });
     });
-
+    
 
     // Hàm cập nhật giá trị cho input id_bt_sanpham
     function updateIdBtSanpham(id_bt_sanpham) {
@@ -310,5 +317,13 @@
         } else {
             inputIdBtSanpham.value = '';
         }
+    }
+    function updateIdBtSanphamMuaNgay(id_bt_sanpham) {
+        var inputIdBtSanphamMuaNgay = document.querySelector('input[name="id_bt_sanpham_mua_ngay"]');
+        inputIdBtSanphamMuaNgay.value = id_bt_sanpham;
+    }
+    function updateSoLuong(so_luong) {
+        var inputSoLuong = document.querySelector('input[name="so_luong_mua_ngay"]');
+        inputSoLuong.value = so_luong;
     }
 </script>

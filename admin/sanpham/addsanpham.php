@@ -158,3 +158,34 @@
 
 </div>
 <!-- /.container-fluid -->
+<!-- Begin Page Content -->
+<!-- Begin Page Content -->
+
+<!-- /.container-fluid -->
+
+<!-- <script>
+    // Lưu trữ các giá trị đã nhập vào localStorage khi trang web được tải lại
+    window.onload = function() {
+        if (localStorage.getItem('inputValues')) {
+            var inputValues = JSON.parse(localStorage.getItem('inputValues'));
+            for (var i = 0; i < inputValues.length; i++) {
+                var input = document.querySelector('input[name="name_' + i + '"]');
+                if (input) {
+                    input.value = inputValues[i];
+                }
+            }
+        }
+    };
+
+    // Lưu trữ các giá trị đã nhập vào localStorage khi các trường input được thay đổi
+    var inputs = document.querySelectorAll('input[name^="name_"]');
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('input', function() {
+            var inputValues = [];
+            for (var j = 0; j < inputs.length; j++) {
+                inputValues.push(inputs[j].value);
+            }
+            localStorage.setItem('inputValues', JSON.stringify(inputValues));
+        });
+    }
+</script> -->
