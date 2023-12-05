@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 04, 2023 lúc 07:21 AM
+-- Thời gian đã tạo: Th12 05, 2023 lúc 03:18 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -81,7 +81,39 @@ INSERT INTO `bien_the` (`id`, `id_sp`, `id_mau_sac`, `id_kich_thuoc`, `so_luong`
 (70, 51, 1, 3, 11),
 (71, 51, 1, 3, 11),
 (72, 51, 2, 4, 11),
-(73, 51, 2, 4, 11);
+(73, 51, 2, 4, 11),
+(82, 52, 1, 3, 12),
+(83, 52, 3, 3, 12),
+(84, 52, 2, 4, 12),
+(85, 52, 6, 4, 12),
+(86, 53, 1, 2, 11),
+(87, 53, 1, 3, 11),
+(88, 53, 1, 4, 11),
+(89, 53, 1, 5, 11),
+(94, 54, 1, 3, 11),
+(95, 54, 2, 3, 11),
+(96, 54, 1, 4, 11),
+(97, 54, 2, 4, 11),
+(98, 55, 1, 2, 11),
+(99, 55, 1, 3, 11),
+(100, 55, 2, 2, 11),
+(101, 55, 2, 3, 11),
+(102, 56, 1, 2, 12),
+(103, 56, 1, 2, 12),
+(104, 56, 6, 3, 12),
+(105, 56, 6, 3, 12),
+(110, 57, 1, 2, 13),
+(111, 57, 2, 3, 13),
+(112, 57, 6, 3, 13),
+(113, 57, 1, 3, 13),
+(114, 59, 5, 3, 12),
+(115, 59, 3, 3, 12),
+(116, 59, 4, 3, 12),
+(117, 59, 6, 3, 12),
+(118, 60, 1, 2, 12),
+(119, 60, 1, 3, 12),
+(120, 60, 2, 2, 12),
+(121, 60, 2, 3, 12);
 
 -- --------------------------------------------------------
 
@@ -112,7 +144,10 @@ INSERT INTO `binhluan` (`id`, `noidung`, `iduser`, `idpro`, `ngaybinhluan`) VALU
 (59, 'Xịn xò luôn <3 <3', 1, 34, '29-11-23 19:12:57'),
 (60, 'áo đẹp quá', 1, 30, '30-11-23 14:18:13'),
 (61, 'Áo đẹp, rẻ thơm, đóng gói cẩn thận 10đỉm', 1, 46, '03-12-23 20:59:57'),
-(62, 'Ib shop', 1, 46, '03-12-23 21:00:29');
+(62, 'Ib shop', 1, 46, '03-12-23 21:00:29'),
+(63, 'ok đấy', 1, 46, '05-12-23 14:56:27'),
+(64, '10 điểm', 44, 30, '05-12-23 15:05:08'),
+(65, 'Sản phẩm tốt, rất đáng mua ', 44, 60, '05-12-23 17:42:03');
 
 -- --------------------------------------------------------
 
@@ -136,7 +171,9 @@ INSERT INTO `cart` (`id`, `id_user`, `id_bt_sanpham`, `soluong`) VALUES
 (161, 41, 25, 2),
 (164, 41, 17, 3),
 (198, 41, 13, 1),
-(201, 41, 14, 2);
+(201, 41, 14, 2),
+(239, 44, 118, 1),
+(240, 44, 121, 1);
 
 -- --------------------------------------------------------
 
@@ -169,7 +206,12 @@ INSERT INTO `chitiet_donhang` (`id`, `id_donhang`, `id_bt_sanpham`, `so_luong`, 
 (31, 32, 24, 2, 490000, '', 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165', '2023-12-02'),
 (32, 34, 13, 1, 160000, '', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', '2023-12-02'),
 (34, 36, 23, 1, 490000, '', 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165', '2023-12-02'),
-(41, 50, 23, 2, 490000, '', 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165', '2023-12-04');
+(41, 50, 23, 2, 490000, '', 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165', '2023-12-04'),
+(43, 52, 84, 2, 279000, '', 'Polo Striped PL.137', '2023-12-04'),
+(44, 53, 114, 1, 299000, '', 'Áo Hoodie Teelab Local Brand Unisex Special Collection Premium HD044', '2023-12-05'),
+(45, 53, 112, 2, 299000, '', 'Áo Sweater Teelab Local Brand Unisex Wavy Line HD061', '2023-12-05'),
+(46, 54, 23, 1, 490000, '', 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165', '2023-12-05'),
+(47, 55, 52, 2, 129000, '', 'Áo Thun Dài Tay Studio', '2023-12-05');
 
 -- --------------------------------------------------------
 
@@ -255,7 +297,11 @@ INSERT INTO `donhang` (`id`, `id_user`, `address`, `sdt`, `email`, `phuongthuctt
 (48, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-12-04 00:00:00', 283000, 'Chờ xác nhận', '', NULL, NULL),
 (49, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-12-04 00:00:00', 283000, 'Chờ xác nhận', '', NULL, NULL),
 (50, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-12-04 00:00:00', 1005000, 'Đang giao hàng', '', NULL, NULL),
-(51, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-12-04 00:00:00', 465000, 'Chờ xác nhận', '', NULL, NULL);
+(51, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-12-04 00:00:00', 465000, 'Chờ xác nhận', '', NULL, NULL),
+(52, 1, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-12-04 00:00:00', 583000, 'Chờ xác nhận', '', NULL, NULL),
+(53, 1, 'Hà nội, Hà nội, Hà nội, Chương Mỹ, Hà Nội City', 973657594, 'anhsongoku123@gmail.com', 'Trả tiền khi nhận hàng', '2023-12-05 00:00:00', 922000, 'Chờ xác nhận', 'Nguyễn Sơn', NULL, NULL),
+(54, 44, 'Hà nội, Hà nội, Hà nội, Chương Mỹ, Hà Nội City', 973657594, 'anhsongoku123@gmail.com', 'Trả tiền khi nhận hàng', '2023-12-05 00:00:00', 515000, 'Đã xác nhận', 'Nguyễn Sơn', NULL, NULL),
+(55, 44, 'Hà nội, Hà nội, Hà nội, ', 0, '', 'Trả tiền khi nhận hàng', '2023-12-05 00:00:00', 283000, 'Chờ xác nhận', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -334,7 +380,40 @@ INSERT INTO `hinhanh` (`id`, `url`, `id_sp`) VALUES
 (92, 'Polo Pitying PL.134 4.jpg', 51),
 (93, 'Polo Pitying PL.134 3.jpg', 51),
 (94, 'Polo Pitying PL.134 2.jpg', 51),
-(95, 'Polo Pitying PL.134.jpg', 51);
+(95, 'Polo Pitying PL.134.jpg', 51),
+(106, 'Polo Striped PL.137 5.jpg', 52),
+(107, 'Polo Striped PL.137 4.jpg', 52),
+(108, 'Polo Striped PL.137 3.jpg', 52),
+(109, 'Polo Striped PL.137 2.jpg', 52),
+(110, 'Polo Striped PL.137.jpg', 52),
+(111, 'Áo Polo Teelab Local Brand Unisex Graphic Hanoi Famous AP031 2.webp', 53),
+(112, 'Áo Polo Teelab Local Brand Unisex Graphic Hanoi Famous AP031 3.webp', 53),
+(113, 'Áo Polo Teelab Local Brand Unisex Graphic Hanoi Famous AP031.webp', 53),
+(114, 'Áo Sweater Teelab Local Brand Unisex Studio Contrast HD064 2.webp', 54),
+(115, 'Áo Sweater Teelab Local Brand Unisex Studio Contrast HD064 3.webp', 54),
+(116, 'Áo Sweater Teelab Local Brand Unisex Studio Contrast HD064.webp', 54),
+(117, 'Áo Hoodie Teelab Local Brand Unisex Blockcore Curve HD065 3.webp', 55),
+(118, 'Áo Hoodie Teelab Local Brand Unisex Blockcore Curve HD065 2.webp', 55),
+(119, 'Áo Hoodie Teelab Local Brand Unisex Blockcore Curve HD065.webp', 55),
+(120, 'Áo Hoodie Teelab Local Brand Unisex Worldwide Studio Zipped Hoodie HD067 3.webp', 56),
+(121, 'Áo Hoodie Teelab Local Brand Unisex Worldwide Studio Zipped Hoodie HD067 2.webp', 56),
+(122, 'Áo Hoodie Teelab Local Brand Unisex Worldwide Studio Zipped Hoodie HD067 1.webp', 56),
+(123, 'Áo Hoodie Teelab Local Brand Unisex Worldwide Studio Zipped Hoodie HD067.webp', 56),
+(124, 'Áo Sweater Teelab Local Brand Unisex Wavy Line HD061 4.webp', 57),
+(125, 'Áo Sweater Teelab Local Brand Unisex Wavy Line HD061 3.webp', 57),
+(126, 'Áo Sweater Teelab Local Brand Unisex Wavy Line HD061 1.webp', 57),
+(127, 'Áo Sweater Teelab Local Brand Unisex Wavy Line HD061.webp', 57),
+(128, 'Áo Sweater Teelab Local Brand Unisex Wavy Line HD061 2.webp', 57),
+(129, 'Áo Hoodie Teelab Local Brand Unisex Special Collection Premium HD044 5.webp', 59),
+(130, 'Áo Hoodie Teelab Local Brand Unisex Special Collection Premium HD044 4.webp', 59),
+(131, 'Áo Hoodie Teelab Local Brand Unisex Special Collection Premium HD044 3.webp', 59),
+(132, 'Áo Hoodie Teelab Local Brand Unisex Special Collection Premium HD044 2.webp', 59),
+(133, 'Áo Hoodie Teelab Local Brand Unisex Special Collection Premium HD044.webp', 59),
+(134, 'Quần Gió NEWSEVEN Racing Wind Pants QD.164 5.jpg', 60),
+(135, 'Quần Gió NEWSEVEN Racing Wind Pants QD.164 4.jpg', 60),
+(136, 'Quần Gió NEWSEVEN Racing Wind Pants QD.164 3.jpg', 60),
+(137, 'Quần Gió NEWSEVEN Racing Wind Pants QD.164 2.jpg', 60),
+(138, 'Quần Gió NEWSEVEN Racing Wind Pants QD.164.jpg', 60);
 
 -- --------------------------------------------------------
 
@@ -403,20 +482,28 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`id`, `name`, `img`, `price_niemyet`, `price_sale`, `mota`, `luotxem`, `iddm`) VALUES
-(30, 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét 2.jpg', 220000.00, 160000, 'Thông Tin Sản Phẩm : Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023\r\n- Chất liệu: Dạ 100% cao cấp, bề mặt vải mịn, ko xù, ko gião , dày dặn\r\n- Đường may tỉ mỉ, chắc chắn\r\n- Công dụng: mặc ở nhà, mặc đi chơi , mặc đi làm , mặc hàng ngày\r\n- Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n\r\n* Bảng size mẫu \r\n- Đủ size: M - L - XL  \r\nSize M: Nặng 43-51kg  ; Cao 1m52-1m60\r\nSize L: Nặng ; 51-59kg ; Cao 1m60-1m70\r\nSize XL: Nặng 60-72kg ; Cao 1m65-1m73\r\nLưu ý: Đây là bảng thông số chọn size cơ bản, tùy thuộc và vào mỗi người mà có thể +/- 1 Size', 499, 8),
-(31, 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie', 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie.jpg', 240000.00, 165000, 'Thông tin sản phẩm : Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie LV Loang Màu Chất Liệu Nỉ Bông 2 Lớp Dày Dặn Hotrend\r\n- Chất liệu:Nỉ Bông 2 Lớp Dày Dặn Cao Cấp Không Xù\r\n- Đường may tỉ mỉ, chắc chắn\r\n- Công dụng: mặc ở nhà, mặc đi chơi hoặc khi vận động thể thao\r\n- Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n- Đủ size: M - L - XL \r\n* Bảng size mẫu \r\nSize M: Nặng 43-51kg  ; Cao 1m52-1m60\r\nSize L: Nặng ; 51-59kg ; Cao 1m60-1m70\r\nSize XL: Nặng 60-72kg ; Cao 1m65-1m73\r\n\r\nLưu ý: Đây là bảng thông số chọn size cơ bản, tùy thuộc và vào mỗi người mà có thể +/- 1 Size\r\nHướng dẫn sử dụng sản phẩm \r\n- Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n- Không sử dụng thuốc tẩy\r\n- Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời\r\n Shop Thời Trang Unisex 18 CAM KẾT\r\nSản phẩm giống mô tả .\r\nĐảm bảo vải chất lượng \r\nÁo được kiểm tra kĩ càng, cẩn thận và tư vấn nhiệt tình trước khi gói hàng giao cho Quý Khách\r\nHàng có sẵn, giao hàng ngay khi nhận được đơn \r\nChấp nhận đổi hàng khi size không vừa\r\nGiao hàng trên toàn quốc, nhận hàng trả tiền ', 406, 8),
-(33, 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165', 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165.jpg', 590000.00, 490000, 'Thông tin sản phẩm Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165:\r\n\r\n– Hàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\n– Chất liệu: Vải gió mặt lì, dày dặn cản gió tốt, lót lưới thoáng mát cực kì phù hợp với thời tiết mùa hè.\r\n\r\n– Cổ áo: Ép 2 lớp dày dặn, đứng dáng cổ\r\n\r\n– Khóa nhựa răng cá sấu, củ khóa kim loại kahwsc logo NEWSEVEN chìm.\r\n\r\n– Hình in: in lưới, mực in plasticol giúp hình in bám vải tốt và lên màu đẹp.\r\n\r\n– Thiết kế: Sản phẩm nằm trong BST Racing “Over the limit”, thiết kế và logo mang tinh thần và đậm nét của chủ đề Racing với bộ nhận diện được làm xuyên suốt các sản phẩm. Có phần cá tay ở cổ tay áo giúp cho người mặc có thể điều chỉnh độ rộng. Gấu áo có dây chun bún và chốt nhựa để linh hoạt về độ rộng chật và tùy vào cách ăn mặc của mỗi khách hàng.\r\n\r\nCác đường phối trên áo với các lớp màu tạo tổng thể hài hòa về màu sắc của bộ sưu tập, 3 màu đen – trắng – đỏ cực nổi bật.\r\n\r\nThông số chọn size:\r\n\r\nSize M: 1m50-1m60 (50-55kg)\r\n\r\nSize L : 1m60-1m70( 55-65kg)\r\n\r\nSize XL: 1m70-1m80(65-75kg)\r\n\r\n(Bảng trên chỉ mang tính chất tham khảo, chọn mặc form vừa vặn thoải mái, lên xuống size tuỳ theo sở thích ăn mặc của bạn)\r\n\r\nHướng dẫn sử dụng sản phẩm Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165:\r\n\r\n– Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n\r\n– Không giặt máy trong 10 ngày đầu\r\n\r\n– Không sử dụng thuốc tẩy\r\n\r\n– Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời', 300, 8),
-(34, 'Áo Thun Newseven Curve Baby Tee BB.222', 'Áo Thun Newseven Curve Baby Tee BB.222.png', 280000.00, 220000, '-Chất liệu: Vải Cotton  định lượng 250GSM.\r\n\r\n-Kiểu dáng: Form Baby Tee\r\n\r\n-Màu sắc: Đen, Trắng\r\n\r\n-Thiết kế: In lưới\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size\r\nChính sách đổi trả\r\n\r\n1. Điều kiện áp dụng đổi sản phẩm (trong vòng 07 ngày kể từ khi nhận sản phẩm)\r\n\r\n– Hàng hoá vẫn còn mới nguyên tem mác, chưa qua sử dụng.\r\n\r\n– Hàng hoá bị lỗi hoặc hư hỏng do vận chuyển hoặc do nhà sản xuất\r\n\r\n2. Trường hợp không đủ điều kiện áp dụng chính sách:\r\n\r\n– Quá 07 ngày kể từ khi Quý khách nhận hàng\r\n\r\n– Gửi lại hàng không đúng mẫu mã, không phải sản phẩm của Newseven\r\n\r\n– Không thích, không hợp, đặt nhầm mã, nhầm màu, yêu cầu kiểm tra hàng trước khi thanh toán.\r\n\r\nDo màn hình và điều kiện ánh sáng khác nhau, màu sắc thực tế của sản phẩm có thể chênh lệch khoảng 5-10%\r\n\r\nHướng dẫn sử dụng sản phẩm Newseven:', 290, 1),
-(35, 'Áo Thun NEWSEVEN Lining Racer AT.219', 'Áo Thun NEWSEVEN Lining Racer AT.219.jpg', 350000.00, 230000, '-Chất liệu: Vải cotton 2 chiều sử dụng công nghệ chống co rút và cầm màu tối đa\r\n\r\n– Định lượng 250GSM với độ dày vừa phải mang lại sự thoải mái cho người mặc và khả năng hút ẩm, thấm mồ hôi, giảm nhiệt tốt.\r\n\r\n-Kiểu dáng: Form rộng\r\n\r\n-Màu sắc: Đen, Nâu, Xanh Navy.\r\n\r\n– Thiết kế độc lạ trên thị trường, tạo cảm giác mới lạ, với các điểm phối vải ở vai áo thân áo tạo hiệu ứng ” Hack ” dánh tối đa, và các hình in lấy cảm hứng từ BST Raccing.\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size', 9, 1),
-(38, 'Áo Thun NEWSEVEN Racing AT.148', 'Áo Thun NEWSEVEN Racing AT.148.jpg', 350000.00, 290000, '-Chất liệu: Vải cotton 2 chiều sử dụng công nghệ chống co rút và cầm màu tối đa\r\n\r\n– Định lượng 250GSM với độ dày vừa phải mang lại sự thoải mái cho người mặc và khả năng hút ẩm, thấm mồ hôi, giảm nhiệt tốt.\r\n\r\n-Kiểu dáng: Form rộng\r\n\r\n-Màu sắc: Đen, Nâu, Xanh Navy.\r\n\r\n– Thiết kế độc lạ trên thị trường, tạo cảm giác mới lạ, với các điểm phối vải ở vai áo thân áo tạo hiệu ứng ” Hack ” dánh tối đa, và các hình in lấy cảm hứng từ BST Raccing.\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size', 9, 1),
+(30, 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023', 'Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét 2.jpg', 220000.00, 160000, 'Thông Tin Sản Phẩm : Áo Khoác Bomber LV Họa Tiết Hoa Vân Cực Nét- Áo Khoác Lv Chất Liệu Vải 2 Lớp dày Dặn Form Dáng Boy Phố Cực Hottrend 2023\r\n- Chất liệu: Dạ 100% cao cấp, bề mặt vải mịn, ko xù, ko gião , dày dặn\r\n- Đường may tỉ mỉ, chắc chắn\r\n- Công dụng: mặc ở nhà, mặc đi chơi , mặc đi làm , mặc hàng ngày\r\n- Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n\r\n* Bảng size mẫu \r\n- Đủ size: M - L - XL  \r\nSize M: Nặng 43-51kg  ; Cao 1m52-1m60\r\nSize L: Nặng ; 51-59kg ; Cao 1m60-1m70\r\nSize XL: Nặng 60-72kg ; Cao 1m65-1m73\r\nLưu ý: Đây là bảng thông số chọn size cơ bản, tùy thuộc và vào mỗi người mà có thể +/- 1 Size', 502, 8),
+(31, 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie', 'Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie.jpg', 240000.00, 165000, 'Thông tin sản phẩm : Áo Khoác Nam Nữ Lv Họa Tiết Vân Hoa Dập Nổi Cực Nét-Áo Khoác Hoodie LV Loang Màu Chất Liệu Nỉ Bông 2 Lớp Dày Dặn Hotrend\r\n- Chất liệu:Nỉ Bông 2 Lớp Dày Dặn Cao Cấp Không Xù\r\n- Đường may tỉ mỉ, chắc chắn\r\n- Công dụng: mặc ở nhà, mặc đi chơi hoặc khi vận động thể thao\r\n- Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ\r\n- Đủ size: M - L - XL \r\n* Bảng size mẫu \r\nSize M: Nặng 43-51kg  ; Cao 1m52-1m60\r\nSize L: Nặng ; 51-59kg ; Cao 1m60-1m70\r\nSize XL: Nặng 60-72kg ; Cao 1m65-1m73\r\n\r\nLưu ý: Đây là bảng thông số chọn size cơ bản, tùy thuộc và vào mỗi người mà có thể +/- 1 Size\r\nHướng dẫn sử dụng sản phẩm \r\n- Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n- Không sử dụng thuốc tẩy\r\n- Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời\r\n Shop Thời Trang Unisex 18 CAM KẾT\r\nSản phẩm giống mô tả .\r\nĐảm bảo vải chất lượng \r\nÁo được kiểm tra kĩ càng, cẩn thận và tư vấn nhiệt tình trước khi gói hàng giao cho Quý Khách\r\nHàng có sẵn, giao hàng ngay khi nhận được đơn \r\nChấp nhận đổi hàng khi size không vừa\r\nGiao hàng trên toàn quốc, nhận hàng trả tiền ', 407, 8),
+(33, 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165', 'Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165.jpg', 590000.00, 490000, 'Thông tin sản phẩm Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165:\r\n\r\n– Hàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\n– Chất liệu: Vải gió mặt lì, dày dặn cản gió tốt, lót lưới thoáng mát cực kì phù hợp với thời tiết mùa hè.\r\n\r\n– Cổ áo: Ép 2 lớp dày dặn, đứng dáng cổ\r\n\r\n– Khóa nhựa răng cá sấu, củ khóa kim loại kahwsc logo NEWSEVEN chìm.\r\n\r\n– Hình in: in lưới, mực in plasticol giúp hình in bám vải tốt và lên màu đẹp.\r\n\r\n– Thiết kế: Sản phẩm nằm trong BST Racing “Over the limit”, thiết kế và logo mang tinh thần và đậm nét của chủ đề Racing với bộ nhận diện được làm xuyên suốt các sản phẩm. Có phần cá tay ở cổ tay áo giúp cho người mặc có thể điều chỉnh độ rộng. Gấu áo có dây chun bún và chốt nhựa để linh hoạt về độ rộng chật và tùy vào cách ăn mặc của mỗi khách hàng.\r\n\r\nCác đường phối trên áo với các lớp màu tạo tổng thể hài hòa về màu sắc của bộ sưu tập, 3 màu đen – trắng – đỏ cực nổi bật.\r\n\r\nThông số chọn size:\r\n\r\nSize M: 1m50-1m60 (50-55kg)\r\n\r\nSize L : 1m60-1m70( 55-65kg)\r\n\r\nSize XL: 1m70-1m80(65-75kg)\r\n\r\n(Bảng trên chỉ mang tính chất tham khảo, chọn mặc form vừa vặn thoải mái, lên xuống size tuỳ theo sở thích ăn mặc của bạn)\r\n\r\nHướng dẫn sử dụng sản phẩm Áo Khoác Gió NEWSEVEN Racing Wind Breaker AK.165:\r\n\r\n– Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n\r\n– Không giặt máy trong 10 ngày đầu\r\n\r\n– Không sử dụng thuốc tẩy\r\n\r\n– Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời', 304, 8),
+(34, 'Áo Thun Newseven Curve Baby Tee BB.222', 'Áo Thun Newseven Curve Baby Tee BB.222.png', 280000.00, 220000, '-Chất liệu: Vải Cotton  định lượng 250GSM.\r\n\r\n-Kiểu dáng: Form Baby Tee\r\n\r\n-Màu sắc: Đen, Trắng\r\n\r\n-Thiết kế: In lưới\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size\r\nChính sách đổi trả\r\n\r\n1. Điều kiện áp dụng đổi sản phẩm (trong vòng 07 ngày kể từ khi nhận sản phẩm)\r\n\r\n– Hàng hoá vẫn còn mới nguyên tem mác, chưa qua sử dụng.\r\n\r\n– Hàng hoá bị lỗi hoặc hư hỏng do vận chuyển hoặc do nhà sản xuất\r\n\r\n2. Trường hợp không đủ điều kiện áp dụng chính sách:\r\n\r\n– Quá 07 ngày kể từ khi Quý khách nhận hàng\r\n\r\n– Gửi lại hàng không đúng mẫu mã, không phải sản phẩm của Newseven\r\n\r\n– Không thích, không hợp, đặt nhầm mã, nhầm màu, yêu cầu kiểm tra hàng trước khi thanh toán.\r\n\r\nDo màn hình và điều kiện ánh sáng khác nhau, màu sắc thực tế của sản phẩm có thể chênh lệch khoảng 5-10%\r\n\r\nHướng dẫn sử dụng sản phẩm Newseven:', 291, 1),
+(35, 'Áo Thun NEWSEVEN Lining Racer AT.219', 'Áo Thun NEWSEVEN Lining Racer AT.219.jpg', 350000.00, 230000, '-Chất liệu: Vải cotton 2 chiều sử dụng công nghệ chống co rút và cầm màu tối đa\r\n\r\n– Định lượng 250GSM với độ dày vừa phải mang lại sự thoải mái cho người mặc và khả năng hút ẩm, thấm mồ hôi, giảm nhiệt tốt.\r\n\r\n-Kiểu dáng: Form rộng\r\n\r\n-Màu sắc: Đen, Nâu, Xanh Navy.\r\n\r\n– Thiết kế độc lạ trên thị trường, tạo cảm giác mới lạ, với các điểm phối vải ở vai áo thân áo tạo hiệu ứng ” Hack ” dánh tối đa, và các hình in lấy cảm hứng từ BST Raccing.\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size', 10, 1),
+(38, 'Áo Thun NEWSEVEN Racing AT.148', 'Áo Thun NEWSEVEN Racing AT.148.jpg', 350000.00, 290000, '-Chất liệu: Vải cotton 2 chiều sử dụng công nghệ chống co rút và cầm màu tối đa\r\n\r\n– Định lượng 250GSM với độ dày vừa phải mang lại sự thoải mái cho người mặc và khả năng hút ẩm, thấm mồ hôi, giảm nhiệt tốt.\r\n\r\n-Kiểu dáng: Form rộng\r\n\r\n-Màu sắc: Đen, Nâu, Xanh Navy.\r\n\r\n– Thiết kế độc lạ trên thị trường, tạo cảm giác mới lạ, với các điểm phối vải ở vai áo thân áo tạo hiệu ứng ” Hack ” dánh tối đa, và các hình in lấy cảm hứng từ BST Raccing.\r\nĐặc tính nổi bật của sản phẩm\r\n\r\n– Vải đã xử lí chống co rút.\r\n\r\n– Chống co rút ở mức độ dưới 3% (Dưới 2cm – 3cm một áo), giặt sấy thoải mái không lo bị co thành baby tee.\r\n\r\n– Đổi trả 1:1 cho khách hàng nếu sản phẩm co quá 2cm – 3cm.\r\n\r\nGiải quyết được các vấn đề của khách hàng đang gặp phải:\r\n\r\n– Sản phẩm giặt xong co tới 5-7cm mất form.\r\n\r\n– Áo giặt xong bị xuống màu.\r\n\r\nThông số chọn size', 10, 1),
 (42, 'Quần Short Kaki NEWSEVEN Double Latch QS.153', 'Quần Short Kaki NEWSEVEN Double Latch QS.153.jpg', 250000.00, 199000, 'Chính sách  đổi trả\r\n\r\n1. Điều kiện áp dụng đổi sản phẩm (trong vòng 07 ngày kể từ khi nhận sản phẩm)\r\n\r\n– Hàng hoá vẫn còn mới nguyên tem mác, chưa qua sử dụng.\r\n\r\n– Hàng hoá bị lỗi hoặc hư hỏng do vận chuyển hoặc do nhà sản xuất\r\n\r\n2. Trường hợp không đủ điều kiện áp dụng chính sách:\r\n\r\n– Quá 07 ngày kể từ khi Quý khách nhận hàng\r\n\r\n– Gửi lại hàng không đúng mẫu mã, không phải sản phẩm của Newseven\r\n\r\n– Không thích, không hợp, đặt nhầm mã, nhầm màu, yêu cầu kiểm tra hàng trước khi thanh toán.\r\n\r\nDo màn hình và điều kiện ánh sáng khác nhau, màu sắc thực tế của sản phẩm có thể chênh lệch khoảng 5-10%\r\n\r\nHướng dẫn sử dụng sản phẩm Newseven:\r\n\r\n– Hạn chế phơi sản phẩm dưới ánh nắng trực tiếp.\r\n\r\n– Giặt ở nhiệt độ bình thường, với đồ có màu cùng màu\r\n\r\n– Hạn chế sử dụng máy sấy và ủi (nếu có) thì ở nhiệt độ thích hợp.\r\n\r\n– Không dùng hóa chất tẩy.', 5, 9),
-(45, 'T- Shirt Retro Vibes AT.129', 'T- Shirt Retro Vibes AT.129.png', 250000.00, 189000, 'T- Shirt Retro Vibes AT.129\r\n\r\nHàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\nChất liệu: Thun cotton 2 chiều \r\nVải mềm mại và ấm áp nhờ mặt trong vải được phủ một lớp lông tơ ngắn, nên bề mặt vải vô cùng mềm mại, mịn màng.\r\n Vải ít nhăn, ít bám bẩn.\r\nBề mặt vải dai co giãn, khó bị xước.\r\nKiểu dáng áo T- Shirt Retro Vibes AT.129\r\n\r\nĐường may chuẩn chỉnh, tỉ mỉ, chắc chắn.\r\nMặc ở nhà, mặc đi chơi hoặc khi vận động thể thao. Phù hợp khi mix đồ với nhiều loại.\r\nThiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ.\r\nNEWSEVEN mang đến sản phẩmT- Shirt Retro Vibes AT.129 với 3 bản phối màu: Kem , Ghi , Hồng', 8, 1),
-(46, 'Áo Thun Dài Tay Studio', 'Áo Thun Dài Tay Studio.jpg', 180000.00, 129000, 'Áo Thun Dài Tay Studio\r\nChất liệu: Cotton\r\nXuất xứ: Việt Nam\r\nThông số chọn size:\r\nSize S: 1m50-1m60 ( 45-60kg)\r\nSize M: 1m60-1m70 (55-70kg)\r\nSize L : 1m65-1m75 (60-75kg)\r\nSize XL : 1m70-1m80 (65-80kg)', 170, 1),
+(45, 'T- Shirt Retro Vibes AT.129', 'T- Shirt Retro Vibes AT.129.png', 250000.00, 189000, 'T- Shirt Retro Vibes AT.129\r\n\r\nHàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\nChất liệu: Thun cotton 2 chiều \r\nVải mềm mại và ấm áp nhờ mặt trong vải được phủ một lớp lông tơ ngắn, nên bề mặt vải vô cùng mềm mại, mịn màng.\r\n Vải ít nhăn, ít bám bẩn.\r\nBề mặt vải dai co giãn, khó bị xước.\r\nKiểu dáng áo T- Shirt Retro Vibes AT.129\r\n\r\nĐường may chuẩn chỉnh, tỉ mỉ, chắc chắn.\r\nMặc ở nhà, mặc đi chơi hoặc khi vận động thể thao. Phù hợp khi mix đồ với nhiều loại.\r\nThiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ.\r\nNEWSEVEN mang đến sản phẩmT- Shirt Retro Vibes AT.129 với 3 bản phối màu: Kem , Ghi , Hồng', 10, 1),
+(46, 'Áo Thun Dài Tay Studio', 'Áo Thun Dài Tay Studio.jpg', 180000.00, 129000, 'Áo Thun Dài Tay Studio\r\nChất liệu: Cotton\r\nXuất xứ: Việt Nam\r\nThông số chọn size:\r\nSize S: 1m50-1m60 ( 45-60kg)\r\nSize M: 1m60-1m70 (55-70kg)\r\nSize L : 1m65-1m75 (60-75kg)\r\nSize XL : 1m70-1m80 (65-80kg)', 174, 1),
 (47, 'Áo Thun Trơn Dài Tay 9 Màu', 'Áo Thun Trơn Dài Tay 9 Màu.jpg', 129000.00, 99000, 'Áo thun trơn Dài Tay 9 Màu\r\nChất cotton compact\r\n95% cotton, 5% spandex\r\nCo giãn 4 chiều\r\nXuất xứ: Việt Nam', 2, 1),
 (48, 'Áo Polo NEWSEVEN Cybernetic PL.157', 'Áo Polo NEWSEVEN Cybernetic PL.157.png', 380000.00, 279000, '-Chất liệu: Vải Cotton  định lượng 280GSM.\r\n\r\n-Kiểu dáng: Form rộng\r\n\r\n-Màu sắc: Đen, Trắng\r\nChính sách đổi trả\r\n\r\n1. Điều kiện áp dụng đổi sản phẩm (trong vòng 07 ngày kể từ khi nhận sản phẩm)\r\n\r\n– Hàng hoá vẫn còn mới nguyên tem mác, chưa qua sử dụng.\r\n\r\n– Hàng hoá bị lỗi hoặc hư hỏng do vận chuyển hoặc do nhà sản xuất\r\n\r\n2. Trường hợp không đủ điều kiện áp dụng chính sách:\r\n\r\n– Quá 07 ngày kể từ khi Quý khách nhận hàng\r\n\r\n– Gửi lại hàng không đúng mẫu mã, không phải sản phẩm của Newseven\r\n\r\n– Không thích, không hợp, đặt nhầm mã, nhầm màu, yêu cầu kiểm tra hàng trước khi thanh toán.\r\n\r\nDo màn hình và điều kiện ánh sáng khác nhau, màu sắc thực tế của sản phẩm có thể chênh lệch khoảng 5-10%\r\n\r\nHướng dẫn sử dụng sản phẩm Newseven:\r\n\r\n– Hạn chế phơi sản phẩm dưới ánh nắng trực tiếp.\r\n\r\n– Giặt ở nhiệt độ bình thường, với đồ có màu cùng màu\r\n\r\n– Hạn chế sử dụng máy sấy và ủi (nếu có) thì ở nhiệt độ thích hợp.\r\n\r\n– Không dùng hóa chất tẩy.', 3, 2),
 (49, 'Áo Polo NEWSEVEN Glitch Polo PL.145', 'Áo Polo NEWSEVEN Glitch Polo PL.145.jpg', 320000.00, 289000, 'Thông tin sản phẩm Áo Polo NEWSEVEN Glitch Polo PL.145:\r\n\r\n– Hàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\n– Chất liệu: 100% cotton – định lượng 250GSM. Dày dặn. Đứng form.\r\n\r\nĐã xử lý chống co”\r\n\r\n– Cổ áo: Cổ dệt dày dặn,đã xử lý chống nhăn, bai dão\r\n\r\n– Hình in: mực in plasticol giúp hình in bám vải tốt và lên màu đẹp\r\n\r\n– Thiết kế: giúp người mặc cảm giác ng đầy dặn hơn, vai to hơn.\r\n\r\nThông số chọn size:\r\n\r\nSize M: 1m50-1m60 (50-55kg)\r\n\r\nSize L : 1m60-1m70( 55-65kg)\r\n\r\nSize XL: 1m70-1m80(65-75kg)\r\n\r\n(Bảng trên chỉ mang tính chất tham khảo, chọn mặc fom vừa vặn thoải mái, lên xuống size tuỳ theo sở thích ăn mặc của bạn)', 2, 2),
-(50, 'Áo Thun Polo N7 Newseven Minimalism V2', 'Áo Thun Polo N7 Newseven Minimalism V2.jpeg', 350000.00, 299000, 'Thông tin sản phẩm Áo Thun Polo N7 Newseven Minimalism V2 / Black:\r\n\r\n– Hàng chuẩn N7 sản xuất, tem mác chuẩn chính hãng.\r\n\r\n– Chất liệu: Da lộn 280G.\r\n\r\n– Chất liệu cao cấp.Vải mềm, vải mịn, thoáng mát, không xù lông.\r\n\r\n– Đường may chuẩn chỉnh, tỉ mỉ, chắc chắn.\r\n\r\n– Mặc ở nhà, mặc đi chơi hoặc khi vận động thể thao. Phù hợp khi mix đồ với nhiều loại.\r\n\r\n– Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ.\r\n\r\nThông số chọn size:\r\n\r\nSize S: 1m50-1m65 ( 45-60kg)\r\n\r\nSize M: 1m55-1m70 (55-70kg)\r\n\r\nSize L : 1m65-1m75( 65-70kg)\r\n\r\nSize XL: 1m70-1m85(70-80kg)\r\n\r\n(Bảng trên chỉ mang tính chất tham khảo, chọn mặc fom vừa vặn thoải mái, lên xuống size tuỳ theo sở thích ăn mặc của bạn)\r\n\r\nHướng dẫn sử dụng sản phẩm Áo Thun Polo N7 Newseven Minimalism V2 :\r\n\r\n– Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n\r\n– Không giặt máy trong 10 ngày đầu\r\n\r\n– Không sử dụng thuốc tẩy\r\n\r\n– Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời', 2, 2),
-(51, 'Polo Pitying PL.134', 'Polo Pitying PL.134.jpg', 390000.00, 319000, 'Chi tiết sản phẩm\r\n\r\nPolo Pitying PL.134\r\n\r\nHàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\nChất liệu: Cotton 2 chiều 280GSM\r\nVải mềm mại và ấm áp nhờ mặt trong vải được phủ một lớp lông tơ ngắn, nên bề mặt vải vô cùng mềm mại, mịn màng.\r\n Vải ít nhăn, ít bám bẩn.\r\nBề mặt vải dai co giãn, khó bị xước\r\nKiểu dáng áo Polo Pitying PL.134\r\n\r\nĐường may chuẩn chỉnh, tỉ mỉ, chắc chắn.\r\nMặc ở nhà, mặc đi chơi hoặc khi vận động thể thao. Phù hợp khi mix đồ với nhiều loại.\r\nThiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ.\r\nNEWSEVEN mang đến sản phẩm Polo Pitying PL.134 với 2 bản phối màu: Ghi Đen , Kem Trắng', 0, 2);
+(50, 'Áo Thun Polo N7 Newseven Minimalism V2', 'Áo Thun Polo N7 Newseven Minimalism V2.jpeg', 350000.00, 299000, 'Thông tin sản phẩm Áo Thun Polo N7 Newseven Minimalism V2 / Black:\r\n\r\n– Hàng chuẩn N7 sản xuất, tem mác chuẩn chính hãng.\r\n\r\n– Chất liệu: Da lộn 280G.\r\n\r\n– Chất liệu cao cấp.Vải mềm, vải mịn, thoáng mát, không xù lông.\r\n\r\n– Đường may chuẩn chỉnh, tỉ mỉ, chắc chắn.\r\n\r\n– Mặc ở nhà, mặc đi chơi hoặc khi vận động thể thao. Phù hợp khi mix đồ với nhiều loại.\r\n\r\n– Thiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ.\r\n\r\nThông số chọn size:\r\n\r\nSize S: 1m50-1m65 ( 45-60kg)\r\n\r\nSize M: 1m55-1m70 (55-70kg)\r\n\r\nSize L : 1m65-1m75( 65-70kg)\r\n\r\nSize XL: 1m70-1m85(70-80kg)\r\n\r\n(Bảng trên chỉ mang tính chất tham khảo, chọn mặc fom vừa vặn thoải mái, lên xuống size tuỳ theo sở thích ăn mặc của bạn)\r\n\r\nHướng dẫn sử dụng sản phẩm Áo Thun Polo N7 Newseven Minimalism V2 :\r\n\r\n– Nhớ lộn trái áo khi giặt và không giặt ngâm\r\n\r\n– Không giặt máy trong 10 ngày đầu\r\n\r\n– Không sử dụng thuốc tẩy\r\n\r\n– Khi phơi lộn trái và không phơi trực tiếp dưới ánh nắng mặt trời', 4, 2),
+(51, 'Polo Pitying PL.134', 'Polo Pitying PL.134.jpg', 390000.00, 319000, 'Chi tiết sản phẩm\r\n\r\nPolo Pitying PL.134\r\n\r\nHàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\nChất liệu: Cotton 2 chiều 280GSM\r\nVải mềm mại và ấm áp nhờ mặt trong vải được phủ một lớp lông tơ ngắn, nên bề mặt vải vô cùng mềm mại, mịn màng.\r\n Vải ít nhăn, ít bám bẩn.\r\nBề mặt vải dai co giãn, khó bị xước\r\nKiểu dáng áo Polo Pitying PL.134\r\n\r\nĐường may chuẩn chỉnh, tỉ mỉ, chắc chắn.\r\nMặc ở nhà, mặc đi chơi hoặc khi vận động thể thao. Phù hợp khi mix đồ với nhiều loại.\r\nThiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ.\r\nNEWSEVEN mang đến sản phẩm Polo Pitying PL.134 với 2 bản phối màu: Ghi Đen , Kem Trắng', 0, 2),
+(52, 'Polo Striped PL.137', 'Polo Striped PL.137.jpg', 320000.00, 279000, 'Chi tiết sản phẩm\r\n\r\nPolo Striped PL.137\r\n\r\nHàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\nChất liệu: Value Cotton\r\nVải mềm mại và ấm áp nhờ mặt trong vải được phủ một lớp lông tơ ngắn, nên bề mặt vải vô cùng mềm mại, mịn màng.\r\n Vải ít nhăn, ít bám bẩn.\r\nBề mặt vải dai co giãn, khó bị xước.\r\nĐường may chuẩn chỉnh, tỉ mỉ, chắc chắn.\r\nMặc ở nhà, mặc đi chơi hoặc khi vận động thể thao. Phù hợp khi mix đồ với nhiều loại.\r\nThiết kế hiện đại, trẻ trung, năng động. Dễ phối đồ.\r\nNEWSEVEN mang đến sản phẩm Polo Striped PL.137  với 4  bản phối màu:  Trắng , Be , Xanh rêu , Đen', 10, 2),
+(53, 'Áo Polo FashionShop Local Brand Unisex Graphic Hanoi Famous AP031', 'Áo Polo Teelab Local Brand Unisex Graphic Hanoi Famous AP031.webp', 360000.00, 185000, 'Thông tin sản phẩm:\r\n\r\n- Chất liệu: Cotton\r\n\r\n- Form: Oversize\r\n\r\n- Màu sắc: Đen\r\n\r\n- Thiết kế: In lụa cao cấp\r\n\r\nVề TEELAB:\r\n\r\nYou will never be younger than you are at this very moment “Enjoy Your Youth!”\r\n\r\nKhông chỉ là thời trang, TEELAB còn là “phòng thí nghiệm” của tuổi trẻ - nơi nghiên cứu và cho ra đời năng lượng mang tên “Youth”. Chúng mình luôn muốn tạo nên những trải nghiệm vui vẻ, năng động và trẻ trung.\r\n\r\nLấy cảm hứng từ giới trẻ, sáng tạo liên tục, bắt kịp xu hướng và phát triển đa dạng các dòng sản phẩm là cách mà chúng mình hoạt động để tạo nên phong cách sống hằng ngày của bạn. Mục tiêu của TEELAB là cung cấp các sản phẩm thời trang chất lượng cao với giá thành hợp lý.\r\n\r\nChẳng còn thời gian để loay hoay nữa đâu youngers ơi! Hãy nhanh chân bắt lấy những những khoảnh khắc tuyệt vời của tuổi trẻ. TEELAB đã sẵn sàng trải nghiệm cùng bạn!\r\n\r\n“Enjoy Your Youth”, now!\r\n\r\n \r\n\r\nHướng dẫn sử dụng sản phẩm Teelab:\r\n\r\n- Giặt ở nhiệt độ bình thường, với đồ có màu tương tự.\r\n\r\n- Không dùng hóa chất tẩy.\r\n\r\n- Hạn chế sử dụng máy sấy và ủi (nếu có) thì ở nhiệt độ thích hợp.\r\n\r\n \r\n\r\nChính sách bảo hành:\r\n\r\n- Miễn phí đổi hàng cho khách mua ở TEELAB trong trường hợp bị lỗi từ nhà sản xuất, giao nhầm hàng, bị hư hỏng trong quá trình vận chuyển hàng.\r\n\r\n- Sản phẩm đổi trong thời gian 3 ngày kể từ ngày nhận hàng\r\n\r\n- Sản phẩm còn mới nguyên tem, tags và mang theo hoá đơn mua hàng, sản phẩm chưa giặt và không dơ bẩn, hư hỏng bởi những tác nhân bên ngoài cửa hàng sau khi mua hàng.', 1, 2),
+(54, 'Áo Sweater Teelab Local Brand Unisex Studio Contrast HD064', 'Áo Sweater Teelab Local Brand Unisex Studio Contrast HD064.webp', 450000.00, 299000, 'Thông tin sản phẩm:\r\n- Chất liệu: Nỉ\r\n- Form: Oversize\r\n- Màu sắc: Đen\r\n- Thiết kế: In lụa\r\nVề TEELAB:\r\n\r\nYou will never be younger than you are at this very moment “Enjoy Your Youth!”\r\n\r\nKhông chỉ là thời trang, TEELAB còn là “phòng thí nghiệm” của tuổi trẻ - nơi nghiên cứu và cho ra đời năng lượng mang tên “Youth”. Chúng mình luôn muốn tạo nên những trải nghiệm vui vẻ, năng động và trẻ trung.\r\nLấy cảm hứng từ giới trẻ, sáng tạo liên tục, bắt kịp xu hướng và phát triển đa dạng các dòng sản phẩm là cách mà chúng mình hoạt động để tạo nên phong cách sống hằng ngày của bạn. Mục tiêu của TEELAB là cung cấp các sản phẩm thời trang chất lượng cao với giá thành hợp lý.\r\nChẳng còn thời gian để loay hoay nữa đâu youngers ơi! Hãy nhanh chân bắt lấy những những khoảnh khắc tuyệt vời của tuổi trẻ. TEELAB đã sẵn sàng trải nghiệm cùng bạn!\r\n\r\n“Enjoy Your Youth”, now!\r\n\r\nHướng dẫn sử dụng sản phẩm Teelab:\r\n- Ngâm áo vào NƯỚC LẠNH có pha giấm hoặc phèn chua từ trong 2 tiếng đồng hồ\r\n- Giặt ở nhiệt độ bình thường, với đồ có màu tương tự.\r\n- Không dùng hóa chất tẩy.\r\n- Hạn chế sử dụng máy sấy và ủi (nếu có) thì ở nhiệt độ thích hợp.\r\n\r\nChính sách bảo hành:\r\n- Miễn phí đổi hàng cho khách mua ở TEELAB trong trường hợp bị lỗi từ nhà sản xuất, giao nhầm hàng, bị hư hỏng trong quá trình vận chuyển hàng.\r\n- Sản phẩm đổi trong thời gian 3 ngày kể từ ngày nhận hàng\r\n- Sản phẩm còn mới nguyên tem, tags và mang theo hoá đơn mua hàng, sản phẩm chưa giặt và không dơ bẩn, hư hỏng bởi những tác nhân bên ngoài cửa hàng sau khi mua hàng.\r\n\r\n\r\nĐánh giá Áo Sweater Teelab Local Brand Unisex Studio Contrast HD064', 4, 7),
+(55, 'Áo Hoodie Teelab Local Brand Unisex Blockcore Curve HD065', 'Áo Hoodie Teelab Local Brand Unisex Blockcore Curve HD065 3.webp', 550000.00, 349000, 'Thông tin sản phẩm:\r\n\r\n- Chất liệu: Nỉ bông 360gsm\r\n\r\n- Form: Oversize\r\n\r\n- Màu sắc: Đen/Kem\r\n\r\n- Thiết kế: In lụa.\r\nYou will never be younger than you are at this very moment “Enjoy Your Youth!”\r\n\r\n \r\n\r\nKhông chỉ là thời trang, TEELAB còn là “phòng thí nghiệm” của tuổi trẻ - nơi nghiên cứu và cho ra đời nguồn năng lượng mang tên “Youth”. Chúng mình luôn muốn tạo nên những trải nghiệm vui vẻ, năng động và trẻ trung.\r\n\r\n \r\n\r\nLấy cảm hứng từ giới trẻ, sáng tạo liên tục, bắt kịp xu hướng và phát triển đa dạng các dòng sản phẩm là cách mà chúng mình hoạt động để tạo nên phong cách sống hằng ngày của bạn. Mục tiêu của TEELAB là cung cấp các sản phẩm thời trang chất lượng cao với giá thành hợp lý.\r\n\r\n \r\n\r\nChẳng còn thời gian để loay hoay nữa đâu youngers ơi! Hãy nhanh chân bắt lấy những những khoảnh khắc tuyệt vời của tuổi trẻ. TEELAB đã sẵn sàng trải nghiệm cùng bạn!\r\n\r\n \r\n\r\n“Enjoy Your Youth”, now!\r\n\r\n \r\n\r\nHướng dẫn sử dụng sản phẩm Teelab:\r\n\r\n- Ngâm áo vào NƯỚC LẠNH có pha giấm hoặc phèn chua từ trong 2 tiếng đồng hồ\r\n\r\n- Giặt ở nhiệt độ bình thường, với đồ có màu tương tự.\r\n\r\n- Không dùng hóa chất tẩy.\r\n\r\n- Hạn chế sử dụng máy sấy và ủi (nếu có) thì ở nhiệt độ thích hợp.\r\n\r\n \r\n\r\nChính sách bảo hành:\r\n\r\n- Miễn phí đổi hàng cho khách mua ở TEELAB trong trường hợp bị lỗi từ nhà sản xuất, giao nhầm hàng, bị hư hỏng trong quá trình vận chuyển hàng.\r\n\r\n- Sản phẩm đổi trong thời gian 3 ngày kể từ ngày nhận hàng\r\n\r\n- Sản phẩm còn mới nguyên tem, tags và mang theo hoá đơn mua hàng, sản phẩm chưa giặt và không dơ bẩn, hư hỏng bởi những tác nhân bên ngoài cửa hàng sau khi mua hàng.', 2, 7),
+(56, 'Áo Hoodie Teelab Local Brand Unisex Worldwide Studio Zipped Hoodie HD067', 'Áo Hoodie Teelab Local Brand Unisex Worldwide Studio Zipped Hoodie HD067 3.webp', 550000.00, 299000, '- Chất liệu: Nỉ bông\r\n\r\n- Form: Oversize\r\n\r\n- Màu sắc: Đen/Kem\r\n\r\n- Thiết kế: In lụa/Zip hai chiều\r\nYou will never be younger than you are at this very moment “Enjoy Your Youth!”\r\n\r\nKhông chỉ là thời trang, TEELAB còn là “phòng thí nghiệm” của tuổi trẻ - nơi nghiên cứu và cho ra đời nguồn năng lượng mang tên “Youth”. Chúng mình luôn muốn tạo nên những trải nghiệm vui vẻ, năng động và trẻ trung.\r\n\r\nLấy cảm hứng từ giới trẻ, sáng tạo liên tục, bắt kịp xu hướng và phát triển đa dạng các dòng sản phẩm là cách mà chúng mình hoạt động để tạo nên phong cách sống hằng ngày của bạn. Mục tiêu của TEELAB là cung cấp các sản phẩm thời trang chất lượng cao với giá thành hợp lý.\r\n\r\nChẳng còn thời gian để loay hoay nữa đâu youngers ơi! Hãy nhanh chân bắt lấy những những khoảnh khắc tuyệt vời của tuổi trẻ. TEELAB đã sẵn sàng trải nghiệm cùng bạn!\r\n\r\n“Enjoy Your Youth”, now!\r\n\r\n \r\n\r\nHướng dẫn sử dụng sản phẩm Teelab:\r\n\r\n- Ngâm áo vào NƯỚC LẠNH có pha giấm hoặc phèn chua từ trong 2 tiếng đồng hồ\r\n\r\n- Giặt ở nhiệt độ bình thường, với đồ có màu tương tự.\r\n\r\n- Không dùng hóa chất tẩy.\r\n\r\n- Hạn chế sử dụng máy sấy và ủi (nếu có) thì ở nhiệt độ thích hợp.\r\n\r\n \r\n\r\nChính sách bảo hành:\r\n\r\n- Miễn phí đổi hàng cho khách mua ở TEELAB trong trường hợp bị lỗi từ nhà sản xuất, giao nhầm hàng, bị hư hỏng trong quá trình vận chuyển hàng.\r\n\r\n- Sản phẩm đổi trong thời gian 3 ngày kể từ ngày nhận hàng\r\n\r\n- Sản phẩm còn mới nguyên tem, tags và mang theo hoá đơn mua hàng, sản phẩm chưa giặt và không dơ bẩn, hư hỏng bởi những tác nhân bên ngoài cửa hàng sau khi mua hàng.', 1, 7),
+(57, 'Áo Sweater Teelab Local Brand Unisex Wavy Line HD061', 'Áo Sweater Teelab Local Brand Unisex Wavy Line HD061 4.webp', 450000.00, 299000, 'Thông tin sản phẩm:\r\n\r\n- Chất liệu: Nỉ bông\r\n\r\n- Form: Oversize\r\n\r\n- Màu sắc: Đen/Kem\r\n\r\n- Thiết kế: In lụa\r\nYou will never be younger than you are at this very moment “Enjoy Your Youth!”\r\n\r\nKhông chỉ là thời trang, TEELAB còn là “phòng thí nghiệm” của tuổi trẻ - nơi nghiên cứu và cho ra đời nguồn năng lượng mang tên “Youth”. Chúng mình luôn muốn tạo nên những trải nghiệm vui vẻ, năng động và trẻ trung.\r\n\r\nLấy cảm hứng từ giới trẻ, sáng tạo liên tục, bắt kịp xu hướng và phát triển đa dạng các dòng sản phẩm là cách mà chúng mình hoạt động để tạo nên phong cách sống hằng ngày của bạn. Mục tiêu của TEELAB là cung cấp các sản phẩm thời trang chất lượng cao với giá thành hợp lý.\r\n\r\nChẳng còn thời gian để loay hoay nữa đâu youngers ơi! Hãy nhanh chân bắt lấy những những khoảnh khắc tuyệt vời của tuổi trẻ. TEELAB đã sẵn sàng trải nghiệm cùng bạn!\r\n\r\n“Enjoy Your Youth”, now!\r\n\r\n \r\n\r\nHướng dẫn sử dụng sản phẩm Teelab:\r\n\r\n- Ngâm áo vào NƯỚC LẠNH có pha giấm hoặc phèn chua từ trong 2 tiếng đồng hồ\r\n\r\n- Giặt ở nhiệt độ bình thường, với đồ có màu tương tự.\r\n\r\n- Không dùng hóa chất tẩy.\r\n\r\n- Hạn chế sử dụng máy sấy và ủi (nếu có) thì ở nhiệt độ thích hợp.\r\n\r\nChính sách bảo hành:\r\n\r\n- Miễn phí đổi hàng cho khách mua ở TEELAB trong trường hợp bị lỗi từ nhà sản xuất, giao nhầm hàng, bị hư hỏng trong quá trình vận chuyển hàng.\r\n\r\n- Sản phẩm đổi trong thời gian 3 ngày kể từ ngày nhận hàng\r\n\r\n- Sản phẩm còn mới nguyên tem, tags và mang theo hoá đơn mua hàng, sản phẩm chưa giặt và không dơ bẩn, hư hỏng bởi những tác nhân bên ngoài cửa hàng sau khi mua hàng.', 3, 7),
+(59, 'Áo Hoodie Teelab Local Brand Unisex Special Collection Premium HD044', 'Áo Hoodie Teelab Local Brand Unisex Special Collection Premium HD044 5.webp', 500000.00, 299000, '- Chất liệu: Nỉ bông\r\n\r\n- Form: Oversize\r\n\r\n- Màu sắc: Đen\r\n\r\n- Thiết kế: In lụa cao cấp\r\nYou will never be younger than you are at this very moment “Enjoy Your Youth!”\r\n\r\nKhông chỉ là thời trang, TEELAB còn là “phòng thí nghiệm” của tuổi trẻ - nơi nghiên cứu và cho ra đời nguồn năng lượng mang tên “Youth”. Chúng mình luôn muốn tạo nên những trải nghiệm vui vẻ, năng động và trẻ trung. \r\n\r\nLấy cảm hứng từ giới trẻ, sáng tạo liên tục, bắt kịp xu hướng và phát triển đa dạng các dòng sản phẩm là cách mà chúng mình hoạt động để tạo nên phong cách sống hằng ngày của bạn. Mục tiêu của TEELAB là cung cấp các sản phẩm thời trang chất lượng cao với giá thành hợp lý. \r\n\r\nChẳng còn thời gian để loay hoay nữa đâu youngers ơi! Hãy nhanh chân bắt lấy những những khoảnh khắc tuyệt vời của tuổi trẻ. TEELAB đã sẵn sàng trải nghiệm cùng bạn!\r\n\r\n“Enjoy Your Youth”, now!\r\n\r\n \r\n\r\nHướng dẫn sử dụng sản phẩm Teelab:\r\n\r\n- Giặt ở nhiệt độ bình thường, với đồ có màu tương tự. \r\n\r\n- Không dùng hóa chất tẩy.\r\n\r\n- Hạn chế sử dụng máy sấy và ủi (nếu có) thì ở nhiệt độ thích hợp.\r\n\r\n \r\n\r\nChính sách bảo hành:\r\n\r\n- Miễn phí đổi hàng cho khách mua ở TEELAB trong trường hợp bị lỗi từ nhà sản xuất, giao nhầm hàng, bị hư hỏng trong quá trình vận chuyển hàng.\r\n\r\n- Sản phẩm đổi trong thời gian 3 ngày kể từ ngày nhận hàng\r\n\r\n- Sản phẩm còn mới nguyên tem, tags và mang theo hoá đơn mua hàng, sản phẩm chưa giặt và không dơ bẩn, hư hỏng bởi những tác nhân bên ngoài cửa hàng sau khi mua hàng.', 4, 7),
+(60, 'Quần Gió NEWSEVEN Racing Wind Pants QD.164', 'Quần Gió NEWSEVEN Racing Wind Pants QD.164.jpg', 500000.00, 400000, '\"Thông tin sản phẩm Quần Gió NEWSEVEN Racing Wind Pants QD.164:\r\n\r\n– Hàng chuẩn NEWSEVEN sản xuất, tem mác chuẩn chính hãng.\r\n\r\n– Chất liệu: Vải gió mặt lì, dày dặn cản gió tốt.\r\n\r\n– Cạp chun có dây rút.\r\n\r\n– Hình in: in lưới, mực in plasticol giúp hình in bám vải tốt và lên màu đẹp.\r\n\r\nThiết kế: Sản phẩm nằm trong BST Racing “Over the limit”, thiết kế và logo mang tinh thần và đậm nét của chủ đề Racing với bộ nhận diện được làm xuyên suốt các sản phẩm. Sản phẩm độc đáo với tính ứng dụng linh hoạt cao, có khóa zip ở 2 ống quần có thể tháo rời, 1 sản phẩm hai trong một, vừa là quần đùi vừa là quần dài.\r\n\r\nCác đường phối trên quần với các lớp màu tạo tổng thể hài hòa về màu sắc của bộ sưu tập, 3 màu đen – trắng – đỏ và cũng đồng bộ với SP áo khoác gió tạo sự nổi bật khi mặc cả set.\r\n\r\nThông số chọn size:\r\n\r\nSize M: 1m50-1m60 (50-55kg)\r\n\r\nSize L : 1m60-1m70( 55-65kg)\r\n\r\nSize XL: 1m70-1m80(65-75kg)\r\n\r\n(Bảng trên chỉ mang tính chất tham khảo, chọn mặc fom vừa vặn thoải mái, lên xuống size tuỳ theo sở thích ăn mặc của bạn)\"\r\n', 5, 13);
 
 -- --------------------------------------------------------
 
@@ -536,25 +623,25 @@ ALTER TABLE `taikhoan`
 -- AUTO_INCREMENT cho bảng `bien_the`
 --
 ALTER TABLE `bien_the`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT cho bảng `binhluan`
 --
 ALTER TABLE `binhluan`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Id bình luận', AUTO_INCREMENT=63;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Id bình luận', AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=232;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
 
 --
 -- AUTO_INCREMENT cho bảng `chitiet_donhang`
 --
 ALTER TABLE `chitiet_donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmuc`
@@ -566,13 +653,13 @@ ALTER TABLE `danhmuc`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id đơn hàng', AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id đơn hàng', AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT cho bảng `hinhanh`
 --
 ALTER TABLE `hinhanh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT cho bảng `kich_thuoc`
@@ -590,7 +677,7 @@ ALTER TABLE `mau_sac`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id sản phẩm', AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id sản phẩm', AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT cho bảng `taikhoan`
