@@ -219,3 +219,27 @@
         }
     }
 }
+.nav-item{
+    border: 1px solid #111;
+}
+.nut{
+
+    width: 100%;
+    height: 50px;
+    /* border: 1px solid #111; */
+    position: relative;
+    /* position: absolute;
+    right: 0; */
+    & a{
+        /* width: 100px; */
+        
+        position: absolute;
+        /* border: 1px solid #111; */
+        padding: 10px 15px;
+        /* margin: 10px; */
+        top: 5px;
+        right: 5px;
+        color: #fff;
+        background-color: #111;
+    }
+}

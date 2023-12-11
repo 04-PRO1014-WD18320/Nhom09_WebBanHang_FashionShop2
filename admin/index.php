@@ -19,8 +19,25 @@ include 'menu.php';
 <div>
     <?php
     // $bieudo = load_thongke_sp_dm();
-    $tk_binhluan = load_thongke_binhluan();
+    $tk_doanhthu_thang_nay = doanhthu_month_now();
+    $dt_t1 = doanhthu_t1();
+    $dt_t2 = doanhthu_t2();
+    $dt_t3 = doanhthu_t3();
+    $dt_t4 = doanhthu_t4();
+    $dt_t5 = doanhthu_t5();
+    $dt_t6 = doanhthu_t6();
+    $dt_t7 = doanhthu_t7();
+    $dt_t8 = doanhthu_t8();
+    $dt_t9 = doanhthu_t9();
+    $dt_t10 = doanhthu_t10();
+    $dt_t11 = doanhthu_t11();
+    $dt_t12 = doanhthu_t12();
     //Controller
+    $so_bl = so_bl();
+    //taikhoan
+    $so_tk = so_tk();
+    //luot xem
+    $so_lx = so_lx();
     if (isset($_GET['act']) && $_GET['act'] != "") {
         $act = $_GET['act'];
 
@@ -239,7 +256,6 @@ include 'menu.php';
                     // print_r($so_bt);
 
 
-
                     $img_main = $_FILES['image_main']['name'];
                     // echo $img_main;
                     $target_dir = "../upload/";
@@ -366,6 +382,9 @@ include 'menu.php';
                 $list_donhang = loadall_donhang();
                 // print_r($list_donhang);
                 include "donhang/dsdonhang.php";
+                if(isset($_SESSION['don_new'])){
+                    $_SESSION['don_new'] = 0;
+                }
                 break;
             case 'ct_donhang':
                 if (isset($_GET['iddh'])) {

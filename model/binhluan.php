@@ -52,3 +52,8 @@ function load_binhluan($idpro)
     $result = pdo_query($sql);
     return $result;
 }
+function so_bl(){
+    $sql = "SELECT COUNT(id) AS so_bl FROM binhluan;";
+    $result = pdo_query($sql);
+    return $result;
+}
