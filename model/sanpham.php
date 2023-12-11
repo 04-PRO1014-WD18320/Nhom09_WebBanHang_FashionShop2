@@ -317,3 +317,8 @@ function tangluotxem($idsp)
     $sql = "update sanpham set luotxem = $luotxem where id = $idsp";
     pdo_execute($sql);
 }
+function so_lx(){
+    $sql = "SELECT SUM(luotxem) AS so_lx FROM sanpham;";
+    $result = pdo_query($sql);
+    return $result;
+}

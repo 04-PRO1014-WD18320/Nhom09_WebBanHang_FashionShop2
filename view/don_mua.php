@@ -8,14 +8,28 @@
             <li><a href="index.php?act=ct_donhang_cho_xn&iduser=<?=$_SESSION['iduser']?>">Chờ xác nhận</a></li>
             <li><a href="index.php?act=ct_donhang_da_xn&iduser=<?=$_SESSION['iduser']?>">Đã xác nhận</a></li>
             <li><a href="index.php?act=ct_donhang_dang_giao&iduser=<?=$_SESSION['iduser']?>">Đang giao hàng</a></li>
-            <li><a href="">Hoàn thành</a></li>
-            <li><a href="">Đã hủy</a></li>
+            <li><a href="index.php?act=ct_donhang_hoan_thanh&iduser=<?=$_SESSION['iduser']?>">Hoàn thành</a></li>
+            <li><a href="index.php?act=ct_donhang_da_huy&iduser=<?=$_SESSION['iduser']?>">Đã hủy</a></li>
             <li><a href="">Trả hàng/Hoàn tiền</a></li>
         </ul>
+        
     </div>
+    
+
+   
     <?php
         foreach($ct_donhang as $ct){
+            $nut = '';
             extract($ct);
+            if($status == 'Chờ xác nhận'){
+                // echo $status;
+                $nut = '<div class="nut"><a href="index.php?act=huy_don&iddh='.$id_donhang.'">Hủy đơn</a></div>';
+                // echo $nut;
+            }elseif($status == 'Đang giao hàng'){
+                $nut = '<div class="nut"><a href="index.php?act=hoan_thanh&iddh='.$id_donhang.'">Đã nhận</a></div>';
+            }elseif($status == 'Hoàn thành'){
+                $nut = '<div class="nut"><a href="index.php?act=danh_gia&iddh='.$id_donhang.'">Đánh giá</a></div>';
+            }
             echo '
             <div class="product_donmua">
         <div class="trang_thai">
@@ -45,6 +59,7 @@
         <div class="thanh_tien">
             <p>Thành tiền: <span>'.number_format($so_luong*$gia).'đ</span></p>
         </div>
+        '.$nut.'
     </div>
             ';
         }
