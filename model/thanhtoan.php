@@ -29,7 +29,7 @@ function count_sp_add($iduser)
 }
 function insetr_donhang($id_user, $address, $sdt, $email, $tong, $name)
 {
-    $date = date('Y-m-d');
+    $date = date('Y-m-d H:i:s', strtotime('+6 hours'));
     $pthuc_tt = 'Trả tiền khi nhận hàng';
     $status = 'Chờ xác nhận';
     $sql = "INSERT INTO donhang (id_user, address, sdt, email, phuongthuctt, ngay_dat_hang, tong, status, receive_name)
@@ -44,7 +44,7 @@ function loadone_donhang_new()
 }
 function insert_ct_donhang($id_donhang, $id_bienthe, $so_luong, $price, $name)
 {
-    $date = date('Y-m-d');
+    $date = date('Y-m-d H:i:s', strtotime('+6 hours'));
     $sql = "INSERT INTO chitiet_donhang (id_donhang, id_bt_sanpham, so_luong, gia, tensp, ngay_mua)
     VALUES ('$id_donhang', '$id_bienthe', '$so_luong', '$price', '$name', '$date');";
     pdo_execute($sql);
@@ -248,4 +248,79 @@ function loadall_ct_donhang_dang_giao($iduser)
 
     $result = pdo_query($sql);
     return $result;
+}
+function loadall_ct_donhang_hoan_thanh($iduser)
+{
+    $sql = "SELECT 
+    donhang.id_user,
+    chitiet_donhang.tensp,
+    sanpham.img,
+    sanpham.price_niemyet,
+    chitiet_donhang.gia,
+    chitiet_donhang.ngay_mua,
+    chitiet_donhang.so_luong,
+    chitiet_donhang.id_bt_sanpham,
+    chitiet_donhang.id_donhang,
+    mau_sac.value AS mau_sac,
+    kich_thuoc.value AS  kich_thuoc,
+    donhang.status
+    FROM  chitiet_donhang
+    JOIN donhang ON donhang.id = chitiet_donhang.id_donhang 
+    JOIN taikhoan ON donhang.id_user = taikhoan.id 
+    JOIN bien_the ON chitiet_donhang.id_bt_sanpham = bien_the.id
+    JOIN mau_sac ON bien_the.id_mau_sac = mau_sac.id
+    JOIN kich_thuoc ON bien_the.id_kich_thuoc = kich_thuoc.id
+    JOIN sanpham ON sanpham.id = bien_the.id_sp
+    
+    WHERE donhang.id_user = $iduser AND donhang.status = 'Hoàn thành'
+    ORDER BY chitiet_donhang.id_donhang DESC;";
+
+    $result = pdo_query($sql);
+    return $result;
+}
+function loadall_ct_donhang_da_huy($iduser)
+{
+    $sql = "SELECT 
+    donhang.id_user,
+    chitiet_donhang.tensp,
+    sanpham.img,
+    sanpham.price_niemyet,
+    chitiet_donhang.gia,
+    chitiet_donhang.ngay_mua,
+    chitiet_donhang.so_luong,
+    chitiet_donhang.id_bt_sanpham,
+    chitiet_donhang.id_donhang,
+    mau_sac.value AS mau_sac,
+    kich_thuoc.value AS  kich_thuoc,
+    donhang.status
+    FROM  chitiet_donhang
+    JOIN donhang ON donhang.id = chitiet_donhang.id_donhang 
+    JOIN taikhoan ON donhang.id_user = taikhoan.id 
+    JOIN bien_the ON chitiet_donhang.id_bt_sanpham = bien_the.id
+    JOIN mau_sac ON bien_the.id_mau_sac = mau_sac.id
+    JOIN kich_thuoc ON bien_the.id_kich_thuoc = kich_thuoc.id
+    JOIN sanpham ON sanpham.id = bien_the.id_sp
+    
+    WHERE donhang.id_user = $iduser AND donhang.status = 'Đã hủy'
+    ORDER BY chitiet_donhang.id_donhang DESC;";
+
+    $result = pdo_query($sql);
+    return $result;
+}
+function huy_don($iddh){
+    $sql = "UPDATE donhang SET status = 'Đã hủy'
+    WHERE id = $iddh";
+    pdo_execute($sql);
+    //exec
+}
+function hoan_thanh($iddh){
+    $sql = "UPDATE donhang SET status = 'Hoàn thành'
+    WHERE id = $iddh";
+    pdo_execute($sql);
+    //exec
+}
+function update_donhang_new(){
+    if(isset($_SESSION['don_new'])){
+        $_SESSION['don_new']+= 1;
+    }
 }

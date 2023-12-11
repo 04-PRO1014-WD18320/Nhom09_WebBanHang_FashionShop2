@@ -33,7 +33,7 @@
                                             <th>số lượng</th>
                                             <th>Giá</th>
                                             <th>Ngày đặt hàng</th>
-                                            <th>Thao tác</th>
+                        
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -48,14 +48,12 @@
                                                     <td class="col-1 align-middle">'.$id.'</td>
                                                     <td class="col-2 align-middle"><img src="../upload/'.$img.'" alt="" width="100px"></td>
                                                     <td class="col-2 align-middle">'.$tensp.'</td>
-                                                    <td class="col-2 align-middle">'.$mau_sac.'</td>
+                                                    <td class="col-1 align-middle">'.$mau_sac.'</td>
                                                     <td class="col-1 align-middle">'.$kich_thuoc.'</td>
                                                     <td class="col-1 align-middle">'.$so_luong.'</td>
                                                     <td  class="col-2 align-middle">'.number_format($gia).'VND</td>
-                                                    <td class="col-1 align-middle">'.$ngay_mua.'</td>
-                                                    <td class="col-2 align-middle">
-                                                        
-                                                        <a href="index.php?act=ct_donhang&iddh='.$id.'"><button class="btn btn-secondary btn-sm">hủy</button></a></td>
+                                                    <td class="col-2 align-middle">'.$ngay_mua.'</td>
+                                                    
                                                 </tr>
                                                 ';
 

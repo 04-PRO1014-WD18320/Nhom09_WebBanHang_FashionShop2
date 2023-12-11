@@ -28,30 +28,22 @@
                         <label for="">Địa chỉ email (không bắt buộc)*</label>
                         <input type="text" name="email" placeholder="Email của bạn">
                     </div>
+                    <input type="text" hidden name="diachi" id="result">
                     <div class="ip_in_bottom">
                         <label for="">Tỉnh/Thành phố *</label>
-                        <select name="tp" id="">
-                            <option value="Hà nội">Hà nội</option>
-                            <option value="Sài gòn">Sài gòn</option>
+                        <select name="" id="province">
                         </select>
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Quận/Huyện *</label>
-                        <select name="qh" id="">
-                            <option value="Hà nội">Chương Mỹ</option>
-                            <option value="Sài gòn">Hoài Đức</option>
-                            <option value="Sài gòn">Hà Đông</option>
-
-                            <option value="Sài gòn">Mỹ Đình</option>
+                        <select name="" id="district">
+                            <option  value="">chọn quận</option>
                         </select>
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Xã/Phường *</label>
-                        <select name="xp" id="">
-                            <option value="Hà nội">Phú Nghĩa</option>
-                            <option value="Sài gòn">Chúc Sơn</option>
-                            <option value="Sài gòn">Hữu Văn</option>
-
+                        <select name="" id="ward">
+                            <option   value="">chọn phường</option>
                         </select>
                     </div>
                     <div class="ip_in_bottom">
@@ -104,3 +96,6 @@
         </form>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../assets/js/tinh_thanh.js"></script>
