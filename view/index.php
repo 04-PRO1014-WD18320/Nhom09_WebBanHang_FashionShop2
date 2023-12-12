@@ -22,7 +22,6 @@ include "_header.php";
     $dsdm = danhsach_danhmuc();
     $top5 = top5_sanpham();
 
-
     //Controller
     if (isset($_GET['act']) && $_GET['act'] != "") {
         $act = $_GET['act'];
@@ -53,19 +52,18 @@ include "_header.php";
                 dangxuat();
                 include "home.php";
                 break;
-                case "quenmk":
-                    if(isset($_POST['guiemail'])&&($_POST['guiemail'])){
-                     $email=$_POST['email'];
-                     $checkemail=check_email($email);
-                     if(is_array($checkemail)){
-                         $thongbao="mat khau cua ban la:".$checkemail['pass'];
-                     }
-                     else{
-                         $thongbao="email nay khong ton tai";
-                     }
+            case "quenmk":
+                if (isset($_POST['guiemail']) && ($_POST['guiemail'])) {
+                    $email = $_POST['email'];
+                    $checkemail = check_email($email);
+                    if (is_array($checkemail)) {
+                        $thongbao = "mat khau cua ban la:" . $checkemail['pass'];
+                    } else {
+                        $thongbao = "email nay khong ton tai";
                     }
-                  include "login/quenmk.php";
-                 break; 
+                }
+                include "login/quenmk.php";
+                break;
             case 'timkiem': {
                     if (isset($_POST['timkiem'])) {
                         $keyword = $_POST['keyword'];
@@ -104,9 +102,6 @@ include "_header.php";
                         $sanpham_tt = sanpham_tuongtu($_GET['idsp']);
                         tangluotxem($_GET['idsp']);
                         $bien_the = load_id_bienthe($_GET['idsp']);
-                       
-                       
-                    
                     }
                     if (isset($_POST['btnBinhluan'])) {
                         add_binhluan($_POST['noidung'], $_POST['iduser'], $_POST['idpro'], $_POST['datetime']);
@@ -167,47 +162,58 @@ include "_header.php";
                     break;
                 }
             case "thanhtoan":
-                
+
                 // echo (isset($_COOKIE['voucher']))? $_COOKIE['voucher']:"";
                 $ds_sp_thanhtoan = loadall_cart($_SESSION['iduser']);
                 $count_sp_add = count_sp_add($_SESSION['iduser']);
                 if (isset($_POST['dat_hang'])) {
-                    $id_user = $_SESSION['iduser'];
-                    $diachi = $_POST['diachi'] . ', ' . $_POST['dchi'];
-                    $name = $_POST['name'];
-                    $sdt = $_POST['phone'];
-                    $email = $_POST['email'];
-                    $note = $_POST['note'];
-                    $tong_thanhtoan = $_POST['tong'];
+                    if ($_POST['pt_thanhtoan'] == 'cod') {
+                        $id_user = $_SESSION['iduser'];
+                        $diachi = $_POST['diachi'] . ', ' . $_POST['dchi'];
+                        $name = $_POST['name'];
+                        $sdt = $_POST['phone'];
+                        $email = $_POST['email'];
+                        $note = $_POST['note'];
+                        $tong_thanhtoan = $_POST['tong'];
 
-                    insetr_donhang($id_user, $diachi, $sdt, $email, $tong_thanhtoan, $name);
+                        insetr_donhang($id_user, $diachi, $sdt, $email, $tong_thanhtoan, $name);
 
-                    $donhang_new = loadone_donhang_new();
-                    extract($donhang_new);
-                    // print_r($donhang_new);
-                    // echo '<br>id don hàng vừa nhập là: ' . $id . '<br>';
+                        $donhang_new = loadone_donhang_new();
+                        extract($donhang_new);
+                        // print_r($donhang_new);
+                        // echo '<br>id don hàng vừa nhập là: ' . $id . '<br>';
 
-                    $id_donhang = $id;
+                        $id_donhang = $id;
 
-                    $i = 0;
-                    foreach ($count_sp_add as $count_sp) {
-                        $i += $count_sp['so_sp'];
+                        $i = 0;
+                        foreach ($count_sp_add as $count_sp) {
+                            $i += $count_sp['so_sp'];
+                        }
+                        // echo $i;
+                        // $id_bienthe = '';
+                        for ($j = 0; $j < $i; $j++) {
+                            $id_bienthe[$j] = $_POST['id_bienthe' . $j];
+                            $so_luong[$j] = $_POST['so_luong' . $j];
+                            $price[$j] = $_POST['price_sale' . $j];
+                            $ten_sp[$j] = $_POST['ten_sp' . $j];
+                            // echo '<br>id biến thể:' . $id_bienthe[$j] . '<br>';
+                            insert_ct_donhang($id_donhang, $id_bienthe[$j], $so_luong[$j], $price[$j], $ten_sp[$j]);
+                        }
+                        // echo $count_sp_add['so_sp'];
+                        delete_sp_buy($id_user);
+                        update_donhang_new();
+                        echo $id_user . '|' . $diachi;
+                    } elseif ($_POST['pt_thanhtoan'] == 'online') {
+
+                        if (isset($_POST['tieptuc'])) {
+                            
+                        }
+
+
+                        header("location:../assets/vnpay_php/vnpay_pay.php");
                     }
-                    // echo $i;
-                    // $id_bienthe = '';
-                    for ($j = 0; $j < $i; $j++) {
-                        $id_bienthe[$j] = $_POST['id_bienthe' . $j];
-                        $so_luong[$j] = $_POST['so_luong' . $j];
-                        $price[$j] = $_POST['price_sale' . $j];
-                        $ten_sp[$j] = $_POST['ten_sp' . $j];
-                        // echo '<br>id biến thể:' . $id_bienthe[$j] . '<br>';
-                        insert_ct_donhang($id_donhang, $id_bienthe[$j], $so_luong[$j], $price[$j], $ten_sp[$j]);
-                    }
-                    // echo $count_sp_add['so_sp'];
-                    delete_sp_buy($id_user);
-                    update_donhang_new();
-                    echo $id_user . '|' . $diachi;
                 }
+
                 include "thanhtoan.php";
                 break;
             case 'mua_ngay':
@@ -219,7 +225,7 @@ include "_header.php";
                     $sp_mua_ngay = load_sanpham_mua_ngay($id_bt_sanpham);
                     include 'mua_ngay.php';
                 }
-                if (isset($_POST['dat_hang'])){
+                if (isset($_POST['dat_hang'])) {
                     $id_user = $_SESSION['iduser'];
                     $diachi = $_POST['diachi'] . ', ' . $_POST['dchi'];
                     $name = $_POST['name'];
@@ -232,7 +238,7 @@ include "_header.php";
                     $ten_sp = $_POST['ten_sp'];
                     $id_bt_sanpham = $_POST['id_bt_sanpham'];
                     $so_luong = $_POST['so_luong'];
-                    
+
                     // echo $diachi;
                     // echo $name;
                     insetr_donhang($id_user, $diachi, $sdt, $email, $tong_thanhtoan, $name);
@@ -254,12 +260,12 @@ include "_header.php";
                     update_donhang_new();
                     include "thanhtoan_tc.php";
                 }
-                
-                
-                
+
+
+
                 break;
             case 'voucher':
-                
+
                 include "thanhtoan.php";
                 break;
             case 'ct_donhang':
@@ -311,7 +317,7 @@ include "_header.php";
                 include 'don_mua.php';
                 break;
             case 'huy_don':
-                if(isset($_GET['iddh'])){
+                if (isset($_GET['iddh'])) {
                     $iddh = $_GET['iddh'];
                     huy_don($iddh);
                 }
@@ -319,7 +325,7 @@ include "_header.php";
                 include 'don_mua.php';
                 break;
             case 'hoan_thanh':
-                if(isset($_GET['iddh'])){
+                if (isset($_GET['iddh'])) {
                     $iddh = $_GET['iddh'];
                     huy_don($iddh);
                 }
@@ -330,7 +336,7 @@ include "_header.php";
                 include "thanhtoan_tc.php";
                 break;
 
-            
+
             default: {
                     include "home.php";
                     break;
