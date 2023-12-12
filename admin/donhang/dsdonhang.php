@@ -41,22 +41,25 @@
                                         // $list_donhang = loadall_donhang();
                                             foreach($list_donhang as $hd){
                                                 extract($hd);
-                                                echo '
-                                                <tr>
-                                                  
-                                                    <td class="col-1 align-middle">'.$id.'</td>
-                                                    <td class="col-2 align-middle">'.$receive_name.'</td>
-                                                    <td class="col-2 align-middle">'.$address.'</td>
-                                                    <td class="col-2 align-middle">0'.$sdt.'</td>
-                                                    <td class="col-1 align-middle">'.$so_sp.'</td>
-                                                    <td  class="col-2 align-middle">'.number_format($tong).'VND</td>
-                                                    <td  class="col-2 align-middle">'.$status.'</td>
-                                                    <td class="col-1 align-middle">'.$ngay_dat_hang.'</td>
-                                                    <td class="col-2 align-middle"><a href="index.php?act=update_donhang&iddh='.$id.'"><button class="btn btn-secondary btn-sm">Sửa</button></a> | 
-                                                        <a href="#"><button class="btn btn-secondary btn-sm">Hủy</button></a>
-                                                        |<a href="index.php?act=ct_donhang&iddh='.$id.'"><button class="btn btn-secondary btn-sm">Chi tiết</button></a></td>
-                                                </tr>
-                                                ';
+                                                if($status != "Hoàn thành"){
+                                                    // echo "1";
+                                                    echo '
+                                                        <tr>
+                                                            
+                                                            <td class="col-1 align-middle">'.$id.'</td>
+                                                            <td class="col-2 align-middle">'.$receive_name.'</td>
+                                                            <td class="col-2 align-middle">'.$address.'</td>
+                                                            <td class="col-2 align-middle">0'.$sdt.'</td>
+                                                            <td class="col-1 align-middle">'.$so_sp.'</td>
+                                                            <td  class="col-2 align-middle">'.number_format($tong).'VND</td>
+                                                            <td  class="col-2 align-middle">'.$status.'</td>
+                                                            <td class="col-2 align-middle">'.$ngay_dat_hang.'</td>
+                                                            <td class="col-2 align-middle"><a href="index.php?act=update_donhang&iddh='.$id.'"><button class="btn btn-secondary btn-sm">Sửa</button></a>
+                                                                |<a href="index.php?act=ct_donhang&iddh='.$id.'"><button class="btn btn-secondary btn-sm">Chi tiết</button></a></td>
+                                                        </tr>
+                                                        ';
+                                                }
+                                                
 
                                             }
                                         ?>

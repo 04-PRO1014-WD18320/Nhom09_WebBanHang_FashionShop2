@@ -1,5 +1,7 @@
 <?php
 session_start();
+// $date = date('Y-m-d H:i:s');
+// echo $date;
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
@@ -165,11 +167,13 @@ include "_header.php";
                     break;
                 }
             case "thanhtoan":
+                
+                // echo (isset($_COOKIE['voucher']))? $_COOKIE['voucher']:"";
                 $ds_sp_thanhtoan = loadall_cart($_SESSION['iduser']);
                 $count_sp_add = count_sp_add($_SESSION['iduser']);
                 if (isset($_POST['dat_hang'])) {
                     $id_user = $_SESSION['iduser'];
-                    $diachi = $_POST['tp'] . ', ' . $_POST['qh'] . ', ' . $_POST['xp'] . ', ' . $_POST['dchi'];
+                    $diachi = $_POST['diachi'] . ', ' . $_POST['dchi'];
                     $name = $_POST['name'];
                     $sdt = $_POST['phone'];
                     $email = $_POST['email'];
@@ -201,6 +205,7 @@ include "_header.php";
                     }
                     // echo $count_sp_add['so_sp'];
                     delete_sp_buy($id_user);
+                    update_donhang_new();
                     echo $id_user . '|' . $diachi;
                 }
                 include "thanhtoan.php";
@@ -216,7 +221,7 @@ include "_header.php";
                 }
                 if (isset($_POST['dat_hang'])){
                     $id_user = $_SESSION['iduser'];
-                    $diachi = $_POST['tp'] . ', ' . $_POST['qh'] . ', ' . $_POST['xp'] . ', ' . $_POST['dchi'];
+                    $diachi = $_POST['diachi'] . ', ' . $_POST['dchi'];
                     $name = $_POST['name'];
                     $sdt = $_POST['phone'];
                     $email = $_POST['email'];
@@ -246,11 +251,16 @@ include "_header.php";
                     // $email = $_POST['email'];
                     // $note = $_POST['note'];
                     // $tong_thanhtoan = $_POST['tong'];
-                    
+                    update_donhang_new();
+                    include "thanhtoan_tc.php";
                 }
-
-                include "thanhtoan_tc.php";
                 
+                
+                
+                break;
+            case 'voucher':
+                
+                include "thanhtoan.php";
                 break;
             case 'ct_donhang':
                 if (isset($_GET['iduser'])) {
@@ -282,6 +292,38 @@ include "_header.php";
                     // echo "<pre>";
                     // print_r($ct_donhang);
                 }
+                include 'don_mua.php';
+                break;
+            case 'ct_donhang_hoan_thanh':
+                if (isset($_GET['iduser'])) {
+                    $ct_donhang = loadall_ct_donhang_hoan_thanh($_GET['iduser']);
+                    // echo "<pre>";
+                    // print_r($ct_donhang);
+                }
+                include 'don_mua.php';
+                break;
+            case 'ct_donhang_da_huy':
+                if (isset($_GET['iduser'])) {
+                    $ct_donhang = loadall_ct_donhang_da_huy($_GET['iduser']);
+                    // echo "<pre>";
+                    // print_r($ct_donhang);
+                }
+                include 'don_mua.php';
+                break;
+            case 'huy_don':
+                if(isset($_GET['iddh'])){
+                    $iddh = $_GET['iddh'];
+                    huy_don($iddh);
+                }
+                $ct_donhang = loadall_ct_donhang_cho_xn($_SESSION['iduser']);
+                include 'don_mua.php';
+                break;
+            case 'hoan_thanh':
+                if(isset($_GET['iddh'])){
+                    $iddh = $_GET['iddh'];
+                    huy_don($iddh);
+                }
+                $ct_donhang = loadall_ct_donhang_hoan_thanh($_SESSION['iduser']);
                 include 'don_mua.php';
                 break;
             case 'hoanthanh_tt':

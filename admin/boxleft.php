@@ -83,7 +83,8 @@
           <li class="nav-item">
               <a class="nav-link" href="?act=dsdonhang">
                   <i class="fas fa-fw fa-cart-arrow-down"></i>
-                  <span>Quản lý đơn hàng</span></a>
+                  <span>Đơn hàng mới</span></a>
+                
           </li>
 
           <!-- Nav Item - Tables -->

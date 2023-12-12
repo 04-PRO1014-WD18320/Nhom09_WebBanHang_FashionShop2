@@ -7,6 +7,7 @@ function dangnhap($user, $pass)
         $_SESSION['user'] = $taikhoan['user'];
         $_SESSION['iduser'] = $taikhoan['id'];
         $_SESSION['role'] = $taikhoan['role'];
+        $_SESSION['don_new'] = 0;
         header('location:index.php');
     } else {
         return "Thông tin tài khoản sai !";
@@ -96,11 +97,15 @@ function edit_khachhang($idkh, $role)
 
 //Hàm xử lý đăng ký tài khoản ở dao khachhang.php
 
-
+//Hàm cập nhật tài khoản
 function edit_tk($id, $user, $pass, $email, $address, $tel)
 {
     $sql = "UPDATE `taikhoan` SET `user`='$user',`pass` = '$pass' ,`email`='$email',`address`='$address',`tel`='$tel' WHERE id = $id";
     pdo_execute($sql);
 }
-
+function so_tk(){
+    $sql = "SELECT COUNT(id) AS so_tk FROM taikhoan;";
+    $result = pdo_query($sql);
+    return $result;
+}
 
