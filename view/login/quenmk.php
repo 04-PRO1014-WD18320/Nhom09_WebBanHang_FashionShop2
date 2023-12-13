@@ -1,9 +1,11 @@
 <div class="container">
     <div class="login">
         <form action="index.php?act=quenmk" method="post">
+
             <div class="box1" align='center'>
                 <h3>Quên Mật Khẩu</h3>
             </div>
+
             <div class="box2">
                 <input type="text" name="email" class="email" placeholder="Nhập email của bạn ..." autocomplete="off" required>
                 <i class="fa-solid fa-envelope"></i>

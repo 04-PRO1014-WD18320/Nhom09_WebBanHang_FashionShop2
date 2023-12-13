@@ -30,14 +30,16 @@ include "_header.php";
                     include "home.php";
                     break;
                 }
-
+            case 'update_kh':
+                include "login/update_kh.php";
+                break;
             case "dangky":
                 if (isset($_POST['dangky'])) {
                     $email = $_POST['email'];
                     $user = $_POST['user'];
                     $pass = $_POST['pass'];
                     insert_taikhoan($email, $user, $pass);
-                    $thongbao = "đăng ký thành công";
+                    $thongbao = "Đăng ký thành công ! Vui lòng đăng nhập";
                 }
                 include "login/login.php";
                 break;
@@ -57,9 +59,9 @@ include "_header.php";
                     $email = $_POST['email'];
                     $checkemail = check_email($email);
                     if (is_array($checkemail)) {
-                        $thongbao = "mat khau cua ban la:" . $checkemail['pass'];
+                        $thongbao = "Mật khẩu của bạn là: " . $checkemail['pass'];
                     } else {
-                        $thongbao = "email nay khong ton tai";
+                        $thongbao = "Email này không tồn tại !";
                     }
                 }
                 include "login/quenmk.php";
@@ -215,7 +217,7 @@ include "_header.php";
                         update_donhang_new();
                         echo $id_user . '|' . $diachi;
                     } elseif ($_POST['pt_thanhtoan'] == 'online') {
-                     
+
 
                         header("location:../assets/vnpay_php/vnpay_pay.php");
                     }

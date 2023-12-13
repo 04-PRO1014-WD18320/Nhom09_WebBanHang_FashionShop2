@@ -110,7 +110,7 @@
 
                 </div>
                 <div class="add_cart">
-                <input type="text" hidden name="iduser" value="<?php echo (empty($_SESSION['iduser'])) ? "" : $_SESSION['iduser'] ?>">
+                    <input type="text" hidden name="iduser" value="<?php echo (empty($_SESSION['iduser'])) ? "" : $_SESSION['iduser'] ?>">
                     <input type="text" hidden name="id" value="<?= $sanpham['id']  ?>">
                     <input type="text" hidden name="name" value="<?= $sanpham['name']  ?>">
                     <input type="text" hidden name="img" value="<?= $sanpham['img']  ?>">
@@ -119,14 +119,16 @@
                     <input type="text" hidden name="id_kich_thuoc" id="selected_size_id">
                     <input type="text" hidden name="id_bt_sanpham" value="" id="id_bt_sanpham">
 
-                    <?php echo (empty($_SESSION['iduser'])) ? "Bạn cần đăng nhập để mua hàng" : '' ?>
-                    <button type='submit' name='btnSubmit'>Thêm vào giỏ hàng</button>
+                    <?php echo (empty($_SESSION['iduser'])) ? "Bạn cần<a href='?act=dangnhap'> đăng nhập</a> để mua hàng" : '' ?>
+                    <?php if (isset($_SESSION['iduser'])) : ?>
+                        <button type='submit' name='btnSubmit'>Thêm vào giỏ hàng</button>
+                    <?php endif; ?>
                 </div>
             </form>
 
             <div class="buy_now">
                 <form action="?act=mua_ngay" method="post" onsubmit="return datMua()">
-                    
+
                     <input type="text" hidden name="iduser" value="<?php echo (empty($_SESSION['iduser'])) ? "" : $_SESSION['iduser'] ?>">
                     <input type="text" hidden name="id" value="<?= $sanpham['id']  ?>">
                     <input type="text" hidden name="name" value="<?= $sanpham['name']  ?>">
@@ -136,7 +138,9 @@
                     <input type="text" hidden name="id_kich_thuoc_mua_ngay" id="selected_size_id">
                     <input type="text" hidden name="id_bt_sanpham_mua_ngay" value="" id="id_bt_sanpham_mua_ngay">
                     <input type="number" hidden min="1" max="<?php echo $sanpham['so_luong'] ?>" name="so_luong_mua_ngay" id="so_luong_mua_ngay" value="1" onchange="updateSelectedQuantity()">
-                    <button type='submit' class="buy-now" name='submit'>Mua ngay</button>
+                    <?php if (isset($_SESSION['iduser'])) : ?>
+                        <button type='submit' class="buy-now" name='submit'>Mua ngay</button>
+                    <?php endif; ?>
                 </form>
             </div>
 
@@ -175,7 +179,7 @@
             <?php if (isset($_SESSION['iduser'])) : ?>
                 <form action="?act=chitietsp&idsp=<?= $_GET['idsp'] ?>" method='post'>
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" name="noidung" placeholder="Nhập bình luận của bạn...">
+                    <input type="text" required name="noidung" placeholder="Nhập bình luận của bạn...">
                     <input type="text" hidden name="iduser" value="<?php echo $_SESSION['iduser']; ?>">
                     <input type="text" hidden name='idpro' value="<?php echo $_GET['idsp'] ?>">
                     <input type="datetime" hidden name='datetime' value="<?php
@@ -185,7 +189,7 @@
                     <button type='submit' name='btnBinhluan'>Gửi bình luận</button>
                 </form>
             <?php else : ?>
-                <p class='text_red'>Bạn cần đăng nhập để bình luận</p>
+                <p class='text_blue'>Bạn cần đăng nhập để bình luận</p>
             <?php endif; ?>
         </div>
     </div>
@@ -247,6 +251,7 @@
         document.getElementById('selected_quantity').value = selectedQuantity;
         // updateSoLuong(so_luong);
     }
+
     function updateSelectedQuantity() {
         var selectedQuantity = document.getElementById('so_luong').value;
         document.getElementById('so_luong_mua_ngay').value = selectedQuantity;
@@ -307,7 +312,7 @@
             // alert("id_bt_sanpham: ", id_bt_sanpham);
         });
     });
-    
+
 
     // Hàm cập nhật giá trị cho input id_bt_sanpham
     function updateIdBtSanpham(id_bt_sanpham) {
@@ -318,10 +323,12 @@
             inputIdBtSanpham.value = '';
         }
     }
+
     function updateIdBtSanphamMuaNgay(id_bt_sanpham) {
         var inputIdBtSanphamMuaNgay = document.querySelector('input[name="id_bt_sanpham_mua_ngay"]');
         inputIdBtSanphamMuaNgay.value = id_bt_sanpham;
     }
+
     function updateSoLuong(so_luong) {
         var inputSoLuong = document.querySelector('input[name="so_luong_mua_ngay"]');
         inputSoLuong.value = so_luong;

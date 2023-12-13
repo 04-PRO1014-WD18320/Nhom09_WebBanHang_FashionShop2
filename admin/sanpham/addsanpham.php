@@ -24,23 +24,23 @@
             <form action="index.php?act=add_sp" method="post" enctype="multipart/form-data" class="form">
                 <div class="mb-3">
                     <label for="hovaten" class="form-label">Tên sản phẩm</label>
-                    <input type="text" class="form-control" id="hovaten" name="name" placeholder="Nhập tên sản phẩm...">
+                    <input type="text" required class="form-control" id="hovaten" name="name" placeholder="Nhập tên sản phẩm...">
                 </div>
                 <div class="mb-3">
                     <label for="gia" class="form-label">Giá niêm yết</label>
-                    <input type="text" class="form-control" id="gia" name="price_niemyet" placeholder="Nhập giá...">
+                    <input type="text" required class="form-control" id="gia" name="price_niemyet" placeholder="Nhập giá...">
                 </div>
                 <div class="mb-3">
                     <label for="gia" class="form-label">Giá bán</label>
-                    <input type="text" class="form-control" id="gia" name="price_sale" placeholder="Nhập giá...">
+                    <input type="text" required class="form-control" id="gia" name="price_sale" placeholder="Nhập giá...">
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Ảnh đại diện sản phẩm:</label>
-                    <input type="file" name="image_main" id="image" class="form-control-file border">
+                    <input type="file" required name="image_main" id="image" class="form-control-file border">
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Ảnh chi tiết sản phẩm:</label>
-                    <input type="file" name="image[]" id="image" class="form-control-file border" multiple>
+                    <input type="file" required name="image[]" id="image" class="form-control-file border" multiple>
                 </div>
                 <div class="mb-3">
                     <label for="soluong" class="form-label">Mô tả</label>

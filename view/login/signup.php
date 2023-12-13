@@ -4,6 +4,13 @@
             <div class="box1">
                 <h3>Signup</h3>
             </div>
+            <?php
+            if (isset($thongbao) && $thongbao != "") {
+                echo '
+                <p style="color: green;" class="thongbao">' . $thongbao . '</p>
+                ';
+            }
+            ?>
             <div class="box2">
                 <input type="text" name="email" class="email" placeholder="Email" autocomplete="off" required>
                 <i class="fa-solid fa-envelope"></i>
@@ -27,15 +34,9 @@
                 <p>Bạn đã có tài khoản</p>
                 <a href="index.php?act=dangnhap">Đăng nhập</a>
             </div>
-            
-            
-            <?php
-            if (isset($thongbao) && $thongbao != "") {
-                echo '
-                <p style="color: green;" class="thongbao">'.$thongbao. '</p>
-                ';
-            }
-            ?>
+
+
+
         </form>
     </div>
 </div>

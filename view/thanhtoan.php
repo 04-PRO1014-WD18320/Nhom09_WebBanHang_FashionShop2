@@ -17,16 +17,16 @@
                 <h2>THÔNG TIN THANH TOÁN</h2>
                 <input type="text" hidden name="iduser" value="<?= $_SESSION['iduser'] ?>">
                 <label for="">Họ và tên*</label>
-                <input type="text" name="name" placeholder="Họ tên của bạn...">
+                <input type="text" required name="name" placeholder="Họ tên của bạn...">
 
                 <div class="ip_bottom">
                     <div class="ip_in_bottom">
                         <label for="">Số điện thoại*</label>
-                        <input type="number" name="phone" placeholder="Số điện thoại của bạn">
+                        <input type="number" required name="phone" placeholder="Số điện thoại của bạn">
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Địa chỉ email (không bắt buộc)*</label>
-                        <input type="text" name="email" placeholder="Email của bạn">
+                        <input type="text" required name="email" placeholder="Email của bạn">
                     </div>
                     <!-- <div class="ip_in_bottom">
                         <select name="" id="province">
@@ -44,24 +44,24 @@
                     <input type="text" hidden name="diachi" id="result">
                     <div class="ip_in_bottom">
                         <label for="">Tỉnh/Thành phố *</label>
-                        <select name="" id="province">
+                        <select name="" required id="province">
                         </select>
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Quận/Huyện *</label>
-                        <select name="" id="district">
+                        <select name="" required id="district">
                             <option value="">Chọn quận</option>
                         </select>
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Xã/Phường *</label>
-                        <select name="" id="ward">
+                        <select name="" required id="ward">
                             <option value="">Chọn phường</option>
                         </select>
                     </div>
                     <div class="ip_in_bottom">
                         <label for="">Địa chỉ*</label>
-                        <input type="text" name="dchi">
+                        <input type="text" required name="dchi">
                     </div>
                 </div>
                 <label for="">Ghi chú đơn hàng (không bắt buộc)</label>
