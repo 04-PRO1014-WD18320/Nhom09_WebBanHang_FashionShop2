@@ -167,14 +167,25 @@ include "_header.php";
                 $ds_sp_thanhtoan = loadall_cart($_SESSION['iduser']);
                 $count_sp_add = count_sp_add($_SESSION['iduser']);
                 if (isset($_POST['dat_hang'])) {
+                    $id_user = $_SESSION['iduser'];
+                    $diachi = $_POST['diachi'] . ', ' . $_POST['dchi'];
+                    $name = $_POST['name'];
+                    $sdt = $_POST['phone'];
+                    $email = $_POST['email'];
+                    $note = $_POST['note'];
+                    $tong_thanhtoan = $_POST['tong'];
+
+                    $_SESSION['thongtin_dathang'] = array(
+                        'diachi' => $_POST['diachi'] . ', ' . $_POST['dchi'],
+                        'name' => $_POST['name'],
+                        'sdt' => $_POST['phone'],
+                        'email' => $_POST['email'],
+                        'note' => $_POST['note'],
+                        'tong_thanhtoan' => $_POST['tong']
+                    );
+
+
                     if ($_POST['pt_thanhtoan'] == 'cod') {
-                        $id_user = $_SESSION['iduser'];
-                        $diachi = $_POST['diachi'] . ', ' . $_POST['dchi'];
-                        $name = $_POST['name'];
-                        $sdt = $_POST['phone'];
-                        $email = $_POST['email'];
-                        $note = $_POST['note'];
-                        $tong_thanhtoan = $_POST['tong'];
 
                         insetr_donhang($id_user, $diachi, $sdt, $email, $tong_thanhtoan, $name);
 
@@ -204,17 +215,54 @@ include "_header.php";
                         update_donhang_new();
                         echo $id_user . '|' . $diachi;
                     } elseif ($_POST['pt_thanhtoan'] == 'online') {
-
-                        if (isset($_POST['tieptuc'])) {
-                            
-                        }
-
+                     
 
                         header("location:../assets/vnpay_php/vnpay_pay.php");
                     }
                 }
 
                 include "thanhtoan.php";
+                break;
+            case 'thanhtoanonline':
+                $ds_sp_thanhtoan = loadall_cart($_SESSION['iduser']);
+                $count_sp_add = count_sp_add($_SESSION['iduser']);
+                if (isset($_POST['tieptuc'])) {
+                    $id_user = $_SESSION['iduser'];
+                    $diachi = $_POST['diachi'];
+                    $name = $_POST['name'];
+                    $sdt = $_POST['sdt'];
+                    $email = $_POST['email'];
+                    $note = $_POST['note'];
+                    $tong_thanhtoan = $_POST['tong_thanhtoan'];
+
+                    insetr_donhang_online($id_user, $diachi, $sdt, $email, $tong_thanhtoan, $name);
+
+                    $donhang_new = loadone_donhang_new();
+                    extract($donhang_new);
+                    // print_r($donhang_new);
+                    // echo '<br>id don hàng vừa nhập là: ' . $id . '<br>';
+
+                    $id_donhang = $id;
+
+                    $i = 0;
+                    foreach ($count_sp_add as $count_sp) {
+                        $i += $count_sp['so_sp'];
+                    }
+                    // echo $i;
+                    // $id_bienthe = '';
+                    for ($j = 0; $j < $i; $j++) {
+                        $id_bienthe[$j] = $_POST['id_bienthe' . $j];
+                        $so_luong[$j] = $_POST['so_luong' . $j];
+                        $price[$j] = $_POST['price_sale' . $j];
+                        $ten_sp[$j] = $_POST['ten_sp' . $j];
+                        // echo '<br>id biến thể:' . $id_bienthe[$j] . '<br>';
+                        insert_ct_donhang($id_donhang, $id_bienthe[$j], $so_luong[$j], $price[$j], $ten_sp[$j]);
+                    }
+                    // echo $count_sp_add['so_sp'];
+                    delete_sp_buy($id_user);
+                    update_donhang_new();
+                    // echo $id_user . '|' . $diachi;
+                }
                 break;
             case 'mua_ngay':
                 if (isset($_POST['submit'])) {
@@ -333,6 +381,8 @@ include "_header.php";
                 include 'don_mua.php';
                 break;
             case 'hoanthanh_tt':
+
+
                 include "thanhtoan_tc.php";
                 break;
 
