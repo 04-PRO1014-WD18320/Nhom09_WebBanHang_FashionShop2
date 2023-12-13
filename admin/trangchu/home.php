@@ -125,81 +125,81 @@
             function drawChart() {
                 //Set data
                 var data = google.visualization.arrayToDataTable([
-                    ['tháng', 'doanh thu'],
+                    ['Tháng', 'Doanh thu'],
                     <?php
                     $tong_thang_1 = 0;
                     foreach ($dt_t1 as $t1) {
                         extract($t1);
                         $tong_thang_1 += $tong_thang;
                     }
-                    echo "['tháng 1', " . $tong_thang_1 . "],";
+                    echo "['Tháng 1', " . $tong_thang_1 . "],";
 
                     $tong_thang_2 = 0;
                     foreach ($dt_t2 as $t2) {
                         extract($t2);
                         $tong_thang_2 += $tong_thang;
                     }
-                    echo "['tháng 2', " . $tong_thang_2 . "],";
+                    echo "['Tháng 2', " . $tong_thang_2 . "],";
                     $tong_thang_3 = 0;
                     foreach ($dt_t3 as $t3) {
                         extract($t3);
                         $tong_thang_3 += $tong_thang;
                     }
-                    echo "['tháng 3', " . $tong_thang_3 . "],";
+                    echo "['Tháng 3', " . $tong_thang_3 . "],";
                     $tong_thang_4 = 0;
                     foreach ($dt_t4 as $t4) {
                         extract($t4);
                         $tong_thang_4 += $tong_thang;
                     }
-                    echo "['tháng 4', " . $tong_thang_4 . "],";
+                    echo "['Tháng 4', " . $tong_thang_4 . "],";
                     $tong_thang_5 = 0;
                     foreach ($dt_t5 as $t5) {
                         extract($t5);
                         $tong_thang_5 += $tong_thang;
                     }
-                    echo "['tháng 5', " . $tong_thang_5 . "],";
+                    echo "['Tháng 5', " . $tong_thang_5 . "],";
                     $tong_thang_6 = 0;
                     foreach ($dt_t6 as $t6) {
                         extract($t6);
                         $tong_thang_6 += $tong_thang;
                     }
-                    echo "['tháng 6', " . $tong_thang_6 . "],";
+                    echo "['Tháng 6', " . $tong_thang_6 . "],";
                     $tong_thang_7 = 0;
                     foreach ($dt_t7 as $t7) {
                         extract($t7);
                         $tong_thang_7 += $tong_thang;
                     }
-                    echo "['tháng 7', " . $tong_thang_7 . "],";
+                    echo "['Tháng 7', " . $tong_thang_7 . "],";
                     $tong_thang_8 = 0;
                     foreach ($dt_t8 as $t8) {
                         extract($t8);
                         $tong_thang_8 += $tong_thang;
                     }
-                    echo "['tháng 8', " . $tong_thang_8 . "],";
+                    echo "['Tháng 8', " . $tong_thang_8 . "],";
                     $tong_thang_9 = 0;
                     foreach ($dt_t9 as $t9) {
                         extract($t9);
                         $tong_thang_9 += $tong_thang;
                     }
-                    echo "['tháng 9', " . $tong_thang_9 . "],";
+                    echo "['Tháng 9', " . $tong_thang_9 . "],";
                     $tong_thang_10 = 0;
                     foreach ($dt_t10 as $t10) {
                         extract($t10);
                         $tong_thang_10 += $tong_thang;
                     }
-                    echo "['tháng 10', " . $tong_thang_10 . "],";
+                    echo "['Tháng 10', " . $tong_thang_10 . "],";
                     $tong_thang_11 = 0;
                     foreach ($dt_t11 as $t11) {
                         extract($t11);
                         $tong_thang_11 += $tong_thang;
                     }
-                    echo "['tháng 11', " . $tong_thang_11 . "],";
+                    echo "['Tháng 11', " . $tong_thang_11 . "],";
                     $tong_thang_12 = 0;
                     foreach ($dt_t12 as $t12) {
                         extract($t12);
                         $tong_thang_12 += $tong_thang;
                     }
-                    echo "['tháng 12', " . $tong_thang_12 . "]";
+                    echo "['Tháng 12', " . $tong_thang_12 . "]";
                     // echo "['" . $thongke['name'] . "', " . $thongke['luotxem'] . "],";
 
                     ?>
@@ -207,7 +207,7 @@
 
 
                 var options = {
-                    title: 'Biểu đồ thống kê doanh thu năm',
+                    title: 'Biểu đồ thống kê doanh thu năm 2023',
                     is3D: true,
                 };
 
@@ -215,7 +215,7 @@
                 chart.draw(data, options);
             }
         </script>
-        <div id="piechart_3d" style="margin-left: 80px;width:100%; width:1000px; height:500px; align-items: center">
+        <div id="piechart_3d" style="margin-left: 60px;width:100%; width:1000px; height:700px; align-items: center">
         </div>
     </div>
 </div>

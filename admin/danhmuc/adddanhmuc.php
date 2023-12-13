@@ -12,11 +12,11 @@
                             <form action="index.php?act=add_danhmuc" class="form" method="post">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Mã loại</label>
-                                    <input type="text" name="id_dm" id="" class="form-control" placeholder="Nhập mã loại...">
+                                    <input type="text" required name="id_dm" id="" class="form-control" placeholder="Nhập mã loại...">
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Danh mục</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Nhập tên danh mục...">
+                                    <input type="text" required name="name" id="name" class="form-control" placeholder="Nhập tên danh mục...">
                                 </div>
                                 <div>
                                     <button type="submit" name="submit" class="btn btn-success">Xác nhận</button>

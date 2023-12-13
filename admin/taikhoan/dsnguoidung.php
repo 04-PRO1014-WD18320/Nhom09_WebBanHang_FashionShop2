@@ -6,7 +6,7 @@
             <button class="btn btn-secondary btn-sm">Chọn tất cả</button>
             <button class="btn btn-secondary btn-sm">Bỏ chọn tất cả</button>
             <button class="btn btn-secondary btn-sm">Xóa các mục đã chọn</button>
-            <a href="#"><button class="btn btn-secondary btn-sm">Nhập thêm</button></a>
+            <a href="?act=addnguoidung"><button class="btn btn-secondary btn-sm">Nhập thêm</button></a>
             <form action="" class="float-right">
                 <div class="input-group">
                     <input type="text" class="form-control" name="kyw" placeholder="Tìm kiếm...">

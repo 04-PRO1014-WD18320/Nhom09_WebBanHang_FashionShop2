@@ -57,7 +57,7 @@
         </div>
 
         <div class="thanh_tien">
-            <p>Thành tiền: <span>'.number_format($so_luong*$gia).'đ</span></p>
+            <p>Thành tiền: <span>'.number_format($so_luong*$gia + 25000).'đ</span></p>
         </div>
         '.$nut.'
     </div>

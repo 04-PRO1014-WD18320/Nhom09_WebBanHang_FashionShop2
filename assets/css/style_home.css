@@ -12,6 +12,9 @@ nav {
 .text_green {
     color: green;
 }
+.text_blue {
+    color: blue;
+}
 .menu_admin {
     display: flex;
     justify-content: center;

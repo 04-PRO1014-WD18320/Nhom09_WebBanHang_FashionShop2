@@ -19,11 +19,11 @@
                                 <input type="number" hidden name="iddm" id="" value="<?=$id?>">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Mã loại</label>
-                                    <input type="text" name="id_b_dm" id="" class="form-control" value="<?=$id_dm?>" >
+                                    <input type="text" required name="id_b_dm" id="" class="form-control" value="<?=$id_dm?>" >
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Danh mục</label>
-                                    <input type="text" name="name" id="name" class="form-control" value="<?=$name?>">
+                                    <input type="text" required name="name" id="name" class="form-control" value="<?=$name?>">
                                 </div>
                                 <div>
                                     <button type="submit" name="submit" class="btn btn-success">Xác nhận</button>
