@@ -109,9 +109,14 @@ $count_sp_add = count_sp_add($_SESSION['iduser']);
                 <?php if ($secureHash == $vnp_SecureHash) { ?>
                     <?php if ($_GET['vnp_ResponseCode'] == '00') { ?>
                         <br><br><span style='color:blue'>Bạn đã thanh toán thành công. Vui lòng ấn tiếp tục để hoàn tất thanh toán!</span><br><br>
-                        <form action="http://localhost/DuAn1/Nhom09_WebBanHang_FashionShop2/view/index.php?act=hoanthanh_tt" method="post">
-                            <input type="text" name="iduser" value="<?= $_SESSION['iduser'] ?>">
-
+                        <form action="../../view/index.php?act=thanhtoanonline" method="post">
+                            <input type="text" hidden name="iduser" value="<?= $_SESSION['iduser'] ?>">
+                            <input type="text" hidden name="diachi" value="<?= $_SESSION['thongtin_dathang']['diachi']; ?>">
+                            <input type="text" hidden name="name" value="<?= $_SESSION['thongtin_dathang']['name']; ?>">
+                            <input type="text" hidden name="sdt" value="<?= $_SESSION['thongtin_dathang']['sdt']; ?>">
+                            <input type="text" hidden name="email" value="<?= $_SESSION['thongtin_dathang']['email']; ?>">
+                            <input type="text" hidden name="note" value="<?= $_SESSION['thongtin_dathang']['note']; ?>">
+                            <input type="text" hidden name="tong_thanhtoan" value="<?= $_SESSION['thongtin_dathang']['tong_thanhtoan']; ?>">
                             <?php
 
                             if (is_array($ds_sp_thanhtoan)) {
@@ -125,17 +130,17 @@ $count_sp_add = count_sp_add($_SESSION['iduser']);
 
                             for ($j = 0; $j < $i; $j++) {
                                 // echo $ds_sp_thanhtoan[$j]['id_bienthe'];
-                                echo '<input type="text"  name="id_bienthe' . $j . '" value="' . $ds_sp_thanhtoan[$j]['id_bienthe'] . '">';
-                                echo '<input type="text"  name="so_luong' . $j . '" value="' . $ds_sp_thanhtoan[$j]['so_luong'] . '">';
-                                echo '<input type="text"  name="price_sale' . $j . '" value="' . $ds_sp_thanhtoan[$j]['price_sale'] . '">';
-                                echo '<input type="text"  name="ten_sp' . $j . '" value="' . $ds_sp_thanhtoan[$j]['ten_sp'] . '">';
-
+                                echo '<input type="text" hidden  name="id_bienthe' . $j . '" value="' . $ds_sp_thanhtoan[$j]['id_bienthe'] . '">';
+                                echo '<input type="text" hidden name="so_luong' . $j . '" value="' . $ds_sp_thanhtoan[$j]['so_luong'] . '">';
+                                echo '<input type="text" hidden name="price_sale' . $j . '" value="' . $ds_sp_thanhtoan[$j]['price_sale'] . '">';
+                                echo '<input type="text" hidden  name="ten_sp' . $j . '" value="' . $ds_sp_thanhtoan[$j]['ten_sp'] . '">';
 
                                 $tong += $ds_sp_thanhtoan[$j]['price_sale'] * $ds_sp_thanhtoan[$j]['so_luong'];
                                 // $tong+= 25000; 
                             }
 
-                            // echo $id_bienthe;
+                           
+                         
                             ?>
 
                             <button type="submit" name="tieptuc">Tiếp tục</button>
