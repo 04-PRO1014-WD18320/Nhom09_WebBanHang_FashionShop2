@@ -90,7 +90,7 @@
                      <!-- <div class="diamond_user"></div> -->
                      <div class="shirt_user">
                         <a href="index.php?act=profile">Tài khoản của tôi</a>
-                        <a href="index.php?act=update_tk">Sửa thông tin</a>
+                        <a href="index.php?act=update_kh">Sửa thông tin</a>
                         <?php
                         echo (empty($_SESSION["iduser"])) ? "" :
                            '<a href="?act=ct_donhang&iduser=' . $_SESSION['iduser'] . '">

@@ -6,7 +6,7 @@
         }
         
         $hinh_main="../upload/".$img;
-        echo $hinh_main;
+        // echo $hinh_main;
         if(is_file($hinh_main)){
             $hinh_main="<img src='".$hinh_main."' width='100px' height='100px'>";
         }else{
@@ -24,20 +24,20 @@
                 <input type="number" hidden name="id" value="<?=$id?>">
                 <div class="mb-3">
                     <label for="hovaten" class="form-label">Tên sản phẩm</label>
-                    <input type="text" class="form-control" id="hovaten" name="name" value="<?=$name?>">
+                    <input type="text" required class="form-control" id="hovaten" name="name" value="<?=$name?>">
                 </div>
                 <div class="mb-3">
                     <label for="gia" class="form-label">Giá niêm yết</label>
-                    <input type="text" class="form-control" id="gia" name="price_niemyet" value="<?=$price_niemyet?>">
+                    <input type="text" required class="form-control" id="gia" name="price_niemyet" value="<?=$price_niemyet?>">
                 </div>
                 <div class="mb-3">
                     <label for="gia" class="form-label">Giá bán</label>
-                    <input type="text" class="form-control" id="gia" name="price_sale" value="<?=$price_sale?>">
+                    <input type="text" required class="form-control" id="gia" name="price_sale" value="<?=$price_sale?>">
                 </div>
                 <?=$hinh_main?>
                 <div class="mb-3">
                     <label for="image" class="form-label">Ảnh đại diện sản phẩm:</label>
-                    <input type="file" name="image_main" id="image" class="form-control-file border">
+                    <input type="file" required name="image_main" id="image" class="form-control-file border">
                 </div>
                 <div class="flex_img">
                     <?php
@@ -50,7 +50,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Ảnh chi tiết sản phẩm:</label>
-                    <input type="file" name="image[]" id="image" class="form-control-file border" multiple>
+                    <input type="file" required name="image[]" id="image" class="form-control-file border" multiple>
                 </div>
                 <div class="mb-3">
                     <label for="soluong" class="form-label">Mô tả</label>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="sel1">Danh mục</label>
-                    <select name="iddm" class="form-control" id="sel1" >
+                    <select name="iddm" class="form-control" id="sel1" required>
                         <option value="0">Danh mục</option>
                         <?php
                             $slt = '';
