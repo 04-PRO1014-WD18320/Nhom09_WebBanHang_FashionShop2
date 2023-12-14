@@ -25,7 +25,8 @@
 <body>
    <nav>
       <div class="logo">
-         Fashion Shop
+
+         <a href="index.php"> Fashion Shop</a>
       </div>
       <ul class="menu">
          <li><a href="index.php">HOME</a></li>
@@ -84,36 +85,43 @@
                   echo (empty($_SESSION['user'])) ? "" : $_SESSION['user']
                   ?>
                </a>
-
-               <div class="dropdown_user">
-                  <div class="draw_user">
-                     <!-- <div class="diamond_user"></div> -->
-                     <div class="shirt_user">
-                        <a href="index.php?act=profile">Tài khoản của tôi</a>
-                        <a href="index.php?act=update_kh">Sửa thông tin</a>
-                        <?php
-                        echo (empty($_SESSION["iduser"])) ? "" :
-                           '<a href="?act=ct_donhang&iduser=' . $_SESSION['iduser'] . '">
+               <?php if (isset($_SESSION['user'])) : ?>
+                  <div class="dropdown_user">
+                     <div class="draw_user">
+                        <!-- <div class="diamond_user"></div> -->
+                        <div class="shirt_user">
+                           <a href="index.php?act=profile">Tài khoản của tôi</a>
+                           <a href="index.php?act=update_kh">Sửa thông tin</a>
+                           <?php
+                           echo (empty($_SESSION["iduser"])) ? "" :
+                              '<a href="?act=ct_donhang&iduser=' . $_SESSION['iduser'] . '">
                               Đơn hàng
                            </a>'
-                        ?>
-                        <?php
-                        echo (($_SESSION["role"]) == 0) ? "" :
-                           '<a href="../admin/index.php">
+                           ?>
+                           <?php
+                           echo (($_SESSION["role"]) == 0) ? "" :
+                              '<a href="../admin/index.php">
                               Chuyển trang quản trị
                            </a>'
-                        ?>
-                        <a href="index.php?act=dangxuat">Đăng xuất</a>
+                           ?>
+                           <a href="index.php?act=dangxuat">Đăng xuất</a>
+                        </div>
                      </div>
                   </div>
-               </div>
+               <?php endif; ?>
+
             </li>
             <?php
             echo (empty($_SESSION['user'])) ? "
             <li><a href='index.php?act=dangnhap'><i class='fa-solid fa-user'></i></a></li>
             " : ""
             ?>
-            <li><a href="<?php echo (isset($_SESSION['iduser'])) ? 'index.php?act=cart&iduser=' . $_SESSION['iduser'] : '' ?>"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li><a href="<?php
+                           //  echo (isset($_SESSION['iduser'])) ? 'index.php?act=cart&iduser=' . $_SESSION['iduser'] : '' 
+                           if (isset($_SESSION['iduser'])) {
+                              echo 'index.php?act=cart&iduser=' . $_SESSION['iduser'];
+                           }?>">
+                  <i class="fa-solid fa-cart-shopping"></i></a></li>
          </ul>
       </div>
    </nav>
